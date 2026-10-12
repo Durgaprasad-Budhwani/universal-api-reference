@@ -4,6 +4,7 @@
 
 - **Method:** `POST`
 - **Base URL:** `https://api.intacct.com/ia/xml/xmlgw.phtml`
+- **API:** REST
 - **Official documentation:** [Create Sales Invoice](https://developer.intacct.com/api/accounts-receivable/invoices/#create-invoice-legacy)
 
 ## Headers

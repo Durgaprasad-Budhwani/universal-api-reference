@@ -120413,7 +120413,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/apple-touch-icon_1782233203690.png",
     "websiteUrl": "https://www.sage.com/en-us/sage-business-cloud/intacct/",
     "nativeDocumentationUrl": "https://developer.intacct.com/api/",
-    "version": "1.0.145",
+    "version": "1.0.146",
     "authentication": [
       {
         "type": "custom",
@@ -120553,6 +120553,37 @@
         "responses": [
           {
             "parser": "xml"
+          }
+        ]
+      },
+      {
+        "name": "Read By Query",
+        "type": "rest",
+        "baseUrl": "https://api.intacct.com/ia/xml/xmlgw.phtml",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "application/xml"
+          }
+        ],
+        "pagination": {
+          "limit": {
+            "parameter": "pagesize",
+            "location": "body",
+            "default": "100",
+            "minimum": "1",
+            "maximum": "1000"
+          },
+          "offset": {
+            "type": "cursor",
+            "parameter": "cursor",
+            "location": "body"
+          }
+        },
+        "responses": [
+          {
+            "parser": "xml",
+            "dataRootKey": "operation.result.data"
           }
         ]
       }
@@ -125386,7 +125417,7 @@
         "native": {
           "method": "POST",
           "baseUrl": "https://api.intacct.com/ia/xml/xmlgw.phtml",
-          "apiName": "REST",
+          "apiName": "Read By Query",
           "apiType": "rest",
           "arguments": [
             {

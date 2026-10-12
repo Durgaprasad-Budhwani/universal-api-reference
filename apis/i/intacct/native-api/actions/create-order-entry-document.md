@@ -7,6 +7,7 @@ Creates a new Order Entry document.
 - **Method:** `POST`
 - **Path:** `https://api.intacct.com/ia/api/v1/objects/order-entry/document:::documentName`
 - **Base URL:** `https://api.intacct.com/ia/xml/xmlgw.phtml`
+- **API:** REST
 - **Official documentation:** [Create Order Entry Document](https://developer.sage.com/intacct/apis/intacct/1/intacct-openapi/groups/order-entry/groups/documents/tags/order_entry_documents/paths/create-order-entry-named-document)
 
 ## Parameters

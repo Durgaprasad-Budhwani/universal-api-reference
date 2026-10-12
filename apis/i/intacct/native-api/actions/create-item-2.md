@@ -4,6 +4,7 @@
 
 - **Method:** `POST`
 - **Base URL:** `https://api.intacct.com/ia/xml/xmlgw.phtml`
+- **API:** REST
 
 ## Headers
 

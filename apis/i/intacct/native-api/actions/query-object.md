@@ -5,6 +5,7 @@
 - **Method:** `POST`
 - **Path:** `/`
 - **Base URL:** `https://api.intacct.com/ia/xml/xmlgw.phtml`
+- **API:** REST
 - **Official documentation:** [Query Object](https://developer.intacct.com/web-services/queries/)
 
 ## Capabilities

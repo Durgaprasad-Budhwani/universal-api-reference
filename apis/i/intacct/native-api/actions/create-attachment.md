@@ -6,6 +6,7 @@ Create a supporting document in a Sage Intacct attachment folder, with optional 
 
 - **Method:** `POST`
 - **Base URL:** `https://api.intacct.com/ia/xml/xmlgw.phtml`
+- **API:** REST
 - **Official documentation:** [Create Attachment](https://developer.intacct.com/api/company-console/attachments/#create-attachment-legacy)
 
 ## Headers

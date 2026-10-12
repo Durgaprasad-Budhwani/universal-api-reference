@@ -5,6 +5,7 @@
 - **Method:** `POST`
 - **Path:** `/`
 - **Base URL:** `https://api.intacct.com/ia/xml/xmlgw.phtml`
+- **API:** REST
 - **Official documentation:** [Create Budget](https://developer.intacct.com/api/general-ledger/budgets/)
 
 ## Parameters

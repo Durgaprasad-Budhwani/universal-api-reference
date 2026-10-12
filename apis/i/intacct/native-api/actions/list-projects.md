@@ -5,6 +5,7 @@
 - **Method:** `POST`
 - **Path:** `/`
 - **Base URL:** `https://api.intacct.com/ia/xml/xmlgw.phtml`
+- **API:** REST
 - **Official documentation:** [List Projects](https://developer.intacct.com/api/project-resource-mgmt/projects/#query-and-list-projects)
 
 ## Capabilities

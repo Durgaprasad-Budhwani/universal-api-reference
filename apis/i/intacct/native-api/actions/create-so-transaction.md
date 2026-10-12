@@ -5,6 +5,7 @@
 - **Method:** `POST`
 - **Path:** `https://api.intacct.com/ia/xml/xmlgw.phtml`
 - **Base URL:** `https://api.intacct.com/ia/xml/xmlgw.phtml`
+- **API:** REST
 - **Official documentation:** [Create So Transaction](https://developer.intacct.com/api/order-entry/order-entry-transactions/#create-order-entry-transaction-legacy)
 
 ## Parameters
