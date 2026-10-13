@@ -1,6 +1,6 @@
 # API specifications
 
-Machine-readable API descriptions for 3223 apps. Universal API specifications are generated from the same action definitions as this reference; Native API links point to specifications published by each provider.
+Machine-readable API descriptions for 3224 apps. Universal API specifications are generated from the same action definitions as this reference; Native API links point to specifications published by each provider.
 
 | App | Universal API | Native API |
 | --- | --- | --- |
@@ -2642,6 +2642,7 @@ Machine-readable API descriptions for 3223 apps. Universal API specifications ar
 | [Swit](../apis/s/swit) | [OpenAPI 3.1](../apis/s/swit/universal-api/openapi.json) |  |
 | [Switchur App](../apis/s/switchurApp) | [OpenAPI 3.1](../apis/s/switchurApp/universal-api/openapi.json) |  |
 | [Switchy.io](../apis/s/switchyio) | [OpenAPI 3.1](../apis/s/switchyio/universal-api/openapi.json) |  |
+| [Swoogo](../apis/s/swoogo) | [OpenAPI 3.1](../apis/s/swoogo/universal-api/openapi.json) |  |
 | [Syften](../apis/s/syften) | [OpenAPI 3.1](../apis/s/syften/universal-api/openapi.json) |  |
 | [Sympla](../apis/s/sympla) | [OpenAPI 3.1](../apis/s/sympla/universal-api/openapi.json) |  |
 | [Synchroteam](../apis/s/synchroteam) | [OpenAPI 3.1](../apis/s/synchroteam/universal-api/openapi.json) |  |

@@ -52,11 +52,6 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | `cells[]` | array<object> | yes |  |
 | `cells[].columnId` | string | yes | Example: `Col12345678`. |
 | `cells[].rowId` | string | no | The item to update. Required unless Row ID to Create is enabled. Example: `Rec12345678`. |
-
-### Advanced
-
-| Key | Type | Required | Description |
-| --- | --- | --- | --- |
 | `cells[].rowIdToCreate` | boolean | no | Create a new row for this cell instead of updating an existing item. |
 | `cells[].richText[]` | array<object> | no |  |
 | `cells[].richText[].type` | list<string> | no | One of: `rich_text`. |

@@ -1,6 +1,6 @@
 # Native API documentation by app
 
-The official vendor API documentation for each of the 3223 apps in this repo. Each app name links to our normalized reference for it.
+The official vendor API documentation for each of the 3224 apps in this repo. Each app name links to our normalized reference for it.
 
 - [aamarPay](../apis/a/aamarPay/native-api) - https://aamarpay.readme.io/reference/overview
 - [Abbreviations](../apis/a/abbreviations/native-api) - https://www.abbreviations.com/abbr_api.php
@@ -2710,6 +2710,7 @@ The official vendor API documentation for each of the 3223 apps in this repo. Ea
 - [Swit](../apis/s/swit/native-api) - https://tech-support.swit.io/books/swit-java-development-guide
 - [Switchur App](../apis/s/switchurApp/native-api) - https://support.switchur.com/
 - [Switchy.io](../apis/s/switchyio/native-api) - https://developers.switchy.io/docs/overview/index
+- [Swoogo](../apis/s/swoogo/native-api) - https://swoogo.readme.io/reference
 - [Syften](../apis/s/syften/native-api) - https://github.com/syften/syften-examples
 - [Sympla](../apis/s/sympla/native-api) - https://developers.sympla.com.br/api-doc/index.html
 - [Synchroteam](../apis/s/synchroteam/native-api) - https://api.synchroteam.com/v2/

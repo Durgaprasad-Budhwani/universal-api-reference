@@ -49,13 +49,6 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `name` | string | yes |  |
-| `todoMode` | boolean | no | Adds completion, assignee, and due-date columns for task tracking. |
-
-### Advanced
-
-| Key | Type | Required | Description |
-| --- | --- | --- | --- |
-| `descriptionBlocks[]` | array<object> | no |  |
 | `descriptionBlocks[].type` | list<string> | no | One of: `rich_text`. |
 | `descriptionBlocks[].blockId` | string | no |  |
 | `descriptionBlocks[].elements[]` | array<object> | no |  |
@@ -70,7 +63,6 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | `descriptionBlocks[].elements[].elements[].style.italic` | boolean | no |  |
 | `descriptionBlocks[].elements[].elements[].style.strike` | boolean | no |  |
 | `descriptionBlocks[].elements[].elements[].style.code` | boolean | no |  |
-| `schema[]` | array<object> | no |  |
 | `schema[].key` | string | yes |  |
 | `schema[].name` | string | yes |  |
 | `schema[].type` | list<string> | yes | One of: `attachment`, `canvas`, `channel`, `checkbox`, `created_by`, `created_time`, `date`, `email`, `last_edited_by`, `last_edited_time`, `link`, `message`, `number`, `phone`, `rating`, `reference`, `select`, `text`, `user`, `vote`. |
@@ -92,6 +84,14 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | `schema[].options.defaultValueTyped.select[]` | array<string> | no |  |
 | `schema[].options.showMemberName` | boolean | no |  |
 | `schema[].options.notifyUsers` | boolean | no |  |
+| `todoMode` | boolean | no | Adds completion, assignee, and due-date columns for task tracking. |
+
+### Advanced
+
+| Key | Type | Required | Description |
+| --- | --- | --- | --- |
+| `descriptionBlocks[]` | array<object> | no |  |
+| `schema[]` | array<object> | no |  |
 | `copyFromListId` | string | no | Example: `F12345678`. |
 | `includeCopiedListRecords` | boolean | no |  |
 

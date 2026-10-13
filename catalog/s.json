@@ -465272,7 +465272,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/image-2824-vectorized_1777321878663.png",
     "websiteUrl": "https://slack.com/",
     "nativeDocumentationUrl": "https://docs.slack.dev/reference/methods/",
-    "version": "0.3.40",
+    "version": "0.3.41",
     "authentication": [
       {
         "type": "oAuth2",
@@ -466108,7 +466108,6 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": false,
-            "advanced": true,
             "enumValues": [
               "rich_text"
             ]
@@ -466117,16 +466116,14 @@
             "key": "descriptionBlocks[].blockId",
             "name": "Block ID",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[]",
             "name": "Elements",
             "dataType": "array",
             "itemDataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].type",
@@ -466134,7 +466131,6 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": false,
-            "advanced": true,
             "enumValues": [
               "rich_text_list",
               "rich_text_preformatted",
@@ -466147,71 +466143,61 @@
             "name": "Elements",
             "dataType": "array",
             "itemDataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].type",
             "name": "Type",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].text",
             "name": "Text",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].url",
             "name": "URL",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].userId",
             "name": "User ID",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].style",
             "name": "Style",
             "dataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].style.bold",
             "name": "Bold",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].style.italic",
             "name": "Italic",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].style.strike",
             "name": "Strike",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].style.code",
             "name": "Code",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "schema[]",
@@ -466225,15 +466211,13 @@
             "key": "schema[].key",
             "name": "Key",
             "dataType": "string",
-            "required": true,
-            "advanced": true
+            "required": true
           },
           {
             "key": "schema[].name",
             "name": "Name",
             "dataType": "string",
-            "required": true,
-            "advanced": true
+            "required": true
           },
           {
             "key": "schema[].type",
@@ -466241,7 +466225,6 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": true,
-            "advanced": true,
             "enumValues": [
               "attachment",
               "canvas",
@@ -466270,37 +466253,32 @@
             "name": "Primary Column",
             "dataType": "boolean",
             "required": false,
-            "advanced": true,
             "description": "Only one column may be primary, and it must be a text column."
           },
           {
             "key": "schema[].options",
             "name": "Options",
             "dataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "schema[].options.choices[]",
             "name": "Choices",
             "dataType": "array",
             "itemDataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "schema[].options.choices[].value",
             "name": "Value",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "schema[].options.choices[].label",
             "name": "Label",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "schema[].options.choices[].color",
@@ -466308,7 +466286,6 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": false,
-            "advanced": true,
             "enumValues": [
               "blue",
               "brown",
@@ -466329,7 +466306,6 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": false,
-            "advanced": true,
             "enumValues": [
               "multi_entity",
               "multi_select",
@@ -466341,8 +466317,7 @@
             "key": "schema[].options.precision",
             "name": "Precision",
             "dataType": "number",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "schema[].options.dateFormat",
@@ -466350,7 +466325,6 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": false,
-            "advanced": true,
             "enumValues": [
               "DD MMMM YYYY",
               "DD/MM/YYYY",
@@ -466365,67 +466339,58 @@
             "name": "Emoji",
             "dataType": "string",
             "required": false,
-            "advanced": true,
             "example": ":star:"
           },
           {
             "key": "schema[].options.emojiTeamId",
             "name": "Emoji Team ID",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "schema[].options.max",
             "name": "Maximum",
             "dataType": "number",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "schema[].options.defaultValueTyped",
             "name": "Default Value",
             "dataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "schema[].options.defaultValueTyped.user[]",
             "name": "Users",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "schema[].options.defaultValueTyped.channel[]",
             "name": "Channels",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "schema[].options.defaultValueTyped.select[]",
             "name": "Select Options",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "schema[].options.showMemberName",
             "name": "Show Member Name",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "schema[].options.notifyUsers",
             "name": "Notify Users",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "copyFromListId",
@@ -466504,7 +466469,8 @@
               "dataType": "array",
               "itemDataType": "object",
               "location": "body",
-              "required": false
+              "required": false,
+              "description": "Add one entry per list column you want to populate. Use its Column ID and the value input matching that column's type."
             },
             {
               "key": "initial_fields[].column_id",
@@ -466512,7 +466478,7 @@
               "name": "Column ID",
               "dataType": "string",
               "location": "body",
-              "required": true
+              "required": false
             },
             {
               "key": "initial_fields[].rich_text[]",
@@ -466851,13 +466817,13 @@
             "dataType": "array",
             "itemDataType": "object",
             "required": false,
-            "advanced": true
+            "description": "Add one entry per list column you want to populate. Use its Column ID and the value input matching that column's type."
           },
           {
             "key": "initialFields[].columnId",
             "name": "Column ID",
             "dataType": "string",
-            "required": true,
+            "required": false,
             "example": "Col12345678"
           },
           {
@@ -466865,8 +466831,7 @@
             "name": "Rich Text",
             "dataType": "array",
             "itemDataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].richText[].type",
@@ -466874,7 +466839,6 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": false,
-            "advanced": true,
             "enumValues": [
               "rich_text"
             ]
@@ -466883,16 +466847,14 @@
             "key": "initialFields[].richText[].blockId",
             "name": "Block ID",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].richText[].elements[]",
             "name": "Elements",
             "dataType": "array",
             "itemDataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].richText[].elements[].type",
@@ -466900,7 +466862,6 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": false,
-            "advanced": true,
             "enumValues": [
               "rich_text_list",
               "rich_text_preformatted",
@@ -466913,79 +466874,68 @@
             "name": "Elements",
             "dataType": "array",
             "itemDataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].richText[].elements[].elements[].type",
             "name": "Type",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].richText[].elements[].elements[].text",
             "name": "Text",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].richText[].elements[].elements[].url",
             "name": "URL",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].richText[].elements[].elements[].userId",
             "name": "User ID",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].richText[].elements[].elements[].style",
             "name": "Style",
             "dataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].richText[].elements[].elements[].style.bold",
             "name": "Bold",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].richText[].elements[].elements[].style.italic",
             "name": "Italic",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].richText[].elements[].elements[].style.strike",
             "name": "Strike",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].richText[].elements[].elements[].style.code",
             "name": "Code",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].user[]",
             "name": "Users",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].date[]",
@@ -466993,7 +466943,6 @@
             "dataType": "array",
             "itemDataType": "date",
             "required": false,
-            "advanced": true,
             "example": "2026-10-15"
           },
           {
@@ -467001,130 +466950,113 @@
             "name": "Select Option IDs",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].checkbox",
             "name": "Checkbox",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].number[]",
             "name": "Numbers",
             "dataType": "array",
             "itemDataType": "number",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].email[]",
             "name": "Emails",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].phone[]",
             "name": "Phone Numbers",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].attachment[]",
             "name": "Attachment IDs",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].message[]",
             "name": "Message URLs",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].rating[]",
             "name": "Ratings",
             "dataType": "array",
             "itemDataType": "number",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].timestamp[]",
             "name": "Timestamps",
             "dataType": "array",
             "itemDataType": "date",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].channel[]",
             "name": "Channel IDs",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].link[]",
             "name": "Links",
             "dataType": "array",
             "itemDataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].link[].originalUrl",
             "name": "Original URL",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].link[].displayAsUrl",
             "name": "Display as URL",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].link[].displayName",
             "name": "Display Name",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].reference[]",
             "name": "References",
             "dataType": "array",
             "itemDataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].reference[].file",
             "name": "File",
             "dataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "initialFields[].reference[].file.fileId",
             "name": "File ID",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           }
         ],
         "responseSchema": []
@@ -473673,7 +473605,6 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": false,
-            "advanced": true,
             "enumValues": [
               "rich_text"
             ]
@@ -473682,16 +473613,14 @@
             "key": "descriptionBlocks[].blockId",
             "name": "Block ID",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[]",
             "name": "Elements",
             "dataType": "array",
             "itemDataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].type",
@@ -473699,7 +473628,6 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": false,
-            "advanced": true,
             "enumValues": [
               "rich_text_list",
               "rich_text_preformatted",
@@ -473712,71 +473640,61 @@
             "name": "Elements",
             "dataType": "array",
             "itemDataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].type",
             "name": "Type",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].text",
             "name": "Text",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].url",
             "name": "URL",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].userId",
             "name": "User ID",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].style",
             "name": "Style",
             "dataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].style.bold",
             "name": "Bold",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].style.italic",
             "name": "Italic",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].style.strike",
             "name": "Strike",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "descriptionBlocks[].elements[].elements[].style.code",
             "name": "Code",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "todoMode",
@@ -474176,7 +474094,6 @@
             "name": "Row ID to Create",
             "dataType": "boolean",
             "required": false,
-            "advanced": true,
             "description": "Create a new row for this cell instead of updating an existing item."
           },
           {
@@ -474184,8 +474101,7 @@
             "name": "Rich Text",
             "dataType": "array",
             "itemDataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].richText[].type",
@@ -474193,7 +474109,6 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": false,
-            "advanced": true,
             "enumValues": [
               "rich_text"
             ]
@@ -474202,16 +474117,14 @@
             "key": "cells[].richText[].blockId",
             "name": "Block ID",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].richText[].elements[]",
             "name": "Elements",
             "dataType": "array",
             "itemDataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].richText[].elements[].type",
@@ -474219,7 +474132,6 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": false,
-            "advanced": true,
             "enumValues": [
               "rich_text_list",
               "rich_text_preformatted",
@@ -474232,79 +474144,68 @@
             "name": "Elements",
             "dataType": "array",
             "itemDataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].richText[].elements[].elements[].type",
             "name": "Type",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].richText[].elements[].elements[].text",
             "name": "Text",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].richText[].elements[].elements[].url",
             "name": "URL",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].richText[].elements[].elements[].userId",
             "name": "User ID",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].richText[].elements[].elements[].style",
             "name": "Style",
             "dataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].richText[].elements[].elements[].style.bold",
             "name": "Bold",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].richText[].elements[].elements[].style.italic",
             "name": "Italic",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].richText[].elements[].elements[].style.strike",
             "name": "Strike",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].richText[].elements[].elements[].style.code",
             "name": "Code",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].user[]",
             "name": "Users",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].date[]",
@@ -474312,7 +474213,6 @@
             "dataType": "array",
             "itemDataType": "date",
             "required": false,
-            "advanced": true,
             "example": "2026-10-15"
           },
           {
@@ -474320,130 +474220,113 @@
             "name": "Select Option IDs",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].checkbox",
             "name": "Checkbox",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].number[]",
             "name": "Numbers",
             "dataType": "array",
             "itemDataType": "number",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].email[]",
             "name": "Emails",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].phone[]",
             "name": "Phone Numbers",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].attachment[]",
             "name": "Attachment IDs",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].message[]",
             "name": "Message URLs",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].rating[]",
             "name": "Ratings",
             "dataType": "array",
             "itemDataType": "number",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].timestamp[]",
             "name": "Timestamps",
             "dataType": "array",
             "itemDataType": "date",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].channel[]",
             "name": "Channel IDs",
             "dataType": "array",
             "itemDataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].link[]",
             "name": "Links",
             "dataType": "array",
             "itemDataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].link[].originalUrl",
             "name": "Original URL",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].link[].displayAsUrl",
             "name": "Display as URL",
             "dataType": "boolean",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].link[].displayName",
             "name": "Display Name",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].reference[]",
             "name": "References",
             "dataType": "array",
             "itemDataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].reference[].file",
             "name": "File",
             "dataType": "object",
-            "required": false,
-            "advanced": true
+            "required": false
           },
           {
             "key": "cells[].reference[].file.fileId",
             "name": "File ID",
             "dataType": "string",
-            "required": false,
-            "advanced": true
+            "required": false
           }
         ],
         "responseSchema": []
@@ -914295,6 +914178,449 @@
       }
     ],
     "universalOpenApiPath": "apis/s/switchyio/universal-api/openapi.json"
+  },
+  {
+    "name": "Swoogo",
+    "slug": "swoogo",
+    "category": "Events & Webinars",
+    "categoryGroup": "Marketing",
+    "description": "Manage events, registrants, sessions, and attendance",
+    "iconUrl": "https://images.mindcloud.co/apps/icons/swoogo_1791589994893.png",
+    "websiteUrl": "https://swoogo.events/",
+    "nativeBaseUrl": "https://www.swoogo.com",
+    "nativeDocumentationUrl": "https://swoogo.readme.io/reference",
+    "version": "0.0.3",
+    "authentication": [
+      {
+        "type": "custom",
+        "name": "Consumer Key and Secret",
+        "documentationUrl": "https://swoogo.readme.io/reference/post_oauth2-token",
+        "credentials": [
+          {
+            "key": "consumerKey",
+            "name": "Consumer Key",
+            "dataType": "string",
+            "required": true
+          },
+          {
+            "key": "consumerSecret",
+            "name": "Consumer Secret",
+            "dataType": "string",
+            "required": true
+          }
+        ],
+        "requestHeaders": [
+          {
+            "name": "Authorization",
+            "template": "Bearer <custom.accessToken>"
+          }
+        ]
+      }
+    ],
+    "nativeApis": [
+      {
+        "type": "rest",
+        "baseUrl": "https://api.swoogo.com/api/v1",
+        "headers": [
+          {
+            "name": "Accept",
+            "value": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "pagination": {
+          "limit": {
+            "parameter": "per-page",
+            "location": "query",
+            "default": "100",
+            "minimum": "1",
+            "maximum": "200"
+          },
+          "offset": {
+            "type": "page",
+            "parameter": "page",
+            "location": "query",
+            "pageStartIndex": "1"
+          }
+        },
+        "sorting": {
+          "location": "query",
+          "parameter": "sort",
+          "descending": "-",
+          "prefixNotation": true
+        },
+        "responses": [
+          {
+            "parser": "auto",
+            "totalPagesKey": "input.data.Meta.pageCount",
+            "currentPageKey": "input.data.Meta.currentPage"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "name": "Get Registrant",
+        "slug": "get-registrant",
+        "operation": "read",
+        "method": "GET",
+        "group": "Registrant",
+        "documentationUrl": "https://swoogo.readme.io/reference/getoneregistrant",
+        "native": {
+          "method": "GET",
+          "path": "/registrants/:registrant_id",
+          "baseUrl": "https://api.swoogo.com/api/v1",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "registrant_id",
+              "internalKey": "registrantId",
+              "name": "Registrant ID",
+              "dataType": "number",
+              "location": "param",
+              "required": true
+            },
+            {
+              "key": "fields",
+              "name": "Fields",
+              "dataType": "string",
+              "location": "query",
+              "required": false
+            },
+            {
+              "key": "expand",
+              "name": "Expand",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Comma-separated related objects: homeAddress, workAddress, billingAddress."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "registrantId",
+            "name": "Registrant ID",
+            "dataType": "number",
+            "required": true
+          },
+          {
+            "key": "fields",
+            "name": "Fields",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "expand",
+            "name": "Expand",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Comma-separated related objects: homeAddress, workAddress, billingAddress."
+          }
+        ],
+        "responseSchema": []
+      },
+      {
+        "name": "List Events",
+        "slug": "list-events",
+        "operation": "read",
+        "method": "GET",
+        "group": "Event",
+        "documentationUrl": "https://swoogo.readme.io/reference/getallevents",
+        "native": {
+          "method": "GET",
+          "path": "/events",
+          "baseUrl": "https://api.swoogo.com/api/v1",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "search",
+              "name": "Search",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Swoogo search conditions, for example status=live or name=*conference*."
+            },
+            {
+              "key": "ids",
+              "name": "Event IDs",
+              "dataType": "number",
+              "location": "query",
+              "required": false,
+              "description": "Retrieve only these positive event IDs; maximum 100 IDs.",
+              "multipleValues": {
+                "format": "string",
+                "delimiter": ","
+              }
+            },
+            {
+              "key": "fields",
+              "name": "Fields",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Fields to return. If omitted, Swoogo returns event ID and name.",
+              "multipleValues": {
+                "format": "string",
+                "delimiter": ","
+              }
+            },
+            {
+              "key": "expand",
+              "name": "Expand",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Include the event folder or location.",
+              "enumValues": [
+                "folder",
+                "location"
+              ],
+              "multipleValues": {
+                "format": "string",
+                "delimiter": ","
+              }
+            }
+          ]
+        },
+        "supports": {
+          "pagination": true,
+          "filtering": false,
+          "sorting": true
+        },
+        "arguments": [
+          {
+            "key": "search",
+            "name": "Search",
+            "dataType": "string",
+            "required": false,
+            "description": "Swoogo search conditions, for example status=live or name=*conference*."
+          },
+          {
+            "key": "ids",
+            "name": "Event IDs",
+            "dataType": "number",
+            "required": false,
+            "advanced": true,
+            "description": "Retrieve only these positive event IDs; maximum 100 IDs.",
+            "multipleValues": {
+              "format": "string",
+              "delimiter": ","
+            }
+          },
+          {
+            "key": "fields",
+            "name": "Fields",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Fields to return. If omitted, Swoogo returns event ID and name.",
+            "multipleValues": {
+              "format": "string",
+              "delimiter": ","
+            }
+          },
+          {
+            "key": "expand",
+            "name": "Expand",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Include the event folder or location.",
+            "enumValues": [
+              "folder",
+              "location"
+            ],
+            "multipleValues": {
+              "format": "string",
+              "delimiter": ","
+            }
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "id",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Registrants",
+        "slug": "list-registrants",
+        "operation": "read",
+        "method": "GET",
+        "group": "Registrant",
+        "documentationUrl": "https://swoogo.readme.io/reference/getallregistrants",
+        "native": {
+          "method": "GET",
+          "path": "/registrants",
+          "baseUrl": "https://api.swoogo.com/api/v1",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "event_id",
+              "internalKey": "eventId",
+              "name": "Event ID",
+              "dataType": "list",
+              "itemDataType": "number",
+              "location": "query",
+              "required": true,
+              "description": "The event whose registrants you want to list."
+            },
+            {
+              "key": "search",
+              "name": "Search",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Swoogo search conditions, for example registration_status=confirmed or email=*@example.com*."
+            },
+            {
+              "key": "ids",
+              "name": "Registrant IDs",
+              "dataType": "number",
+              "location": "query",
+              "required": false,
+              "description": "Retrieve only these positive registrant IDs; maximum 100 IDs.",
+              "multipleValues": {
+                "format": "string",
+                "delimiter": ","
+              }
+            },
+            {
+              "key": "fields",
+              "name": "Fields",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Fields to return. If omitted, Swoogo returns ID, first name, and last name.",
+              "multipleValues": {
+                "format": "string",
+                "delimiter": ","
+              }
+            },
+            {
+              "key": "expand",
+              "name": "Expand",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Include related address objects.",
+              "enumValues": [
+                "billingAddress",
+                "homeAddress",
+                "workAddress"
+              ],
+              "multipleValues": {
+                "format": "string",
+                "delimiter": ","
+              }
+            }
+          ]
+        },
+        "supports": {
+          "pagination": true,
+          "filtering": false,
+          "sorting": true
+        },
+        "arguments": [
+          {
+            "key": "eventId",
+            "name": "Event ID",
+            "dataType": "list",
+            "itemDataType": "number",
+            "required": true,
+            "description": "The event whose registrants you want to list."
+          },
+          {
+            "key": "search",
+            "name": "Search",
+            "dataType": "string",
+            "required": false,
+            "description": "Swoogo search conditions, for example registration_status=confirmed or email=*@example.com*."
+          },
+          {
+            "key": "ids",
+            "name": "Registrant IDs",
+            "dataType": "number",
+            "required": false,
+            "advanced": true,
+            "description": "Retrieve only these positive registrant IDs; maximum 100 IDs.",
+            "multipleValues": {
+              "format": "string",
+              "delimiter": ","
+            }
+          },
+          {
+            "key": "fields",
+            "name": "Fields",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Fields to return. If omitted, Swoogo returns ID, first name, and last name.",
+            "multipleValues": {
+              "format": "string",
+              "delimiter": ","
+            }
+          },
+          {
+            "key": "expand",
+            "name": "Expand",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Include related address objects.",
+            "enumValues": [
+              "billingAddress",
+              "homeAddress",
+              "workAddress"
+            ],
+            "multipleValues": {
+              "format": "string",
+              "delimiter": ","
+            }
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "firstName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "lastName",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      }
+    ],
+    "universalOpenApiPath": "apis/s/swoogo/universal-api/openapi.json"
   },
   {
     "name": "Syften",

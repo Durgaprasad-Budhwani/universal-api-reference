@@ -44,13 +44,6 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | --- | --- | --- | --- |
 | `id` | string | yes | Example: `F12345678`. |
 | `name` | string | no |  |
-| `todoMode` | boolean | no | Show or hide completion, assignee, and due-date columns. |
-
-### Advanced
-
-| Key | Type | Required | Description |
-| --- | --- | --- | --- |
-| `descriptionBlocks[]` | array<object> | no |  |
 | `descriptionBlocks[].type` | list<string> | no | One of: `rich_text`. |
 | `descriptionBlocks[].blockId` | string | no |  |
 | `descriptionBlocks[].elements[]` | array<object> | no |  |
@@ -65,6 +58,13 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | `descriptionBlocks[].elements[].elements[].style.italic` | boolean | no |  |
 | `descriptionBlocks[].elements[].elements[].style.strike` | boolean | no |  |
 | `descriptionBlocks[].elements[].elements[].style.code` | boolean | no |  |
+| `todoMode` | boolean | no | Show or hide completion, assignee, and due-date columns. |
+
+### Advanced
+
+| Key | Type | Required | Description |
+| --- | --- | --- | --- |
+| `descriptionBlocks[]` | array<object> | no |  |
 
 ## Response
 

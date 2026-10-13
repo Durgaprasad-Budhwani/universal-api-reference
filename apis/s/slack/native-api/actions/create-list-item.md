@@ -22,8 +22,8 @@ Send these additional headers for this operation:
 | `list_id` | body | `string` | yes | — |
 | `duplicated_item_id` | body | `string` | no | Copy this existing item when creating the new item. |
 | `parent_item_id` | body | `string` | no | Set to create a subtask under this item. |
-| `initial_fields[]` | body | `array<object>` | no | — |
-| `initial_fields[].column_id` | body | `string` | yes | — |
+| `initial_fields[]` | body | `array<object>` | no | Add one entry per list column you want to populate. Use its Column ID and the value input matching that column's type. |
+| `initial_fields[].column_id` | body | `string` | no | — |
 | `initial_fields[].rich_text[]` | body | `array<object>` | no | — |
 | `initial_fields[].rich_text[].type` | body | `list<string>` | no | Accepted values: `rich_text`. |
 | `initial_fields[].rich_text[].block_id` | body | `string` | no | Maximum length: 255. |

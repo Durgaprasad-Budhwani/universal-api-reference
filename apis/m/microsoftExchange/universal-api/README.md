@@ -3,7 +3,8 @@
 Connect to Microsoft Exchange mail through Microsoft Graph.
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/microsoftExchange/latest
-- **Actions:** 22
+- **Category:** Communication / Email Communications
+- **Actions:** 24
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor API docs:** https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview?view=graph-rest-1.0
 
@@ -20,7 +21,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/microsoftExchange/latest/
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
-## Actions (22)
+## Actions (24)
 
 ### Access Token
 
@@ -55,7 +56,9 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/microsoftExchange/latest/
 | Action | Method | Description |
 | --- | --- | --- |
 | [Get Message Attachment](actions/get-message-attachment.md) | GET | Retrieves a message attachment from Microsoft Exchange. |
+| [Get User Message Attachment](actions/get-user-message-attachment.md) | GET | Retrieves an attachment from a message in a user's mailbox. |
 | [List Message Attachments](actions/list-message-attachments.md) | GET | Retrieves attachments for a message from Microsoft Exchange. |
+| [List User Message Attachments](actions/list-user-message-attachments.md) | GET | Finds the attachments on a message in a user's mailbox. |
 
 ### Messages
 

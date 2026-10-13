@@ -276966,11 +276966,13 @@
   {
     "name": "Microsoft Exchange",
     "slug": "microsoftExchange",
+    "category": "Email Communications",
+    "categoryGroup": "Communication",
     "description": "Connect to Microsoft Exchange mail through Microsoft Graph.",
     "iconUrl": "https://images.mindcloud.co/apps/icons/microsoft-exchange-2019-present_1776206436040.png",
     "nativeBaseUrl": "https://outlook.office365.com",
     "nativeDocumentationUrl": "https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview?view=graph-rest-1.0",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "authentication": [
       {
         "type": "oAuth2",
@@ -278004,6 +278006,122 @@
         ]
       },
       {
+        "name": "Get User Message Attachment",
+        "slug": "get-user-message-attachment",
+        "operation": "read",
+        "method": "GET",
+        "model": "attachment",
+        "group": "Message Attachments",
+        "description": "Retrieves an attachment from a message in a user's mailbox.",
+        "documentationUrl": "https://learn.microsoft.com/en-us/graph/api/attachment-get?view=graph-rest-1.0",
+        "native": {
+          "method": "GET",
+          "path": "/v1.0/users/:userIdOrPrincipalName/messages/:messageId/attachments/:attachmentId",
+          "baseUrl": "https://graph.microsoft.com",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "userIdOrPrincipalName",
+              "name": "User ID or Principal Name",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "The Microsoft Graph user id or userPrincipalName of the mailbox that holds the message."
+            },
+            {
+              "key": "messageId",
+              "name": "Message ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "The Exchange message ID that contains the attachments."
+            },
+            {
+              "key": "attachmentId",
+              "name": "Attachment ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "The attachment ID returned by List User Message Attachments."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "userIdOrPrincipalName",
+            "name": "User ID or Principal Name",
+            "dataType": "string",
+            "required": true,
+            "description": "The Microsoft Graph user id or userPrincipalName of the mailbox that holds the message.",
+            "example": "user@company.com or Entra user id"
+          },
+          {
+            "key": "messageId",
+            "name": "Message ID",
+            "dataType": "string",
+            "required": true,
+            "description": "The Exchange message ID that contains the attachments.",
+            "example": "AAMkAG..."
+          },
+          {
+            "key": "attachmentId",
+            "name": "Attachment ID",
+            "dataType": "string",
+            "required": true,
+            "description": "The attachment ID returned by List User Message Attachments."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "contentBytes",
+            "dataType": "string",
+            "description": "The base64-encoded file content.",
+            "mockType": "string"
+          },
+          {
+            "key": "contentType",
+            "dataType": "string",
+            "description": "The attachment MIME type.",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "description": "The attachment ID.",
+            "mockType": "string"
+          },
+          {
+            "key": "isInline",
+            "dataType": "boolean",
+            "description": "Whether the attachment is inline.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "lastModifiedDateTime",
+            "dataType": "date",
+            "description": "When the attachment was last modified.",
+            "mockType": "date"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "description": "The attachment file name.",
+            "mockType": "string"
+          },
+          {
+            "key": "size",
+            "dataType": "number",
+            "description": "The attachment size in bytes.",
+            "mockType": "number"
+          }
+        ]
+      },
+      {
         "name": "List Child Mail Folders",
         "slug": "list-child-mail-folders",
         "operation": "read",
@@ -278847,6 +278965,119 @@
             "dataType": "string",
             "description": "A link to open the message in Outlook on the web.",
             "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List User Message Attachments",
+        "slug": "list-user-message-attachments",
+        "operation": "read",
+        "method": "GET",
+        "model": "attachment",
+        "group": "Message Attachments",
+        "description": "Finds the attachments on a message in a user's mailbox.",
+        "documentationUrl": "https://learn.microsoft.com/en-us/graph/api/message-list-attachments?view=graph-rest-1.0",
+        "native": {
+          "method": "GET",
+          "path": "/v1.0/users/:userIdOrPrincipalName/messages/:messageId/attachments",
+          "baseUrl": "https://graph.microsoft.com",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "userIdOrPrincipalName",
+              "name": "User ID or Principal Name",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "The Microsoft Graph user id or userPrincipalName of the mailbox that holds the message."
+            },
+            {
+              "key": "messageId",
+              "name": "Message ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "The Exchange message ID that contains the attachments."
+            },
+            {
+              "key": "$select",
+              "internalKey": "select",
+              "name": "Selected Fields",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Comma-separated attachment fields to return. The default leaves out file content."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "userIdOrPrincipalName",
+            "name": "User ID or Principal Name",
+            "dataType": "string",
+            "required": true,
+            "description": "The Microsoft Graph user id or userPrincipalName of the mailbox that holds the message.",
+            "example": "user@company.com or Entra user id"
+          },
+          {
+            "key": "messageId",
+            "name": "Message ID",
+            "dataType": "string",
+            "required": true,
+            "description": "The Exchange message ID that contains the attachments.",
+            "example": "AAMkAG..."
+          },
+          {
+            "key": "select",
+            "name": "Selected Fields",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Comma-separated attachment fields to return. The default leaves out file content.",
+            "defaultValue": "id,name,contentType,size,isInline,lastModifiedDateTime"
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "contentType",
+            "dataType": "string",
+            "description": "The attachment MIME type.",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "description": "The attachment ID.",
+            "mockType": "string"
+          },
+          {
+            "key": "isInline",
+            "dataType": "boolean",
+            "description": "Whether the attachment is inline.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "lastModifiedDateTime",
+            "dataType": "date",
+            "description": "When the attachment was last modified.",
+            "mockType": "date"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "description": "The attachment file name.",
+            "mockType": "string"
+          },
+          {
+            "key": "size",
+            "dataType": "number",
+            "description": "The attachment size in bytes.",
+            "mockType": "number"
           }
         ]
       },

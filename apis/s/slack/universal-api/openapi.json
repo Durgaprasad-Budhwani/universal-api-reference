@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Slack Universal API",
-    "version": "0.3.40",
+    "version": "0.3.41",
     "description": "Chat in channels, share knowledge, automate workflows, and join huddles."
   },
   "servers": [
@@ -576,20 +576,17 @@
                     "type": "string",
                     "enum": [
                       "rich_text"
-                    ],
-                    "x-mindcloud-advanced": true
+                    ]
                   },
                   "descriptionBlocks[].blockId": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "descriptionBlocks[].elements[]": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "descriptionBlocks[].elements[].type": {
                     "type": "string",
@@ -598,53 +595,42 @@
                       "rich_text_preformatted",
                       "rich_text_quote",
                       "rich_text_section"
-                    ],
-                    "x-mindcloud-advanced": true
+                    ]
                   },
                   "descriptionBlocks[].elements[].elements[]": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "descriptionBlocks[].elements[].elements[].type": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "descriptionBlocks[].elements[].elements[].text": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "descriptionBlocks[].elements[].elements[].url": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "descriptionBlocks[].elements[].elements[].userId": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "descriptionBlocks[].elements[].elements[].style": {
                     "type": "object",
-                    "additionalProperties": true,
-                    "x-mindcloud-advanced": true
+                    "additionalProperties": true
                   },
                   "descriptionBlocks[].elements[].elements[].style.bold": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "descriptionBlocks[].elements[].elements[].style.italic": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "descriptionBlocks[].elements[].elements[].style.strike": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "descriptionBlocks[].elements[].elements[].style.code": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "schema[]": {
                     "type": "array",
@@ -655,12 +641,10 @@
                     "x-mindcloud-advanced": true
                   },
                   "schema[].key": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "schema[].name": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "schema[].type": {
                     "type": "string",
@@ -685,34 +669,28 @@
                       "text",
                       "user",
                       "vote"
-                    ],
-                    "x-mindcloud-advanced": true
+                    ]
                   },
                   "schema[].isPrimaryColumn": {
                     "type": "boolean",
-                    "description": "Only one column may be primary, and it must be a text column.",
-                    "x-mindcloud-advanced": true
+                    "description": "Only one column may be primary, and it must be a text column."
                   },
                   "schema[].options": {
                     "type": "object",
-                    "additionalProperties": true,
-                    "x-mindcloud-advanced": true
+                    "additionalProperties": true
                   },
                   "schema[].options.choices[]": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "schema[].options.choices[].value": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "schema[].options.choices[].label": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "schema[].options.choices[].color": {
                     "type": "string",
@@ -728,8 +706,7 @@
                       "purple",
                       "red",
                       "yellow"
-                    ],
-                    "x-mindcloud-advanced": true
+                    ]
                   },
                   "schema[].options.format": {
                     "type": "string",
@@ -738,12 +715,10 @@
                       "multi_select",
                       "single_entity",
                       "single_select"
-                    ],
-                    "x-mindcloud-advanced": true
+                    ]
                   },
                   "schema[].options.precision": {
-                    "type": "number",
-                    "x-mindcloud-advanced": true
+                    "type": "number"
                   },
                   "schema[].options.dateFormat": {
                     "type": "string",
@@ -754,55 +729,45 @@
                       "MMMM DD, YYYY",
                       "YYYY/MM/DD",
                       "default"
-                    ],
-                    "x-mindcloud-advanced": true
+                    ]
                   },
                   "schema[].options.emoji": {
                     "type": "string",
-                    "example": ":star:",
-                    "x-mindcloud-advanced": true
+                    "example": ":star:"
                   },
                   "schema[].options.emojiTeamId": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "schema[].options.max": {
-                    "type": "number",
-                    "x-mindcloud-advanced": true
+                    "type": "number"
                   },
                   "schema[].options.defaultValueTyped": {
                     "type": "object",
-                    "additionalProperties": true,
-                    "x-mindcloud-advanced": true
+                    "additionalProperties": true
                   },
                   "schema[].options.defaultValueTyped.user[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "schema[].options.defaultValueTyped.channel[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "schema[].options.defaultValueTyped.select[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "schema[].options.showMemberName": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "schema[].options.notifyUsers": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "copyFromListId": {
                     "type": "string",
@@ -992,8 +957,7 @@
                 "type": "object",
                 "required": [
                   "connectionId",
-                  "listId",
-                  "initialFields[].columnId"
+                  "listId"
                 ],
                 "properties": {
                   "connectionId": {
@@ -1020,7 +984,7 @@
                       "type": "object",
                       "additionalProperties": true
                     },
-                    "x-mindcloud-advanced": true
+                    "description": "Add one entry per list column you want to populate. Use its Column ID and the value input matching that column's type."
                   },
                   "initialFields[].columnId": {
                     "type": "string",
@@ -1031,27 +995,23 @@
                     "items": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].richText[].type": {
                     "type": "string",
                     "enum": [
                       "rich_text"
-                    ],
-                    "x-mindcloud-advanced": true
+                    ]
                   },
                   "initialFields[].richText[].blockId": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "initialFields[].richText[].elements[]": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].richText[].elements[].type": {
                     "type": "string",
@@ -1060,173 +1020,143 @@
                       "rich_text_preformatted",
                       "rich_text_quote",
                       "rich_text_section"
-                    ],
-                    "x-mindcloud-advanced": true
+                    ]
                   },
                   "initialFields[].richText[].elements[].elements[]": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].richText[].elements[].elements[].type": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "initialFields[].richText[].elements[].elements[].text": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "initialFields[].richText[].elements[].elements[].url": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "initialFields[].richText[].elements[].elements[].userId": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "initialFields[].richText[].elements[].elements[].style": {
                     "type": "object",
-                    "additionalProperties": true,
-                    "x-mindcloud-advanced": true
+                    "additionalProperties": true
                   },
                   "initialFields[].richText[].elements[].elements[].style.bold": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "initialFields[].richText[].elements[].elements[].style.italic": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "initialFields[].richText[].elements[].elements[].style.strike": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "initialFields[].richText[].elements[].elements[].style.code": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "initialFields[].user[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].date[]": {
                     "type": "array",
                     "items": {
                       "type": "string",
                       "format": "date-time"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].select[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].checkbox": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "initialFields[].number[]": {
                     "type": "array",
                     "items": {
                       "type": "number"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].email[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].phone[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].attachment[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].message[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].rating[]": {
                     "type": "array",
                     "items": {
                       "type": "number"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].timestamp[]": {
                     "type": "array",
                     "items": {
                       "type": "string",
                       "format": "date-time"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].channel[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].link[]": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].link[].originalUrl": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "initialFields[].link[].displayAsUrl": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "initialFields[].link[].displayName": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "initialFields[].reference[]": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "initialFields[].reference[].file": {
                     "type": "object",
-                    "additionalProperties": true,
-                    "x-mindcloud-advanced": true
+                    "additionalProperties": true
                   },
                   "initialFields[].reference[].file.fileId": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   }
                 },
                 "additionalProperties": false
@@ -10985,20 +10915,17 @@
                     "type": "string",
                     "enum": [
                       "rich_text"
-                    ],
-                    "x-mindcloud-advanced": true
+                    ]
                   },
                   "descriptionBlocks[].blockId": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "descriptionBlocks[].elements[]": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "descriptionBlocks[].elements[].type": {
                     "type": "string",
@@ -11007,53 +10934,42 @@
                       "rich_text_preformatted",
                       "rich_text_quote",
                       "rich_text_section"
-                    ],
-                    "x-mindcloud-advanced": true
+                    ]
                   },
                   "descriptionBlocks[].elements[].elements[]": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "descriptionBlocks[].elements[].elements[].type": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "descriptionBlocks[].elements[].elements[].text": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "descriptionBlocks[].elements[].elements[].url": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "descriptionBlocks[].elements[].elements[].userId": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "descriptionBlocks[].elements[].elements[].style": {
                     "type": "object",
-                    "additionalProperties": true,
-                    "x-mindcloud-advanced": true
+                    "additionalProperties": true
                   },
                   "descriptionBlocks[].elements[].elements[].style.bold": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "descriptionBlocks[].elements[].elements[].style.italic": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "descriptionBlocks[].elements[].elements[].style.strike": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "descriptionBlocks[].elements[].elements[].style.code": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "todoMode": {
                     "type": "boolean",
@@ -11265,35 +11181,30 @@
                   },
                   "cells[].rowIdToCreate": {
                     "type": "boolean",
-                    "description": "Create a new row for this cell instead of updating an existing item.",
-                    "x-mindcloud-advanced": true
+                    "description": "Create a new row for this cell instead of updating an existing item."
                   },
                   "cells[].richText[]": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].richText[].type": {
                     "type": "string",
                     "enum": [
                       "rich_text"
-                    ],
-                    "x-mindcloud-advanced": true
+                    ]
                   },
                   "cells[].richText[].blockId": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "cells[].richText[].elements[]": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].richText[].elements[].type": {
                     "type": "string",
@@ -11302,173 +11213,143 @@
                       "rich_text_preformatted",
                       "rich_text_quote",
                       "rich_text_section"
-                    ],
-                    "x-mindcloud-advanced": true
+                    ]
                   },
                   "cells[].richText[].elements[].elements[]": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].richText[].elements[].elements[].type": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "cells[].richText[].elements[].elements[].text": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "cells[].richText[].elements[].elements[].url": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "cells[].richText[].elements[].elements[].userId": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "cells[].richText[].elements[].elements[].style": {
                     "type": "object",
-                    "additionalProperties": true,
-                    "x-mindcloud-advanced": true
+                    "additionalProperties": true
                   },
                   "cells[].richText[].elements[].elements[].style.bold": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "cells[].richText[].elements[].elements[].style.italic": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "cells[].richText[].elements[].elements[].style.strike": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "cells[].richText[].elements[].elements[].style.code": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "cells[].user[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].date[]": {
                     "type": "array",
                     "items": {
                       "type": "string",
                       "format": "date-time"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].select[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].checkbox": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "cells[].number[]": {
                     "type": "array",
                     "items": {
                       "type": "number"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].email[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].phone[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].attachment[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].message[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].rating[]": {
                     "type": "array",
                     "items": {
                       "type": "number"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].timestamp[]": {
                     "type": "array",
                     "items": {
                       "type": "string",
                       "format": "date-time"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].channel[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].link[]": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].link[].originalUrl": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "cells[].link[].displayAsUrl": {
-                    "type": "boolean",
-                    "x-mindcloud-advanced": true
+                    "type": "boolean"
                   },
                   "cells[].link[].displayName": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   },
                   "cells[].reference[]": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "additionalProperties": true
-                    },
-                    "x-mindcloud-advanced": true
+                    }
                   },
                   "cells[].reference[].file": {
                     "type": "object",
-                    "additionalProperties": true,
-                    "x-mindcloud-advanced": true
+                    "additionalProperties": true
                   },
                   "cells[].reference[].file.fileId": {
-                    "type": "string",
-                    "x-mindcloud-advanced": true
+                    "type": "string"
                   }
                 },
                 "additionalProperties": false

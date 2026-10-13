@@ -1,6 +1,6 @@
 # Marketing apps
 
-394 apps in the Marketing category, with MindCloud's generated Universal API reference and the vendor's native documentation where available.
+395 apps in the Marketing category, with MindCloud's generated Universal API reference and the vendor's native documentation where available.
 
 - **Absinthe** · [Universal API reference](../../apis/a/absinthe/universal-api) · [Native API reference](../../apis/a/absinthe/native-api) · [Native API docs](https://api.absinthe.network/doc)
 - **ActiveCampaign** · [Universal API reference](../../apis/a/activeCampaign/universal-api) · [Native API reference](../../apis/a/activeCampaign/native-api) · [Native API docs](https://developers.activecampaign.com/reference/overview)
@@ -334,6 +334,7 @@
 - **SureContact** · [Universal API reference](../../apis/s/sureContact/universal-api) · [Native API reference](../../apis/s/sureContact/native-api) · [Native API docs](https://api.surecontact.com/docs)
 - **Survicate** · [Universal API reference](../../apis/s/survicate/universal-api) · [Native API reference](../../apis/s/survicate/native-api) · [Native API docs](https://developers.survicate.com/data-export/)
 - **Switchy.io** · [Universal API reference](../../apis/s/switchyio/universal-api) · [Native API reference](../../apis/s/switchyio/native-api) · [Native API docs](https://developers.switchy.io/docs/overview/index)
+- **Swoogo** · [Universal API reference](../../apis/s/swoogo/universal-api) · [Native API reference](../../apis/s/swoogo/native-api) · [Native API docs](https://swoogo.readme.io/reference)
 - **Syften** · [Universal API reference](../../apis/s/syften/universal-api) · [Native API reference](../../apis/s/syften/native-api) · [Native API docs](https://github.com/syften/syften-examples)
 - **SyncMate** · [Universal API reference](../../apis/s/syncMate/universal-api) · [Native API reference](../../apis/s/syncMate/native-api) · [Native API docs](https://assistro.co/user-guide/developer-guide/connect-your-custom-app-with-syncmate/)
 - **Systeme.io** · [Universal API reference](../../apis/s/systemeio/universal-api) · [Native API reference](../../apis/s/systemeio/native-api) · [Native API docs](https://developer.systeme.io/reference/api)

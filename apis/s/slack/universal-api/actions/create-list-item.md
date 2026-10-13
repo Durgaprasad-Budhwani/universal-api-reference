@@ -16,8 +16,7 @@ curl -X POST "https://connect.mindcloud.co/v1/universal/slack/latest/actions/cre
   -H "Content-Type: application/json" \
   -d '{
   "connectionId": "$CONNECTION_ID",
-  "listId": "F12345678",
-  "initialFields[].columnId": "Col12345678"
+  "listId": "F12345678"
 }'
 ```
 
@@ -30,8 +29,7 @@ const response = await fetch('https://connect.mindcloud.co/v1/universal/slack/la
   },
   body: JSON.stringify({
     connectionId,
-    "listId": "F12345678",
-    "initialFields[].columnId": "Col12345678"
+    "listId": "F12345678"
   })
 });
 
@@ -45,15 +43,8 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `listId` | string | yes | Example: `F12345678`. |
-| `initialFields[].columnId` | string | yes | Example: `Col12345678`. |
-
-### Advanced
-
-| Key | Type | Required | Description |
-| --- | --- | --- | --- |
-| `duplicatedItemId` | string | no | Copy this existing item when creating the new item. |
-| `parentItemId` | string | no | Set to create a subtask under this item. |
-| `initialFields[]` | array<object> | no |  |
+| `initialFields[]` | array<object> | no | Add one entry per list column you want to populate. Use its Column ID and the value input matching that column's type. |
+| `initialFields[].columnId` | string | no | Example: `Col12345678`. |
 | `initialFields[].richText[]` | array<object> | no |  |
 | `initialFields[].richText[].type` | list<string> | no | One of: `rich_text`. |
 | `initialFields[].richText[].blockId` | string | no |  |
@@ -88,6 +79,13 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | `initialFields[].reference[]` | array<object> | no |  |
 | `initialFields[].reference[].file` | object | no |  |
 | `initialFields[].reference[].file.fileId` | string | no |  |
+
+### Advanced
+
+| Key | Type | Required | Description |
+| --- | --- | --- | --- |
+| `duplicatedItemId` | string | no | Copy this existing item when creating the new item. |
+| `parentItemId` | string | no | Set to create a subtask under this item. |
 
 ## Response
 

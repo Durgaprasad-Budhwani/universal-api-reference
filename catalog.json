@@ -1,6 +1,6 @@
 {
-  "apps": 3223,
-  "actions": 76445,
+  "apps": 3224,
+  "actions": 76450,
   "shards": [
     {
       "letter": "a",
@@ -94,7 +94,7 @@
     },
     {
       "letter": "s",
-      "apps": 361,
+      "apps": 362,
       "path": "catalog/s.json"
     },
     {

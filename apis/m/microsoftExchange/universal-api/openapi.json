@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Microsoft Exchange Universal API",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "Connect to Microsoft Exchange mail through Microsoft Graph."
   },
   "servers": [
@@ -1942,6 +1942,251 @@
         }
       }
     },
+    "/v1/universal/microsoftExchange/latest/actions/get-user-message-attachment": {
+      "get": {
+        "operationId": "microsoftExchange.get-user-message-attachment",
+        "summary": "Get User Message Attachment",
+        "description": "Retrieves an attachment from a message in a user's mailbox.",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/microsoftExchange/latest/actions/get-user-message-attachment"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userIdOrPrincipalName",
+            "in": "query",
+            "required": true,
+            "description": "The Microsoft Graph user id or userPrincipalName of the mailbox that holds the message.",
+            "schema": {
+              "type": "string",
+              "description": "The Microsoft Graph user id or userPrincipalName of the mailbox that holds the message.",
+              "example": "user@company.com or Entra user id"
+            }
+          },
+          {
+            "name": "messageId",
+            "in": "query",
+            "required": true,
+            "description": "The Exchange message ID that contains the attachments.",
+            "schema": {
+              "type": "string",
+              "description": "The Exchange message ID that contains the attachments.",
+              "example": "AAMkAG..."
+            }
+          },
+          {
+            "name": "attachmentId",
+            "in": "query",
+            "required": true,
+            "description": "The attachment ID returned by List User Message Attachments.",
+            "schema": {
+              "type": "string",
+              "description": "The attachment ID returned by List User Message Attachments."
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "contentBytes": {
+                            "type": "string",
+                            "description": "The base64-encoded file content."
+                          },
+                          "contentType": {
+                            "type": "string",
+                            "description": "The attachment MIME type."
+                          },
+                          "id": {
+                            "type": "string",
+                            "description": "The attachment ID."
+                          },
+                          "isInline": {
+                            "type": "boolean",
+                            "description": "Whether the attachment is inline."
+                          },
+                          "lastModifiedDateTime": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "When the attachment was last modified."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "The attachment file name."
+                          },
+                          "size": {
+                            "type": "number",
+                            "description": "The attachment size in bytes."
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/universal/microsoftExchange/latest/actions/list-child-mail-folders": {
       "get": {
         "operationId": "microsoftExchange.list-child-mail-folders",
@@ -3541,6 +3786,249 @@
                           "webLink": {
                             "type": "string",
                             "description": "A link to open the message in Outlook on the web."
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/microsoftExchange/latest/actions/list-user-message-attachments": {
+      "get": {
+        "operationId": "microsoftExchange.list-user-message-attachments",
+        "summary": "List User Message Attachments",
+        "description": "Finds the attachments on a message in a user's mailbox.",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/microsoftExchange/latest/actions/list-user-message-attachments"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "userIdOrPrincipalName",
+            "in": "query",
+            "required": true,
+            "description": "The Microsoft Graph user id or userPrincipalName of the mailbox that holds the message.",
+            "schema": {
+              "type": "string",
+              "description": "The Microsoft Graph user id or userPrincipalName of the mailbox that holds the message.",
+              "example": "user@company.com or Entra user id"
+            }
+          },
+          {
+            "name": "messageId",
+            "in": "query",
+            "required": true,
+            "description": "The Exchange message ID that contains the attachments.",
+            "schema": {
+              "type": "string",
+              "description": "The Exchange message ID that contains the attachments.",
+              "example": "AAMkAG..."
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated attachment fields to return. The default leaves out file content.",
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated attachment fields to return. The default leaves out file content.",
+              "default": "id,name,contentType,size,isInline,lastModifiedDateTime",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "contentType": {
+                            "type": "string",
+                            "description": "The attachment MIME type."
+                          },
+                          "id": {
+                            "type": "string",
+                            "description": "The attachment ID."
+                          },
+                          "isInline": {
+                            "type": "boolean",
+                            "description": "Whether the attachment is inline."
+                          },
+                          "lastModifiedDateTime": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "When the attachment was last modified."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "The attachment file name."
+                          },
+                          "size": {
+                            "type": "number",
+                            "description": "The attachment size in bytes."
                           }
                         },
                         "additionalProperties": false
