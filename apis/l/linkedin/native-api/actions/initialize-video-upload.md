@@ -13,5 +13,14 @@ Initializes a video upload in LinkedIn.
 
 | Parameter | Location | Type | Required | Description |
 | --- | --- | --- | --- | --- |
+| `initializeUploadRequest` | body | `object` | yes | — |
+| `initializeUploadRequest.mediaLibraryMetadata.associatedAccount` | body | `string` | no | — |
 | `initializeUploadRequest.owner` | body | `string` | yes | Owner URN for the member initializing the upload. |
 | `initializeUploadRequest.fileSizeBytes` | body | `number` | yes | — |
+| `initializeUploadRequest.mediaLibraryMetadata.assetName` | body | `string` | no | — |
+| `initializeUploadRequest.mediaLibraryMetadata.mediaLibraryStatus` | body | `list<string>` | no | Accepted values: `ACTIVE`, `ARCHIVED`. |
+| `initializeUploadRequest.uploadCaptions` | body | `boolean` | no | Only one English-language captions file is supported. |
+| `initializeUploadRequest.uploadThumbnail` | body | `boolean` | no | Requests a thumbnail upload URL. |
+| `initializeUploadRequest.templateName` | body | `string` | no | Supported with LinkedIn API version 202602 or later. |
+| `initializeUploadRequest.linkbackContext` | body | `string` | no | Supported with LinkedIn API version 202602 or later. |
+| `initializeUploadRequest.mediaLibraryMetadata` | body | `object` | no | — |

@@ -1,5 +1,7 @@
 # Create Draft Record with DatoCMS
 
+Creates a new draft record in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `POST`

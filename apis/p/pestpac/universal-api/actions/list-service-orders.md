@@ -41,7 +41,117 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native PestPac API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "batchNumber": 1,
+      "billToID": 1,
+      "branch": "string",
+      "branchID": 1,
+      "bundleName": "Ava Chen",
+      "daysOfWeek": "string",
+      "description": "string",
+      "discountCode": "string",
+      "duration": 1,
+      "earliestDate": "string",
+      "earliestTime": "string",
+      "earliestTime2": "string",
+      "externalIdentifier": "string",
+      "inProgress": true,
+      "latestDate": "string",
+      "latestTime": "string",
+      "latestTime2": "string",
+      "leadID": 1,
+      "locationBundleID": 1,
+      "locationID": 1,
+      "locationInstructions": "string",
+      "locked": true,
+      "orderID": 1,
+      "orderInstructions": "string",
+      "orderNumber": "string",
+      "orderType": "string",
+      "origin": "string",
+      "parentOrderID": 1,
+      "pdfUrls": [
+        "https://example.com"
+      ],
+      "posted": true,
+      "purchaseOrderNumber": "string",
+      "route": "string",
+      "serviceCode": "string",
+      "serviceInstructions": "string",
+      "setupID": 1,
+      "subTotal": 1,
+      "tax": 1,
+      "taxDetails": [
+        {}
+      ],
+      "tech1": "string",
+      "techID1": 1,
+      "technicianComment": "string",
+      "timeRange": "string",
+      "total": 1,
+      "userDefinedFields": [
+        {}
+      ],
+      "workDate": "string"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `batchNumber` | number |  |
+| `billToID` | number |  |
+| `branch` | string |  |
+| `branchID` | number |  |
+| `bundleName` | string |  |
+| `daysOfWeek` | string |  |
+| `description` | string |  |
+| `discountCode` | string |  |
+| `duration` | number |  |
+| `earliestDate` | string |  |
+| `earliestTime` | string |  |
+| `earliestTime2` | string |  |
+| `externalIdentifier` | string |  |
+| `inProgress` | boolean |  |
+| `latestDate` | string |  |
+| `latestTime` | string |  |
+| `latestTime2` | string |  |
+| `leadID` | number |  |
+| `locationBundleID` | number |  |
+| `locationID` | number |  |
+| `locationInstructions` | string |  |
+| `locked` | boolean |  |
+| `orderID` | number |  |
+| `orderInstructions` | string |  |
+| `orderNumber` | string |  |
+| `orderType` | string |  |
+| `origin` | string |  |
+| `parentOrderID` | number |  |
+| `pdfUrls` | array<string> |  |
+| `posted` | boolean |  |
+| `purchaseOrderNumber` | string |  |
+| `route` | string |  |
+| `serviceCode` | string |  |
+| `serviceInstructions` | string |  |
+| `setupID` | number |  |
+| `subTotal` | number |  |
+| `tax` | number |  |
+| `taxDetails` | array<object> |  |
+| `tech1` | string |  |
+| `techID1` | number |  |
+| `technicianComment` | string |  |
+| `timeRange` | string |  |
+| `total` | number |  |
+| `userDefinedFields` | array<object> |  |
+| `workDate` | string |  |
 
 ## Native endpoint
 

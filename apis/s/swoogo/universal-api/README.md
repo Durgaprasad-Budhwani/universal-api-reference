@@ -15,10 +15,10 @@ Every action below is called through one REST interface, authenticated with a Mi
 
 Read more in [authentication.md](authentication.md).
 
-For example, to [Get Registrant](actions/get-registrant.md):
+For example, to [List Events](actions/list-events.md):
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/swoogo/latest/actions/get-registrant?connectionId=$CONNECTION_ID&registrantId=1" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/swoogo/latest/actions/list-events?connectionId=$CONNECTION_ID&limit=25&offset=0" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 

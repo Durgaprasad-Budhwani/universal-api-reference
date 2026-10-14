@@ -1,6 +1,6 @@
 # DatoCMS: List Invitations
 
-
+Retrieves invitations from DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/list-invitations

@@ -8,16 +8,20 @@ GET https://connect.mindcloud.co/v1/universal/microsoft365Outlook/latest/actions
 
 Authenticate with `Authorization: Bearer $MINDCLOUD_API_KEY` and pass a Microsoft 365 Outlook `connectionId` ([setup](../authentication.md)).
 
+This action also supports [pagination](../pagination.md) (`limit`, `offset`).
+
 ## Example request
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/microsoft365Outlook/latest/actions/list-messages-in-folder?connectionId=$CONNECTION_ID&mailFolderId=inbox" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/microsoft365Outlook/latest/actions/list-messages-in-folder?connectionId=$CONNECTION_ID&limit=25&offset=0&mailFolderId=inbox" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
   connectionId,
+  limit: '25',
+  offset: '0',
   "mailFolderId": "inbox"
 });
 
@@ -37,7 +41,6 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `mailFolderId` | string | yes | The mail folder ID or a well-known folder name such as inbox or archive. Example: `inbox`. |
-| `top` | number | no | Maximum number of messages to return. Default: `10`. |
 
 ## Response
 
@@ -81,5 +84,5 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Native endpoint
 
-Through the native Microsoft 365 Outlook API, this operation is `GET /v1.0/me/mailFolders/{{mailFolderId}}/messages` (base URL `https://graph.microsoft.com`). The Universal API call above is translated to it by MindCloud, including authentication. See the [native action reference](../../native-api/actions/list-messages-in-folder.md) for the provider-specific parameters and requirements.
+Through the native Microsoft 365 Outlook API, this operation is `GET /v1.0/me/mailFolders/{{mailFolderId}}/messages` (base URL `https://graph.microsoft.com`). The Universal API call above is translated to it by MindCloud, including authentication and pagination. See the [native action reference](../../native-api/actions/list-messages-in-folder.md) for the provider-specific parameters and requirements.
 

@@ -1,5 +1,7 @@
 # Restore Record Version with DatoCMS
 
+Restores a record version in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `POST`

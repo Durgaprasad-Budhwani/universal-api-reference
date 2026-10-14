@@ -1,6 +1,6 @@
 # Commerce apps
 
-297 apps in the Commerce category, with MindCloud's generated Universal API reference and the vendor's native documentation where available.
+298 apps in the Commerce category, with MindCloud's generated Universal API reference and the vendor's native documentation where available.
 
 - **aamarPay** · [Universal API reference](../../apis/a/aamarPay/universal-api) · [Native API reference](../../apis/a/aamarPay/native-api) · [Native API docs](https://aamarpay.readme.io/reference/overview)
 - **Ablefy** · [Universal API reference](../../apis/a/ablefy/universal-api) · [Native API reference](../../apis/a/ablefy/native-api) · [Native API docs](https://api.myablefy.com/api/swagger_doc/)
@@ -81,6 +81,7 @@
 - **Emporix Commerce Engine** · [Universal API reference](../../apis/e/emporixCommerceEngine/universal-api) · [Native API reference](../../apis/e/emporixCommerceEngine/native-api) · [Native API docs](https://developer.emporix.io/api-references/api-guides/api-guides-and-references)
 - **EnvelopeBudget** · [Universal API reference](../../apis/e/envelopeBudget/universal-api) · [Native API reference](../../apis/e/envelopeBudget/native-api) · [Native API docs](https://envelopebudget.com/api/docs)
 - **Envoice** · [Universal API reference](../../apis/e/envoice/universal-api) · [Native API reference](../../apis/e/envoice/native-api) · [Native API docs](https://www.envoice.in/reference/api/docs/v1)
+- **Epicor Prophet 21** · [Universal API reference](../../apis/e/epicorProphet21/universal-api) · [Native API reference](../../apis/e/epicorProphet21/native-api) · [Vendor website](https://www.epicor.com/en-us/industry-productivity-solutions/distribution/prophet-21/)
 - **ERPLY Books** · [Universal API reference](../../apis/e/eRPLYBooks/universal-api) · [Native API reference](../../apis/e/eRPLYBooks/native-api) · [Native API docs](https://learn-api.erply.com/requests)
 - **Escrow.com** · [Universal API reference](../../apis/e/escrowcom/universal-api) · [Native API reference](../../apis/e/escrowcom/native-api) · [Native API docs](https://www.escrow.com/api/docs/basics)
 - **Everbill** · [Universal API reference](../../apis/e/everbill/universal-api) · [Native API reference](../../apis/e/everbill/native-api) · [Native API docs](https://api.everbill.eu/)

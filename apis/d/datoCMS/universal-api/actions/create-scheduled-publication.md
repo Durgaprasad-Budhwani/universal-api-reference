@@ -1,6 +1,6 @@
 # DatoCMS: Create Scheduled Publication
 
-
+Creates a scheduled publication in DatoCMS.
 
 ```
 POST https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/create-scheduled-publication

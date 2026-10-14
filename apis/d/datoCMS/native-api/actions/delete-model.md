@@ -1,5 +1,7 @@
 # Delete Model with DatoCMS
 
+Deletes an existing model from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `DELETE`

@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "X Universal API",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "X (formerly Twitter) API integration for posting and managing content."
   },
   "servers": [
@@ -20,6 +20,202 @@
     }
   ],
   "paths": {
+    "/v1/universal/x/latest/actions/append-media-upload": {
+      "put": {
+        "operationId": "x.append-media-upload",
+        "summary": "Append Media Upload",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/x/latest/actions/append-media-upload"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "id",
+                  "media",
+                  "segmentIndex"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "id": {
+                    "type": "string",
+                    "description": "Media ID returned by Initialize Media Upload."
+                  },
+                  "media": {
+                    "type": "string",
+                    "description": "Base64-encoded chunk contents for JSON upload."
+                  },
+                  "segmentIndex": {
+                    "type": "number",
+                    "description": "Zero-based chunk index, 0–9999."
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/universal/x/latest/actions/create-post": {
       "post": {
         "operationId": "x.create-post",
@@ -48,14 +244,197 @@
                   },
                   "text": {
                     "type": "string",
-                    "description": "The text of your post (up to 280 characters)."
+                    "description": "Text of the post. Required unless media is supplied; leave empty for a media-only post."
                   },
-                  "media.media_ids[]": {
+                  "media": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "media.mediaIds[]": {
                     "type": "array",
                     "items": {
                       "type": "string"
                     },
-                    "description": "Array of media IDs (from the Upload Media action) to attach to the post. Max 4 images or 1 video/GIF."
+                    "description": "Uploaded media IDs. Required when Media is provided. Up to four images, one GIF, or one video."
+                  },
+                  "media.taggedUserIds[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Up to ten user IDs to tag.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "media.title": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "media.description": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "media.previewMediaId": {
+                    "type": "string",
+                    "description": "Uploaded media used as the preview image.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "media.embeddable": {
+                    "type": "boolean",
+                    "x-mindcloud-advanced": true
+                  },
+                  "media.callToActions": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "description": "Call-to-action buttons on attached media.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "media.callToActions.visitSite": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "description": "Visit Site call to action.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "media.callToActions.visitSite.url": {
+                    "type": "string",
+                    "description": "HTTPS destination URL. Required when Visit Site is supplied.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "media.callToActions.watchNow": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "description": "Watch Now call to action.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "media.callToActions.watchNow.url": {
+                    "type": "string",
+                    "description": "HTTPS destination URL. Required when Watch Now is supplied.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "media.callToActions.appInstall": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "description": "Provide at least one store ID.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "media.callToActions.appInstall.appStoreId": {
+                    "type": "string",
+                    "description": "Apple App Store iPhone app ID.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "media.callToActions.appInstall.ipadAppStoreId": {
+                    "type": "string",
+                    "description": "Apple App Store iPad app ID.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "media.callToActions.appInstall.playStoreId": {
+                    "type": "string",
+                    "description": "Google Play Store app ID.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "reply": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "reply.inReplyToTweetId": {
+                    "type": "string",
+                    "description": "Post to reply to. Required when Reply is supplied."
+                  },
+                  "reply.excludeReplyUserIds[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Users to exclude from the reply thread.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "poll": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "poll.options[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Two to four choices, each 1–25 characters. Required when Poll is supplied."
+                  },
+                  "poll.durationMinutes": {
+                    "type": "number",
+                    "description": "Poll duration, 5–10080 minutes. Required when Poll is supplied."
+                  },
+                  "communityId": {
+                    "type": "string",
+                    "description": "Community where the post is created."
+                  },
+                  "replySettings": {
+                    "type": "string",
+                    "description": "Who can reply.",
+                    "enum": [
+                      "following",
+                      "mentionedUsers",
+                      "subscribers",
+                      "verified"
+                    ],
+                    "x-mindcloud-advanced": true
+                  },
+                  "madeWithAi": {
+                    "type": "boolean",
+                    "description": "Disclose AI-generated media."
+                  },
+                  "paidPartnership": {
+                    "type": "boolean",
+                    "description": "Disclose a paid partnership."
+                  },
+                  "quoteTweetId": {
+                    "type": "string",
+                    "description": "Post to quote. Requires X Enterprise API access.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "editOptions": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "description": "Edit an existing post instead of creating a new one.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "editOptions.previousPostId": {
+                    "type": "string",
+                    "description": "Post being edited. Required when Edit Options is supplied.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "geo": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "x-mindcloud-advanced": true
+                  },
+                  "geo.placeId": {
+                    "type": "string",
+                    "description": "Place for geo tagging; account must permit geolocation.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "forSuperFollowersOnly": {
+                    "type": "boolean",
+                    "description": "Restrict the post to subscribers.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "shareWithFollowers": {
+                    "type": "boolean",
+                    "description": "Share an exclusive post with all followers.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "cardUri": {
+                    "type": "string",
+                    "description": "Card URI parameter.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "directMessageDeepLink": {
+                    "type": "string",
+                    "description": "Direct message deep link.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "nullcast": {
+                    "type": "boolean",
+                    "description": "Do not display this post in the public timeline.",
+                    "x-mindcloud-advanced": true
                   }
                 },
                 "additionalProperties": false
@@ -63,6 +442,381 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/x/latest/actions/finalize-media-upload": {
+      "put": {
+        "operationId": "x.finalize-media-upload",
+        "summary": "Finalize Media Upload",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/x/latest/actions/finalize-media-upload"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "id"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "id": {
+                    "type": "string",
+                    "description": "Media ID returned by Initialize Media Upload."
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/x/latest/actions/get-media-upload-status": {
+      "get": {
+        "operationId": "x.get-media-upload-status",
+        "summary": "Get Media Upload Status",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/x/latest/actions/get-media-upload-status"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "mediaId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful response.",
@@ -244,6 +998,443 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/x/latest/actions/initialize-media-upload": {
+      "post": {
+        "operationId": "x.initialize-media-upload",
+        "summary": "Initialize Media Upload",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/x/latest/actions/initialize-media-upload"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "totalBytes": {
+                    "type": "number",
+                    "description": "Exact total file size in bytes; maximum 17179869184, subject to account limits."
+                  },
+                  "mediaType": {
+                    "type": "string",
+                    "description": "MIME type of the uploaded file.",
+                    "enum": [
+                      "image/bmp",
+                      "image/gif",
+                      "image/jpeg",
+                      "image/pjpeg",
+                      "image/png",
+                      "image/tiff",
+                      "image/webp",
+                      "model/gltf-binary",
+                      "model/vnd.usdz+zip",
+                      "text/srt",
+                      "text/vtt",
+                      "video/mp2t",
+                      "video/mp4",
+                      "video/quicktime",
+                      "video/webm"
+                    ]
+                  },
+                  "mediaCategory": {
+                    "type": "string",
+                    "description": "Use tweet_video for a regular video post.",
+                    "enum": [
+                      "amplify_video",
+                      "dm_gif",
+                      "dm_image",
+                      "dm_video",
+                      "subtitles",
+                      "tweet_gif",
+                      "tweet_image",
+                      "tweet_video"
+                    ]
+                  },
+                  "additionalOwners[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "User IDs granted access to the uploaded media.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "shared": {
+                    "type": "boolean",
+                    "description": "Whether this media is shared.",
+                    "x-mindcloud-advanced": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/x/latest/actions/upload-media": {
+      "post": {
+        "operationId": "x.upload-media",
+        "summary": "Upload Media",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/x/latest/actions/upload-media"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "media",
+                  "mediaCategory"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "media": {
+                    "type": "string",
+                    "description": "Base64-encoded file contents for the JSON upload request."
+                  },
+                  "mediaCategory": {
+                    "type": "string",
+                    "enum": [
+                      "dm_gif",
+                      "dm_image",
+                      "dm_video",
+                      "subtitles",
+                      "tweet_gif",
+                      "tweet_image",
+                      "tweet_video"
+                    ]
+                  },
+                  "additionalOwners": {
+                    "type": "string",
+                    "description": "User IDs that can use this media, sent as a comma-separated list. Pass multiple values separated by `,`.",
+                    "x-mindcloud-advanced": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful response.",

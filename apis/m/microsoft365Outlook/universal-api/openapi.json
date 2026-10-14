@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Microsoft 365 Outlook Universal API",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "Access Microsoft 365 Outlook mail through Microsoft Graph, including messages, folders, attachments, replies, forwarding, and sending mail for the signed-in user."
   },
   "servers": [
@@ -2316,14 +2316,23 @@
             }
           },
           {
-            "name": "top",
+            "name": "limit",
             "in": "query",
             "required": false,
-            "description": "Maximum number of messages to return.",
+            "description": "Maximum number of records to return.",
             "schema": {
-              "type": "number",
-              "description": "Maximum number of messages to return.",
-              "default": 10
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
             }
           },
           {

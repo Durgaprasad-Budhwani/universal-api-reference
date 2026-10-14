@@ -73,7 +73,107 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native ServiceTitan API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "appointmentCount": 1,
+      "bookingId": 1,
+      "businessUnitId": 1,
+      "campaignId": 1,
+      "completedOn": "string",
+      "createdById": 1,
+      "createdFromEstimateId": 1,
+      "createdOn": "string",
+      "customerId": 1,
+      "customerPo": "string",
+      "customFields": [
+        {}
+      ],
+      "equipmentIds": [
+        1
+      ],
+      "estimateIds": [
+        1
+      ],
+      "externalData": {},
+      "firstAppointmentId": 1,
+      "id": 1,
+      "invoiceId": 1,
+      "isAutoDispatched": true,
+      "jobGeneratedLeadSource": {},
+      "jobNumber": "string",
+      "jobStatus": "string",
+      "jobTypeId": 1,
+      "lastAppointmentId": 1,
+      "leadCallId": 1,
+      "locationId": 1,
+      "membershipId": 1,
+      "modifiedOn": "string",
+      "noCharge": true,
+      "notificationsEnabled": true,
+      "partnerLeadCallId": 1,
+      "priority": "string",
+      "projectId": 1,
+      "recallForId": 1,
+      "soldById": 1,
+      "summary": "string",
+      "summaryOfWork": "string",
+      "tagTypeIds": [
+        1
+      ],
+      "total": 1,
+      "warrantyId": 1
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `appointmentCount` | number |  |
+| `bookingId` | number |  |
+| `businessUnitId` | number |  |
+| `campaignId` | number |  |
+| `completedOn` | string |  |
+| `createdById` | number |  |
+| `createdFromEstimateId` | number |  |
+| `createdOn` | string |  |
+| `customerId` | number |  |
+| `customerPo` | string |  |
+| `customFields` | array<object> |  |
+| `equipmentIds` | array<number> |  |
+| `estimateIds` | array<number> |  |
+| `externalData` | object |  |
+| `firstAppointmentId` | number |  |
+| `id` | number |  |
+| `invoiceId` | number |  |
+| `isAutoDispatched` | boolean |  |
+| `jobGeneratedLeadSource` | object |  |
+| `jobNumber` | string |  |
+| `jobStatus` | string |  |
+| `jobTypeId` | number |  |
+| `lastAppointmentId` | number |  |
+| `leadCallId` | number |  |
+| `locationId` | number |  |
+| `membershipId` | number |  |
+| `modifiedOn` | string |  |
+| `noCharge` | boolean |  |
+| `notificationsEnabled` | boolean |  |
+| `partnerLeadCallId` | number |  |
+| `priority` | string |  |
+| `projectId` | number |  |
+| `recallForId` | number |  |
+| `soldById` | number |  |
+| `summary` | string |  |
+| `summaryOfWork` | string |  |
+| `tagTypeIds` | array<number> |  |
+| `total` | number |  |
+| `warrantyId` | number |  |
 
 ## Native endpoint
 

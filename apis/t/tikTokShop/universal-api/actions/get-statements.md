@@ -42,7 +42,45 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native TikTok Shop API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": "string",
+      "paymentId": "string",
+      "statementTime": 1,
+      "paymentTime": 1,
+      "currency": "string",
+      "paymentStatus": "string",
+      "revenueAmount": "string",
+      "netSalesAmount": "string",
+      "feeAmount": "string",
+      "adjustmentAmount": "string",
+      "settlementAmount": "string",
+      "shippingCostAmount": "string"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `id` | string |  |
+| `paymentId` | string |  |
+| `statementTime` | number |  |
+| `paymentTime` | number |  |
+| `currency` | string |  |
+| `paymentStatus` | string |  |
+| `revenueAmount` | string |  |
+| `netSalesAmount` | string |  |
+| `feeAmount` | string |  |
+| `adjustmentAmount` | string |  |
+| `settlementAmount` | string |  |
+| `shippingCostAmount` | string |  |
 
 ## Native endpoint
 

@@ -1,5 +1,7 @@
 # Delete Record with DatoCMS
 
+Deletes an existing record from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `DELETE`

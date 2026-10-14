@@ -1,0 +1,3054 @@
+{
+  "openapi": "3.1.2",
+  "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
+  "info": {
+    "title": "Epicor Prophet 21 Universal API",
+    "version": "0.0.2",
+    "description": "Connect to Epicor Prophet 21 to read customers, contacts, addresses, sales orders, quotes, order lines, and product groups."
+  },
+  "servers": [
+    {
+      "url": "https://connect.mindcloud.co"
+    }
+  ],
+  "externalDocs": {
+    "url": "https://mindcloud.co/docs/universal/rest/epicorProphet21/latest"
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/v1/universal/epicorProphet21/latest/actions/get-authentication-token": {
+      "get": {
+        "operationId": "epicorProphet21.get-authentication-token",
+        "summary": "Get Authentication Token",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/epicorProphet21/latest/actions/get-authentication-token"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "accessToken": {
+                            "type": "string"
+                          },
+                          "expiresIn": {
+                            "type": "number"
+                          },
+                          "refreshToken": {
+                            "type": "string"
+                          },
+                          "scope": {
+                            "type": "string"
+                          },
+                          "sessionId": {
+                            "type": "string"
+                          },
+                          "tokenType": {
+                            "type": "string"
+                          },
+                          "userName": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/epicorProphet21/latest/actions/list-addresses": {
+      "get": {
+        "operationId": "epicorProphet21.list-addresses",
+        "summary": "List Addresses",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/epicorProphet21/latest/actions/list-addresses"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated field names. Leave empty to return all available fields.",
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated field names. Leave empty to return all available fields.",
+              "default": "id,name,mail_address1,mail_city,mail_state,mail_postal_code,mail_country,phys_address1,phys_city,phys_state,phys_postal_code,phys_country,central_phone_number,central_fax_number",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "A Prophet 21 filter expression, such as customer_id eq 123.",
+            "schema": {
+              "type": "string",
+              "description": "A Prophet 21 filter expression, such as customer_id eq 123.",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "centralFaxNumber": {
+                            "type": "string"
+                          },
+                          "centralPhoneNumber": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "mailAddress1": {
+                            "type": "string"
+                          },
+                          "mailCity": {
+                            "type": "string"
+                          },
+                          "mailCountry": {
+                            "type": "string"
+                          },
+                          "mailPostalCode": {
+                            "type": "string"
+                          },
+                          "mailState": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "physAddress1": {
+                            "type": "string"
+                          },
+                          "physCity": {
+                            "type": "string"
+                          },
+                          "physCountry": {
+                            "type": "string"
+                          },
+                          "physPostalCode": {
+                            "type": "string"
+                          },
+                          "physState": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/epicorProphet21/latest/actions/list-contacts": {
+      "get": {
+        "operationId": "epicorProphet21.list-contacts",
+        "summary": "List Contacts",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/epicorProphet21/latest/actions/list-contacts"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated field names. Leave empty to return all available fields.",
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated field names. Leave empty to return all available fields.",
+              "default": "id,address_id,address_name,first_name,last_name,email_address,home_email_address,email_address2,direct_phone",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "A Prophet 21 filter expression, such as customer_id eq 123.",
+            "schema": {
+              "type": "string",
+              "description": "A Prophet 21 filter expression, such as customer_id eq 123.",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "addressId": {
+                            "type": "string"
+                          },
+                          "addressName": {
+                            "type": "string"
+                          },
+                          "directPhone": {
+                            "type": "string"
+                          },
+                          "emailAddress": {
+                            "type": "string"
+                          },
+                          "emailAddress2": {
+                            "type": "string"
+                          },
+                          "firstName": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "lastName": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/epicorProphet21/latest/actions/list-customers": {
+      "get": {
+        "operationId": "epicorProphet21.list-customers",
+        "summary": "List Customers",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/epicorProphet21/latest/actions/list-customers"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "customer_id,salesrep_id,customer_name",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "delete_flag eq 'N'",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "customerId": {
+                            "type": "string"
+                          },
+                          "customerName": {
+                            "type": "string"
+                          },
+                          "salesrepId": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/epicorProphet21/latest/actions/list-entity-addresses": {
+      "get": {
+        "operationId": "epicorProphet21.list-entity-addresses",
+        "summary": "List Entity Addresses",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/epicorProphet21/latest/actions/list-entity-addresses"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "addressId": {
+                            "type": "number"
+                          },
+                          "alternative1099Name": {
+                            "type": "string"
+                          },
+                          "centralFaxNumber": {
+                            "type": "string"
+                          },
+                          "centralPhoneNumber": {
+                            "type": "string"
+                          },
+                          "corpAddressId": {
+                            "type": "number"
+                          },
+                          "emailAddress": {
+                            "type": "string"
+                          },
+                          "incorporated": {
+                            "type": "string"
+                          },
+                          "mailAddress1": {
+                            "type": "string"
+                          },
+                          "mailAddress2": {
+                            "type": "string"
+                          },
+                          "mailAddress3": {
+                            "type": "string"
+                          },
+                          "mailCity": {
+                            "type": "string"
+                          },
+                          "mailCountry": {
+                            "type": "string"
+                          },
+                          "mailPostalCode": {
+                            "type": "string"
+                          },
+                          "mailState": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "nameControl": {
+                            "type": "string"
+                          },
+                          "objectName": {
+                            "type": "string"
+                          },
+                          "physAddress1": {
+                            "type": "string"
+                          },
+                          "physAddress2": {
+                            "type": "string"
+                          },
+                          "physAddress3": {
+                            "type": "string"
+                          },
+                          "physCity": {
+                            "type": "string"
+                          },
+                          "physCountry": {
+                            "type": "string"
+                          },
+                          "physCounty": {
+                            "type": "string"
+                          },
+                          "physPostalCode": {
+                            "type": "string"
+                          },
+                          "physState": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "userDefinedFields": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/epicorProphet21/latest/actions/list-entity-contacts": {
+      "get": {
+        "operationId": "epicorProphet21.list-entity-contacts",
+        "summary": "List Entity Contacts",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/epicorProphet21/latest/actions/list-entity-contacts"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "addressId": {
+                            "type": "number"
+                          },
+                          "beeper": {
+                            "type": "string"
+                          },
+                          "cellular": {
+                            "type": "string"
+                          },
+                          "cellularExt": {
+                            "type": "string"
+                          },
+                          "class1id": {
+                            "type": "string"
+                          },
+                          "class2id": {
+                            "type": "string"
+                          },
+                          "class3id": {
+                            "type": "string"
+                          },
+                          "class4id": {
+                            "type": "string"
+                          },
+                          "class5id": {
+                            "type": "string"
+                          },
+                          "comments": {
+                            "type": "string"
+                          },
+                          "deleteFlag": {
+                            "type": "string"
+                          },
+                          "directFax": {
+                            "type": "string"
+                          },
+                          "directPhone": {
+                            "type": "string"
+                          },
+                          "emailAddress": {
+                            "type": "string"
+                          },
+                          "faxExt": {
+                            "type": "string"
+                          },
+                          "firstName": {
+                            "type": "string"
+                          },
+                          "homeAddress1": {
+                            "type": "string"
+                          },
+                          "homeAddress2": {
+                            "type": "string"
+                          },
+                          "homeEmailAddress": {
+                            "type": "string"
+                          },
+                          "homeFax": {
+                            "type": "string"
+                          },
+                          "homePhone": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "lastName": {
+                            "type": "string"
+                          },
+                          "loginId": {
+                            "type": "string"
+                          },
+                          "mailstop": {
+                            "type": "string"
+                          },
+                          "mi": {
+                            "type": "string"
+                          },
+                          "noOfCycleDays": {
+                            "type": "number"
+                          },
+                          "objectName": {
+                            "type": "string"
+                          },
+                          "phoneExt": {
+                            "type": "string"
+                          },
+                          "salutation": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "userDefinedFields": {
+                            "type": "object",
+                            "additionalProperties": true
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/epicorProphet21/latest/actions/list-entity-customers": {
+      "get": {
+        "operationId": "epicorProphet21.list-entity-customers",
+        "summary": "List Entity Customers",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/epicorProphet21/latest/actions/list-entity-customers"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "allowExceedJobQty": {
+                            "type": "string"
+                          },
+                          "allowNonJobItem": {
+                            "type": "string"
+                          },
+                          "alwaysUseJobPrice": {
+                            "type": "string"
+                          },
+                          "billToContactId": {
+                            "type": "string"
+                          },
+                          "class1id": {
+                            "type": "string"
+                          },
+                          "class2id": {
+                            "type": "string"
+                          },
+                          "class3id": {
+                            "type": "string"
+                          },
+                          "class4id": {
+                            "type": "string"
+                          },
+                          "class5id": {
+                            "type": "string"
+                          },
+                          "codRequiredFlag": {
+                            "type": "string"
+                          },
+                          "companyId": {
+                            "type": "string"
+                          },
+                          "corporateCreditLimit": {
+                            "type": "number"
+                          },
+                          "corporateCreditLimitAvailable": {
+                            "type": "number"
+                          },
+                          "creditLimit": {
+                            "type": "number"
+                          },
+                          "creditLimitAvailable": {
+                            "type": "number"
+                          },
+                          "creditLimitCheckAtShipment": {
+                            "type": "string"
+                          },
+                          "creditLimitPerOrder": {
+                            "type": "number"
+                          },
+                          "creditLimitUsed": {
+                            "type": "number"
+                          },
+                          "creditStatus": {
+                            "type": "string"
+                          },
+                          "currencyId": {
+                            "type": "number"
+                          },
+                          "customerId": {
+                            "type": "number"
+                          },
+                          "customerName": {
+                            "type": "string"
+                          },
+                          "customerType": {
+                            "type": "string"
+                          },
+                          "dateAcctOpened": {
+                            "type": "string"
+                          },
+                          "defaultDisposition": {
+                            "type": "string"
+                          },
+                          "delete": {
+                            "type": "boolean"
+                          },
+                          "excludeCanceldFromPackList": {
+                            "type": "string"
+                          },
+                          "excludeCanceldFromPickTix": {
+                            "type": "string"
+                          },
+                          "fcCycle": {
+                            "type": "string"
+                          },
+                          "fcGraceDays": {
+                            "type": "number"
+                          },
+                          "fcPercentage": {
+                            "type": "number"
+                          },
+                          "federalExemptionNumber": {
+                            "type": "string"
+                          },
+                          "freightChargeId": {
+                            "type": "string"
+                          },
+                          "generateCustomerStatements": {
+                            "type": "string"
+                          },
+                          "generateFinanceCharges": {
+                            "type": "string"
+                          },
+                          "inclNonAllocOnListText": {
+                            "type": "string"
+                          },
+                          "inclNonAllocOnTixText": {
+                            "type": "string"
+                          },
+                          "interchgReceiverId": {
+                            "type": "string"
+                          },
+                          "internationalSAN": {
+                            "type": "string"
+                          },
+                          "invoiceBatchNumber": {
+                            "type": "number"
+                          },
+                          "invoicePrintQty": {
+                            "type": "number"
+                          },
+                          "jobNumberRequired": {
+                            "type": "string"
+                          },
+                          "jobPricing": {
+                            "type": "string"
+                          },
+                          "leadSourceId": {
+                            "type": "string"
+                          },
+                          "legacyId": {
+                            "type": "string"
+                          },
+                          "limitMaxShipmentsPerOrder": {
+                            "type": "number"
+                          },
+                          "minimumFinanceCharge": {
+                            "type": "number"
+                          },
+                          "minimumOrderDollarAmount": {
+                            "type": "number"
+                          },
+                          "objectName": {
+                            "type": "string"
+                          },
+                          "orderAcknowledgments": {
+                            "type": "string"
+                          },
+                          "orderPriorityId": {
+                            "type": "string"
+                          },
+                          "otherExemptionNumber": {
+                            "type": "string"
+                          },
+                          "overrideProfitLimit": {
+                            "type": "string"
+                          },
+                          "overrideRevenueByItem": {
+                            "type": "string"
+                          },
+                          "pickTicketType": {
+                            "type": "string"
+                          },
+                          "poNoRequired": {
+                            "type": "string"
+                          },
+                          "pricingMethod": {
+                            "type": "string"
+                          },
+                          "printLotAttribOnInvoice": {
+                            "type": "string"
+                          },
+                          "printLotAttribOnPacklist": {
+                            "type": "string"
+                          },
+                          "printPackinglistInShipping": {
+                            "type": "string"
+                          },
+                          "printPricesOnPackinglist": {
+                            "type": "string"
+                          },
+                          "promiseDateBuffer": {
+                            "type": "number"
+                          },
+                          "promptForNonJobItem": {
+                            "type": "string"
+                          },
+                          "requirePaymentUponReleaseOfItems": {
+                            "type": "boolean"
+                          },
+                          "salesrepId": {
+                            "type": "string"
+                          },
+                          "securityInfo": {
+                            "type": "string"
+                          },
+                          "sendOutsideUseDocs": {
+                            "type": "string"
+                          },
+                          "sendOutsideUseEmail": {
+                            "type": "string"
+                          },
+                          "sendOutsideUseFax": {
+                            "type": "string"
+                          },
+                          "sendOutsideUsePrint": {
+                            "type": "string"
+                          },
+                          "stateExciseTaxExemptionNo": {
+                            "type": "string"
+                          },
+                          "statementBalance": {
+                            "type": "string"
+                          },
+                          "statementBatchNumber": {
+                            "type": "number"
+                          },
+                          "stateSalesTaxExemptionNo": {
+                            "type": "string"
+                          },
+                          "taxable": {
+                            "type": "string"
+                          },
+                          "termsId": {
+                            "type": "string"
+                          },
+                          "tradingPartnerName": {
+                            "type": "string"
+                          },
+                          "upsHandlingCharge": {
+                            "type": "number"
+                          },
+                          "useAllContracts": {
+                            "type": "string"
+                          },
+                          "userDefinedFields": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "useSystemUPSHandlingCharge": {
+                            "type": "string"
+                          },
+                          "webEnabledFlag": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/epicorProphet21/latest/actions/list-order-lines": {
+      "get": {
+        "operationId": "epicorProphet21.list-order-lines",
+        "summary": "List Order Lines",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/epicorProphet21/latest/actions/list-order-lines"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated field names. Leave empty to return all available fields.",
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated field names. Leave empty to return all available fields.",
+              "default": "product_group_id,extended_price,item_id,oe_line_uid,qty_ordered,unit_price,order_no",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "A Prophet 21 filter expression, such as customer_id eq 123.",
+            "schema": {
+              "type": "string",
+              "description": "A Prophet 21 filter expression, such as customer_id eq 123.",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "extendedPrice": {
+                            "type": "string"
+                          },
+                          "itemId": {
+                            "type": "string"
+                          },
+                          "oeLineUid": {
+                            "type": "number"
+                          },
+                          "orderNo": {
+                            "type": "string"
+                          },
+                          "productGroupId": {
+                            "type": "string"
+                          },
+                          "qtyOrdered": {
+                            "type": "string"
+                          },
+                          "unitPrice": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/epicorProphet21/latest/actions/list-product-groups": {
+      "get": {
+        "operationId": "epicorProphet21.list-product-groups",
+        "summary": "List Product Groups",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/epicorProphet21/latest/actions/list-product-groups"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated field names. Leave empty to return all available fields.",
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated field names. Leave empty to return all available fields.",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "A Prophet 21 filter expression, such as customer_id eq 123.",
+            "schema": {
+              "type": "string",
+              "description": "A Prophet 21 filter expression, such as customer_id eq 123.",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "adminFeeFlag": {
+                            "type": "string"
+                          },
+                          "applyMinMarginRulesFlag": {
+                            "type": "string"
+                          },
+                          "assetAccountNo": {
+                            "type": "string"
+                          },
+                          "companyId": {
+                            "type": "string"
+                          },
+                          "compressorFlag": {
+                            "type": "string"
+                          },
+                          "cosAccountNo": {
+                            "type": "string"
+                          },
+                          "dateCreated": {
+                            "type": "string"
+                          },
+                          "dateLastModified": {
+                            "type": "string"
+                          },
+                          "deleteFlag": {
+                            "type": "string"
+                          },
+                          "enableLineProfitWarning": {
+                            "type": "string"
+                          },
+                          "environmentalFeeFlag": {
+                            "type": "string"
+                          },
+                          "includeInSizeAnalysisFlag": {
+                            "type": "string"
+                          },
+                          "lastMaintainedBy": {
+                            "type": "string"
+                          },
+                          "oeSkipProfitCheckUncosted": {
+                            "type": "string"
+                          },
+                          "oeSkipProfitCheckUnpriced": {
+                            "type": "string"
+                          },
+                          "priceRoundingFlag": {
+                            "type": "string"
+                          },
+                          "productGroupDesc": {
+                            "type": "string"
+                          },
+                          "productGroupId": {
+                            "type": "string"
+                          },
+                          "productGroupUid": {
+                            "type": "number"
+                          },
+                          "revenueAccountNo": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/epicorProphet21/latest/actions/list-quotes": {
+      "get": {
+        "operationId": "epicorProphet21.list-quotes",
+        "summary": "List Quotes",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/epicorProphet21/latest/actions/list-quotes"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated field names. Leave empty to return all available fields.",
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated field names. Leave empty to return all available fields.",
+              "default": "order_no,ship2_name,customer_id,projected_order,date_created,rma_expiration_date,location_id,approved,completed",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "approved": {
+                            "type": "string"
+                          },
+                          "completed": {
+                            "type": "string"
+                          },
+                          "customerId": {
+                            "type": "string"
+                          },
+                          "dateCreated": {
+                            "type": "string"
+                          },
+                          "locationId": {
+                            "type": "string"
+                          },
+                          "orderNo": {
+                            "type": "string"
+                          },
+                          "projectedOrder": {
+                            "type": "string"
+                          },
+                          "rmaExpirationDate": {
+                            "type": "string"
+                          },
+                          "ship2Name": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/epicorProphet21/latest/actions/list-sales-orders": {
+      "get": {
+        "operationId": "epicorProphet21.list-sales-orders",
+        "summary": "List Sales Orders",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/epicorProphet21/latest/actions/list-sales-orders"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated field names. Leave empty to return all available fields.",
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated field names. Leave empty to return all available fields.",
+              "default": "order_no,ship2_name,customer_id,projected_order,date_created,rma_expiration_date,location_id,approved,completed",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "approved": {
+                            "type": "string"
+                          },
+                          "completed": {
+                            "type": "string"
+                          },
+                          "customerId": {
+                            "type": "string"
+                          },
+                          "dateCreated": {
+                            "type": "string"
+                          },
+                          "locationId": {
+                            "type": "string"
+                          },
+                          "orderNo": {
+                            "type": "string"
+                          },
+                          "projectedOrder": {
+                            "type": "string"
+                          },
+                          "rmaExpirationDate": {
+                            "type": "string"
+                          },
+                          "ship2Name": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/epicorProphet21/latest/actions/query-data-view": {
+      "get": {
+        "operationId": "epicorProphet21.query-data-view",
+        "summary": "Query Data View",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/epicorProphet21/latest/actions/query-data-view"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "view",
+            "in": "query",
+            "required": true,
+            "description": "The Prophet 21 data view name, such as p21_view_customer.",
+            "schema": {
+              "type": "string",
+              "description": "The Prophet 21 data view name, such as p21_view_customer."
+            }
+          },
+          {
+            "name": "select",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated field names. Leave empty to return all available fields.",
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated field names. Leave empty to return all available fields.",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "description": "A Prophet 21 filter expression, such as customer_id eq 123.",
+            "schema": {
+              "type": "string",
+              "description": "A Prophet 21 filter expression, such as customer_id eq 123.",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "A MindCloud API key."
+      }
+    }
+  }
+}

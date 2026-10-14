@@ -1,5 +1,7 @@
 # List Collaborators with DatoCMS
 
+Retrieves collaborators from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

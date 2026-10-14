@@ -1,6 +1,6 @@
 # DatoCMS: Update Site Settings
 
-
+Updates site settings in DatoCMS.
 
 ```
 PUT https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/update-site-settings

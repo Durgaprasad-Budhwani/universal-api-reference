@@ -32,3 +32,4 @@ This operation supports [pagination](../README.md#pagination).
 | `externalDataApplicationGuid` | query | `string` | no | — |
 | `externalDataKey` | query | `string` | no | — |
 | `externalDataValues` | query | `string` | no | — |
+| `sort` | query | `string` | no | Applies sorting by the specified field: "?sort=+FieldName" for ascending order, "?sort=-FieldName" for descending order.  Available fields are: Id, ModifiedOn, CreatedOn. |

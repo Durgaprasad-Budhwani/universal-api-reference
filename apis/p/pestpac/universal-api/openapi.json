@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "PestPac Universal API",
-    "version": "0.0.164",
+    "version": "0.0.168",
     "description": "Call PestPac actions through MindCloud's Universal API."
   },
   "servers": [
@@ -5374,7 +5374,7 @@
           {
             "name": "id",
             "in": "query",
-            "required": false,
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -6038,7 +6038,155 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "batchNumber": {
+                            "type": "number"
+                          },
+                          "billToID": {
+                            "type": "number"
+                          },
+                          "branch": {
+                            "type": "string"
+                          },
+                          "branchID": {
+                            "type": "number"
+                          },
+                          "bundleName": {
+                            "type": "string"
+                          },
+                          "daysOfWeek": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "discountCode": {
+                            "type": "string"
+                          },
+                          "duration": {
+                            "type": "number"
+                          },
+                          "earliestDate": {
+                            "type": "string"
+                          },
+                          "earliestTime": {
+                            "type": "string"
+                          },
+                          "earliestTime2": {
+                            "type": "string"
+                          },
+                          "externalIdentifier": {
+                            "type": "string"
+                          },
+                          "inProgress": {
+                            "type": "boolean"
+                          },
+                          "latestDate": {
+                            "type": "string"
+                          },
+                          "latestTime": {
+                            "type": "string"
+                          },
+                          "latestTime2": {
+                            "type": "string"
+                          },
+                          "leadID": {
+                            "type": "number"
+                          },
+                          "locationBundleID": {
+                            "type": "number"
+                          },
+                          "locationID": {
+                            "type": "number"
+                          },
+                          "locationInstructions": {
+                            "type": "string"
+                          },
+                          "locked": {
+                            "type": "boolean"
+                          },
+                          "orderID": {
+                            "type": "number"
+                          },
+                          "orderInstructions": {
+                            "type": "string"
+                          },
+                          "orderNumber": {
+                            "type": "string"
+                          },
+                          "orderType": {
+                            "type": "string"
+                          },
+                          "origin": {
+                            "type": "string"
+                          },
+                          "parentOrderID": {
+                            "type": "number"
+                          },
+                          "pdfUrls": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "posted": {
+                            "type": "boolean"
+                          },
+                          "purchaseOrderNumber": {
+                            "type": "string"
+                          },
+                          "route": {
+                            "type": "string"
+                          },
+                          "serviceCode": {
+                            "type": "string"
+                          },
+                          "serviceInstructions": {
+                            "type": "string"
+                          },
+                          "setupID": {
+                            "type": "number"
+                          },
+                          "subTotal": {
+                            "type": "number"
+                          },
+                          "tax": {
+                            "type": "number"
+                          },
+                          "taxDetails": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "tech1": {
+                            "type": "string"
+                          },
+                          "techID1": {
+                            "type": "number"
+                          },
+                          "technicianComment": {
+                            "type": "string"
+                          },
+                          "timeRange": {
+                            "type": "string"
+                          },
+                          "total": {
+                            "type": "number"
+                          },
+                          "userDefinedFields": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "workDate": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

@@ -1,5 +1,7 @@
 # List Environments with DatoCMS
 
+Retrieves environments from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

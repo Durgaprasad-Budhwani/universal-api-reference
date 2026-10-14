@@ -1,5 +1,7 @@
 # Get Model with DatoCMS
 
+Retrieves a model from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

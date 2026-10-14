@@ -8,3 +8,7 @@ Retrieves invoices from your Stripe account.
 - **Path:** `invoices`
 - **Base URL:** `https://api.stripe.com/v1`
 - **Official documentation:** [List Invoices](https://docs.stripe.com/api/invoices/list)
+
+## Capabilities
+
+This operation supports [pagination](../README.md#pagination).

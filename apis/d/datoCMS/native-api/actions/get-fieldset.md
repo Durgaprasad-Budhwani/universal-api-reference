@@ -1,5 +1,7 @@
 # Get Fieldset with DatoCMS
 
+Retrieves a fieldset from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

@@ -1,6 +1,6 @@
 # Native API documentation by app
 
-The official vendor API documentation for each of the 3224 apps in this repo. Each app name links to our normalized reference for it.
+The official vendor API documentation for each of the 3225 apps in this repo. Each app name links to our normalized reference for it.
 
 - [aamarPay](../apis/a/aamarPay/native-api) - https://aamarpay.readme.io/reference/overview
 - [Abbreviations](../apis/a/abbreviations/native-api) - https://www.abbreviations.com/abbr_api.php
@@ -880,6 +880,7 @@ The official vendor API documentation for each of the 3224 apps in this repo. Ea
 - [Envoy for Visitors](../apis/e/envoyForVisitors/native-api) - https://developers.envoy.com/hub/reference
 - [EODHD](../apis/e/eODHDAPI/native-api) - https://eodhd.com/financial-apis/quick-start-with-our-financial-data-apis/
 - [EONET](../apis/e/eONET/native-api) - https://eonet.gsfc.nasa.gov/docs/v3
+- [Epicor Prophet 21](../apis/e/epicorProphet21/native-api) - https://www.epicor.com/en-us/industry-productivity-solutions/distribution/prophet-21/
 - [Epion](../apis/e/epion/native-api) - https://epion.nl/integraties
 - [Eranol](../apis/e/eranol/native-api) - https://www.eranol.com/documentation
 - [Erase.bg](../apis/e/erasebg/native-api) - https://www.erase.bg/g/api/remove-background

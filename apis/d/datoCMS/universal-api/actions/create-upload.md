@@ -1,6 +1,6 @@
 # DatoCMS: Create Upload
 
-
+Creates a new upload in DatoCMS.
 
 ```
 POST https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/create-upload

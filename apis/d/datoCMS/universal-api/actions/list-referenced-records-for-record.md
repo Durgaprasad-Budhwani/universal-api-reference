@@ -1,6 +1,6 @@
 # DatoCMS: List Referenced Records for Record
 
-
+Retrieves records referenced by a record in DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/list-referenced-records-for-record

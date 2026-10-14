@@ -3,7 +3,7 @@
 ## Endpoint
 
 - **Method:** `GET`
-- **Path:** `/people/{personIdOrDisplayId}`
+- **Path:** `/people/:personIdOrDisplayId`
 - **Base URL:** `https://apis.fleetworthy.com/compliance-api/v1`
 - **Official documentation:** [Get Person](https://developer.fleetworthy.com/api-details#api=prod-compliance-v1&operation=get-people-personidordisplayid)
 

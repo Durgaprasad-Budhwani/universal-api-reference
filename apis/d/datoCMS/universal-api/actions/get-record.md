@@ -1,6 +1,6 @@
 # DatoCMS: Get Record
 
-
+Retrieves a record from DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/get-record

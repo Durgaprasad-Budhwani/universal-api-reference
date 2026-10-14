@@ -29,3 +29,4 @@ This operation supports [pagination](../README.md#pagination).
 | `ids` | query | `string` | no | — |
 | `excludeAccountingChangesFromModifiedDateRange` | query | `boolean` | no | Excludes accounting changes such as balance adjustments from the modified date range. |
 | `externalDataApplicationGuid` | query | `string` | no | Returns customer records with external data for this application GUID. |
+| `sort` | query | `string` | no | Applies sorting by the specified field: "?sort=+FieldName" for ascending order, "?sort=-FieldName" for descending order.  Available fields are: Id, ModifiedOn, CreatedOn. |

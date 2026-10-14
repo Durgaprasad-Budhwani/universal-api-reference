@@ -1,6 +1,6 @@
 # DatoCMS: Create Field
 
-
+Creates a new field in DatoCMS.
 
 ```
 POST https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/create-field

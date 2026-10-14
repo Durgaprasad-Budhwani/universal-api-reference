@@ -135372,7 +135372,7 @@
     "slug": "pestpac",
     "iconUrl": "https://images.mindcloud.co/apps/icons/image-56_1768253248612.png",
     "nativeDocumentationUrl": "https://developer.workwave.com/documentation#pestpac",
-    "version": "0.0.164",
+    "version": "0.0.168",
     "authentication": [
       {
         "type": "custom",
@@ -135459,6 +135459,12 @@
             "parameter": "skip",
             "location": "query"
           }
+        },
+        "retry": {
+          "delayMs": 2000,
+          "maxAttempts": 3,
+          "multiplier": 2,
+          "statusCodes": "429,500,502,503,504"
         },
         "responses": [
           {
@@ -138196,10 +138202,10 @@
           "arguments": [
             {
               "key": "id",
-              "name": "id",
+              "name": "Invoice ID",
               "dataType": "string",
               "location": "param",
-              "required": false
+              "required": true
             }
           ]
         },
@@ -138211,9 +138217,9 @@
         "arguments": [
           {
             "key": "id",
-            "name": "id",
+            "name": "Invoice ID",
             "dataType": "string",
-            "required": false
+            "required": true
           }
         ],
         "responseSchema": []
@@ -138356,7 +138362,236 @@
             "required": false
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "batchNumber",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "billToID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "branch",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "branchID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "bundleName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "daysOfWeek",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "description",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "discountCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "duration",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "earliestDate",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "earliestTime",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "earliestTime2",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "externalIdentifier",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "inProgress",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "latestDate",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "latestTime",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "latestTime2",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "leadID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "locationBundleID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "locationID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "locationInstructions",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "locked",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "orderID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "orderInstructions",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "orderNumber",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "orderType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "origin",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "parentOrderID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "pdfUrls",
+            "dataType": "array",
+            "itemDataType": "string",
+            "mockType": "array"
+          },
+          {
+            "key": "posted",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "purchaseOrderNumber",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "route",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "serviceCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "serviceInstructions",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "setupID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "subTotal",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "tax",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "taxDetails",
+            "dataType": "array",
+            "itemDataType": "object",
+            "mockType": "array"
+          },
+          {
+            "key": "tech1",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "techID1",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "technicianComment",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "timeRange",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "total",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "userDefinedFields",
+            "dataType": "array",
+            "itemDataType": "object",
+            "mockType": "array"
+          },
+          {
+            "key": "workDate",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "List Service Orders by Location ID",

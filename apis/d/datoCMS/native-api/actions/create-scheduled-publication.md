@@ -1,5 +1,7 @@
 # Create Scheduled Publication with DatoCMS
 
+Creates a scheduled publication in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `POST`

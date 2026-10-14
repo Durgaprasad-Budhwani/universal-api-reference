@@ -1,5 +1,7 @@
 # List Build Triggers with DatoCMS
 
+Retrieves build triggers from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

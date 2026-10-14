@@ -1,6 +1,6 @@
 # DatoCMS: List Model Fieldsets
 
-
+Retrieves fieldsets for a model in DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/list-model-fieldsets

@@ -1,6 +1,6 @@
 # DatoCMS: Delete Fieldset
 
-
+Deletes an existing fieldset from DatoCMS.
 
 ```
 DELETE https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/delete-fieldset

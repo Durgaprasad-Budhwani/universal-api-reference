@@ -4,7 +4,7 @@ Manage organization posts, comments, images, and profile data
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/linkedin/latest
 - **Category:** Human Resources / Recruiting
-- **Actions:** 10
+- **Actions:** 11
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor website:** https://www.linkedin.com
 - **Vendor API docs:** https://learn.microsoft.com/en-us/linkedin/
@@ -22,12 +22,13 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/linkedin/latest/actions/g
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
-## Actions (10)
+## Actions (11)
 
 ### Other
 
 | Action | Method | Description |
 | --- | --- | --- |
+| [Finalize Video Upload](actions/finalize-video-upload.md) | PUT | Finalizes a video upload in LinkedIn. |
 | [Get Document](actions/get-document.md) | GET | Retrieves a document from LinkedIn. |
 | [Get Image](actions/get-image.md) | GET | Retrieves an image from LinkedIn. |
 | [Get Video](actions/get-video.md) | GET | Retrieves a video from LinkedIn. |

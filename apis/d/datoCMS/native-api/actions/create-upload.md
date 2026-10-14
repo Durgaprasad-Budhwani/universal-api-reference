@@ -1,5 +1,7 @@
 # Create Upload with DatoCMS
 
+Creates a new upload in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `POST`

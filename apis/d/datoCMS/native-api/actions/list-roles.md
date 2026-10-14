@@ -1,5 +1,7 @@
 # List Roles with DatoCMS
 
+Retrieves roles from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

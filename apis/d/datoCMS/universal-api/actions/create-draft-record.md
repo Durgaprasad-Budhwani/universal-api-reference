@@ -1,6 +1,6 @@
 # DatoCMS: Create Draft Record
 
-
+Creates a new draft record in DatoCMS.
 
 ```
 POST https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/create-draft-record

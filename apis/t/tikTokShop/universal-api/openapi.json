@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "TikTok Shop Universal API",
-    "version": "0.0.155",
+    "version": "0.0.158",
     "description": "Call TikTok Shop actions through MindCloud's Universal API."
   },
   "servers": [
@@ -3258,7 +3258,45 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "paymentId": {
+                            "type": "string"
+                          },
+                          "statementTime": {
+                            "type": "number"
+                          },
+                          "paymentTime": {
+                            "type": "number"
+                          },
+                          "currency": {
+                            "type": "string"
+                          },
+                          "paymentStatus": {
+                            "type": "string"
+                          },
+                          "revenueAmount": {
+                            "type": "string"
+                          },
+                          "netSalesAmount": {
+                            "type": "string"
+                          },
+                          "feeAmount": {
+                            "type": "string"
+                          },
+                          "adjustmentAmount": {
+                            "type": "string"
+                          },
+                          "settlementAmount": {
+                            "type": "string"
+                          },
+                          "shippingCostAmount": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -3493,7 +3531,41 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "createTime": {
+                            "type": "number"
+                          },
+                          "currency": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "payableAmount": {
+                            "type": "string"
+                          },
+                          "totalReserveAmount": {
+                            "type": "string"
+                          },
+                          "totalSettlementAmount": {
+                            "type": "string"
+                          },
+                          "totalSettlementBreakdown": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "transactions": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

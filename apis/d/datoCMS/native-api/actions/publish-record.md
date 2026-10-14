@@ -1,5 +1,7 @@
 # Publish Record with DatoCMS
 
+Publishes a record in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `PUT`

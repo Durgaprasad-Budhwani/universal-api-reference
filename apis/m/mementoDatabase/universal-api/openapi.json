@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Memento Database Universal API",
-    "version": "0.0.8",
+    "version": "0.0.10",
     "description": "Manage Memento libraries and records."
   },
   "servers": [

@@ -1,6 +1,6 @@
 # API specifications
 
-Machine-readable API descriptions for 3224 apps. Universal API specifications are generated from the same action definitions as this reference; Native API links point to specifications published by each provider.
+Machine-readable API descriptions for 3225 apps. Universal API specifications are generated from the same action definitions as this reference; Native API links point to specifications published by each provider.
 
 | App | Universal API | Native API |
 | --- | --- | --- |
@@ -858,6 +858,7 @@ Machine-readable API descriptions for 3224 apps. Universal API specifications ar
 | [Envoy for Visitors](../apis/e/envoyForVisitors) | [OpenAPI 3.1](../apis/e/envoyForVisitors/universal-api/openapi.json) |  |
 | [EODHD](../apis/e/eODHDAPI) | [OpenAPI 3.1](../apis/e/eODHDAPI/universal-api/openapi.json) |  |
 | [EONET](../apis/e/eONET) | [OpenAPI 3.1](../apis/e/eONET/universal-api/openapi.json) |  |
+| [Epicor Prophet 21](../apis/e/epicorProphet21) | [OpenAPI 3.1](../apis/e/epicorProphet21/universal-api/openapi.json) |  |
 | [Epion](../apis/e/epion) | [OpenAPI 3.1](../apis/e/epion/universal-api/openapi.json) |  |
 | [Eranol](../apis/e/eranol) | [OpenAPI 3.1](../apis/e/eranol/universal-api/openapi.json) |  |
 | [Erase.bg](../apis/e/erasebg) | [OpenAPI 3.1](../apis/e/erasebg/universal-api/openapi.json) |  |

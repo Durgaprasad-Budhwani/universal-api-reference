@@ -1,6 +1,6 @@
 # DatoCMS: Duplicate Record
 
-
+Creates a duplicate record in DatoCMS.
 
 ```
 POST https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/duplicate-record

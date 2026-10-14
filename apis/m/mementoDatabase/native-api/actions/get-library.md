@@ -13,4 +13,4 @@ Retrieves a library from Memento Database.
 
 | Parameter | Location | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| `libraryId` | path | `string` | yes | The ID of the library. |
+| `libraryId` | path | `list<string>` | yes | The ID of the library. |

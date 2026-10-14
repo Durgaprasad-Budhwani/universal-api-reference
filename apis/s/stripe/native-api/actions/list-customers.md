@@ -23,7 +23,4 @@ This operation supports [pagination](../README.md#pagination).
 | `created.gte` | query | `number` | no | Minimum creation timestamp (inclusive). |
 | `created.lt` | query | `number` | no | Maximum creation timestamp (exclusive). |
 | `created.lte` | query | `number` | no | Maximum creation timestamp (inclusive). |
-| `limit` | query | `number` | no | Number of customers to return (1-100). |
-| `starting_after` | query | `string` | no | Pagination cursor for next page. |
-| `ending_before` | query | `string` | no | Pagination cursor for previous page. |
 | `test_clock` | query | `string` | no | Filter to customers attached to a test clock. |

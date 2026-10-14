@@ -1,6 +1,6 @@
 # DatoCMS: Create Model
 
-
+Creates a new model in DatoCMS.
 
 ```
 POST https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/create-model

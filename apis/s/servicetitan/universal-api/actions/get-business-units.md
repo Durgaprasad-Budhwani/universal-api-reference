@@ -51,7 +51,91 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native ServiceTitan API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "name": "Ava Chen",
+      "officialName": "Ava Chen",
+      "active": true,
+      "email": "ava@example.com",
+      "phoneNumber": "string",
+      "currency": "string",
+      "address": "string",
+      "invoiceHeader": "string",
+      "invoiceMessage": "string",
+      "defaultTaxRate": 1,
+      "authorizationParagraph": "string",
+      "acknowledgementParagraph": "string",
+      "conceptCode": "string",
+      "division": {
+        "id": 1,
+        "name": "Ava Chen"
+      },
+      "tenant": {
+        "conceptCode": "string",
+        "id": 1,
+        "modifiedOn": "string",
+        "name": "Ava Chen"
+      },
+      "tagTypeIds": [
+        "string"
+      ],
+      "materialSku": {},
+      "quickbooksClass": {},
+      "accountCode": {},
+      "franchiseId": {},
+      "corporateContractNumber": {},
+      "trade": {},
+      "externalData": {},
+      "certifiedSentriconSpecialistCode": {},
+      "createdOn": "string",
+      "modifiedOn": "string"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `id` | number |  |
+| `name` | string |  |
+| `officialName` | string |  |
+| `active` | boolean |  |
+| `email` | string |  |
+| `phoneNumber` | string |  |
+| `currency` | string |  |
+| `address` | string |  |
+| `invoiceHeader` | string |  |
+| `invoiceMessage` | string |  |
+| `defaultTaxRate` | number |  |
+| `authorizationParagraph` | string |  |
+| `acknowledgementParagraph` | string |  |
+| `conceptCode` | string |  |
+| `division` | object |  |
+| `tenant` | object |  |
+| `tagTypeIds` | array |  |
+| `materialSku` | object |  |
+| `quickbooksClass` | object |  |
+| `accountCode` | object |  |
+| `franchiseId` | object |  |
+| `corporateContractNumber` | object |  |
+| `trade` | object |  |
+| `externalData` | object |  |
+| `certifiedSentriconSpecialistCode` | object |  |
+| `createdOn` | string |  |
+| `modifiedOn` | string |  |
+| `division.id` | number |  |
+| `division.name` | string |  |
+| `tenant.conceptCode` | string |  |
+| `tenant.id` | number |  |
+| `tenant.modifiedOn` | string |  |
+| `tenant.name` | string |  |
 
 ## Native endpoint
 

@@ -1,5 +1,7 @@
 # Get Upload with DatoCMS
 
+Retrieves an upload from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

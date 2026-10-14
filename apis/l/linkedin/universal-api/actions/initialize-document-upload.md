@@ -16,6 +16,7 @@ curl -X POST "https://connect.mindcloud.co/v1/universal/linkedin/latest/actions/
   -H "Content-Type: application/json" \
   -d '{
   "connectionId": "$CONNECTION_ID",
+  "initializeUploadRequest": {},
   "initializeUploadRequest.owner": "urn:li:person:vdyhqnicOV"
 }'
 ```
@@ -29,6 +30,7 @@ const response = await fetch('https://connect.mindcloud.co/v1/universal/linkedin
   },
   body: JSON.stringify({
     connectionId,
+    "initializeUploadRequest": {},
     "initializeUploadRequest.owner": "urn:li:person:vdyhqnicOV"
   })
 });
@@ -42,6 +44,7 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
+| `initializeUploadRequest` | object | yes |  |
 | `initializeUploadRequest.owner` | string | yes | Owner URN for the member initializing the upload. Example: `urn:li:person:vdyhqnicOV`. |
 
 ## Response

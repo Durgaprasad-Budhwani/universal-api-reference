@@ -1,6 +1,6 @@
 # DatoCMS: List Models
 
-
+Retrieves models from DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/list-models

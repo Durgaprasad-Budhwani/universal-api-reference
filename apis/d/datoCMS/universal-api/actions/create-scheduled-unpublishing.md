@@ -1,6 +1,6 @@
 # DatoCMS: Create Scheduled Unpublishing
 
-
+Creates a scheduled unpublishing in DatoCMS.
 
 ```
 POST https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/create-scheduled-unpublishing

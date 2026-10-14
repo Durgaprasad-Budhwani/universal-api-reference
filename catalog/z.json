@@ -98643,7 +98643,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/zoho-crm_1782741849165.png",
     "websiteUrl": "https://www.zoho.com/crm/",
     "nativeDocumentationUrl": "https://www.zoho.com/crm/developer/docs/api/v8/",
-    "version": "0.0.25",
+    "version": "0.0.26",
     "authentication": [
       {
         "type": "oAuth2",

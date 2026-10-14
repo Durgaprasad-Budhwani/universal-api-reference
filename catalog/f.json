@@ -1963,12 +1963,12 @@
     "websiteUrl": "https://www.facebook.com/business",
     "nativeBaseUrl": "https://www.facebook.com",
     "nativeDocumentationUrl": "https://developers.facebook.com/docs/",
-    "version": "0.0.21",
+    "version": "0.0.22",
     "authentication": [
       {
         "type": "oAuth2",
         "name": "OAuth 2.0",
-        "scopes": "pages_read_user_content read_insights pages_read_engagement ads_read pages_show_list business_management",
+        "scopes": "pages_read_user_content read_insights pages_read_engagement ads_read pages_show_list business_management pages_manage_posts publish_video instagram_basic instagram_content_publish",
         "documentationUrl": "https://developers.facebook.com/documentation/facebook-login/guides/access-tokens",
         "oauth": {
           "authorizeUrl": "https://www.facebook.com/v24.0/dialog/oauth",
@@ -2128,6 +2128,599 @@
           }
         ],
         "responseSchema": []
+      },
+      {
+        "name": "Create Instagram Carousel Container",
+        "slug": "create-instagram-carousel-container",
+        "operation": "create",
+        "method": "POST",
+        "group": "Instagram Media Container",
+        "documentationUrl": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media",
+        "native": {
+          "method": "POST",
+          "path": "https://graph.facebook.com/v26.0/:instagramAccountId/media",
+          "baseUrl": "https://graph.facebook.com/v25.0",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "instagramAccountId",
+              "name": "Instagram Account ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "Professional Instagram account ID linked to your Facebook Page. Use Get Page with instagram_business_account to discover it."
+            },
+            {
+              "key": "children",
+              "name": "Children",
+              "dataType": "string",
+              "location": "query",
+              "required": true,
+              "description": "Up to 10 image/video container IDs in display order. Create children first; Reels are not supported.",
+              "multipleValues": {
+                "format": "string",
+                "delimiter": ","
+              }
+            },
+            {
+              "key": "caption",
+              "name": "Caption",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "maxLength": 2200
+            },
+            {
+              "key": "location_id",
+              "internalKey": "locationId",
+              "name": "Location ID",
+              "dataType": "string",
+              "location": "query",
+              "required": false
+            },
+            {
+              "key": "is_ai_generated",
+              "internalKey": "isAiGenerated",
+              "name": "Is AI Generated",
+              "dataType": "boolean",
+              "location": "query",
+              "required": false
+            },
+            {
+              "key": "is_paid_partnership",
+              "internalKey": "isPaidPartnership",
+              "name": "Is Paid Partnership",
+              "dataType": "boolean",
+              "location": "query",
+              "required": false
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "instagramAccountId",
+            "name": "Instagram Account ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Professional Instagram account ID linked to your Facebook Page. Use Get Page with instagram_business_account to discover it."
+          },
+          {
+            "key": "children",
+            "name": "Children",
+            "dataType": "string",
+            "required": true,
+            "description": "Up to 10 image/video container IDs in display order. Create children first; Reels are not supported.",
+            "multipleValues": {
+              "format": "string",
+              "delimiter": ","
+            }
+          },
+          {
+            "key": "caption",
+            "name": "Caption",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "locationId",
+            "name": "Location ID",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "isAiGenerated",
+            "name": "Is AI Generated",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "isPaidPartnership",
+            "name": "Is Paid Partnership",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Create Instagram Image Container",
+        "slug": "create-instagram-image-container",
+        "operation": "create",
+        "method": "POST",
+        "group": "Instagram Media Container",
+        "documentationUrl": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media",
+        "native": {
+          "method": "POST",
+          "path": "https://graph.facebook.com/v26.0/:instagramAccountId/media",
+          "baseUrl": "https://graph.facebook.com/v25.0",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "instagramAccountId",
+              "name": "Instagram Account ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "Professional Instagram account ID linked to your Facebook Page. Use Get Page with instagram_business_account to discover it."
+            },
+            {
+              "key": "image_url",
+              "internalKey": "imageUrl",
+              "name": "Image URL",
+              "dataType": "string",
+              "location": "query",
+              "required": true,
+              "description": "Public JPEG URL. Maximum 8 MB; aspect ratio 4:5 to 1.91:1."
+            },
+            {
+              "key": "caption",
+              "name": "Caption",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Caption with hashtags and mentions. Omit for carousel children.",
+              "maxLength": 2200
+            },
+            {
+              "key": "alt_text",
+              "internalKey": "altText",
+              "name": "Alt Text",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "maxLength": 1000
+            },
+            {
+              "key": "is_carousel_item",
+              "internalKey": "isCarouselItem",
+              "name": "Is Carousel Item",
+              "dataType": "boolean",
+              "location": "query",
+              "required": false
+            },
+            {
+              "key": "is_ai_generated",
+              "internalKey": "isAiGenerated",
+              "name": "Is AI Generated",
+              "dataType": "boolean",
+              "location": "query",
+              "required": false,
+              "description": "Do not set on carousel children; set on the carousel parent."
+            },
+            {
+              "key": "location_id",
+              "internalKey": "locationId",
+              "name": "Location ID",
+              "dataType": "string",
+              "location": "query",
+              "required": false
+            },
+            {
+              "key": "is_paid_partnership",
+              "internalKey": "isPaidPartnership",
+              "name": "Is Paid Partnership",
+              "dataType": "boolean",
+              "location": "query",
+              "required": false
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "instagramAccountId",
+            "name": "Instagram Account ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Professional Instagram account ID linked to your Facebook Page. Use Get Page with instagram_business_account to discover it."
+          },
+          {
+            "key": "imageUrl",
+            "name": "Image URL",
+            "dataType": "string",
+            "required": true,
+            "description": "Public JPEG URL. Maximum 8 MB; aspect ratio 4:5 to 1.91:1."
+          },
+          {
+            "key": "caption",
+            "name": "Caption",
+            "dataType": "string",
+            "required": false,
+            "description": "Caption with hashtags and mentions. Omit for carousel children."
+          },
+          {
+            "key": "altText",
+            "name": "Alt Text",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "isCarouselItem",
+            "name": "Is Carousel Item",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "isAiGenerated",
+            "name": "Is AI Generated",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true,
+            "description": "Do not set on carousel children; set on the carousel parent."
+          },
+          {
+            "key": "locationId",
+            "name": "Location ID",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "isPaidPartnership",
+            "name": "Is Paid Partnership",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Create Instagram Image Story Container",
+        "slug": "create-instagram-image-story-container",
+        "operation": "create",
+        "method": "POST",
+        "group": "Instagram Media Container",
+        "documentationUrl": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media",
+        "native": {
+          "method": "POST",
+          "path": "https://graph.facebook.com/v26.0/:instagramAccountId/media",
+          "baseUrl": "https://graph.facebook.com/v25.0",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "instagramAccountId",
+              "name": "Instagram Account ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "Professional Instagram account ID linked to your Facebook Page. Use Get Page with instagram_business_account to discover it."
+            },
+            {
+              "key": "image_url",
+              "internalKey": "imageUrl",
+              "name": "Image URL",
+              "dataType": "string",
+              "location": "query",
+              "required": true,
+              "description": "Public JPEG URL for an image Story; supply image URL or video URL."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "instagramAccountId",
+            "name": "Instagram Account ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Professional Instagram account ID linked to your Facebook Page. Use Get Page with instagram_business_account to discover it."
+          },
+          {
+            "key": "imageUrl",
+            "name": "Image URL",
+            "dataType": "string",
+            "required": true,
+            "description": "Public JPEG URL for an image Story; supply image URL or video URL."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Create Instagram Resumable Reel Container",
+        "slug": "create-instagram-resumable-reel-container",
+        "operation": "create",
+        "method": "POST",
+        "group": "Instagram Media Container",
+        "documentationUrl": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media",
+        "native": {
+          "method": "POST",
+          "path": "https://graph.facebook.com/v26.0/:instagramAccountId/media",
+          "baseUrl": "https://graph.facebook.com/v25.0",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "instagramAccountId",
+              "name": "Instagram Account ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true
+            },
+            {
+              "key": "caption",
+              "name": "Caption",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "maxLength": 2200
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "instagramAccountId",
+            "name": "Instagram Account ID",
+            "dataType": "string",
+            "required": true
+          },
+          {
+            "key": "caption",
+            "name": "Caption",
+            "dataType": "string",
+            "required": false
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "uri",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Get Instagram Container Status",
+        "slug": "get-instagram-container-status",
+        "operation": "read",
+        "method": "GET",
+        "group": "Instagram Media Container",
+        "documentationUrl": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-container",
+        "native": {
+          "method": "GET",
+          "path": "https://graph.facebook.com/v26.0/:containerId",
+          "baseUrl": "https://graph.facebook.com/v25.0",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "containerId",
+              "name": "Container ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true
+            },
+            {
+              "key": "fields",
+              "name": "Fields",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "query",
+              "required": false,
+              "enumValues": [
+                "copyright_check_status",
+                "id",
+                "status",
+                "status_code"
+              ],
+              "multipleValues": {
+                "format": "string",
+                "delimiter": ","
+              }
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "containerId",
+            "name": "Container ID",
+            "dataType": "string",
+            "required": true
+          },
+          {
+            "key": "fields",
+            "name": "Fields",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "defaultValue": "id,status_code,status",
+            "enumValues": [
+              "copyright_check_status",
+              "id",
+              "status",
+              "status_code"
+            ],
+            "multipleValues": {
+              "format": "string",
+              "delimiter": ","
+            }
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "status",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "statusCode",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Get Instagram Publishing Limit",
+        "slug": "get-instagram-publishing-limit",
+        "operation": "read",
+        "method": "GET",
+        "group": "Instagram Publishing Quota",
+        "documentationUrl": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/content_publishing_limit",
+        "native": {
+          "method": "GET",
+          "path": "https://graph.facebook.com/v26.0/:instagramAccountId/content_publishing_limit",
+          "baseUrl": "https://graph.facebook.com/v25.0",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "instagramAccountId",
+              "name": "Instagram Account ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "Professional Instagram account ID linked to your Facebook Page. Use Get Page with instagram_business_account to discover it."
+            },
+            {
+              "key": "fields",
+              "name": "Fields",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "query",
+              "required": false,
+              "enumValues": [
+                "config",
+                "quota_usage"
+              ],
+              "multipleValues": {
+                "format": "string",
+                "delimiter": ","
+              }
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "instagramAccountId",
+            "name": "Instagram Account ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Professional Instagram account ID linked to your Facebook Page. Use Get Page with instagram_business_account to discover it."
+          },
+          {
+            "key": "fields",
+            "name": "Fields",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "defaultValue": "quota_usage,config",
+            "enumValues": [
+              "config",
+              "quota_usage"
+            ],
+            "multipleValues": {
+              "format": "string",
+              "delimiter": ","
+            }
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "config",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "config.quotaDuration",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "config.quotaTotal",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "quotaUsage",
+            "dataType": "number",
+            "mockType": "number"
+          }
+        ]
       },
       {
         "name": "Get Owned Pages",
@@ -2642,6 +3235,136 @@
             "itemDataType": "string",
             "description": "Tasks the connected user can perform on the Page.",
             "mockType": "array"
+          }
+        ]
+      },
+      {
+        "name": "Publish Instagram Media",
+        "slug": "publish-instagram-media",
+        "operation": "create",
+        "method": "POST",
+        "group": "Instagram Media",
+        "documentationUrl": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media_publish",
+        "native": {
+          "method": "POST",
+          "path": "https://graph.facebook.com/v26.0/:instagramAccountId/media_publish",
+          "baseUrl": "https://graph.facebook.com/v25.0",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "instagramAccountId",
+              "name": "Instagram Account ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "Professional Instagram account ID linked to your Facebook Page. Use Get Page with instagram_business_account to discover it."
+            },
+            {
+              "key": "creation_id",
+              "internalKey": "creationId",
+              "name": "Creation ID",
+              "dataType": "string",
+              "location": "query",
+              "required": true,
+              "description": "Container ID to publish. For video, check that container status is FINISHED first."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "instagramAccountId",
+            "name": "Instagram Account ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Professional Instagram account ID linked to your Facebook Page. Use Get Page with instagram_business_account to discover it."
+          },
+          {
+            "key": "creationId",
+            "name": "Creation ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Container ID to publish. For video, check that container status is FINISHED first."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Upload Instagram Container Video",
+        "slug": "upload-instagram-container-video",
+        "operation": "create",
+        "method": "POST",
+        "group": "Instagram Media Container",
+        "documentationUrl": "https://developers.facebook.com/documentation/instagram-platform/instagram-graph-api/reference/ig-user/media",
+        "native": {
+          "method": "POST",
+          "path": "https://rupload.facebook.com/ig-api-upload/v26.0/:containerId",
+          "baseUrl": "https://graph.facebook.com/v25.0",
+          "apiName": "REST",
+          "apiType": "rest",
+          "headers": [
+            {
+              "name": "Content-Type",
+              "value": "application/octet-stream"
+            }
+          ],
+          "arguments": [
+            {
+              "key": "containerId",
+              "name": "Container ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true
+            },
+            {
+              "key": "video",
+              "name": "Video",
+              "dataType": "file",
+              "location": "body",
+              "required": true
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "containerId",
+            "name": "Container ID",
+            "dataType": "string",
+            "required": true
+          },
+          {
+            "key": "video",
+            "name": "Video",
+            "dataType": "file",
+            "required": true
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "message",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "success",
+            "dataType": "boolean",
+            "mockType": "boolean"
           }
         ]
       }
@@ -158038,7 +158761,7 @@
     "websiteUrl": "https://www.fleetworthy.com",
     "nativeBaseUrl": "https://www.fleetworthy.com",
     "nativeDocumentationUrl": "https://developer.fleetworthy.com/api-details",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "authentication": [
       {
         "type": "custom",
@@ -159074,7 +159797,7 @@
         "documentationUrl": "https://developer.fleetworthy.com/api-details#api=prod-compliance-v1&operation=get-people-personidordisplayid",
         "native": {
           "method": "GET",
-          "path": "/people/{personIdOrDisplayId}",
+          "path": "/people/:personIdOrDisplayId",
           "baseUrl": "https://apis.fleetworthy.com/compliance-api/v1",
           "apiType": "rest",
           "arguments": [

@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "ServiceTitan Universal API",
-    "version": "0.0.369",
+    "version": "0.0.374",
     "description": "ServiceTitan is a cloud-based software platform for home and commercial service businesses that manages customers, jobs, scheduling, dispatching, invoicing, payments, and other field service operations."
   },
   "servers": [
@@ -6158,7 +6158,123 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "officialName": {
+                            "type": "string"
+                          },
+                          "active": {
+                            "type": "boolean"
+                          },
+                          "email": {
+                            "type": "string"
+                          },
+                          "phoneNumber": {
+                            "type": "string"
+                          },
+                          "currency": {
+                            "type": "string"
+                          },
+                          "address": {
+                            "type": "string"
+                          },
+                          "invoiceHeader": {
+                            "type": "string"
+                          },
+                          "invoiceMessage": {
+                            "type": "string"
+                          },
+                          "defaultTaxRate": {
+                            "type": "number"
+                          },
+                          "authorizationParagraph": {
+                            "type": "string"
+                          },
+                          "acknowledgementParagraph": {
+                            "type": "string"
+                          },
+                          "conceptCode": {
+                            "type": "string"
+                          },
+                          "division": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "name": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "tenant": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "conceptCode": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "number"
+                              },
+                              "modifiedOn": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "tagTypeIds": {
+                            "type": "array",
+                            "items": {}
+                          },
+                          "materialSku": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "quickbooksClass": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "accountCode": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "franchiseId": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "corporateContractNumber": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "trade": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "externalData": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "certifiedSentriconSpecialistCode": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "createdOn": {
+                            "type": "string"
+                          },
+                          "modifiedOn": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -7060,6 +7176,16 @@
             "required": false,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "Applies sorting by the specified field:\n\"?sort=+FieldName\" for ascending order,\n\"?sort=-FieldName\" for descending order.\n\nAvailable fields are: Id, ModifiedOn, CreatedOn.",
+            "schema": {
+              "type": "string",
+              "description": "Applies sorting by the specified field:\n\"?sort=+FieldName\" for ascending order,\n\"?sort=-FieldName\" for descending order.\n\nAvailable fields are: Id, ModifiedOn, CreatedOn."
             }
           },
           {
@@ -20905,7 +21031,141 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "appointmentCount": {
+                            "type": "number"
+                          },
+                          "bookingId": {
+                            "type": "number"
+                          },
+                          "businessUnitId": {
+                            "type": "number"
+                          },
+                          "campaignId": {
+                            "type": "number"
+                          },
+                          "completedOn": {
+                            "type": "string"
+                          },
+                          "createdById": {
+                            "type": "number"
+                          },
+                          "createdFromEstimateId": {
+                            "type": "number"
+                          },
+                          "createdOn": {
+                            "type": "string"
+                          },
+                          "customerId": {
+                            "type": "number"
+                          },
+                          "customerPo": {
+                            "type": "string"
+                          },
+                          "customFields": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "equipmentIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            }
+                          },
+                          "estimateIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            }
+                          },
+                          "externalData": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "firstAppointmentId": {
+                            "type": "number"
+                          },
+                          "id": {
+                            "type": "number"
+                          },
+                          "invoiceId": {
+                            "type": "number"
+                          },
+                          "isAutoDispatched": {
+                            "type": "boolean"
+                          },
+                          "jobGeneratedLeadSource": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "jobNumber": {
+                            "type": "string"
+                          },
+                          "jobStatus": {
+                            "type": "string"
+                          },
+                          "jobTypeId": {
+                            "type": "number"
+                          },
+                          "lastAppointmentId": {
+                            "type": "number"
+                          },
+                          "leadCallId": {
+                            "type": "number"
+                          },
+                          "locationId": {
+                            "type": "number"
+                          },
+                          "membershipId": {
+                            "type": "number"
+                          },
+                          "modifiedOn": {
+                            "type": "string"
+                          },
+                          "noCharge": {
+                            "type": "boolean"
+                          },
+                          "notificationsEnabled": {
+                            "type": "boolean"
+                          },
+                          "partnerLeadCallId": {
+                            "type": "number"
+                          },
+                          "priority": {
+                            "type": "string"
+                          },
+                          "projectId": {
+                            "type": "number"
+                          },
+                          "recallForId": {
+                            "type": "number"
+                          },
+                          "soldById": {
+                            "type": "number"
+                          },
+                          "summary": {
+                            "type": "string"
+                          },
+                          "summaryOfWork": {
+                            "type": "string"
+                          },
+                          "tagTypeIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            }
+                          },
+                          "total": {
+                            "type": "number"
+                          },
+                          "warrantyId": {
+                            "type": "number"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -23087,6 +23347,16 @@
             "schema": {
               "type": "string",
               "description": "Returns customer records with external data for this application GUID."
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "Applies sorting by the specified field:\n\"?sort=+FieldName\" for ascending order,\n\"?sort=-FieldName\" for descending order.\n\nAvailable fields are: Id, ModifiedOn, CreatedOn.",
+            "schema": {
+              "type": "string",
+              "description": "Applies sorting by the specified field:\n\"?sort=+FieldName\" for ascending order,\n\"?sort=-FieldName\" for descending order.\n\nAvailable fields are: Id, ModifiedOn, CreatedOn."
             }
           },
           {

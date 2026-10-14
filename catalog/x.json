@@ -12,7 +12,7 @@
       "format": "openapi",
       "url": "https://api.x.com/2/openapi.json"
     },
-    "version": "0.0.4",
+    "version": "0.0.5",
     "authentication": [
       {
         "type": "oAuth2",
@@ -20,7 +20,7 @@
         "description": "OAuth 2.0 user-context authentication for X API",
         "notes": "Use OAuth 2.0 Authorization Code with PKCE for user-context requests. X implements refresh token rotation. App-only bearer tokens are not valid for posting user Tweets/Posts. Store the new refresh token on every refresh.",
         "notesVariant": "info",
-        "scopes": "tweet.read tweet.write users.read offline.access",
+        "scopes": "tweet.read tweet.write users.read like.write offline.access media.write",
         "documentationUrl": "https://docs.x.com/fundamentals/authentication/oauth-2-0/authorization-code",
         "oauth": {
           "authorizeUrl": "https://x.com/i/oauth2/authorize",
@@ -29,7 +29,8 @@
           "refreshTokens": true,
           "refreshTokenUrl": "https://api.x.com/2/oauth2/token",
           "refreshTokenMethod": "POST",
-          "pkce": true
+          "pkce": true,
+          "pkceChallengeMethod": "other"
         }
       }
     ],
@@ -37,6 +38,20 @@
       {
         "type": "rest",
         "baseUrl": "https://api.x.com",
+        "pagination": {
+          "limit": {
+            "parameter": "max_results",
+            "location": "query",
+            "default": "10",
+            "minimum": "10",
+            "maximum": "100"
+          },
+          "offset": {
+            "type": "cursor",
+            "parameter": "pagination_token",
+            "location": "query"
+          }
+        },
         "responses": [
           {
             "parser": "auto"
@@ -45,6 +60,82 @@
       }
     ],
     "actions": [
+      {
+        "name": "Append Media Upload",
+        "slug": "append-media-upload",
+        "operation": "update",
+        "method": "PUT",
+        "group": "Media",
+        "documentationUrl": "https://docs.x.com/x-api/media/append-media-upload",
+        "native": {
+          "method": "POST",
+          "path": "/2/media/upload/:id/append",
+          "baseUrl": "https://api.x.com",
+          "apiType": "rest",
+          "headers": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "arguments": [
+            {
+              "key": "id",
+              "name": "Media ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "Media ID returned by Initialize Media Upload."
+            },
+            {
+              "key": "media",
+              "name": "Media",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Base64-encoded chunk contents for JSON upload."
+            },
+            {
+              "key": "segment_index",
+              "internalKey": "segmentIndex",
+              "name": "Segment Index",
+              "dataType": "number",
+              "location": "body",
+              "required": true,
+              "description": "Zero-based chunk index, 0–9999."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "id",
+            "name": "Media ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Media ID returned by Initialize Media Upload."
+          },
+          {
+            "key": "media",
+            "name": "Media",
+            "dataType": "string",
+            "required": true,
+            "description": "Base64-encoded chunk contents for JSON upload."
+          },
+          {
+            "key": "segmentIndex",
+            "name": "Segment Index",
+            "dataType": "number",
+            "required": true,
+            "description": "Zero-based chunk index, 0–9999."
+          }
+        ],
+        "responseSchema": []
+      },
       {
         "name": "Create Post",
         "slug": "create-post",
@@ -70,17 +161,327 @@
               "dataType": "string",
               "location": "body",
               "required": false,
-              "description": "The text of your post (up to 280 characters).",
+              "description": "Text of the post. Required unless media is supplied; leave empty for a media-only post.",
               "maxLength": 280
             },
             {
+              "key": "media",
+              "name": "Media",
+              "dataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
               "key": "media.media_ids[]",
+              "internalKey": "media.mediaIds[]",
               "name": "Media IDs",
               "dataType": "array",
               "itemDataType": "string",
               "location": "body",
               "required": false,
-              "description": "Array of media IDs (from the Upload Media action) to attach to the post. Max 4 images or 1 video/GIF."
+              "description": "Uploaded media IDs. Required when Media is provided. Up to four images, one GIF, or one video."
+            },
+            {
+              "key": "media.tagged_user_ids[]",
+              "internalKey": "media.taggedUserIds[]",
+              "name": "Tagged User IDs",
+              "dataType": "array",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Up to ten user IDs to tag."
+            },
+            {
+              "key": "media.title",
+              "name": "Title",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "media.description",
+              "name": "Description",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "media.preview_media_id",
+              "internalKey": "media.previewMediaId",
+              "name": "Preview Media ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Uploaded media used as the preview image."
+            },
+            {
+              "key": "media.embeddable",
+              "name": "Embeddable",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "media.call_to_actions",
+              "internalKey": "media.callToActions",
+              "name": "Call to Actions",
+              "dataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "Call-to-action buttons on attached media."
+            },
+            {
+              "key": "media.call_to_actions.visit_site",
+              "internalKey": "media.callToActions.visitSite",
+              "name": "Visit Site",
+              "dataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "Visit Site call to action."
+            },
+            {
+              "key": "media.call_to_actions.visit_site.url",
+              "internalKey": "media.callToActions.visitSite.url",
+              "name": "URL",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "HTTPS destination URL. Required when Visit Site is supplied."
+            },
+            {
+              "key": "media.call_to_actions.watch_now",
+              "internalKey": "media.callToActions.watchNow",
+              "name": "Watch Now",
+              "dataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "Watch Now call to action."
+            },
+            {
+              "key": "media.call_to_actions.watch_now.url",
+              "internalKey": "media.callToActions.watchNow.url",
+              "name": "URL",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "HTTPS destination URL. Required when Watch Now is supplied."
+            },
+            {
+              "key": "media.call_to_actions.app_install",
+              "internalKey": "media.callToActions.appInstall",
+              "name": "App Install",
+              "dataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "Provide at least one store ID."
+            },
+            {
+              "key": "media.call_to_actions.app_install.app_store_id",
+              "internalKey": "media.callToActions.appInstall.appStoreId",
+              "name": "App Store ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Apple App Store iPhone app ID."
+            },
+            {
+              "key": "media.call_to_actions.app_install.ipad_app_store_id",
+              "internalKey": "media.callToActions.appInstall.ipadAppStoreId",
+              "name": "iPad App Store ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Apple App Store iPad app ID."
+            },
+            {
+              "key": "media.call_to_actions.app_install.play_store_id",
+              "internalKey": "media.callToActions.appInstall.playStoreId",
+              "name": "Play Store ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Google Play Store app ID."
+            },
+            {
+              "key": "reply",
+              "name": "Reply",
+              "dataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "reply.in_reply_to_tweet_id",
+              "internalKey": "reply.inReplyToTweetId",
+              "name": "In Reply to Post ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Post to reply to. Required when Reply is supplied."
+            },
+            {
+              "key": "reply.exclude_reply_user_ids[]",
+              "internalKey": "reply.excludeReplyUserIds[]",
+              "name": "Exclude Reply User IDs",
+              "dataType": "array",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Users to exclude from the reply thread."
+            },
+            {
+              "key": "poll",
+              "name": "Poll",
+              "dataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "poll.options[]",
+              "name": "Options",
+              "dataType": "array",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Two to four choices, each 1–25 characters. Required when Poll is supplied."
+            },
+            {
+              "key": "poll.duration_minutes",
+              "internalKey": "poll.durationMinutes",
+              "name": "Duration Minutes",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Poll duration, 5–10080 minutes. Required when Poll is supplied."
+            },
+            {
+              "key": "community_id",
+              "internalKey": "communityId",
+              "name": "Community ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Community where the post is created."
+            },
+            {
+              "key": "reply_settings",
+              "internalKey": "replySettings",
+              "name": "Reply Settings",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Who can reply.",
+              "enumValues": [
+                "following",
+                "mentionedUsers",
+                "subscribers",
+                "verified"
+              ]
+            },
+            {
+              "key": "made_with_ai",
+              "internalKey": "madeWithAi",
+              "name": "Made With AI",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false,
+              "description": "Disclose AI-generated media."
+            },
+            {
+              "key": "paid_partnership",
+              "internalKey": "paidPartnership",
+              "name": "Paid Partnership",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false,
+              "description": "Disclose a paid partnership."
+            },
+            {
+              "key": "quote_tweet_id",
+              "internalKey": "quoteTweetId",
+              "name": "Quote Post ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Post to quote. Requires X Enterprise API access."
+            },
+            {
+              "key": "edit_options",
+              "internalKey": "editOptions",
+              "name": "Edit Options",
+              "dataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "Edit an existing post instead of creating a new one."
+            },
+            {
+              "key": "edit_options.previous_post_id",
+              "internalKey": "editOptions.previousPostId",
+              "name": "Previous Post ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Post being edited. Required when Edit Options is supplied."
+            },
+            {
+              "key": "geo",
+              "name": "Geo",
+              "dataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "geo.place_id",
+              "internalKey": "geo.placeId",
+              "name": "Place ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Place for geo tagging; account must permit geolocation."
+            },
+            {
+              "key": "for_super_followers_only",
+              "internalKey": "forSuperFollowersOnly",
+              "name": "Super Followers Only",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false,
+              "description": "Restrict the post to subscribers."
+            },
+            {
+              "key": "share_with_followers",
+              "internalKey": "shareWithFollowers",
+              "name": "Share With Followers",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false,
+              "description": "Share an exclusive post with all followers."
+            },
+            {
+              "key": "card_uri",
+              "internalKey": "cardUri",
+              "name": "Card URI",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Card URI parameter."
+            },
+            {
+              "key": "direct_message_deep_link",
+              "internalKey": "directMessageDeepLink",
+              "name": "Direct Message Deep Link",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Direct message deep link."
+            },
+            {
+              "key": "nullcast",
+              "name": "Nullcast",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false,
+              "description": "Do not display this post in the public timeline."
             }
           ]
         },
@@ -95,15 +496,366 @@
             "name": "Text",
             "dataType": "string",
             "required": false,
-            "description": "The text of your post (up to 280 characters)."
+            "description": "Text of the post. Required unless media is supplied; leave empty for a media-only post."
           },
           {
-            "key": "media.media_ids[]",
+            "key": "media",
+            "name": "Media",
+            "dataType": "object",
+            "required": false
+          },
+          {
+            "key": "media.mediaIds[]",
             "name": "Media IDs",
             "dataType": "array",
             "itemDataType": "string",
             "required": false,
-            "description": "Array of media IDs (from the Upload Media action) to attach to the post. Max 4 images or 1 video/GIF."
+            "description": "Uploaded media IDs. Required when Media is provided. Up to four images, one GIF, or one video."
+          },
+          {
+            "key": "media.taggedUserIds[]",
+            "name": "Tagged User IDs",
+            "dataType": "array",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Up to ten user IDs to tag."
+          },
+          {
+            "key": "media.title",
+            "name": "Title",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "media.description",
+            "name": "Description",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "media.previewMediaId",
+            "name": "Preview Media ID",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Uploaded media used as the preview image."
+          },
+          {
+            "key": "media.embeddable",
+            "name": "Embeddable",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "media.callToActions",
+            "name": "Call to Actions",
+            "dataType": "object",
+            "required": false,
+            "advanced": true,
+            "description": "Call-to-action buttons on attached media."
+          },
+          {
+            "key": "media.callToActions.visitSite",
+            "name": "Visit Site",
+            "dataType": "object",
+            "required": false,
+            "advanced": true,
+            "description": "Visit Site call to action."
+          },
+          {
+            "key": "media.callToActions.visitSite.url",
+            "name": "URL",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "HTTPS destination URL. Required when Visit Site is supplied."
+          },
+          {
+            "key": "media.callToActions.watchNow",
+            "name": "Watch Now",
+            "dataType": "object",
+            "required": false,
+            "advanced": true,
+            "description": "Watch Now call to action."
+          },
+          {
+            "key": "media.callToActions.watchNow.url",
+            "name": "URL",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "HTTPS destination URL. Required when Watch Now is supplied."
+          },
+          {
+            "key": "media.callToActions.appInstall",
+            "name": "App Install",
+            "dataType": "object",
+            "required": false,
+            "advanced": true,
+            "description": "Provide at least one store ID."
+          },
+          {
+            "key": "media.callToActions.appInstall.appStoreId",
+            "name": "App Store ID",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Apple App Store iPhone app ID."
+          },
+          {
+            "key": "media.callToActions.appInstall.ipadAppStoreId",
+            "name": "iPad App Store ID",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Apple App Store iPad app ID."
+          },
+          {
+            "key": "media.callToActions.appInstall.playStoreId",
+            "name": "Play Store ID",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Google Play Store app ID."
+          },
+          {
+            "key": "reply",
+            "name": "Reply",
+            "dataType": "object",
+            "required": false
+          },
+          {
+            "key": "reply.inReplyToTweetId",
+            "name": "In Reply to Post ID",
+            "dataType": "string",
+            "required": false,
+            "description": "Post to reply to. Required when Reply is supplied."
+          },
+          {
+            "key": "reply.excludeReplyUserIds[]",
+            "name": "Exclude Reply User IDs",
+            "dataType": "array",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Users to exclude from the reply thread."
+          },
+          {
+            "key": "poll",
+            "name": "Poll",
+            "dataType": "object",
+            "required": false
+          },
+          {
+            "key": "poll.options[]",
+            "name": "Options",
+            "dataType": "array",
+            "itemDataType": "string",
+            "required": false,
+            "description": "Two to four choices, each 1–25 characters. Required when Poll is supplied."
+          },
+          {
+            "key": "poll.durationMinutes",
+            "name": "Duration Minutes",
+            "dataType": "number",
+            "required": false,
+            "description": "Poll duration, 5–10080 minutes. Required when Poll is supplied."
+          },
+          {
+            "key": "communityId",
+            "name": "Community ID",
+            "dataType": "string",
+            "required": false,
+            "description": "Community where the post is created."
+          },
+          {
+            "key": "replySettings",
+            "name": "Reply Settings",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Who can reply.",
+            "enumValues": [
+              "following",
+              "mentionedUsers",
+              "subscribers",
+              "verified"
+            ]
+          },
+          {
+            "key": "madeWithAi",
+            "name": "Made With AI",
+            "dataType": "boolean",
+            "required": false,
+            "description": "Disclose AI-generated media."
+          },
+          {
+            "key": "paidPartnership",
+            "name": "Paid Partnership",
+            "dataType": "boolean",
+            "required": false,
+            "description": "Disclose a paid partnership."
+          },
+          {
+            "key": "quoteTweetId",
+            "name": "Quote Post ID",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Post to quote. Requires X Enterprise API access."
+          },
+          {
+            "key": "editOptions",
+            "name": "Edit Options",
+            "dataType": "object",
+            "required": false,
+            "advanced": true,
+            "description": "Edit an existing post instead of creating a new one."
+          },
+          {
+            "key": "editOptions.previousPostId",
+            "name": "Previous Post ID",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Post being edited. Required when Edit Options is supplied."
+          },
+          {
+            "key": "geo",
+            "name": "Geo",
+            "dataType": "object",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "geo.placeId",
+            "name": "Place ID",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Place for geo tagging; account must permit geolocation."
+          },
+          {
+            "key": "forSuperFollowersOnly",
+            "name": "Super Followers Only",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true,
+            "description": "Restrict the post to subscribers."
+          },
+          {
+            "key": "shareWithFollowers",
+            "name": "Share With Followers",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true,
+            "description": "Share an exclusive post with all followers."
+          },
+          {
+            "key": "cardUri",
+            "name": "Card URI",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Card URI parameter."
+          },
+          {
+            "key": "directMessageDeepLink",
+            "name": "Direct Message Deep Link",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Direct message deep link."
+          },
+          {
+            "key": "nullcast",
+            "name": "Nullcast",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true,
+            "description": "Do not display this post in the public timeline."
+          }
+        ],
+        "responseSchema": []
+      },
+      {
+        "name": "Finalize Media Upload",
+        "slug": "finalize-media-upload",
+        "operation": "update",
+        "method": "PUT",
+        "group": "Media",
+        "documentationUrl": "https://docs.x.com/x-api/media/finalize-media-upload",
+        "native": {
+          "method": "POST",
+          "path": "/2/media/upload/:id/finalize",
+          "baseUrl": "https://api.x.com",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "id",
+              "name": "Media ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "Media ID returned by Initialize Media Upload."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "id",
+            "name": "Media ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Media ID returned by Initialize Media Upload."
+          }
+        ],
+        "responseSchema": []
+      },
+      {
+        "name": "Get Media Upload Status",
+        "slug": "get-media-upload-status",
+        "operation": "read",
+        "method": "GET",
+        "group": "Media",
+        "documentationUrl": "https://docs.x.com/x-api/media/get-media-upload-status",
+        "native": {
+          "method": "GET",
+          "path": "/2/media/upload",
+          "baseUrl": "https://api.x.com",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "media_id",
+              "internalKey": "mediaId",
+              "name": "Media ID",
+              "dataType": "string",
+              "location": "query",
+              "required": true
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "mediaId",
+            "name": "Media ID",
+            "dataType": "string",
+            "required": true
           }
         ],
         "responseSchema": []
@@ -127,6 +879,281 @@
           "sorting": false
         },
         "arguments": [],
+        "responseSchema": []
+      },
+      {
+        "name": "Initialize Media Upload",
+        "slug": "initialize-media-upload",
+        "operation": "create",
+        "method": "POST",
+        "group": "Media",
+        "documentationUrl": "https://docs.x.com/x-api/media/initialize-media-upload",
+        "native": {
+          "method": "POST",
+          "path": "/2/media/upload/initialize",
+          "baseUrl": "https://api.x.com",
+          "apiType": "rest",
+          "headers": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "arguments": [
+            {
+              "key": "total_bytes",
+              "internalKey": "totalBytes",
+              "name": "Total Bytes",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Exact total file size in bytes; maximum 17179869184, subject to account limits."
+            },
+            {
+              "key": "media_type",
+              "internalKey": "mediaType",
+              "name": "Media Type",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "MIME type of the uploaded file.",
+              "enumValues": [
+                "image/bmp",
+                "image/gif",
+                "image/jpeg",
+                "image/pjpeg",
+                "image/png",
+                "image/tiff",
+                "image/webp",
+                "model/gltf-binary",
+                "model/vnd.usdz+zip",
+                "text/srt",
+                "text/vtt",
+                "video/mp2t",
+                "video/mp4",
+                "video/quicktime",
+                "video/webm"
+              ]
+            },
+            {
+              "key": "media_category",
+              "internalKey": "mediaCategory",
+              "name": "Media Category",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Use tweet_video for a regular video post.",
+              "enumValues": [
+                "amplify_video",
+                "dm_gif",
+                "dm_image",
+                "dm_video",
+                "subtitles",
+                "tweet_gif",
+                "tweet_image",
+                "tweet_video"
+              ]
+            },
+            {
+              "key": "additional_owners[]",
+              "internalKey": "additionalOwners[]",
+              "name": "Additional Owners",
+              "dataType": "array",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "User IDs granted access to the uploaded media."
+            },
+            {
+              "key": "shared",
+              "name": "Shared",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false,
+              "description": "Whether this media is shared."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "totalBytes",
+            "name": "Total Bytes",
+            "dataType": "number",
+            "required": false,
+            "description": "Exact total file size in bytes; maximum 17179869184, subject to account limits."
+          },
+          {
+            "key": "mediaType",
+            "name": "Media Type",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "description": "MIME type of the uploaded file.",
+            "enumValues": [
+              "image/bmp",
+              "image/gif",
+              "image/jpeg",
+              "image/pjpeg",
+              "image/png",
+              "image/tiff",
+              "image/webp",
+              "model/gltf-binary",
+              "model/vnd.usdz+zip",
+              "text/srt",
+              "text/vtt",
+              "video/mp2t",
+              "video/mp4",
+              "video/quicktime",
+              "video/webm"
+            ]
+          },
+          {
+            "key": "mediaCategory",
+            "name": "Media Category",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "description": "Use tweet_video for a regular video post.",
+            "enumValues": [
+              "amplify_video",
+              "dm_gif",
+              "dm_image",
+              "dm_video",
+              "subtitles",
+              "tweet_gif",
+              "tweet_image",
+              "tweet_video"
+            ]
+          },
+          {
+            "key": "additionalOwners[]",
+            "name": "Additional Owners",
+            "dataType": "array",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "User IDs granted access to the uploaded media."
+          },
+          {
+            "key": "shared",
+            "name": "Shared",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true,
+            "description": "Whether this media is shared."
+          }
+        ],
+        "responseSchema": []
+      },
+      {
+        "name": "Upload Media",
+        "slug": "upload-media",
+        "operation": "create",
+        "method": "POST",
+        "group": "Media",
+        "documentationUrl": "https://docs.x.com/x-api/media/upload-media",
+        "native": {
+          "method": "POST",
+          "path": "/2/media/upload",
+          "baseUrl": "https://api.x.com",
+          "apiType": "rest",
+          "headers": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "arguments": [
+            {
+              "key": "media",
+              "name": "Media",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Base64-encoded file contents for the JSON upload request."
+            },
+            {
+              "key": "media_category",
+              "internalKey": "mediaCategory",
+              "name": "Media Category",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true,
+              "enumValues": [
+                "dm_gif",
+                "dm_image",
+                "dm_video",
+                "subtitles",
+                "tweet_gif",
+                "tweet_image",
+                "tweet_video"
+              ]
+            },
+            {
+              "key": "additional_owners",
+              "internalKey": "additionalOwners",
+              "name": "Additional Owners",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "User IDs that can use this media, sent as a comma-separated list.",
+              "multipleValues": {
+                "format": "string",
+                "delimiter": ","
+              }
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "media",
+            "name": "Media",
+            "dataType": "string",
+            "required": true,
+            "description": "Base64-encoded file contents for the JSON upload request."
+          },
+          {
+            "key": "mediaCategory",
+            "name": "Media Category",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true,
+            "enumValues": [
+              "dm_gif",
+              "dm_image",
+              "dm_video",
+              "subtitles",
+              "tweet_gif",
+              "tweet_image",
+              "tweet_video"
+            ]
+          },
+          {
+            "key": "additionalOwners",
+            "name": "Additional Owners",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "User IDs that can use this media, sent as a comma-separated list.",
+            "multipleValues": {
+              "format": "string",
+              "delimiter": ","
+            }
+          }
+        ],
         "responseSchema": []
       }
     ],

@@ -1,6 +1,6 @@
 # DatoCMS: Delete Record
 
-
+Deletes an existing record from DatoCMS.
 
 ```
 DELETE https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/delete-record

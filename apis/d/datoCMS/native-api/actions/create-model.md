@@ -1,5 +1,7 @@
 # Create Model with DatoCMS
 
+Creates a new model in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `POST`

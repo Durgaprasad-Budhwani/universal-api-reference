@@ -189691,6 +189691,1710 @@
     "universalOpenApiPath": "apis/e/eONET/universal-api/openapi.json"
   },
   {
+    "name": "Epicor Prophet 21",
+    "slug": "epicorProphet21",
+    "category": "ERP",
+    "categoryGroup": "Commerce",
+    "description": "Connect to Epicor Prophet 21 to read customers, contacts, addresses, sales orders, quotes, order lines, and product groups.",
+    "iconUrl": "https://images.mindcloud.co/apps/icons/epicor-prophet21_1791908894393.png",
+    "websiteUrl": "https://www.epicor.com/en-us/industry-productivity-solutions/distribution/prophet-21/",
+    "version": "0.0.2",
+    "authentication": [
+      {
+        "type": "custom",
+        "name": "Prophet 21 username and password",
+        "description": "Sign in to your Prophet 21 API using the same API URL, username, and password as the existing Epicor integration.",
+        "credentials": [
+          {
+            "key": "apiUrl",
+            "name": "API URL",
+            "dataType": "string",
+            "required": true,
+            "description": "The API base URL used by your existing Epicor integration."
+          },
+          {
+            "key": "username",
+            "name": "Username",
+            "dataType": "string",
+            "required": true
+          },
+          {
+            "key": "password",
+            "name": "Password",
+            "dataType": "string",
+            "required": true
+          }
+        ],
+        "setupGuide": {
+          "title": "Connect to Prophet 21",
+          "beforeYouBegin": "Use the API URL, username, and password configured for your existing Epicor integration.",
+          "steps": [
+            {
+              "title": "Enter your API URL",
+              "description": "Enter the existing integration’s apiUrl value in API URL."
+            },
+            {
+              "title": "Enter your login",
+              "description": "Enter the existing integration’s username and password in Username and Password, then connect."
+            }
+          ]
+        },
+        "requestHeaders": [
+          {
+            "name": "Authorization",
+            "template": "Bearer <custom.accessToken>"
+          },
+          {
+            "name": "password",
+            "template": "<password>"
+          },
+          {
+            "name": "username",
+            "template": "<username>"
+          }
+        ]
+      }
+    ],
+    "nativeApis": [
+      {
+        "type": "rest",
+        "baseUrl": "{{credentials.apiUrl}}",
+        "responses": [
+          {
+            "parser": "auto"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "name": "Get Authentication Token",
+        "slug": "get-authentication-token",
+        "operation": "read",
+        "method": "GET",
+        "native": {
+          "method": "POST",
+          "path": "/api/security/token/",
+          "baseUrl": "{{credentials.apiUrl}}",
+          "apiType": "rest"
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [],
+        "responseSchema": [
+          {
+            "key": "accessToken",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "expiresIn",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "refreshToken",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "scope",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "sessionId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "tokenType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "userName",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Addresses",
+        "slug": "list-addresses",
+        "operation": "read",
+        "method": "GET",
+        "model": "address",
+        "native": {
+          "method": "GET",
+          "path": "/data/erp/views/v1/p21_view_address",
+          "baseUrl": "{{credentials.apiUrl}}",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "$select",
+              "internalKey": "select",
+              "name": "Fields",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Comma-separated field names. Leave empty to return all available fields."
+            },
+            {
+              "key": "$filter",
+              "internalKey": "filter",
+              "name": "Filter",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "A Prophet 21 filter expression, such as customer_id eq 123."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "select",
+            "name": "Fields",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Comma-separated field names. Leave empty to return all available fields.",
+            "defaultValue": "id,name,mail_address1,mail_city,mail_state,mail_postal_code,mail_country,phys_address1,phys_city,phys_state,phys_postal_code,phys_country,central_phone_number,central_fax_number"
+          },
+          {
+            "key": "filter",
+            "name": "Filter",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "A Prophet 21 filter expression, such as customer_id eq 123."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "centralFaxNumber",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "centralPhoneNumber",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mailAddress1",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mailCity",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mailCountry",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mailPostalCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mailState",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "physAddress1",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "physCity",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "physCountry",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "physPostalCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "physState",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Contacts",
+        "slug": "list-contacts",
+        "operation": "read",
+        "method": "GET",
+        "model": "contact",
+        "native": {
+          "method": "GET",
+          "path": "/data/erp/views/v1/p21_view_contacts",
+          "baseUrl": "{{credentials.apiUrl}}",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "$select",
+              "internalKey": "select",
+              "name": "Fields",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Comma-separated field names. Leave empty to return all available fields."
+            },
+            {
+              "key": "$filter",
+              "internalKey": "filter",
+              "name": "Filter",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "A Prophet 21 filter expression, such as customer_id eq 123."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "select",
+            "name": "Fields",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Comma-separated field names. Leave empty to return all available fields.",
+            "defaultValue": "id,address_id,address_name,first_name,last_name,email_address,home_email_address,email_address2,direct_phone"
+          },
+          {
+            "key": "filter",
+            "name": "Filter",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "A Prophet 21 filter expression, such as customer_id eq 123."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "addressId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "addressName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "directPhone",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "emailAddress",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "emailAddress2",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "firstName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastName",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Customers",
+        "slug": "list-customers",
+        "operation": "read",
+        "method": "GET",
+        "model": "customer",
+        "native": {
+          "method": "GET",
+          "path": "/data/erp/views/v1/p21_view_customer",
+          "baseUrl": "{{credentials.apiUrl}}",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "$select",
+              "internalKey": "select",
+              "name": "Fields",
+              "dataType": "string",
+              "location": "query",
+              "required": false
+            },
+            {
+              "key": "$filter",
+              "internalKey": "filter",
+              "name": "Filter",
+              "dataType": "string",
+              "location": "query",
+              "required": false
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "select",
+            "name": "Fields",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "defaultValue": "customer_id,salesrep_id,customer_name"
+          },
+          {
+            "key": "filter",
+            "name": "Filter",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "defaultValue": "delete_flag eq 'N'"
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "customerId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "customerName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "salesrepId",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Entity Addresses",
+        "slug": "list-entity-addresses",
+        "operation": "read",
+        "method": "GET",
+        "model": "address",
+        "native": {
+          "method": "GET",
+          "path": "/api/entity/addresses",
+          "baseUrl": "{{credentials.apiUrl}}",
+          "apiType": "rest"
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [],
+        "responseSchema": [
+          {
+            "key": "addressId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "alternative1099Name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "centralFaxNumber",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "centralPhoneNumber",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "corpAddressId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "emailAddress",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "incorporated",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mailAddress1",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mailAddress2",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mailAddress3",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mailCity",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mailCountry",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mailPostalCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mailState",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "nameControl",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "objectName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "physAddress1",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "physAddress2",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "physAddress3",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "physCity",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "physCountry",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "physCounty",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "physPostalCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "physState",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "url",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "userDefinedFields",
+            "dataType": "object",
+            "mockType": "object"
+          }
+        ]
+      },
+      {
+        "name": "List Entity Contacts",
+        "slug": "list-entity-contacts",
+        "operation": "read",
+        "method": "GET",
+        "model": "contact",
+        "native": {
+          "method": "GET",
+          "path": "/api/entity/contacts",
+          "baseUrl": "{{credentials.apiUrl}}",
+          "apiType": "rest"
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [],
+        "responseSchema": [
+          {
+            "key": "addressId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "beeper",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cellular",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cellularExt",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "class1id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "class2id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "class3id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "class4id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "class5id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "comments",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "deleteFlag",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "directFax",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "directPhone",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "emailAddress",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "faxExt",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "firstName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "homeAddress1",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "homeAddress2",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "homeEmailAddress",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "homeFax",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "homePhone",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "loginId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mailstop",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mi",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "noOfCycleDays",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "objectName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "phoneExt",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "salutation",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "title",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "url",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "userDefinedFields",
+            "dataType": "object",
+            "mockType": "object"
+          }
+        ]
+      },
+      {
+        "name": "List Entity Customers",
+        "slug": "list-entity-customers",
+        "operation": "read",
+        "method": "GET",
+        "model": "customer",
+        "native": {
+          "method": "GET",
+          "path": "/api/entity/customers",
+          "baseUrl": "{{credentials.apiUrl}}",
+          "apiType": "rest"
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [],
+        "responseSchema": [
+          {
+            "key": "allowExceedJobQty",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "allowNonJobItem",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "alwaysUseJobPrice",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "billToContactId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "class1id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "class2id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "class3id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "class4id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "class5id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "codRequiredFlag",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "companyId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "corporateCreditLimit",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "corporateCreditLimitAvailable",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "creditLimit",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "creditLimitAvailable",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "creditLimitCheckAtShipment",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "creditLimitPerOrder",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "creditLimitUsed",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "creditStatus",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "currencyId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "customerId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "customerName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "customerType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "dateAcctOpened",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "defaultDisposition",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "delete",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "excludeCanceldFromPackList",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "excludeCanceldFromPickTix",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "fcCycle",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "fcGraceDays",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "fcPercentage",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "federalExemptionNumber",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "freightChargeId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "generateCustomerStatements",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "generateFinanceCharges",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "inclNonAllocOnListText",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "inclNonAllocOnTixText",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "interchgReceiverId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "internationalSAN",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "invoiceBatchNumber",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "invoicePrintQty",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "jobNumberRequired",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "jobPricing",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "leadSourceId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "legacyId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "limitMaxShipmentsPerOrder",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "minimumFinanceCharge",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "minimumOrderDollarAmount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "objectName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "orderAcknowledgments",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "orderPriorityId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "otherExemptionNumber",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "overrideProfitLimit",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "overrideRevenueByItem",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "pickTicketType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "poNoRequired",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "pricingMethod",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "printLotAttribOnInvoice",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "printLotAttribOnPacklist",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "printPackinglistInShipping",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "printPricesOnPackinglist",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "promiseDateBuffer",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "promptForNonJobItem",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "requirePaymentUponReleaseOfItems",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "salesrepId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "securityInfo",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "sendOutsideUseDocs",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "sendOutsideUseEmail",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "sendOutsideUseFax",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "sendOutsideUsePrint",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "stateExciseTaxExemptionNo",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "statementBalance",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "statementBatchNumber",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "stateSalesTaxExemptionNo",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "taxable",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "termsId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "tradingPartnerName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "upsHandlingCharge",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "useAllContracts",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "userDefinedFields",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "useSystemUPSHandlingCharge",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "webEnabledFlag",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Order Lines",
+        "slug": "list-order-lines",
+        "operation": "read",
+        "method": "GET",
+        "model": "orderLine",
+        "native": {
+          "method": "GET",
+          "path": "/data/erp/views/v1/p21_view_oe_line",
+          "baseUrl": "{{credentials.apiUrl}}",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "$select",
+              "internalKey": "select",
+              "name": "Fields",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Comma-separated field names. Leave empty to return all available fields."
+            },
+            {
+              "key": "$filter",
+              "internalKey": "filter",
+              "name": "Filter",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "A Prophet 21 filter expression, such as customer_id eq 123."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "select",
+            "name": "Fields",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Comma-separated field names. Leave empty to return all available fields.",
+            "defaultValue": "product_group_id,extended_price,item_id,oe_line_uid,qty_ordered,unit_price,order_no"
+          },
+          {
+            "key": "filter",
+            "name": "Filter",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "A Prophet 21 filter expression, such as customer_id eq 123."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "extendedPrice",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "itemId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oeLineUid",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "orderNo",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "productGroupId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "qtyOrdered",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "unitPrice",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Product Groups",
+        "slug": "list-product-groups",
+        "operation": "read",
+        "method": "GET",
+        "native": {
+          "method": "GET",
+          "path": "/data/erp/views/v1/p21_view_product_group",
+          "baseUrl": "{{credentials.apiUrl}}",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "$select",
+              "internalKey": "select",
+              "name": "Fields",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Comma-separated field names. Leave empty to return all available fields."
+            },
+            {
+              "key": "$filter",
+              "internalKey": "filter",
+              "name": "Filter",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "A Prophet 21 filter expression, such as customer_id eq 123."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "select",
+            "name": "Fields",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Comma-separated field names. Leave empty to return all available fields."
+          },
+          {
+            "key": "filter",
+            "name": "Filter",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "A Prophet 21 filter expression, such as customer_id eq 123."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "adminFeeFlag",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "applyMinMarginRulesFlag",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "assetAccountNo",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "companyId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "compressorFlag",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cosAccountNo",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "dateCreated",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "dateLastModified",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "deleteFlag",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "enableLineProfitWarning",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "environmentalFeeFlag",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "includeInSizeAnalysisFlag",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastMaintainedBy",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oeSkipProfitCheckUncosted",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oeSkipProfitCheckUnpriced",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "priceRoundingFlag",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "productGroupDesc",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "productGroupId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "productGroupUid",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "revenueAccountNo",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Quotes",
+        "slug": "list-quotes",
+        "operation": "read",
+        "method": "GET",
+        "model": "quote",
+        "native": {
+          "method": "GET",
+          "path": "/data/erp/views/v1/p21_view_oe_hdr",
+          "baseUrl": "{{credentials.apiUrl}}",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "$select",
+              "internalKey": "select",
+              "name": "Fields",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Comma-separated field names. Leave empty to return all available fields."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "select",
+            "name": "Fields",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Comma-separated field names. Leave empty to return all available fields.",
+            "defaultValue": "order_no,ship2_name,customer_id,projected_order,date_created,rma_expiration_date,location_id,approved,completed"
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "approved",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "completed",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "customerId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "dateCreated",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "locationId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "orderNo",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "projectedOrder",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "rmaExpirationDate",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "ship2Name",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Sales Orders",
+        "slug": "list-sales-orders",
+        "operation": "read",
+        "method": "GET",
+        "model": "order",
+        "native": {
+          "method": "GET",
+          "path": "/data/erp/views/v1/p21_view_oe_hdr",
+          "baseUrl": "{{credentials.apiUrl}}",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "$select",
+              "internalKey": "select",
+              "name": "Fields",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Comma-separated field names. Leave empty to return all available fields."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "select",
+            "name": "Fields",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Comma-separated field names. Leave empty to return all available fields.",
+            "defaultValue": "order_no,ship2_name,customer_id,projected_order,date_created,rma_expiration_date,location_id,approved,completed"
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "approved",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "completed",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "customerId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "dateCreated",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "locationId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "orderNo",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "projectedOrder",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "rmaExpirationDate",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "ship2Name",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Query Data View",
+        "slug": "query-data-view",
+        "operation": "read",
+        "method": "GET",
+        "native": {
+          "method": "GET",
+          "path": "/data/erp/views/v1/{{view}}",
+          "baseUrl": "{{credentials.apiUrl}}",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "view",
+              "name": "View",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "The Prophet 21 data view name, such as p21_view_customer."
+            },
+            {
+              "key": "$select",
+              "internalKey": "select",
+              "name": "Fields",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Comma-separated field names. Leave empty to return all available fields."
+            },
+            {
+              "key": "$filter",
+              "internalKey": "filter",
+              "name": "Filter",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "A Prophet 21 filter expression, such as customer_id eq 123."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "schemaDynamic": true,
+        "arguments": [
+          {
+            "key": "view",
+            "name": "View",
+            "dataType": "string",
+            "required": true,
+            "description": "The Prophet 21 data view name, such as p21_view_customer."
+          },
+          {
+            "key": "select",
+            "name": "Fields",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Comma-separated field names. Leave empty to return all available fields."
+          },
+          {
+            "key": "filter",
+            "name": "Filter",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "A Prophet 21 filter expression, such as customer_id eq 123."
+          }
+        ],
+        "responseSchema": []
+      }
+    ],
+    "universalOpenApiPath": "apis/e/epicorProphet21/universal-api/openapi.json"
+  },
+  {
     "name": "Epion",
     "slug": "epion",
     "category": "Observability",

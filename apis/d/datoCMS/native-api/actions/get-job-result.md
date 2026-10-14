@@ -1,5 +1,7 @@
 # Get Job Result with DatoCMS
 
+Retrieves a job result from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

@@ -230048,7 +230048,7 @@
     "description": "ServiceTitan is a cloud-based software platform for home and commercial service businesses that manages customers, jobs, scheduling, dispatching, invoicing, payments, and other field service operations.",
     "iconUrl": "https://images.mindcloud.co/apps/icons/service-titan_1777386591371.png",
     "nativeDocumentationUrl": "https://developer.servicetitan.io/api-details/#api=tenant-crm-v2",
-    "version": "0.0.369",
+    "version": "0.0.374",
     "authentication": [
       {
         "type": "custom",
@@ -233974,7 +233974,173 @@
             "required": false
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "id",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "officialName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "active",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "email",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "phoneNumber",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "currency",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "address",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "invoiceHeader",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "invoiceMessage",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "defaultTaxRate",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "authorizationParagraph",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "acknowledgementParagraph",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "conceptCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "division",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "tenant",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "tagTypeIds",
+            "dataType": "array",
+            "mockType": "array"
+          },
+          {
+            "key": "materialSku",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "quickbooksClass",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "accountCode",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "franchiseId",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "corporateContractNumber",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "trade",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "externalData",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "certifiedSentriconSpecialistCode",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "createdOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "modifiedOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "division.id",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "division.name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "tenant.conceptCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "tenant.id",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "tenant.modifiedOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "tenant.name",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "Get Campaigns",
@@ -234225,6 +234391,14 @@
               "dataType": "string",
               "location": "query",
               "required": false
+            },
+            {
+              "key": "sort",
+              "name": "Sort",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Applies sorting by the specified field:\n\"?sort=+FieldName\" for ascending order,\n\"?sort=-FieldName\" for descending order.\n\nAvailable fields are: Id, ModifiedOn, CreatedOn."
             }
           ]
         },
@@ -234342,6 +234516,13 @@
             "name": "externalDataValues",
             "dataType": "string",
             "required": false
+          },
+          {
+            "key": "sort",
+            "name": "Sort",
+            "dataType": "string",
+            "required": false,
+            "description": "Applies sorting by the specified field:\n\"?sort=+FieldName\" for ascending order,\n\"?sort=-FieldName\" for descending order.\n\nAvailable fields are: Id, ModifiedOn, CreatedOn."
           }
         ],
         "responseSchema": []
@@ -242487,7 +242668,207 @@
             "required": false
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "appointmentCount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "bookingId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "businessUnitId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "campaignId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "completedOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "createdById",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "createdFromEstimateId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "createdOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "customerId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "customerPo",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "customFields",
+            "dataType": "array",
+            "itemDataType": "object",
+            "mockType": "array"
+          },
+          {
+            "key": "equipmentIds",
+            "dataType": "array",
+            "itemDataType": "number",
+            "mockType": "array"
+          },
+          {
+            "key": "estimateIds",
+            "dataType": "array",
+            "itemDataType": "number",
+            "mockType": "array"
+          },
+          {
+            "key": "externalData",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "firstAppointmentId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "id",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "invoiceId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "isAutoDispatched",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "jobGeneratedLeadSource",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "jobNumber",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "jobStatus",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "jobTypeId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "lastAppointmentId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "leadCallId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "locationId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "membershipId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "modifiedOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "noCharge",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "notificationsEnabled",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "partnerLeadCallId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "priority",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "projectId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "recallForId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "soldById",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "summary",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "summaryOfWork",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "tagTypeIds",
+            "dataType": "array",
+            "itemDataType": "number",
+            "mockType": "array"
+          },
+          {
+            "key": "total",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "warrantyId",
+            "dataType": "number",
+            "mockType": "number"
+          }
+        ]
       },
       {
         "name": "List Activities",
@@ -243651,6 +244032,14 @@
               "location": "query",
               "required": false,
               "description": "Returns customer records with external data for this application GUID."
+            },
+            {
+              "key": "sort",
+              "name": "Sort",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Applies sorting by the specified field:\n\"?sort=+FieldName\" for ascending order,\n\"?sort=-FieldName\" for descending order.\n\nAvailable fields are: Id, ModifiedOn, CreatedOn."
             }
           ]
         },
@@ -243745,6 +244134,13 @@
             "dataType": "string",
             "required": false,
             "description": "Returns customer records with external data for this application GUID."
+          },
+          {
+            "key": "sort",
+            "name": "Sort",
+            "dataType": "string",
+            "required": false,
+            "description": "Applies sorting by the specified field:\n\"?sort=+FieldName\" for ascending order,\n\"?sort=-FieldName\" for descending order.\n\nAvailable fields are: Id, ModifiedOn, CreatedOn."
           }
         ],
         "responseSchema": []
@@ -465272,7 +465668,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/image-2824-vectorized_1777321878663.png",
     "websiteUrl": "https://slack.com/",
     "nativeDocumentationUrl": "https://docs.slack.dev/reference/methods/",
-    "version": "0.3.41",
+    "version": "0.3.42",
     "authentication": [
       {
         "type": "oAuth2",
@@ -469874,6 +470270,15 @@
               "location": "query",
               "required": false,
               "description": "Filter files by type",
+              "enumValues": [
+                "canvas",
+                "gdocs",
+                "images",
+                "pdfs",
+                "snippets",
+                "spaces",
+                "zips"
+              ],
               "multipleValues": {
                 "format": "array"
               }
@@ -469936,6 +470341,15 @@
             "required": false,
             "advanced": true,
             "description": "Filter files by type",
+            "enumValues": [
+              "canvas",
+              "gdocs",
+              "images",
+              "pdfs",
+              "snippets",
+              "spaces",
+              "zips"
+            ],
             "multipleValues": {
               "format": "array"
             }
@@ -801759,7 +802173,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/stripe-1776710109471_1777995197269.png",
     "websiteUrl": "https://stripe.com",
     "nativeDocumentationUrl": "https://docs.stripe.com/api",
-    "version": "0.0.60",
+    "version": "0.0.62",
     "authentication": [
       {
         "type": "basic",
@@ -806193,32 +806607,6 @@
               "description": "Maximum creation timestamp (inclusive)."
             },
             {
-              "key": "limit",
-              "name": "Limit",
-              "dataType": "number",
-              "location": "query",
-              "required": false,
-              "description": "Number of customers to return (1-100)."
-            },
-            {
-              "key": "starting_after",
-              "internalKey": "startingAfter",
-              "name": "Starting After",
-              "dataType": "string",
-              "location": "query",
-              "required": false,
-              "description": "Pagination cursor for next page."
-            },
-            {
-              "key": "ending_before",
-              "internalKey": "endingBefore",
-              "name": "Ending Before",
-              "dataType": "string",
-              "location": "query",
-              "required": false,
-              "description": "Pagination cursor for previous page."
-            },
-            {
               "key": "test_clock",
               "internalKey": "testClock",
               "name": "Test Clock",
@@ -806286,33 +806674,6 @@
             "advanced": true,
             "description": "Maximum creation timestamp (inclusive).",
             "example": "1706745600"
-          },
-          {
-            "key": "limit",
-            "name": "Limit",
-            "dataType": "number",
-            "required": false,
-            "advanced": true,
-            "description": "Number of customers to return (1-100).",
-            "example": "100"
-          },
-          {
-            "key": "startingAfter",
-            "name": "Starting After",
-            "dataType": "string",
-            "required": false,
-            "advanced": true,
-            "description": "Pagination cursor for next page.",
-            "example": "cus_123"
-          },
-          {
-            "key": "endingBefore",
-            "name": "Ending Before",
-            "dataType": "string",
-            "required": false,
-            "advanced": true,
-            "description": "Pagination cursor for previous page.",
-            "example": "cus_123"
           },
           {
             "key": "testClock",
@@ -806680,7 +807041,7 @@
           "apiType": "rest"
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },
@@ -914189,7 +914550,7 @@
     "websiteUrl": "https://swoogo.events/",
     "nativeBaseUrl": "https://www.swoogo.com",
     "nativeDocumentationUrl": "https://swoogo.readme.io/reference",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "authentication": [
       {
         "type": "custom",

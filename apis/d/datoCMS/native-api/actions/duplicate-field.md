@@ -1,5 +1,7 @@
 # Duplicate Field with DatoCMS
 
+Creates a duplicate field in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `POST`

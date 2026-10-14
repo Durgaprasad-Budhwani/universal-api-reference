@@ -1,5 +1,7 @@
 # Delete Field with DatoCMS
 
+Deletes an existing field from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `DELETE`

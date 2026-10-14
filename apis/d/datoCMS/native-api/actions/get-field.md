@@ -1,5 +1,7 @@
 # Get Field with DatoCMS
 
+Retrieves a field from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

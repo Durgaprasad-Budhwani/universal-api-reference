@@ -1,5 +1,7 @@
 # List Referenced Records for Upload with DatoCMS
 
+Retrieves records referencing an upload in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

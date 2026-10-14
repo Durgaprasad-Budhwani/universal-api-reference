@@ -1,6 +1,6 @@
 # DatoCMS: Update Upload
 
-
+Updates an existing upload in DatoCMS.
 
 ```
 PUT https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/update-upload

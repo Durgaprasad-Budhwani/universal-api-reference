@@ -1,5 +1,7 @@
 # List Deploy Events with DatoCMS
 
+Retrieves deploy events from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

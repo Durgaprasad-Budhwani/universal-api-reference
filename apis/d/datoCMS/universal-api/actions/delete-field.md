@@ -1,6 +1,6 @@
 # DatoCMS: Delete Field
 
-
+Deletes an existing field from DatoCMS.
 
 ```
 DELETE https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/delete-field

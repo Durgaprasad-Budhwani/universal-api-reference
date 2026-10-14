@@ -4,7 +4,7 @@ These examples use the MindCloud API key and DatoCMS connection described in [au
 
 ## Get Site
 
-
+Retrieves site settings from DatoCMS.
 
 ```bash
 curl -X GET "https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/get-site?connectionId=$CONNECTION_ID" \
@@ -137,7 +137,7 @@ See the full [Get Site action reference](actions/get-site.md), or [try it intera
 
 ## Create Draft Record
 
-
+Creates a new draft record in DatoCMS.
 
 ```bash
 curl -X POST "https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/create-draft-record" \

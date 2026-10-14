@@ -21,5 +21,5 @@ This operation supports [pagination](../README.md#pagination).
 | `show_files_hidden_by_limit` | query | `boolean` | no | Show truncated file info for files hidden due to being too old, and the team who owns the file being over the file limit Format: `toggle`. |
 | `ts_from` | query | `date` | no | Filter files created after this timestamp (inclusive). |
 | `ts_to` | query | `date` | no | Filter files created before this timestamp (inclusive). |
-| `types` | query | `list<string>` | no | Filter files by type Send multiple values as a array. |
+| `types` | query | `list<string>` | no | Filter files by type Accepted values: `canvas`, `gdocs`, `images`, `pdfs`, `snippets`, `spaces`, `zips`. Send multiple values as a array. |
 | `user` | query | `list<string>` | no | Filter files created by a single user. |

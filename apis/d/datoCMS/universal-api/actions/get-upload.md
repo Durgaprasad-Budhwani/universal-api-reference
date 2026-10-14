@@ -1,6 +1,6 @@
 # DatoCMS: Get Upload
 
-
+Retrieves an upload from DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/get-upload

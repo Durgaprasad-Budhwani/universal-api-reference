@@ -2,22 +2,23 @@
 
 These examples use the MindCloud API key and Swoogo connection described in [authentication.md](authentication.md). Replace `$CONNECTION_ID` with the connection ID you copied from the Connections page.
 
-## Get Registrant
+## List Events
 
 
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/swoogo/latest/actions/get-registrant?connectionId=$CONNECTION_ID&registrantId=1" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/swoogo/latest/actions/list-events?connectionId=$CONNECTION_ID&limit=25&offset=0" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
   connectionId,
-  "registrantId": "1"
+  limit: '25',
+  offset: '0'
 });
 
-const response = await fetch(`https://connect.mindcloud.co/v1/universal/swoogo/latest/actions/get-registrant?${params}`, {
+const response = await fetch(`https://connect.mindcloud.co/v1/universal/swoogo/latest/actions/list-events?${params}`, {
   headers: {
     Authorization: `Bearer ${process.env.MINDCLOUD_API_KEY}`
   }
@@ -31,9 +32,14 @@ Example response:
 ```json
 {
   "success": true,
-  "data": [],
+  "data": [
+    {
+      "id": 1,
+      "name": "Ava Chen"
+    }
+  ],
   "meta": {}
 }
 ```
 
-See the full [Get Registrant action reference](actions/get-registrant.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/swoogo/latest/actions/get-registrant).
+See the full [List Events action reference](actions/list-events.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/swoogo/latest/actions/list-events).

@@ -1,5 +1,7 @@
 # List Record Versions with DatoCMS
 
+Retrieves record versions from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

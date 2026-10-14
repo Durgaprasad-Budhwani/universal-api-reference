@@ -1,6 +1,6 @@
 # DatoCMS: Duplicate Model
 
-
+Creates a duplicate model in DatoCMS.
 
 ```
 POST https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/duplicate-model

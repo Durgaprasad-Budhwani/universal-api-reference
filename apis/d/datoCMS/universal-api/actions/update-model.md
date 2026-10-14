@@ -1,6 +1,6 @@
 # DatoCMS: Update Model
 
-
+Updates an existing model in DatoCMS.
 
 ```
 PUT https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/update-model

@@ -1,6 +1,6 @@
 # DatoCMS: Get Job Result
 
-
+Retrieves a job result from DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/get-job-result

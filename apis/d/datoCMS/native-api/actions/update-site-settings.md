@@ -1,5 +1,7 @@
 # Update Site Settings with DatoCMS
 
+Updates site settings in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `PUT`

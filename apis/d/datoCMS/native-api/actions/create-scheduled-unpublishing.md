@@ -1,5 +1,7 @@
 # Create Scheduled Unpublishing with DatoCMS
 
+Creates a scheduled unpublishing in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `POST`

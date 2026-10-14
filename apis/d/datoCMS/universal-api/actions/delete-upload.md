@@ -1,6 +1,6 @@
 # DatoCMS: Delete Upload
 
-
+Deletes an existing upload from DatoCMS.
 
 ```
 DELETE https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/delete-upload

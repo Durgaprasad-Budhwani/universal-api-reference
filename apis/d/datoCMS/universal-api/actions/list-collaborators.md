@@ -1,6 +1,6 @@
 # DatoCMS: List Collaborators
 
-
+Retrieves collaborators from DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/list-collaborators

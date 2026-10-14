@@ -49,7 +49,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | `showFilesHiddenByLimit` | boolean | no | Show truncated file info for files hidden due to being too old, and the team who owns the file being over the file limit |
 | `tsFrom` | date | no | Filter files created after this timestamp (inclusive). |
 | `tsTo` | date | no | Filter files created before this timestamp (inclusive). |
-| `types` | list<string> | no | Filter files by type Accepts multiple values as an array. |
+| `types` | list<string> | no | Filter files by type One of: `canvas`, `gdocs`, `images`, `pdfs`, `snippets`, `spaces`, `zips`. Accepts multiple values as an array. |
 | `user` | list<string> | no | Filter files created by a single user. |
 
 ## Response

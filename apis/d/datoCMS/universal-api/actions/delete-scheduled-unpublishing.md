@@ -1,6 +1,6 @@
 # DatoCMS: Delete Scheduled Unpublishing
 
-
+Deletes a scheduled unpublishing from DatoCMS.
 
 ```
 DELETE https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/delete-scheduled-unpublishing

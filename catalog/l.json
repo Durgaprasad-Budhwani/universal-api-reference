@@ -132841,7 +132841,7 @@
     "websiteUrl": "https://www.linkedin.com",
     "nativeBaseUrl": "https://api.linkedin.com",
     "nativeDocumentationUrl": "https://learn.microsoft.com/en-us/linkedin/",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "authentication": [
       {
         "type": "oAuth2",
@@ -132862,8 +132862,12 @@
         "baseUrl": "https://api.linkedin.com",
         "headers": [
           {
+            "name": "Content-Type",
+            "value": "application/json"
+          },
+          {
             "name": "LinkedIn-Version",
-            "value": "202511"
+            "value": "202609"
           },
           {
             "name": "X-Restli-Protocol-Version",
@@ -132904,12 +132908,134 @@
           "apiType": "rest",
           "arguments": [
             {
+              "key": "adContext.dscName",
+              "name": "DSC Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
               "key": "author",
               "name": "Author URN",
               "dataType": "string",
               "location": "body",
               "required": true,
               "description": "Author URN such as urn:li:organization:{id} or urn:li:person:{id}."
+            },
+            {
+              "key": "content.article.source",
+              "name": "Source",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "content.media",
+              "name": "Media",
+              "dataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "content.media.id",
+              "name": "ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Uploaded image, video, or document URN."
+            },
+            {
+              "key": "content.multiImage.altText",
+              "name": "Alt Text",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "content.multiImage.images[].id",
+              "name": "ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "content.poll.options[].text",
+              "name": "Text",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Maximum 30 characters."
+            },
+            {
+              "key": "content.poll.question",
+              "name": "Question",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Maximum 140 characters."
+            },
+            {
+              "key": "content.poll.settings.duration",
+              "name": "Duration",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "ONE_DAY, THREE_DAYS, SEVEN_DAYS, or FOURTEEN_DAYS.",
+              "enumValues": [
+                "FOURTEEN_DAYS",
+                "ONE_DAY",
+                "SEVEN_DAYS",
+                "THREE_DAYS"
+              ]
+            },
+            {
+              "key": "distribution.feedDistribution",
+              "name": "Feed Distribution",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Feed distribution mode for this post.",
+              "enumValues": [
+                "MAIN_FEED",
+                "NONE"
+              ]
+            },
+            {
+              "key": "distribution.targetEntities[].degrees[]",
+              "name": "Degrees",
+              "dataType": "array",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "distribution.targetEntities[].interfaceLocales[].country",
+              "name": "Country",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "reshareContext.parent",
+              "name": "Parent",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "URN of the original post to reshare."
+            },
+            {
+              "key": "adContext.dscStatus",
+              "name": "DSC Status",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "enumValues": [
+                "ACTIVE",
+                "ARCHIVED"
+              ]
             },
             {
               "key": "commentary",
@@ -132920,9 +133046,152 @@
               "description": "Text content for the post commentary."
             },
             {
+              "key": "content.article",
+              "name": "Article",
+              "dataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "content.article.title",
+              "name": "Title",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "content.media.title",
+              "name": "Title",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Required when posting a document."
+            },
+            {
+              "key": "content.multiImage.images[]",
+              "name": "Images",
+              "dataType": "array",
+              "itemDataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "Include 2–20 uploaded image assets owned by the post author."
+            },
+            {
+              "key": "content.multiImage.images[].title",
+              "name": "Title",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "content.poll.options[]",
+              "name": "Options",
+              "dataType": "array",
+              "itemDataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "Provide 2–4 options."
+            },
+            {
+              "key": "content.poll.settings.voteSelectionType",
+              "name": "Vote Selection Type",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Only SINGLE_VOTE is currently supported.",
+              "enumValues": [
+                "SINGLE_VOTE"
+              ]
+            },
+            {
+              "key": "distribution.targetEntities[]",
+              "name": "Target Entities",
+              "dataType": "array",
+              "itemDataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "Organization follower targeting requires an audience of more than 300 members."
+            },
+            {
+              "key": "distribution.targetEntities[].fieldsOfStudy[]",
+              "name": "Fields of Study",
+              "dataType": "array",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "distribution.targetEntities[].interfaceLocales[].language",
+              "name": "Language",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "content.article.thumbnail",
+              "name": "Thumbnail",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "content.media.altText",
+              "name": "Alt Text",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "content.multiImage",
+              "name": "Multi Image",
+              "dataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "content.multiImage.images[].altText",
+              "name": "Alt Text",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "content.poll.settings",
+              "name": "Settings",
+              "dataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "content.poll.settings.isVoterVisibleToAuthor",
+              "name": "Is Voter Visible to Author",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false,
+              "description": "Only true is currently supported."
+            },
+            {
+              "key": "distribution.targetEntities[].geoLocations[]",
+              "name": "Geo Locations",
+              "dataType": "array",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "distribution.thirdPartyDistributionChannels[]",
+              "name": "Third Party Distribution Channels",
+              "dataType": "array",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
               "key": "visibility",
               "name": "Visibility",
               "dataType": "list",
+              "itemDataType": "string",
               "location": "body",
               "required": false,
               "description": "Who can see the post.",
@@ -132930,9 +133199,152 @@
                 "CONNECTIONS",
                 "CONTAINER",
                 "LOGGED_IN",
-                "PUBLIC",
-                "TARGETED_ENTITIES"
+                "PUBLIC"
               ]
+            },
+            {
+              "key": "content",
+              "name": "Content",
+              "dataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "Choose one content type. Omit for a text-only post."
+            },
+            {
+              "key": "content.article.thumbnailAltText",
+              "name": "Thumbnail Alt Text",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "content.poll",
+              "name": "Poll",
+              "dataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "Organic posts only."
+            },
+            {
+              "key": "distribution.targetEntities[].industries[]",
+              "name": "Industries",
+              "dataType": "array",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "content.article.description",
+              "name": "Description",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "distribution.targetEntities[].interfaceLocales[]",
+              "name": "Interface Locales",
+              "dataType": "array",
+              "itemDataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "reshareContext",
+              "name": "Reshare Context",
+              "dataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "distribution.targetEntities[].jobFunctions[]",
+              "name": "Job Functions",
+              "dataType": "array",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "isReshareDisabledByAuthor",
+              "name": "Is Reshare Disabled by Author",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "distribution",
+              "name": "Distribution",
+              "dataType": "object",
+              "location": "body",
+              "required": true,
+              "description": "Distribution settings container."
+            },
+            {
+              "key": "distribution.targetEntities[].organizations[]",
+              "name": "Organizations",
+              "dataType": "array",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "container",
+              "name": "Container",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "distribution.targetEntities[].seniorities[]",
+              "name": "Seniorities",
+              "dataType": "array",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "contentLandingPage",
+              "name": "Content Landing Page",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "distribution.targetEntities[].staffCountRanges[]",
+              "name": "Staff Count Ranges",
+              "dataType": "array",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "contentCallToActionLabel",
+              "name": "Content Call to Action Label",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "enumValues": [
+                "APPLY",
+                "ATTEND",
+                "BUY_NOW",
+                "DOWNLOAD",
+                "JOIN",
+                "LEARN_MORE",
+                "REGISTER",
+                "REQUEST_DEMO",
+                "SEE_MORE",
+                "SHOP_NOW",
+                "SIGN_UP",
+                "SUBSCRIBE",
+                "VIEW_QUOTE"
+              ]
+            },
+            {
+              "key": "adContext",
+              "name": "Ad Context",
+              "dataType": "object",
+              "location": "body",
+              "required": false
             }
           ]
         },
@@ -132943,12 +133355,121 @@
         },
         "arguments": [
           {
+            "key": "adContext.dscName",
+            "name": "DSC Name",
+            "dataType": "string",
+            "required": false
+          },
+          {
             "key": "author",
             "name": "Author URN",
             "dataType": "string",
             "required": true,
             "description": "Author URN such as urn:li:organization:{id} or urn:li:person:{id}.",
             "example": "urn:li:organization:5515715"
+          },
+          {
+            "key": "content.article.source",
+            "name": "Source",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "content.media",
+            "name": "Media",
+            "dataType": "object",
+            "required": false
+          },
+          {
+            "key": "content.media.id",
+            "name": "ID",
+            "dataType": "string",
+            "required": false,
+            "description": "Uploaded image, video, or document URN."
+          },
+          {
+            "key": "content.multiImage.altText",
+            "name": "Alt Text",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "content.multiImage.images[].id",
+            "name": "ID",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "content.poll.options[].text",
+            "name": "Text",
+            "dataType": "string",
+            "required": false,
+            "description": "Maximum 30 characters."
+          },
+          {
+            "key": "content.poll.question",
+            "name": "Question",
+            "dataType": "string",
+            "required": false,
+            "description": "Maximum 140 characters."
+          },
+          {
+            "key": "content.poll.settings.duration",
+            "name": "Duration",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "description": "ONE_DAY, THREE_DAYS, SEVEN_DAYS, or FOURTEEN_DAYS.",
+            "enumValues": [
+              "FOURTEEN_DAYS",
+              "ONE_DAY",
+              "SEVEN_DAYS",
+              "THREE_DAYS"
+            ]
+          },
+          {
+            "key": "distribution.feedDistribution",
+            "name": "Feed Distribution",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true,
+            "description": "Feed distribution mode for this post.",
+            "defaultValue": "MAIN_FEED",
+            "enumValues": [
+              "MAIN_FEED",
+              "NONE"
+            ]
+          },
+          {
+            "key": "distribution.targetEntities[].degrees[]",
+            "name": "Degrees",
+            "dataType": "array",
+            "itemDataType": "string",
+            "required": false
+          },
+          {
+            "key": "distribution.targetEntities[].interfaceLocales[].country",
+            "name": "Country",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "reshareContext.parent",
+            "name": "Parent",
+            "dataType": "string",
+            "required": false,
+            "description": "URN of the original post to reshare."
+          },
+          {
+            "key": "adContext.dscStatus",
+            "name": "DSC Status",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "enumValues": [
+              "ACTIVE",
+              "ARCHIVED"
+            ]
           },
           {
             "key": "commentary",
@@ -132959,9 +133480,134 @@
             "example": "Sample text post created from LinkedIn API"
           },
           {
+            "key": "content.article",
+            "name": "Article",
+            "dataType": "object",
+            "required": false
+          },
+          {
+            "key": "content.article.title",
+            "name": "Title",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "content.media.title",
+            "name": "Title",
+            "dataType": "string",
+            "required": false,
+            "description": "Required when posting a document."
+          },
+          {
+            "key": "content.multiImage.images[]",
+            "name": "Images",
+            "dataType": "array",
+            "itemDataType": "object",
+            "required": false,
+            "description": "Include 2–20 uploaded image assets owned by the post author."
+          },
+          {
+            "key": "content.multiImage.images[].title",
+            "name": "Title",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "content.poll.options[]",
+            "name": "Options",
+            "dataType": "array",
+            "itemDataType": "object",
+            "required": false,
+            "description": "Provide 2–4 options."
+          },
+          {
+            "key": "content.poll.settings.voteSelectionType",
+            "name": "Vote Selection Type",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "description": "Only SINGLE_VOTE is currently supported.",
+            "enumValues": [
+              "SINGLE_VOTE"
+            ]
+          },
+          {
+            "key": "distribution.targetEntities[]",
+            "name": "Target Entities",
+            "dataType": "array",
+            "itemDataType": "object",
+            "required": false,
+            "description": "Organization follower targeting requires an audience of more than 300 members."
+          },
+          {
+            "key": "distribution.targetEntities[].fieldsOfStudy[]",
+            "name": "Fields of Study",
+            "dataType": "array",
+            "itemDataType": "string",
+            "required": false
+          },
+          {
+            "key": "distribution.targetEntities[].interfaceLocales[].language",
+            "name": "Language",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "content.article.thumbnail",
+            "name": "Thumbnail",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "content.media.altText",
+            "name": "Alt Text",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "content.multiImage",
+            "name": "Multi Image",
+            "dataType": "object",
+            "required": false
+          },
+          {
+            "key": "content.multiImage.images[].altText",
+            "name": "Alt Text",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "content.poll.settings",
+            "name": "Settings",
+            "dataType": "object",
+            "required": false
+          },
+          {
+            "key": "content.poll.settings.isVoterVisibleToAuthor",
+            "name": "Is Voter Visible to Author",
+            "dataType": "boolean",
+            "required": false,
+            "description": "Only true is currently supported."
+          },
+          {
+            "key": "distribution.targetEntities[].geoLocations[]",
+            "name": "Geo Locations",
+            "dataType": "array",
+            "itemDataType": "string",
+            "required": false
+          },
+          {
+            "key": "distribution.thirdPartyDistributionChannels[]",
+            "name": "Third Party Distribution Channels",
+            "dataType": "array",
+            "itemDataType": "string",
+            "required": false
+          },
+          {
             "key": "visibility",
             "name": "Visibility",
             "dataType": "list",
+            "itemDataType": "string",
             "required": false,
             "description": "Who can see the post.",
             "example": "PUBLIC",
@@ -132970,9 +133616,135 @@
               "CONNECTIONS",
               "CONTAINER",
               "LOGGED_IN",
-              "PUBLIC",
-              "TARGETED_ENTITIES"
+              "PUBLIC"
             ]
+          },
+          {
+            "key": "content",
+            "name": "Content",
+            "dataType": "object",
+            "required": false,
+            "description": "Choose one content type. Omit for a text-only post."
+          },
+          {
+            "key": "content.article.thumbnailAltText",
+            "name": "Thumbnail Alt Text",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "content.poll",
+            "name": "Poll",
+            "dataType": "object",
+            "required": false,
+            "description": "Organic posts only."
+          },
+          {
+            "key": "distribution.targetEntities[].industries[]",
+            "name": "Industries",
+            "dataType": "array",
+            "itemDataType": "string",
+            "required": false
+          },
+          {
+            "key": "content.article.description",
+            "name": "Description",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "distribution.targetEntities[].interfaceLocales[]",
+            "name": "Interface Locales",
+            "dataType": "array",
+            "itemDataType": "object",
+            "required": false
+          },
+          {
+            "key": "reshareContext",
+            "name": "Reshare Context",
+            "dataType": "object",
+            "required": false
+          },
+          {
+            "key": "distribution.targetEntities[].jobFunctions[]",
+            "name": "Job Functions",
+            "dataType": "array",
+            "itemDataType": "string",
+            "required": false
+          },
+          {
+            "key": "isReshareDisabledByAuthor",
+            "name": "Is Reshare Disabled by Author",
+            "dataType": "boolean",
+            "required": false
+          },
+          {
+            "key": "distribution",
+            "name": "Distribution",
+            "dataType": "object",
+            "required": true,
+            "description": "Distribution settings container."
+          },
+          {
+            "key": "distribution.targetEntities[].organizations[]",
+            "name": "Organizations",
+            "dataType": "array",
+            "itemDataType": "string",
+            "required": false
+          },
+          {
+            "key": "container",
+            "name": "Container",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "distribution.targetEntities[].seniorities[]",
+            "name": "Seniorities",
+            "dataType": "array",
+            "itemDataType": "string",
+            "required": false
+          },
+          {
+            "key": "contentLandingPage",
+            "name": "Content Landing Page",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "distribution.targetEntities[].staffCountRanges[]",
+            "name": "Staff Count Ranges",
+            "dataType": "array",
+            "itemDataType": "string",
+            "required": false
+          },
+          {
+            "key": "contentCallToActionLabel",
+            "name": "Content Call to Action Label",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "enumValues": [
+              "APPLY",
+              "ATTEND",
+              "BUY_NOW",
+              "DOWNLOAD",
+              "JOIN",
+              "LEARN_MORE",
+              "REGISTER",
+              "REQUEST_DEMO",
+              "SEE_MORE",
+              "SHOP_NOW",
+              "SIGN_UP",
+              "SUBSCRIBE",
+              "VIEW_QUOTE"
+            ]
+          },
+          {
+            "key": "adContext",
+            "name": "Ad Context",
+            "dataType": "object",
+            "required": false
           }
         ],
         "responseSchema": [
@@ -133031,6 +133803,89 @@
             "mockType": "string"
           }
         ]
+      },
+      {
+        "name": "Finalize Video Upload",
+        "slug": "finalize-video-upload",
+        "operation": "update",
+        "method": "PUT",
+        "description": "Finalizes a video upload in LinkedIn.",
+        "documentationUrl": "https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/videos-api?view=li-lms-2026-02",
+        "native": {
+          "method": "POST",
+          "path": "/rest/videos?action=finalizeUpload",
+          "baseUrl": "https://api.linkedin.com",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "finalizeUploadRequest",
+              "name": "Finalize Upload Request",
+              "dataType": "object",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "finalizeUploadRequest.video",
+              "name": "Video URN",
+              "dataType": "string",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "finalizeUploadRequest.uploadToken",
+              "name": "Upload Token",
+              "dataType": "string",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "finalizeUploadRequest.uploadedPartIds[]",
+              "name": "Uploaded Part IDs",
+              "dataType": "array",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Array of uploaded part IDs returned by LinkedIn upload instructions."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "finalizeUploadRequest",
+            "name": "Finalize Upload Request",
+            "dataType": "object",
+            "required": true
+          },
+          {
+            "key": "finalizeUploadRequest.video",
+            "name": "Video URN",
+            "dataType": "string",
+            "required": true,
+            "example": "urn:li:video:C4D10AQGdk0RzRUup4A"
+          },
+          {
+            "key": "finalizeUploadRequest.uploadToken",
+            "name": "Upload Token",
+            "dataType": "string",
+            "required": true,
+            "example": "AQEDASBASD..."
+          },
+          {
+            "key": "finalizeUploadRequest.uploadedPartIds[]",
+            "name": "Uploaded Part IDs",
+            "dataType": "array",
+            "itemDataType": "string",
+            "required": true,
+            "description": "Array of uploaded part IDs returned by LinkedIn upload instructions.",
+            "example": "part-id-1,part-id-2"
+          }
+        ],
+        "responseSchema": []
       },
       {
         "name": "Get Document",
@@ -133279,6 +134134,13 @@
           "apiType": "rest",
           "arguments": [
             {
+              "key": "initializeUploadRequest",
+              "name": "Initialize Upload Request",
+              "dataType": "object",
+              "location": "body",
+              "required": true
+            },
+            {
               "key": "initializeUploadRequest.owner",
               "name": "Owner",
               "dataType": "string",
@@ -133294,6 +134156,12 @@
           "sorting": false
         },
         "arguments": [
+          {
+            "key": "initializeUploadRequest",
+            "name": "Initialize Upload Request",
+            "dataType": "object",
+            "required": true
+          },
           {
             "key": "initializeUploadRequest.owner",
             "name": "Owner",
@@ -133340,12 +134208,52 @@
           "apiType": "rest",
           "arguments": [
             {
+              "key": "initializeUploadRequest",
+              "name": "Initialize Upload Request",
+              "dataType": "object",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "initializeUploadRequest.mediaLibraryMetadata.associatedAccount",
+              "name": "Associated Account",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
               "key": "initializeUploadRequest.owner",
               "name": "Owner",
               "dataType": "string",
               "location": "body",
               "required": true,
               "description": "Owner URN for the member initializing the upload."
+            },
+            {
+              "key": "initializeUploadRequest.mediaLibraryMetadata",
+              "name": "Media Library Metadata",
+              "dataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "initializeUploadRequest.mediaLibraryMetadata.assetName",
+              "name": "Asset Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "initializeUploadRequest.mediaLibraryMetadata.mediaLibraryStatus",
+              "name": "Media Library Status",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "enumValues": [
+                "ACTIVE",
+                "ARCHIVED"
+              ]
             }
           ]
         },
@@ -133356,12 +134264,47 @@
         },
         "arguments": [
           {
+            "key": "initializeUploadRequest",
+            "name": "Initialize Upload Request",
+            "dataType": "object",
+            "required": true
+          },
+          {
+            "key": "initializeUploadRequest.mediaLibraryMetadata.associatedAccount",
+            "name": "Associated Account",
+            "dataType": "string",
+            "required": false
+          },
+          {
             "key": "initializeUploadRequest.owner",
             "name": "Owner",
             "dataType": "string",
             "required": true,
             "description": "Owner URN for the member initializing the upload.",
             "example": "urn:li:person:vdyhqnicOV"
+          },
+          {
+            "key": "initializeUploadRequest.mediaLibraryMetadata",
+            "name": "Media Library Metadata",
+            "dataType": "object",
+            "required": false
+          },
+          {
+            "key": "initializeUploadRequest.mediaLibraryMetadata.assetName",
+            "name": "Asset Name",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "initializeUploadRequest.mediaLibraryMetadata.mediaLibraryStatus",
+            "name": "Media Library Status",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "enumValues": [
+              "ACTIVE",
+              "ARCHIVED"
+            ]
           }
         ],
         "responseSchema": [
@@ -133396,6 +134339,20 @@
           "apiType": "rest",
           "arguments": [
             {
+              "key": "initializeUploadRequest",
+              "name": "Initialize Upload Request",
+              "dataType": "object",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "initializeUploadRequest.mediaLibraryMetadata.associatedAccount",
+              "name": "Associated Account",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
               "key": "initializeUploadRequest.owner",
               "name": "Owner",
               "dataType": "string",
@@ -133409,6 +134366,64 @@
               "dataType": "number",
               "location": "body",
               "required": true
+            },
+            {
+              "key": "initializeUploadRequest.mediaLibraryMetadata.assetName",
+              "name": "Asset Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "initializeUploadRequest.mediaLibraryMetadata.mediaLibraryStatus",
+              "name": "Media Library Status",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "enumValues": [
+                "ACTIVE",
+                "ARCHIVED"
+              ]
+            },
+            {
+              "key": "initializeUploadRequest.uploadCaptions",
+              "name": "Upload Captions",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false,
+              "description": "Only one English-language captions file is supported."
+            },
+            {
+              "key": "initializeUploadRequest.uploadThumbnail",
+              "name": "Upload Thumbnail",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false,
+              "description": "Requests a thumbnail upload URL."
+            },
+            {
+              "key": "initializeUploadRequest.templateName",
+              "name": "Template Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Supported with LinkedIn API version 202602 or later."
+            },
+            {
+              "key": "initializeUploadRequest.linkbackContext",
+              "name": "Linkback Context",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Supported with LinkedIn API version 202602 or later."
+            },
+            {
+              "key": "initializeUploadRequest.mediaLibraryMetadata",
+              "name": "Media Library Metadata",
+              "dataType": "object",
+              "location": "body",
+              "required": false
             }
           ]
         },
@@ -133418,6 +134433,18 @@
           "sorting": false
         },
         "arguments": [
+          {
+            "key": "initializeUploadRequest",
+            "name": "Initialize Upload Request",
+            "dataType": "object",
+            "required": true
+          },
+          {
+            "key": "initializeUploadRequest.mediaLibraryMetadata.associatedAccount",
+            "name": "Associated Account",
+            "dataType": "string",
+            "required": false
+          },
           {
             "key": "initializeUploadRequest.owner",
             "name": "Owner",
@@ -133432,6 +134459,57 @@
             "dataType": "number",
             "required": true,
             "example": "1200345"
+          },
+          {
+            "key": "initializeUploadRequest.mediaLibraryMetadata.assetName",
+            "name": "Asset Name",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "initializeUploadRequest.mediaLibraryMetadata.mediaLibraryStatus",
+            "name": "Media Library Status",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "enumValues": [
+              "ACTIVE",
+              "ARCHIVED"
+            ]
+          },
+          {
+            "key": "initializeUploadRequest.uploadCaptions",
+            "name": "Upload Captions",
+            "dataType": "boolean",
+            "required": false,
+            "description": "Only one English-language captions file is supported."
+          },
+          {
+            "key": "initializeUploadRequest.uploadThumbnail",
+            "name": "Upload Thumbnail",
+            "dataType": "boolean",
+            "required": false,
+            "description": "Requests a thumbnail upload URL."
+          },
+          {
+            "key": "initializeUploadRequest.templateName",
+            "name": "Template Name",
+            "dataType": "string",
+            "required": false,
+            "description": "Supported with LinkedIn API version 202602 or later."
+          },
+          {
+            "key": "initializeUploadRequest.linkbackContext",
+            "name": "Linkback Context",
+            "dataType": "string",
+            "required": false,
+            "description": "Supported with LinkedIn API version 202602 or later."
+          },
+          {
+            "key": "initializeUploadRequest.mediaLibraryMetadata",
+            "name": "Media Library Metadata",
+            "dataType": "object",
+            "required": false
           }
         ],
         "responseSchema": [

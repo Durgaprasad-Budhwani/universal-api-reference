@@ -1,6 +1,6 @@
 # DatoCMS: Restore Record Version
 
-
+Restores a record version in DatoCMS.
 
 ```
 PUT https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/restore-record-version

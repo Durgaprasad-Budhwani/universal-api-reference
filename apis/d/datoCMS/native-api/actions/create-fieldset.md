@@ -1,5 +1,7 @@
 # Create Fieldset with DatoCMS
 
+Creates a new fieldset in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `POST`

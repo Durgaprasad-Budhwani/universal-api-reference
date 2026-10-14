@@ -1,5 +1,7 @@
 # Delete Scheduled Unpublishing with DatoCMS
 
+Deletes a scheduled unpublishing from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `DELETE`

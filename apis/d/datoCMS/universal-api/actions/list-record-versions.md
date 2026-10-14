@@ -1,6 +1,6 @@
 # DatoCMS: List Record Versions
 
-
+Retrieves record versions from DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/list-record-versions

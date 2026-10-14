@@ -1,6 +1,6 @@
 # DatoCMS: Duplicate Field
 
-
+Creates a duplicate field in DatoCMS.
 
 ```
 POST https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/duplicate-field

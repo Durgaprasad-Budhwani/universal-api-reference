@@ -1,5 +1,7 @@
 # Update Model with DatoCMS
 
+Updates an existing model in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `PUT`

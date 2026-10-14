@@ -1,6 +1,6 @@
 # DatoCMS: List Model Fields
 
-
+Retrieves fields for a model in DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/list-model-fields

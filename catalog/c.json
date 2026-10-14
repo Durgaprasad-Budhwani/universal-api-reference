@@ -96216,7 +96216,7 @@
     "websiteUrl": "https://app.centerpointconnect.com/",
     "nativeBaseUrl": "curl --request PATCH \\   --url https://api.centerpointconnect.io/centerpoint/companies/{COMPANY_ID} \\   --header 'Accept: application/json' \\   --header 'Authorization: 123' \\   --header 'Content-Type: application/json' \\   --data '{   \"data\": {     \"attributes\": {       \"closeRate\": 0,       \"country\": null,       \"county\": \"Greater London\",       \"createdAt\": null,       \"custom\": {         \"companyphonenumber\": \"+1\",         \"customerType\": \"Retail\",         \"qbocompanyupdate\": \"\"       },       \"externalId\": \"mack\",       \"imageId\": null,       \"importId\": null,       \"latitude\": 51.5072178,       \"locality\": \"London\",       \"longitude\": -0.1275862,       \"managerId\": null,       \"modelFileTagCounts\": [],       \"name\": \"Mack update\",       \"options\": {         \"autoGenerateExternalIds\": false,         \"billingAddress\": null,         \"isCreditHold\": null,         \"isTaxExempt\": null,         \"laborRates\": null,         \"serviceBillingInstructions\": null,         \"serviceWorkInstructions\": null,         \"taxLabelOverride\": \"Tax\"       },       \"placeId\": \"ChIJdd4hrwug2EcRmSrV3Vo6llI\",       \"postalCode\": null,       \"propertyCount\": null,       \"quickbooksOnlineIntegrationEntityId\": null,       \"recentActivity\": null,       \"region\": \"England\",       \"salesStatus\": \"Lead\",       \"streetAddress\": null,       \"subpremise\": null,       \"timezone\": \"America/New_York\",       \"type\": \"Company\",       \"updatedAt\": null,       \"website\": null     },     \"relationships\": {       \"image\": {         \"data\": null       },       \"location\": {         \"data\": {           \"id\": \"9\",           \"type\": \"locations\"         }       },       \"manager\": {         \"data\": {           \"id\": \"85750\",           \"type\": \"employees\"         }       },       \"relatedCompanies\": {         \"data\": []       }     },     \"type\": \"companies\"   } }'",
     "nativeDocumentationUrl": "https://api-portal.centerpointconnect.io/portal/catalogue-products/centerpoint-api-1",
-    "version": "0.0.135",
+    "version": "0.0.136",
     "authentication": [
       {
         "type": "apiKey",
@@ -98983,7 +98983,7 @@
           ]
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },

@@ -4,7 +4,7 @@ X (formerly Twitter) API integration for posting and managing content.
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/x/latest
 - **Category:** Marketing
-- **Actions:** 2
+- **Actions:** 7
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor website:** https://x.com
 - **Vendor API docs:** https://docs.x.com/x-api
@@ -22,7 +22,17 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/x/latest/actions/get-my-p
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
-## Actions (2)
+## Actions (7)
+
+### Media
+
+| Action | Method | Description |
+| --- | --- | --- |
+| [Append Media Upload](actions/append-media-upload.md) | PUT |  |
+| [Finalize Media Upload](actions/finalize-media-upload.md) | PUT |  |
+| [Get Media Upload Status](actions/get-media-upload-status.md) | GET |  |
+| [Initialize Media Upload](actions/initialize-media-upload.md) | POST |  |
+| [Upload Media](actions/upload-media.md) | POST |  |
 
 ### Messages
 

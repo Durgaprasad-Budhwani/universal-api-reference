@@ -1,6 +1,6 @@
 # DatoCMS: Create Fieldset
 
-
+Creates a new fieldset in DatoCMS.
 
 ```
 POST https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/create-fieldset

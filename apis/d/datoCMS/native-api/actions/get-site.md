@@ -1,5 +1,7 @@
 # Get Site with DatoCMS
 
+Retrieves site settings from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

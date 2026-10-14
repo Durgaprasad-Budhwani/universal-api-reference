@@ -1,5 +1,7 @@
 # List Items with DatoCMS
 
+Retrieves records from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

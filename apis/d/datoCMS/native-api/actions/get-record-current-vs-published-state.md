@@ -1,5 +1,7 @@
 # Get Record Current vs Published State with DatoCMS
 
+Retrieves current and published record states from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

@@ -1,5 +1,7 @@
 # Duplicate Model with DatoCMS
 
+Creates a duplicate model in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `POST`

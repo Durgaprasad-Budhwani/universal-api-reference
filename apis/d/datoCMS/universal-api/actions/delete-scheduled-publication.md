@@ -1,6 +1,6 @@
 # DatoCMS: Delete Scheduled Publication
 
-
+Deletes a scheduled publication from DatoCMS.
 
 ```
 DELETE https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/delete-scheduled-publication

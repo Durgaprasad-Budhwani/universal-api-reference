@@ -13,5 +13,5 @@ Retrieves an entry from a Memento Database library.
 
 | Parameter | Location | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| `libraryId` | path | `string` | yes | The ID of the library. |
+| `libraryId` | path | `list<string>` | yes | The ID of the library. |
 | `entryId` | path | `string` | yes | The ID of the entry. |

@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "LinkedIn Universal API",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "description": "Manage organization posts, comments, images, and profile data"
   },
   "servers": [
@@ -42,22 +42,178 @@
                 "required": [
                   "connectionId",
                   "author",
-                  "commentary"
+                  "distribution.feedDistribution",
+                  "commentary",
+                  "distribution"
                 ],
                 "properties": {
                   "connectionId": {
                     "type": "string",
                     "description": "The MindCloud connection ID for this app."
                   },
+                  "adContext.dscName": {
+                    "type": "string"
+                  },
                   "author": {
                     "type": "string",
                     "description": "Author URN such as urn:li:organization:{id} or urn:li:person:{id}.",
                     "example": "urn:li:organization:5515715"
                   },
+                  "content.article.source": {
+                    "type": "string"
+                  },
+                  "content.media": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "content.media.id": {
+                    "type": "string",
+                    "description": "Uploaded image, video, or document URN."
+                  },
+                  "content.multiImage.altText": {
+                    "type": "string"
+                  },
+                  "content.multiImage.images[].id": {
+                    "type": "string"
+                  },
+                  "content.poll.options[].text": {
+                    "type": "string",
+                    "description": "Maximum 30 characters."
+                  },
+                  "content.poll.question": {
+                    "type": "string",
+                    "description": "Maximum 140 characters."
+                  },
+                  "content.poll.settings.duration": {
+                    "type": "string",
+                    "description": "ONE_DAY, THREE_DAYS, SEVEN_DAYS, or FOURTEEN_DAYS.",
+                    "enum": [
+                      "FOURTEEN_DAYS",
+                      "ONE_DAY",
+                      "SEVEN_DAYS",
+                      "THREE_DAYS"
+                    ]
+                  },
+                  "distribution.feedDistribution": {
+                    "type": "string",
+                    "description": "Feed distribution mode for this post.",
+                    "enum": [
+                      "MAIN_FEED",
+                      "NONE"
+                    ],
+                    "default": "MAIN_FEED"
+                  },
+                  "distribution.targetEntities[].degrees[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "distribution.targetEntities[].interfaceLocales[].country": {
+                    "type": "string"
+                  },
+                  "reshareContext.parent": {
+                    "type": "string",
+                    "description": "URN of the original post to reshare."
+                  },
+                  "adContext.dscStatus": {
+                    "type": "string",
+                    "enum": [
+                      "ACTIVE",
+                      "ARCHIVED"
+                    ]
+                  },
                   "commentary": {
                     "type": "string",
                     "description": "Text content for the post commentary.",
                     "example": "Sample text post created from LinkedIn API"
+                  },
+                  "content.article": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "content.article.title": {
+                    "type": "string"
+                  },
+                  "content.media.title": {
+                    "type": "string",
+                    "description": "Required when posting a document."
+                  },
+                  "content.multiImage.images[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "description": "Include 2–20 uploaded image assets owned by the post author."
+                  },
+                  "content.multiImage.images[].title": {
+                    "type": "string"
+                  },
+                  "content.poll.options[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "description": "Provide 2–4 options."
+                  },
+                  "content.poll.settings.voteSelectionType": {
+                    "type": "string",
+                    "description": "Only SINGLE_VOTE is currently supported.",
+                    "enum": [
+                      "SINGLE_VOTE"
+                    ]
+                  },
+                  "distribution.targetEntities[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "description": "Organization follower targeting requires an audience of more than 300 members."
+                  },
+                  "distribution.targetEntities[].fieldsOfStudy[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "distribution.targetEntities[].interfaceLocales[].language": {
+                    "type": "string"
+                  },
+                  "content.article.thumbnail": {
+                    "type": "string"
+                  },
+                  "content.media.altText": {
+                    "type": "string"
+                  },
+                  "content.multiImage": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "content.multiImage.images[].altText": {
+                    "type": "string"
+                  },
+                  "content.poll.settings": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "content.poll.settings.isVoterVisibleToAuthor": {
+                    "type": "boolean",
+                    "description": "Only true is currently supported."
+                  },
+                  "distribution.targetEntities[].geoLocations[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "distribution.thirdPartyDistributionChannels[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
                   },
                   "visibility": {
                     "type": "string",
@@ -66,11 +222,103 @@
                       "CONNECTIONS",
                       "CONTAINER",
                       "LOGGED_IN",
-                      "PUBLIC",
-                      "TARGETED_ENTITIES"
+                      "PUBLIC"
                     ],
                     "example": "PUBLIC",
                     "default": "PUBLIC"
+                  },
+                  "content": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "description": "Choose one content type. Omit for a text-only post."
+                  },
+                  "content.article.thumbnailAltText": {
+                    "type": "string"
+                  },
+                  "content.poll": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "description": "Organic posts only."
+                  },
+                  "distribution.targetEntities[].industries[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "content.article.description": {
+                    "type": "string"
+                  },
+                  "distribution.targetEntities[].interfaceLocales[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "reshareContext": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "distribution.targetEntities[].jobFunctions[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "isReshareDisabledByAuthor": {
+                    "type": "boolean"
+                  },
+                  "distribution": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "description": "Distribution settings container."
+                  },
+                  "distribution.targetEntities[].organizations[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "container": {
+                    "type": "string"
+                  },
+                  "distribution.targetEntities[].seniorities[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "contentLandingPage": {
+                    "type": "string"
+                  },
+                  "distribution.targetEntities[].staffCountRanges[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "contentCallToActionLabel": {
+                    "type": "string",
+                    "enum": [
+                      "APPLY",
+                      "ATTEND",
+                      "BUY_NOW",
+                      "DOWNLOAD",
+                      "JOIN",
+                      "LEARN_MORE",
+                      "REGISTER",
+                      "REQUEST_DEMO",
+                      "SEE_MORE",
+                      "SHOP_NOW",
+                      "SIGN_UP",
+                      "SUBSCRIBE",
+                      "VIEW_QUOTE"
+                    ]
+                  },
+                  "adContext": {
+                    "type": "object",
+                    "additionalProperties": true
                   }
                 },
                 "additionalProperties": false
@@ -296,6 +544,211 @@
                           }
                         },
                         "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/linkedin/latest/actions/finalize-video-upload": {
+      "put": {
+        "operationId": "linkedin.finalize-video-upload",
+        "summary": "Finalize Video Upload",
+        "description": "Finalizes a video upload in LinkedIn.",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/linkedin/latest/actions/finalize-video-upload"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "finalizeUploadRequest",
+                  "finalizeUploadRequest.video",
+                  "finalizeUploadRequest.uploadToken",
+                  "finalizeUploadRequest.uploadedPartIds[]"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "finalizeUploadRequest": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "finalizeUploadRequest.video": {
+                    "type": "string",
+                    "example": "urn:li:video:C4D10AQGdk0RzRUup4A"
+                  },
+                  "finalizeUploadRequest.uploadToken": {
+                    "type": "string",
+                    "example": "AQEDASBASD..."
+                  },
+                  "finalizeUploadRequest.uploadedPartIds[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Array of uploaded part IDs returned by LinkedIn upload instructions."
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
                       }
                     },
                     "meta": {
@@ -1266,12 +1719,17 @@
                 "type": "object",
                 "required": [
                   "connectionId",
+                  "initializeUploadRequest",
                   "initializeUploadRequest.owner"
                 ],
                 "properties": {
                   "connectionId": {
                     "type": "string",
                     "description": "The MindCloud connection ID for this app."
+                  },
+                  "initializeUploadRequest": {
+                    "type": "object",
+                    "additionalProperties": true
                   },
                   "initializeUploadRequest.owner": {
                     "type": "string",
@@ -1471,6 +1929,7 @@
                 "type": "object",
                 "required": [
                   "connectionId",
+                  "initializeUploadRequest",
                   "initializeUploadRequest.owner"
                 ],
                 "properties": {
@@ -1478,10 +1937,31 @@
                     "type": "string",
                     "description": "The MindCloud connection ID for this app."
                   },
+                  "initializeUploadRequest": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "initializeUploadRequest.mediaLibraryMetadata.associatedAccount": {
+                    "type": "string"
+                  },
                   "initializeUploadRequest.owner": {
                     "type": "string",
                     "description": "Owner URN for the member initializing the upload.",
                     "example": "urn:li:person:vdyhqnicOV"
+                  },
+                  "initializeUploadRequest.mediaLibraryMetadata": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "initializeUploadRequest.mediaLibraryMetadata.assetName": {
+                    "type": "string"
+                  },
+                  "initializeUploadRequest.mediaLibraryMetadata.mediaLibraryStatus": {
+                    "type": "string",
+                    "enum": [
+                      "ACTIVE",
+                      "ARCHIVED"
+                    ]
                   }
                 },
                 "additionalProperties": false
@@ -1676,6 +2156,7 @@
                 "type": "object",
                 "required": [
                   "connectionId",
+                  "initializeUploadRequest",
                   "initializeUploadRequest.owner",
                   "initializeUploadRequest.fileSizeBytes"
                 ],
@@ -1683,6 +2164,13 @@
                   "connectionId": {
                     "type": "string",
                     "description": "The MindCloud connection ID for this app."
+                  },
+                  "initializeUploadRequest": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "initializeUploadRequest.mediaLibraryMetadata.associatedAccount": {
+                    "type": "string"
                   },
                   "initializeUploadRequest.owner": {
                     "type": "string",
@@ -1692,6 +2180,36 @@
                   "initializeUploadRequest.fileSizeBytes": {
                     "type": "number",
                     "example": 1200345
+                  },
+                  "initializeUploadRequest.mediaLibraryMetadata.assetName": {
+                    "type": "string"
+                  },
+                  "initializeUploadRequest.mediaLibraryMetadata.mediaLibraryStatus": {
+                    "type": "string",
+                    "enum": [
+                      "ACTIVE",
+                      "ARCHIVED"
+                    ]
+                  },
+                  "initializeUploadRequest.uploadCaptions": {
+                    "type": "boolean",
+                    "description": "Only one English-language captions file is supported."
+                  },
+                  "initializeUploadRequest.uploadThumbnail": {
+                    "type": "boolean",
+                    "description": "Requests a thumbnail upload URL."
+                  },
+                  "initializeUploadRequest.templateName": {
+                    "type": "string",
+                    "description": "Supported with LinkedIn API version 202602 or later."
+                  },
+                  "initializeUploadRequest.linkbackContext": {
+                    "type": "string",
+                    "description": "Supported with LinkedIn API version 202602 or later."
+                  },
+                  "initializeUploadRequest.mediaLibraryMetadata": {
+                    "type": "object",
+                    "additionalProperties": true
                   }
                 },
                 "additionalProperties": false

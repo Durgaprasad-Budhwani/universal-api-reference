@@ -1,5 +1,7 @@
 # List Referenced Records for Record with DatoCMS
 
+Retrieves records referenced by a record in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

@@ -1,6 +1,6 @@
 # DatoCMS: List Deploy Events
 
-
+Retrieves deploy events from DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/list-deploy-events

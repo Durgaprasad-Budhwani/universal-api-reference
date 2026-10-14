@@ -13,4 +13,9 @@ Initializes an image upload in LinkedIn.
 
 | Parameter | Location | Type | Required | Description |
 | --- | --- | --- | --- | --- |
+| `initializeUploadRequest` | body | `object` | yes | — |
+| `initializeUploadRequest.mediaLibraryMetadata.associatedAccount` | body | `string` | no | — |
 | `initializeUploadRequest.owner` | body | `string` | yes | Owner URN for the member initializing the upload. |
+| `initializeUploadRequest.mediaLibraryMetadata` | body | `object` | no | — |
+| `initializeUploadRequest.mediaLibraryMetadata.assetName` | body | `string` | no | — |
+| `initializeUploadRequest.mediaLibraryMetadata.mediaLibraryStatus` | body | `list<string>` | no | Accepted values: `ACTIVE`, `ARCHIVED`. |

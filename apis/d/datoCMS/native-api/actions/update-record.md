@@ -1,5 +1,7 @@
 # Update Record with DatoCMS
 
+Updates an existing record in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `PUT`

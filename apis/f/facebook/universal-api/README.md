@@ -3,7 +3,7 @@
 Connect Facebook Pages, Meta Business assets, and advertising data to workflows.
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/facebook/latest
-- **Actions:** 8
+- **Actions:** 16
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor website:** https://www.facebook.com/business
 - **Vendor API docs:** https://developers.facebook.com/docs/
@@ -21,7 +21,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/facebook/latest/actions/l
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
-## Actions (8)
+## Actions (16)
 
 ### Accounts
 
@@ -41,6 +41,29 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/facebook/latest/actions/l
 | Action | Method | Description |
 | --- | --- | --- |
 | [Ad Account Ads Query](actions/ad-account-ads-query.md) | GET |  |
+
+### Instagram Media
+
+| Action | Method | Description |
+| --- | --- | --- |
+| [Publish Instagram Media](actions/publish-instagram-media.md) | POST |  |
+
+### Instagram Media Container
+
+| Action | Method | Description |
+| --- | --- | --- |
+| [Create Instagram Carousel Container](actions/create-instagram-carousel-container.md) | POST |  |
+| [Create Instagram Image Container](actions/create-instagram-image-container.md) | POST |  |
+| [Create Instagram Image Story Container](actions/create-instagram-image-story-container.md) | POST |  |
+| [Create Instagram Resumable Reel Container](actions/create-instagram-resumable-reel-container.md) | POST |  |
+| [Get Instagram Container Status](actions/get-instagram-container-status.md) | GET |  |
+| [Upload Instagram Container Video](actions/upload-instagram-container-video.md) | POST |  |
+
+### Instagram Publishing Quota
+
+| Action | Method | Description |
+| --- | --- | --- |
+| [Get Instagram Publishing Limit](actions/get-instagram-publishing-limit.md) | GET |  |
 
 ### Page
 

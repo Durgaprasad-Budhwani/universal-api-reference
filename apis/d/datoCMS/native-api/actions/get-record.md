@@ -1,5 +1,7 @@
 # Get Record with DatoCMS
 
+Retrieves a record from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

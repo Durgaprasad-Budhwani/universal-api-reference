@@ -57,6 +57,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | `externalDataApplicationGuid` | string | no |  |
 | `externalDataKey` | string | no |  |
 | `externalDataValues` | string | no |  |
+| `sort` | string | no | Applies sorting by the specified field: "?sort=+FieldName" for ascending order, "?sort=-FieldName" for descending order. Available fields are: Id, ModifiedOn, CreatedOn. |
 
 ## Response
 

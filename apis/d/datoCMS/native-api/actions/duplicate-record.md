@@ -1,5 +1,7 @@
 # Duplicate Record with DatoCMS
 
+Creates a duplicate record in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `POST`

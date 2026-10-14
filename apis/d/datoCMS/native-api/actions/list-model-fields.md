@@ -1,5 +1,7 @@
 # List Model Fields with DatoCMS
 
+Retrieves fields for a model in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

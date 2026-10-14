@@ -1,5 +1,7 @@
 # Update Fieldset with DatoCMS
 
+Updates an existing fieldset in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `PUT`

@@ -43,6 +43,10 @@ Responses from this API use JSON.
 
 Use `skip` in the query string to set the page size (default 500; accepted range 500–500). Use `skip` in the query string as the record offset.
 
+## Retry behavior
+
+Retry responses with status codes `429,500,502,503,504`. Wait 2000 ms before the first retry. Stop after 3 attempts. Multiply the delay by 2 after each failed attempt.
+
 ## Endpoints (38 documented)
 
 | Operation | Method & path | Vendor docs |

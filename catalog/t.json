@@ -129906,7 +129906,7 @@
     "slug": "tikTokShop",
     "iconUrl": "https://images.mindcloud.co/apps/icons/tiktok-shop-icon-logo-symbol-free-png_1770912979719.png",
     "nativeDocumentationUrl": "https://partner.tiktokshop.com/docv2/page/666012dd609d4402cc3be995?external_id=666012dd609d4402cc3be995",
-    "version": "0.0.155",
+    "version": "0.0.158",
     "authentication": [
       {
         "type": "oAuth2",
@@ -132054,7 +132054,68 @@
             "required": false
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "paymentId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "statementTime",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "paymentTime",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "currency",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "paymentStatus",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "revenueAmount",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "netSalesAmount",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "feeAmount",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "adjustmentAmount",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "settlementAmount",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "shippingCostAmount",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "Get Transactions by Statement",
@@ -132133,7 +132194,54 @@
             "defaultValue": "202501"
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "createTime",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "currency",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "status",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "payableAmount",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "totalReserveAmount",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "totalSettlementAmount",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "totalSettlementBreakdown",
+            "dataType": "object",
+            "mockType": "string"
+          },
+          {
+            "key": "transactions",
+            "dataType": "array",
+            "itemDataType": "object",
+            "mockType": "array"
+          }
+        ]
       },
       {
         "name": "Get Warehouse Delivery Options",

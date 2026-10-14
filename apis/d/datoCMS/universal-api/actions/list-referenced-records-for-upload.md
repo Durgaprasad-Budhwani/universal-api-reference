@@ -1,6 +1,6 @@
 # DatoCMS: List Referenced Records for Upload
 
-
+Retrieves records referencing an upload in DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/list-referenced-records-for-upload

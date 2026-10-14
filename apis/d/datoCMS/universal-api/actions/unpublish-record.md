@@ -1,6 +1,6 @@
 # DatoCMS: Unpublish Record
 
-
+Unpublishes a record in DatoCMS.
 
 ```
 PUT https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/unpublish-record

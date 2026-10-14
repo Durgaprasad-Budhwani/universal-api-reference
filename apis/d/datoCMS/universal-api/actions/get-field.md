@@ -1,6 +1,6 @@
 # DatoCMS: Get Field
 
-
+Retrieves a field from DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/get-field

@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Stripe Universal API",
-    "version": "0.0.60",
+    "version": "0.0.62",
     "description": "Accept payments, manage subscriptions, invoice customers, and reconcile revenue."
   },
   "servers": [
@@ -6030,42 +6030,6 @@
             }
           },
           {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "description": "Number of customers to return (1-100).",
-            "schema": {
-              "type": "number",
-              "description": "Number of customers to return (1-100).",
-              "example": 100,
-              "x-mindcloud-advanced": true
-            }
-          },
-          {
-            "name": "startingAfter",
-            "in": "query",
-            "required": false,
-            "description": "Pagination cursor for next page.",
-            "schema": {
-              "type": "string",
-              "description": "Pagination cursor for next page.",
-              "example": "cus_123",
-              "x-mindcloud-advanced": true
-            }
-          },
-          {
-            "name": "endingBefore",
-            "in": "query",
-            "required": false,
-            "description": "Pagination cursor for previous page.",
-            "schema": {
-              "type": "string",
-              "description": "Pagination cursor for previous page.",
-              "example": "cus_123",
-              "x-mindcloud-advanced": true
-            }
-          },
-          {
             "name": "testClock",
             "in": "query",
             "required": false,
@@ -6075,6 +6039,16 @@
               "description": "Filter to customers attached to a test clock.",
               "example": "clock_123",
               "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
             }
           },
           {
@@ -7045,6 +7019,26 @@
             "description": "The MindCloud connection ID for this app.",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
             }
           },
           {

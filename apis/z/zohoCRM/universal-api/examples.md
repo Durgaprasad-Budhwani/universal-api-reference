@@ -2,23 +2,21 @@
 
 These examples use the MindCloud API key and Zoho CRM connection described in [authentication.md](authentication.md). Replace `$CONNECTION_ID` with the connection ID you copied from the Connections page.
 
-## Get Account
+## Get Organization Details
 
-Retrieves an account record from Zoho CRM.
+Retrieves organization details from Zoho CRM.
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/zohoCRM/latest/actions/get-account?connectionId=$CONNECTION_ID&ids=string&fields=id%2CAccount_Name%2CPhone%2CWebsite" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/zohoCRM/latest/actions/get-organization-details?connectionId=$CONNECTION_ID" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
-  connectionId,
-  "ids": "string",
-  "fields": "id,Account_Name,Phone,Website"
+  connectionId
 });
 
-const response = await fetch(`https://connect.mindcloud.co/v1/universal/zohoCRM/latest/actions/get-account?${params}`, {
+const response = await fetch(`https://connect.mindcloud.co/v1/universal/zohoCRM/latest/actions/get-organization-details?${params}`, {
   headers: {
     Authorization: `Bearer ${process.env.MINDCLOUD_API_KEY}`
   }
@@ -34,17 +32,22 @@ Example response:
   "success": true,
   "data": [
     {
-      "accountName": "Ava Chen",
+      "companyName": "Ava Chen",
+      "countryCode": "string",
+      "createdTime": "2026-05-07T12:00:00.000Z",
+      "currency": "string",
       "id": "string",
       "phone": "string",
-      "website": "string"
+      "primaryEmail": "ava@example.com",
+      "timeZone": "string",
+      "zgid": "string"
     }
   ],
   "meta": {}
 }
 ```
 
-See the full [Get Account action reference](actions/get-account.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/zohoCRM/latest/actions/get-account).
+See the full [Get Organization Details action reference](actions/get-organization-details.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/zohoCRM/latest/actions/get-organization-details).
 
 ## Convert Lead
 

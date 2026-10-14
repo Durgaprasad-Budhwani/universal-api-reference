@@ -1,6 +1,6 @@
 # DatoCMS: Publish Record
 
-
+Publishes a record in DatoCMS.
 
 ```
 PUT https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/publish-record

@@ -37,28 +37,34 @@ Example response:
 
 See the full [Get My Profile action reference](actions/get-my-profile.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/x/latest/actions/get-my-profile).
 
-## Create Post
+## Append Media Upload
 
 
 
 ```bash
-curl -X POST "https://connect.mindcloud.co/v1/universal/x/latest/actions/create-post" \
+curl -X PUT "https://connect.mindcloud.co/v1/universal/x/latest/actions/append-media-upload" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "connectionId": "$CONNECTION_ID"
+  "connectionId": "$CONNECTION_ID",
+  "id": "string",
+  "media": "string",
+  "segmentIndex": 1
 }'
 ```
 
 ```js
-const response = await fetch('https://connect.mindcloud.co/v1/universal/x/latest/actions/create-post', {
-  method: 'POST',
+const response = await fetch('https://connect.mindcloud.co/v1/universal/x/latest/actions/append-media-upload', {
+  method: 'PUT',
   headers: {
     Authorization: `Bearer ${process.env.MINDCLOUD_API_KEY}`,
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    connectionId
+    connectionId,
+    "id": "string",
+    "media": "string",
+    "segmentIndex": 1
   })
 });
 
@@ -75,4 +81,4 @@ Example response:
 }
 ```
 
-See the full [Create Post action reference](actions/create-post.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/x/latest/actions/create-post).
+See the full [Append Media Upload action reference](actions/append-media-upload.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/x/latest/actions/append-media-upload).

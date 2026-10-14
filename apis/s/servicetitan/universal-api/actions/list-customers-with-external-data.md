@@ -53,6 +53,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | `ids` | string | no |  |
 | `excludeAccountingChangesFromModifiedDateRange` | boolean | no | Excludes accounting changes such as balance adjustments from the modified date range. |
 | `externalDataApplicationGuid` | string | no | Returns customer records with external data for this application GUID. |
+| `sort` | string | no | Applies sorting by the specified field: "?sort=+FieldName" for ascending order, "?sort=-FieldName" for descending order. Available fields are: Id, ModifiedOn, CreatedOn. |
 
 ## Response
 

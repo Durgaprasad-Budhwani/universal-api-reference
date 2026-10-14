@@ -61,7 +61,9 @@ curl -X POST "https://connect.mindcloud.co/v1/universal/linkedin/latest/actions/
   -d '{
   "connectionId": "$CONNECTION_ID",
   "author": "urn:li:organization:5515715",
-  "commentary": "Sample text post created from LinkedIn API"
+  "distribution.feedDistribution": "MAIN_FEED",
+  "commentary": "Sample text post created from LinkedIn API",
+  "distribution": {}
 }'
 ```
 
@@ -75,7 +77,9 @@ const response = await fetch('https://connect.mindcloud.co/v1/universal/linkedin
   body: JSON.stringify({
     connectionId,
     "author": "urn:li:organization:5515715",
-    "commentary": "Sample text post created from LinkedIn API"
+    "distribution.feedDistribution": "MAIN_FEED",
+    "commentary": "Sample text post created from LinkedIn API",
+    "distribution": {}
   })
 });
 

@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Zoho CRM Universal API",
-    "version": "0.0.25",
+    "version": "0.0.26",
     "description": "Manage leads, contacts, deals, and sales activities"
   },
   "servers": [

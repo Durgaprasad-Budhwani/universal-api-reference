@@ -1,5 +1,7 @@
 # Delete Upload with DatoCMS
 
+Deletes an existing upload from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `DELETE`

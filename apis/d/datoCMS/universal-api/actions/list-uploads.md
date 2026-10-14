@@ -1,6 +1,6 @@
 # DatoCMS: List Uploads
 
-
+Retrieves uploads from DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/list-uploads

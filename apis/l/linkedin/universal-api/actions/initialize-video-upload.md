@@ -16,6 +16,7 @@ curl -X POST "https://connect.mindcloud.co/v1/universal/linkedin/latest/actions/
   -H "Content-Type: application/json" \
   -d '{
   "connectionId": "$CONNECTION_ID",
+  "initializeUploadRequest": {},
   "initializeUploadRequest.owner": "urn:li:person:vdyhqnicOV",
   "initializeUploadRequest.fileSizeBytes": "1200345"
 }'
@@ -30,6 +31,7 @@ const response = await fetch('https://connect.mindcloud.co/v1/universal/linkedin
   },
   body: JSON.stringify({
     connectionId,
+    "initializeUploadRequest": {},
     "initializeUploadRequest.owner": "urn:li:person:vdyhqnicOV",
     "initializeUploadRequest.fileSizeBytes": "1200345"
   })
@@ -44,8 +46,17 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
+| `initializeUploadRequest` | object | yes |  |
+| `initializeUploadRequest.mediaLibraryMetadata.associatedAccount` | string | no |  |
 | `initializeUploadRequest.owner` | string | yes | Owner URN for the member initializing the upload. Example: `urn:li:person:vdyhqnicOV`. |
 | `initializeUploadRequest.fileSizeBytes` | number | yes | Example: `1200345`. |
+| `initializeUploadRequest.mediaLibraryMetadata.assetName` | string | no |  |
+| `initializeUploadRequest.mediaLibraryMetadata.mediaLibraryStatus` | list<string> | no | One of: `ACTIVE`, `ARCHIVED`. |
+| `initializeUploadRequest.uploadCaptions` | boolean | no | Only one English-language captions file is supported. |
+| `initializeUploadRequest.uploadThumbnail` | boolean | no | Requests a thumbnail upload URL. |
+| `initializeUploadRequest.templateName` | string | no | Supported with LinkedIn API version 202602 or later. |
+| `initializeUploadRequest.linkbackContext` | string | no | Supported with LinkedIn API version 202602 or later. |
+| `initializeUploadRequest.mediaLibraryMetadata` | object | no |  |
 
 ## Response
 

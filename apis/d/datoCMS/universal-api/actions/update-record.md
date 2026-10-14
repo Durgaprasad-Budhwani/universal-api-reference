@@ -1,6 +1,6 @@
 # DatoCMS: Update Record
 
-
+Updates an existing record in DatoCMS.
 
 ```
 PUT https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/update-record

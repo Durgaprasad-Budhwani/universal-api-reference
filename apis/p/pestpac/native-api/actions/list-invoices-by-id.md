@@ -10,4 +10,4 @@
 
 | Parameter | Location | Type | Required |
 | --- | --- | --- | --- |
-| `id` | path | `string` | no |
+| `id` | path | `string` | yes |

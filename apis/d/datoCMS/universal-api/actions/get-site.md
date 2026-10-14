@@ -1,6 +1,6 @@
 # DatoCMS: Get Site
 
-
+Retrieves site settings from DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/get-site

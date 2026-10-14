@@ -92976,7 +92976,7 @@
     "websiteUrl": "https://www.datocms.com/",
     "nativeBaseUrl": "https://www.datocms.com",
     "nativeDocumentationUrl": "https://www.datocms.com/docs/content-management-api",
-    "version": "0.0.17",
+    "version": "0.0.18",
     "authentication": [
       {
         "type": "apiKey",
@@ -93081,6 +93081,7 @@
         "operation": "create",
         "method": "POST",
         "model": "crm.item",
+        "description": "Creates a new draft record in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item/create",
         "native": {
           "method": "POST",
@@ -93505,6 +93506,7 @@
         "operation": "create",
         "method": "POST",
         "group": "Field",
+        "description": "Creates a new field in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/field/create",
         "native": {
           "method": "POST",
@@ -93960,6 +93962,7 @@
         "operation": "create",
         "method": "POST",
         "group": "Field",
+        "description": "Creates a new fieldset in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/fieldset/create",
         "native": {
           "method": "POST",
@@ -94062,6 +94065,7 @@
         "operation": "create",
         "method": "POST",
         "group": "Model",
+        "description": "Creates a new model in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item-type/create",
         "native": {
           "method": "POST",
@@ -94571,6 +94575,7 @@
         "operation": "create",
         "method": "POST",
         "model": "crm.item",
+        "description": "Creates a scheduled publication in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/scheduled-publication/create",
         "native": {
           "method": "POST",
@@ -94658,6 +94663,7 @@
         "operation": "create",
         "method": "POST",
         "model": "crm.item",
+        "description": "Creates a scheduled unpublishing in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/scheduled-unpublishing/create",
         "native": {
           "method": "POST",
@@ -94745,6 +94751,7 @@
         "operation": "create",
         "method": "POST",
         "model": "storage.file",
+        "description": "Creates a new upload in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/upload/create",
         "native": {
           "method": "POST",
@@ -94897,6 +94904,7 @@
         "operation": "delete",
         "method": "DELETE",
         "group": "Field",
+        "description": "Deletes an existing field from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/field/destroy",
         "native": {
           "method": "DELETE",
@@ -94947,6 +94955,7 @@
         "operation": "delete",
         "method": "DELETE",
         "group": "Field",
+        "description": "Deletes an existing fieldset from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/fieldset/destroy",
         "native": {
           "method": "DELETE",
@@ -95032,6 +95041,7 @@
         "operation": "delete",
         "method": "DELETE",
         "group": "Model",
+        "description": "Deletes an existing model from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item-type/destroy",
         "native": {
           "method": "DELETE",
@@ -95082,6 +95092,7 @@
         "operation": "delete",
         "method": "DELETE",
         "model": "crm.item",
+        "description": "Deletes an existing record from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item/destroy",
         "native": {
           "method": "DELETE",
@@ -95133,6 +95144,7 @@
         "operation": "delete",
         "method": "DELETE",
         "model": "crm.item",
+        "description": "Deletes a scheduled publication from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/scheduled-publication/destroy",
         "native": {
           "method": "DELETE",
@@ -95288,6 +95300,7 @@
         "operation": "delete",
         "method": "DELETE",
         "model": "crm.item",
+        "description": "Deletes a scheduled unpublishing from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/scheduled-unpublishing/destroy",
         "native": {
           "method": "DELETE",
@@ -95443,6 +95456,7 @@
         "operation": "delete",
         "method": "DELETE",
         "model": "storage.file",
+        "description": "Deletes an existing upload from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/upload/destroy",
         "native": {
           "method": "DELETE",
@@ -95659,6 +95673,7 @@
         "operation": "create",
         "method": "POST",
         "group": "Field",
+        "description": "Creates a duplicate field in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/field/duplicate",
         "native": {
           "method": "POST",
@@ -95709,6 +95724,7 @@
         "operation": "create",
         "method": "POST",
         "group": "Model",
+        "description": "Creates a duplicate model in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item-type/duplicate",
         "native": {
           "method": "POST",
@@ -95899,6 +95915,7 @@
         "operation": "create",
         "method": "POST",
         "model": "crm.item",
+        "description": "Creates a duplicate record in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item/duplicate",
         "native": {
           "method": "POST",
@@ -95968,6 +95985,7 @@
         "operation": "read",
         "method": "GET",
         "group": "Field",
+        "description": "Retrieves a field from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/field/self",
         "native": {
           "method": "GET",
@@ -96084,6 +96102,7 @@
         "operation": "read",
         "method": "GET",
         "group": "Field",
+        "description": "Retrieves a fieldset from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/fieldset/self",
         "native": {
           "method": "GET",
@@ -96169,6 +96188,7 @@
         "operation": "read",
         "method": "GET",
         "model": "crm.report",
+        "description": "Retrieves a job result from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/job-result/self",
         "native": {
           "method": "GET",
@@ -96226,6 +96246,7 @@
         "operation": "read",
         "method": "GET",
         "group": "Model",
+        "description": "Retrieves a model from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item-type/self",
         "native": {
           "method": "GET",
@@ -96416,6 +96437,7 @@
         "operation": "read",
         "method": "GET",
         "model": "crm.item",
+        "description": "Retrieves a record from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item/self",
         "native": {
           "method": "GET",
@@ -96518,6 +96540,7 @@
         "operation": "read",
         "method": "GET",
         "model": "crm.item",
+        "description": "Retrieves current and published record states from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item/current_vs_published_state",
         "native": {
           "method": "GET",
@@ -96577,6 +96600,7 @@
         "operation": "read",
         "method": "GET",
         "model": "crm.item",
+        "description": "Retrieves a record version from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item-version/self",
         "native": {
           "method": "GET",
@@ -96687,6 +96711,7 @@
         "operation": "read",
         "method": "GET",
         "model": "crm.project",
+        "description": "Retrieves site settings from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/site/self",
         "native": {
           "method": "GET",
@@ -97004,6 +97029,7 @@
         "operation": "read",
         "method": "GET",
         "model": "storage.file",
+        "description": "Retrieves an upload from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/upload/self",
         "native": {
           "method": "GET",
@@ -97220,6 +97246,7 @@
         "operation": "read",
         "method": "GET",
         "group": "Trigger",
+        "description": "Retrieves build triggers from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/build-trigger/instances",
         "native": {
           "method": "GET",
@@ -97260,6 +97287,7 @@
         "operation": "read",
         "method": "GET",
         "model": "crm.user",
+        "description": "Retrieves collaborators from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/user/instances",
         "native": {
           "method": "GET",
@@ -97300,6 +97328,7 @@
         "operation": "read",
         "method": "GET",
         "model": "marketing.event",
+        "description": "Retrieves deploy events from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/build-event/instances",
         "native": {
           "method": "GET",
@@ -97452,6 +97481,7 @@
         "operation": "read",
         "method": "GET",
         "model": "crm.project",
+        "description": "Retrieves environments from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/environment/instances",
         "native": {
           "method": "GET",
@@ -97492,6 +97522,7 @@
         "operation": "read",
         "method": "GET",
         "group": "Invitation",
+        "description": "Retrieves invitations from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/site-invitation/instances",
         "native": {
           "method": "GET",
@@ -97544,6 +97575,7 @@
         "operation": "read",
         "method": "GET",
         "model": "crm.item",
+        "description": "Retrieves records from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item/instances",
         "native": {
           "method": "GET",
@@ -97718,6 +97750,7 @@
         "operation": "read",
         "method": "GET",
         "group": "Field",
+        "description": "Retrieves fields for a model in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/field/instances",
         "native": {
           "method": "GET",
@@ -97833,6 +97866,7 @@
         "operation": "read",
         "method": "GET",
         "group": "Field",
+        "description": "Retrieves fieldsets for a model in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/fieldset/instances",
         "native": {
           "method": "GET",
@@ -97902,6 +97936,7 @@
         "operation": "read",
         "method": "GET",
         "group": "Model",
+        "description": "Retrieves models from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item-type/instances",
         "native": {
           "method": "GET",
@@ -98074,6 +98109,7 @@
         "operation": "read",
         "method": "GET",
         "model": "crm.item",
+        "description": "Retrieves record versions from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item-version/instances",
         "native": {
           "method": "GET",
@@ -98200,6 +98236,7 @@
         "operation": "read",
         "method": "GET",
         "model": "crm.item",
+        "description": "Retrieves records referenced by a record in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item/references",
         "native": {
           "method": "GET",
@@ -98265,6 +98302,7 @@
         "operation": "read",
         "method": "GET",
         "model": "storage.file",
+        "description": "Retrieves records referencing an upload in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/upload/references",
         "native": {
           "method": "GET",
@@ -98330,6 +98368,7 @@
         "operation": "read",
         "method": "GET",
         "model": "ticketing.roles",
+        "description": "Retrieves roles from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/role/instances",
         "native": {
           "method": "GET",
@@ -98747,6 +98786,7 @@
         "operation": "read",
         "method": "GET",
         "model": "storage.file",
+        "description": "Retrieves uploads from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/upload/instances",
         "native": {
           "method": "GET",
@@ -98843,6 +98883,7 @@
         "operation": "read",
         "method": "GET",
         "model": "crm.project",
+        "description": "Retrieves workflows from DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/workflow/instances",
         "native": {
           "method": "GET",
@@ -98883,6 +98924,7 @@
         "operation": "update",
         "method": "PUT",
         "model": "crm.item",
+        "description": "Publishes a record in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item/publish",
         "native": {
           "method": "PUT",
@@ -99000,6 +99042,7 @@
         "operation": "update",
         "method": "PUT",
         "model": "crm.item",
+        "description": "Restores a record version in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item-version/restore",
         "native": {
           "method": "POST",
@@ -99050,6 +99093,7 @@
         "operation": "update",
         "method": "PUT",
         "model": "crm.item",
+        "description": "Unpublishes a record in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item/unpublish",
         "native": {
           "method": "PUT",
@@ -99133,6 +99177,7 @@
         "operation": "update",
         "method": "PUT",
         "group": "Field",
+        "description": "Updates an existing field in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/field/update",
         "native": {
           "method": "PUT",
@@ -99482,6 +99527,7 @@
         "operation": "update",
         "method": "PUT",
         "group": "Field",
+        "description": "Updates an existing fieldset in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/fieldset/update",
         "native": {
           "method": "PUT",
@@ -99654,6 +99700,7 @@
         "operation": "update",
         "method": "PUT",
         "group": "Model",
+        "description": "Updates an existing model in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item-type/update",
         "native": {
           "method": "PUT",
@@ -99945,6 +99992,7 @@
         "operation": "update",
         "method": "PUT",
         "model": "crm.item",
+        "description": "Updates an existing record in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/item/update",
         "native": {
           "method": "PUT",
@@ -100480,6 +100528,7 @@
         "operation": "update",
         "method": "PUT",
         "model": "crm.project",
+        "description": "Updates site settings in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/site/update",
         "native": {
           "method": "PUT",
@@ -100800,6 +100849,7 @@
         "operation": "update",
         "method": "PUT",
         "model": "storage.file",
+        "description": "Updates an existing upload in DatoCMS.",
         "documentationUrl": "https://www.datocms.com/docs/content-management-api/resources/upload/update",
         "native": {
           "method": "PUT",

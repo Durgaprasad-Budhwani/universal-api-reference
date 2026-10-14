@@ -1,5 +1,7 @@
 # List Model Fieldsets with DatoCMS
 
+Retrieves fieldsets for a model in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

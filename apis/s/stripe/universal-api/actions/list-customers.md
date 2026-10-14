@@ -50,9 +50,6 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | `created.gte` | number | no | Minimum creation timestamp (inclusive). Example: `1704067200`. |
 | `created.lt` | number | no | Maximum creation timestamp (exclusive). Example: `1706745600`. |
 | `created.lte` | number | no | Maximum creation timestamp (inclusive). Example: `1706745600`. |
-| `limit` | number | no | Number of customers to return (1-100). Example: `100`. |
-| `startingAfter` | string | no | Pagination cursor for next page. Example: `cus_123`. |
-| `endingBefore` | string | no | Pagination cursor for previous page. Example: `cus_123`. |
 | `testClock` | string | no | Filter to customers attached to a test clock. Example: `clock_123`. |
 
 ## Response

@@ -1,5 +1,7 @@
 # Delete Scheduled Publication with DatoCMS
 
+Deletes a scheduled publication from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `DELETE`

@@ -1,6 +1,6 @@
 # LinkedIn: Native API Reference
 
-A consolidated summary of LinkedIn's API configuration and 10 documented operations, with links to official documentation.
+A consolidated summary of LinkedIn's API configuration and 11 documented operations, with links to official documentation.
 
 - **Official docs:** https://learn.microsoft.com/en-us/linkedin/
 - **API base URL:** `https://api.linkedin.com`
@@ -23,23 +23,27 @@ Requested scopes: `openid profile email w_member_social`.
 
 ## API conventions
 
+Request bodies use JSON.
+
 Shared headers:
 
 | Header | Value |
 | --- | --- |
-| `LinkedIn-Version` | `202511` |
+| `Content-Type` | `application/json` |
+| `LinkedIn-Version` | `202609` |
 | `X-Restli-Protocol-Version` | `2.0.0` |
 
 ## Pagination
 
 Use `count` in the query string to set the page size. Use `start` in the query string as the record offset.
 
-## Endpoints (10 documented)
+## Endpoints (11 documented)
 
 | Operation | Method & path | Vendor docs |
 | --- | --- | --- |
 | [Create Post](actions/create-post.md) | `POST /rest/posts` | [docs](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/posts-api?view=li-lms-2025-11) |
 | [Delete Post](actions/delete-post.md) | `DELETE /rest/posts/:encodedPostUrn` | [docs](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/posts-api?view=li-lms-2025-11) |
+| [Finalize Video Upload](actions/finalize-video-upload.md) | `POST /rest/videos?action=finalizeUpload` | [docs](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/videos-api?view=li-lms-2026-02) |
 | [Get Document](actions/get-document.md) | `GET /rest/documents/:documentUrn` | [docs](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/documents-api?view=li-lms-2026-02) |
 | [Get Image](actions/get-image.md) | `GET /rest/images/:imageUrn` | [docs](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/shares/images-api?view=li-lms-2026-01) |
 | [Get User Info](actions/get-user-info.md) | `GET /v2/userinfo` | [docs](https://learn.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/sign-in-with-linkedin) |

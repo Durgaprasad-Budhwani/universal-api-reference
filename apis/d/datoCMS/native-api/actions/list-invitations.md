@@ -1,5 +1,7 @@
 # List Invitations with DatoCMS
 
+Retrieves invitations from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

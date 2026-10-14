@@ -37,7 +37,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
-| `libraryId` | string | yes | The ID of the library. |
+| `libraryId` | list<string> | yes | The ID of the library. |
 | `entryId` | string | yes | The ID of the entry. |
 
 ## Response

@@ -1,6 +1,6 @@
 # DatoCMS: Delete Model
 
-
+Deletes an existing model from DatoCMS.
 
 ```
 DELETE https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/delete-model

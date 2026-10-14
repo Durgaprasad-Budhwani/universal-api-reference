@@ -168125,7 +168125,7 @@
     "websiteUrl": "https://www.hubspot.com/",
     "nativeBaseUrl": "https://app.hubspot.com",
     "nativeDocumentationUrl": "https://developers.hubspot.com/docs/api-reference/latest/overview",
-    "version": "0.1.32",
+    "version": "0.1.33",
     "authentication": [
       {
         "type": "oAuth2",
@@ -176848,7 +176848,44 @@
             "description": "Whether to return archived deal records."
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "archived",
+            "dataType": "boolean",
+            "description": "Whether the deal is archived.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "createdAt",
+            "dataType": "date",
+            "description": "When the deal was created.",
+            "mockType": "date"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "description": "The deal record ID.",
+            "mockType": "string"
+          },
+          {
+            "key": "properties",
+            "dataType": "object",
+            "description": "The returned deal properties.",
+            "mockType": "object"
+          },
+          {
+            "key": "updatedAt",
+            "dataType": "date",
+            "description": "When the deal was last updated.",
+            "mockType": "date"
+          },
+          {
+            "key": "url",
+            "dataType": "string",
+            "description": "The HubSpot record URL.",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "List Emails",

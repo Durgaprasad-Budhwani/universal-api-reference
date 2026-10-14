@@ -1,6 +1,6 @@
 # DatoCMS: Get Record Current vs Published State
 
-
+Retrieves current and published record states from DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/get-record-current-vs-published-state

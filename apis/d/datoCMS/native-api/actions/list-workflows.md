@@ -1,5 +1,7 @@
 # List Workflows with DatoCMS
 
+Retrieves workflows from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `GET`

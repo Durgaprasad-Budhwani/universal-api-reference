@@ -1,6 +1,6 @@
 # DatoCMS: List Workflows
 
-
+Retrieves workflows from DatoCMS.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/list-workflows

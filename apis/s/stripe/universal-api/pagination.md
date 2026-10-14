@@ -27,6 +27,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/stripe/latest/actions/lis
 - [List Disputes](actions/list-disputes.md)
 - [List Events](actions/list-events.md)
 - [List Invoice Line Items](actions/list-invoice-line-items.md)
+- [List Invoices](actions/list-invoices.md)
 - [List Payment Intents](actions/list-payment-intents.md)
 - [List Prices](actions/list-prices.md)
 - [List Products](actions/list-products.md)

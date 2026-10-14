@@ -1,6 +1,6 @@
 # DatoCMS: Update Fieldset
 
-
+Updates an existing fieldset in DatoCMS.
 
 ```
 PUT https://connect.mindcloud.co/v1/universal/datoCMS/latest/actions/update-fieldset

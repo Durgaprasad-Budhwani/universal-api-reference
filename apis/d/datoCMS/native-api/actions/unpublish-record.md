@@ -1,5 +1,7 @@
 # Unpublish Record with DatoCMS
 
+Unpublishes a record in DatoCMS.
+
 ## Endpoint
 
 - **Method:** `PUT`

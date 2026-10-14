@@ -13,4 +13,5 @@ Initializes a document upload in LinkedIn.
 
 | Parameter | Location | Type | Required | Description |
 | --- | --- | --- | --- | --- |
+| `initializeUploadRequest` | body | `object` | yes | — |
 | `initializeUploadRequest.owner` | body | `string` | yes | Owner URN for the member initializing the upload. |

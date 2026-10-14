@@ -1,5 +1,7 @@
 # Delete Fieldset with DatoCMS
 
+Deletes an existing fieldset from DatoCMS.
+
 ## Endpoint
 
 - **Method:** `DELETE`
