@@ -65,6 +65,8 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | `data[].Billing_Country` | string | no |  |
 | `data[].Acct_Typ` | array<string> | no | One of: `Advertisor`, `Association`, `Attendee`, `Confirmed Exhibitor`, `Exhibitor`, `Lead`, `Subscriber`. Accepts multiple values as an array. |
 | `data[].Confirmed_Exhibitor_Events` | string | no |  |
+| `data[].Owner` | object | no |  |
+| `data[].Owner.id` | string | no |  |
 
 ## Response
 

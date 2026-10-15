@@ -150723,7 +150723,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/google-ads-icon_1782393619275.png",
     "websiteUrl": "https://ads.google.com/",
     "nativeDocumentationUrl": "https://developers.google.com/google-ads/api",
-    "version": "0.0.34",
+    "version": "0.0.35",
     "authentication": [
       {
         "type": "oAuth2",
@@ -187559,7 +187559,7 @@
       "format": "openapi",
       "url": "https://github.com/APIs-guru/openapi-directory/blob/main/APIs/googleapis.com/drive/v3/openapi.yaml"
     },
-    "version": "0.0.188",
+    "version": "0.0.189",
     "authentication": [
       {
         "type": "oAuth2",

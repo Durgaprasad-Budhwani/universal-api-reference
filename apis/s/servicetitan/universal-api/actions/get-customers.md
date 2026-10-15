@@ -61,7 +61,89 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native ServiceTitan API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "name": "Ava Chen",
+      "type": "string",
+      "active": true,
+      "balance": 1,
+      "taxExempt": true,
+      "doNotMail": true,
+      "doNotService": true,
+      "nationalAccount": true,
+      "address": {
+        "city": "string",
+        "country": "string",
+        "latitude": 1,
+        "longitude": 1,
+        "state": "string",
+        "street": "string",
+        "unit": "string",
+        "zip": "string"
+      },
+      "customFields": [
+        [
+          {}
+        ]
+      ],
+      "tagTypeIds": [
+        [
+          1
+        ]
+      ],
+      "createdOn": "string",
+      "createdById": 1,
+      "modifiedOn": "string",
+      "mergedToId": 1,
+      "paymentTermId": 1,
+      "creditLimit": 1,
+      "creditLimitBalance": 1,
+      "externalData": {}
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `id` | number | ServiceTitan customer ID. |
+| `name` | string | Customer name. |
+| `type` | string | Customer type (Residential or Commercial). |
+| `active` | boolean | Whether the customer is active. |
+| `balance` | number | Outstanding account balance. |
+| `taxExempt` | boolean | Whether the customer is tax exempt. |
+| `doNotMail` | boolean | Whether the customer is excluded from mailings. |
+| `doNotService` | boolean | Whether the customer is excluded from service. |
+| `nationalAccount` | boolean | Whether the customer is a national account. |
+| `address` | object | Billing address of the customer. |
+| `customFields[]` | array<object> | Customer custom fields. |
+| `tagTypeIds[]` | array<number> | Tag type IDs. |
+| `createdOn` | string | Timestamp when the customer was created. |
+| `createdById` | number | ID of the user who created the customer. |
+| `modifiedOn` | string | Timestamp when the customer was last modified. |
+| `mergedToId` | number | ID of the customer this customer was merged into. |
+| `paymentTermId` | number | Payment term ID. |
+| `creditLimit` | number | Credit limit. |
+| `creditLimitBalance` | number | Credit limit balance. |
+| `externalData` | object | External data associated with the customer. |
+| `address.city` | string | City. |
+| `address.country` | string | Country. |
+| `address.latitude` | number | Latitude. |
+| `address.longitude` | number | Longitude. |
+| `address.state` | string | State. |
+| `address.street` | string | Street address. |
+| `address.unit` | string | Unit. |
+| `address.zip` | string | Postal code. |
+| `customFields[].name` | string | Custom field name. |
+| `customFields[].typeId` | number | Custom field type ID. |
+| `customFields[].value` | string | Custom field value. |
 
 ## Native endpoint
 

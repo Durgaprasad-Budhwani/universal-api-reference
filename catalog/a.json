@@ -342240,7 +342240,7 @@
     "websiteUrl": "https://www.youraspire.com/",
     "nativeBaseUrl": "https://cloud.youraspire.com/app/",
     "nativeDocumentationUrl": "https://guide.youraspire.com/apidocs",
-    "version": "0.1.495",
+    "version": "0.1.508",
     "authentication": [
       {
         "type": "custom",
@@ -358609,7 +358609,224 @@
             "required": false
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "bankDepositID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "billingAddressID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "branchID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "branchName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "companyID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "companyName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "contactID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "contactName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "createdByUserID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "createdByUserName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "createdDateTime",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "creditMemoNumber",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "divisionID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "divisionName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "electronicPaymentID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "emailStatus",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "isExpense",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "lastModifiedByUserID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "lastModifiedByUserName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastModifiedDateTime",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "opportunityID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "paymentAllocations",
+            "dataType": "array",
+            "itemDataType": "object",
+            "mockType": "array"
+          },
+          {
+            "key": "paymentAllocations[].amount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "paymentAllocations[].createdByUserID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "paymentAllocations[].createdByUserName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "paymentAllocations[].createdDateTime",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "paymentAllocations[].invoiceID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "paymentAllocations[].invoiceNumber",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "paymentAllocations[].paymentAllocationID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "paymentAmount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "paymentCategoryID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "paymentCategoryName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "paymentDate",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "paymentID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "paymentNote",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "paymentReference",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "paymentType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "propertyID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "saleAmount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "taxableAmount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "taxAmount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "taxJurisdictionID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "taxJurisdictionName",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "List Payments – Stripe to Aspire Sync",

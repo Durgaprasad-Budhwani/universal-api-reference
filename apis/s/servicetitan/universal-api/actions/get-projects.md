@@ -46,7 +46,73 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native ServiceTitan API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "number": "string",
+      "name": "Ava Chen",
+      "summary": "string",
+      "status": "string",
+      "statusId": 1,
+      "subStatus": "string",
+      "subStatusId": 1,
+      "customerId": 1,
+      "locationId": 1,
+      "projectTypeId": 1,
+      "projectManagerIds": [
+        1
+      ],
+      "businessUnitIds": [
+        1
+      ],
+      "startDate": "string",
+      "targetCompletionDate": "string",
+      "actualCompletionDate": "string",
+      "contractStartDate": "string",
+      "modifiedOn": "string",
+      "createdOn": "string",
+      "customFields": [
+        {}
+      ],
+      "externalData": {},
+      "jobIds": [
+        1
+      ]
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `id` | number |  |
+| `number` | string |  |
+| `name` | string |  |
+| `summary` | string |  |
+| `status` | string |  |
+| `statusId` | number |  |
+| `subStatus` | string |  |
+| `subStatusId` | number |  |
+| `customerId` | number |  |
+| `locationId` | number |  |
+| `projectTypeId` | number |  |
+| `projectManagerIds` | array<number> |  |
+| `businessUnitIds` | array<number> |  |
+| `startDate` | string |  |
+| `targetCompletionDate` | string |  |
+| `actualCompletionDate` | string |  |
+| `contractStartDate` | string |  |
+| `modifiedOn` | string |  |
+| `createdOn` | string |  |
+| `customFields` | array<object> |  |
+| `externalData` | object |  |
+| `jobIds` | array<number> |  |
 
 ## Native endpoint
 

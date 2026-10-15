@@ -9,6 +9,10 @@ Finds NetSuite records using a SuiteQL query.
 - **Base URL:** `https://{accountDomain}.suitetalk.api.netsuite.com/services/rest`
 - **Official documentation:** [Search using SuiteQL](https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/section_157909186990.html)
 
+## Capabilities
+
+This operation supports [pagination](../README.md#pagination).
+
 ## Parameters
 
 | Parameter | Location | Type | Required | Description |

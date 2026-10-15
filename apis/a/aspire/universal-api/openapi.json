@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Aspire Universal API",
-    "version": "0.1.495",
+    "version": "0.1.508",
     "description": "Field service software to drive growth"
   },
   "servers": [
@@ -27316,7 +27316,144 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "bankDepositID": {
+                            "type": "number"
+                          },
+                          "billingAddressID": {
+                            "type": "number"
+                          },
+                          "branchID": {
+                            "type": "number"
+                          },
+                          "branchName": {
+                            "type": "string"
+                          },
+                          "companyID": {
+                            "type": "number"
+                          },
+                          "companyName": {
+                            "type": "string"
+                          },
+                          "contactID": {
+                            "type": "number"
+                          },
+                          "contactName": {
+                            "type": "string"
+                          },
+                          "createdByUserID": {
+                            "type": "number"
+                          },
+                          "createdByUserName": {
+                            "type": "string"
+                          },
+                          "createdDateTime": {
+                            "type": "string"
+                          },
+                          "creditMemoNumber": {
+                            "type": "number"
+                          },
+                          "divisionID": {
+                            "type": "number"
+                          },
+                          "divisionName": {
+                            "type": "string"
+                          },
+                          "electronicPaymentID": {
+                            "type": "number"
+                          },
+                          "emailStatus": {
+                            "type": "string"
+                          },
+                          "isExpense": {
+                            "type": "boolean"
+                          },
+                          "lastModifiedByUserID": {
+                            "type": "number"
+                          },
+                          "lastModifiedByUserName": {
+                            "type": "string"
+                          },
+                          "lastModifiedDateTime": {
+                            "type": "string"
+                          },
+                          "opportunityID": {
+                            "type": "number"
+                          },
+                          "paymentAllocations": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "amount": {
+                                  "type": "number"
+                                },
+                                "createdByUserID": {
+                                  "type": "number"
+                                },
+                                "createdByUserName": {
+                                  "type": "string"
+                                },
+                                "createdDateTime": {
+                                  "type": "string"
+                                },
+                                "invoiceID": {
+                                  "type": "number"
+                                },
+                                "invoiceNumber": {
+                                  "type": "number"
+                                },
+                                "paymentAllocationID": {
+                                  "type": "number"
+                                }
+                              }
+                            }
+                          },
+                          "paymentAmount": {
+                            "type": "number"
+                          },
+                          "paymentCategoryID": {
+                            "type": "number"
+                          },
+                          "paymentCategoryName": {
+                            "type": "string"
+                          },
+                          "paymentDate": {
+                            "type": "string"
+                          },
+                          "paymentID": {
+                            "type": "number"
+                          },
+                          "paymentNote": {
+                            "type": "string"
+                          },
+                          "paymentReference": {
+                            "type": "string"
+                          },
+                          "paymentType": {
+                            "type": "string"
+                          },
+                          "propertyID": {
+                            "type": "number"
+                          },
+                          "saleAmount": {
+                            "type": "number"
+                          },
+                          "taxableAmount": {
+                            "type": "number"
+                          },
+                          "taxAmount": {
+                            "type": "number"
+                          },
+                          "taxJurisdictionID": {
+                            "type": "number"
+                          },
+                          "taxJurisdictionName": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

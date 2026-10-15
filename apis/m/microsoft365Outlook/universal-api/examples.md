@@ -7,13 +7,15 @@ These examples use the MindCloud API key and Microsoft 365 Outlook connection de
 Retrieves inbox messages from Microsoft 365 Outlook.
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/microsoft365Outlook/latest/actions/list-inbox-messages?connectionId=$CONNECTION_ID" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/microsoft365Outlook/latest/actions/list-inbox-messages?connectionId=$CONNECTION_ID&limit=25&offset=0" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
-  connectionId
+  connectionId,
+  limit: '25',
+  offset: '0'
 });
 
 const response = await fetch(`https://connect.mindcloud.co/v1/universal/microsoft365Outlook/latest/actions/list-inbox-messages?${params}`, {

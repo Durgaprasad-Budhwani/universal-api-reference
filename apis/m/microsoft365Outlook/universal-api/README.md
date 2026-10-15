@@ -17,7 +17,7 @@ Read more in [authentication.md](authentication.md).
 For example, to [List Inbox Messages](actions/list-inbox-messages.md):
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/microsoft365Outlook/latest/actions/list-inbox-messages?connectionId=$CONNECTION_ID" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/microsoft365Outlook/latest/actions/list-inbox-messages?connectionId=$CONNECTION_ID&limit=25&offset=0" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 

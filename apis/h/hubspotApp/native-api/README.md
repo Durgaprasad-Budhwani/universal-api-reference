@@ -74,6 +74,10 @@ Responses from this API use JSON. The next-page cursor is read from `paging.next
 - **REST - Query Pagination:** Set the sort field with `sort` in the request body. Only one sort field is accepted.
 - **REST - Body Pagination:** Set the sort field with `sort` in the request body. Use `ASCENDING` for ascending order and `DESCENDING` for descending order. Multiple sort fields can be combined.
 
+## Retry behavior
+
+- **REST - Body Pagination:** Retry responses with status codes `429,500,502,503,504`. Wait 1000 ms before the first retry. Stop after 3 attempts. Multiply the delay by 2 after each failed attempt.
+
 ## Endpoints (94 documented)
 
 | Operation | API | Method & path | Vendor docs |

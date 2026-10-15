@@ -30,7 +30,15 @@ Example response:
 ```json
 {
   "success": true,
-  "data": [],
+  "data": [
+    {
+      "BATCH_TITLE": "string",
+      "REFERENCENO": "string",
+      "JOURNAL": "string",
+      "BATCH_DATE": "string",
+      "RECORDNO": "string"
+    }
+  ],
   "meta": {}
 }
 ```

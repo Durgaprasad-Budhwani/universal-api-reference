@@ -44,7 +44,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | `object` | string | no |  |
 | `options[].caseinsensitive` | boolean | no |  |
 | `fields[]` | array<string> | yes |  |
-| `filter[].filtertype` | list<string> | no |  |
+| `filter[].filtertype` | list<string> | no | One of: `equalto`, `greaterthan`, `greaterthanorequalto`, `isnotnull`, `isnull`, `lessthan`, `lessthanorequalto`, `notequalto`. |
 | `options[].showprivate` | boolean | no | In a multi-entity company, set the `showprivate` element to `true` to query data in private entities. |
 | `filter[]` | array<object> | no |  |
 | `filter[].filtervalue` | string | no |  |

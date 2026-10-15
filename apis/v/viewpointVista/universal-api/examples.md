@@ -2,22 +2,22 @@
 
 These examples use the MindCloud API key and Viewpoint Vista connection described in [authentication.md](authentication.md). Replace `$CONNECTION_ID` with the connection ID you copied from the Connections page.
 
-## Get Action Instance
+## List AR Objects
 
-Vista processes write operations asynchronously. This endpoint allows the integration to confirm whether a batch or time entry was successfully created.
+Represents data found in Viewpoint® Vista™ AR programs
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/viewpointVista/latest/actions/get-action-instance?connectionId=$CONNECTION_ID&action_key_value=action-id" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/viewpointVista/latest/actions/list-ar-objects?connectionId=$CONNECTION_ID&object=string" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
   connectionId,
-  "action_key_value": "action-id"
+  "object": "string"
 });
 
-const response = await fetch(`https://connect.mindcloud.co/v1/universal/viewpointVista/latest/actions/get-action-instance?${params}`, {
+const response = await fetch(`https://connect.mindcloud.co/v1/universal/viewpointVista/latest/actions/list-ar-objects?${params}`, {
   headers: {
     Authorization: `Bearer ${process.env.MINDCLOUD_API_KEY}`
   }
@@ -31,24 +31,12 @@ Example response:
 ```json
 {
   "success": true,
-  "data": [
-    {
-      "actionCode": "string",
-      "createdUtc": "string",
-      "dataObjectCode": "string",
-      "id": "string",
-      "result": {
-        "batchId": 1
-      },
-      "status": "string",
-      "subscriberCode": "string"
-    }
-  ],
+  "data": [],
   "meta": {}
 }
 ```
 
-See the full [Get Action Instance action reference](actions/get-action-instance.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/viewpointVista/latest/actions/get-action-instance).
+See the full [List AR Objects action reference](actions/list-ar-objects.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/viewpointVista/latest/actions/list-ar-objects).
 
 ## Add AP Invoice Batch
 

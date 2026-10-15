@@ -168125,7 +168125,7 @@
     "websiteUrl": "https://www.hubspot.com/",
     "nativeBaseUrl": "https://app.hubspot.com",
     "nativeDocumentationUrl": "https://developers.hubspot.com/docs/api-reference/latest/overview",
-    "version": "0.1.33",
+    "version": "0.1.35",
     "authentication": [
       {
         "type": "oAuth2",
@@ -168238,6 +168238,12 @@
           "descending": "DESCENDING",
           "delimiter": ",",
           "multipleFields": true
+        },
+        "retry": {
+          "delayMs": 1000,
+          "maxAttempts": 3,
+          "multiplier": 2,
+          "statusCodes": "429,500,502,503,504"
         },
         "responses": [
           {

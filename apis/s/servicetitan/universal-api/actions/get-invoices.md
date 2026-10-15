@@ -55,7 +55,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | `jobId` | string | no |  |
 | `createdBefore` | string | no |  |
 | `totalGreater` | number | no | Retrieve all invoices with a total greater than or equal to the input value. |
-| `statuses` | list | no |  |
+| `statuses` | list | no | One of: `Exported`, `Pending`, `Posted`. |
 | `createdOnOrAfter` | string | no | Return items created on or after certain date/time (in UTC) |
 
 ## Response

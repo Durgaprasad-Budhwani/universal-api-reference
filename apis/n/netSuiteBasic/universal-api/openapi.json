@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "NetSuite - Basic Universal API",
-    "version": "0.0.17",
+    "version": "0.0.18",
     "description": "Connect to Oracle NetSuite SuiteTalk REST Web Services for core ERP, CRM, sales, purchasing, billing, and lookup records."
   },
   "servers": [
@@ -21225,6 +21225,26 @@
             "schema": {
               "type": "string",
               "description": "SuiteQL query text to send as the q body parameter."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
             }
           },
           {

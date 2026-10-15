@@ -10,7 +10,7 @@
 
 | Parameter | Location | Type | Required |
 | --- | --- | --- | --- |
-| `referenceNo` | path | `string` | no |
-| `payoutId` | path | `string` | no |
-| `batchTitleContains` | path | `string` | no |
-| `pageSize` | path | `number` | no |
+| `referenceNo` | body | `string` | no |
+| `payoutId` | body | `string` | no |
+| `batchTitleContains` | body | `string` | no |
+| `pageSize` | body | `number` | no |

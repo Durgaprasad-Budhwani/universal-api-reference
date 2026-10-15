@@ -9,6 +9,10 @@ Retrieves attachments for a message from Microsoft 365 Outlook.
 - **Base URL:** `https://graph.microsoft.com`
 - **Official documentation:** [List Message Attachments](https://learn.microsoft.com/en-us/graph/api/message-list-attachments?view=graph-rest-1.0)
 
+## Capabilities
+
+This operation supports [pagination](../README.md#pagination).
+
 ## Parameters
 
 | Parameter | Location | Type | Required | Description |

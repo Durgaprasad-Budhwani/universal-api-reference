@@ -26,7 +26,7 @@ Send these additional headers for this operation:
 | `object` | body | `string` | no | — |
 | `options[].caseinsensitive` | body | `boolean` | no | — |
 | `fields[]` | body | `array<string>` | yes | — |
-| `filter[].filtertype` | body | `list<string>` | no | — |
+| `filter[].filtertype` | body | `list<string>` | no | Accepted values: `equalto`, `greaterthan`, `greaterthanorequalto`, `isnotnull`, `isnull`, `lessthan`, `lessthanorequalto`, `notequalto`. |
 | `options[].showprivate` | body | `boolean` | no | In a multi-entity company, set the `showprivate` element to `true` to query data in private entities. |
 | `filter[]` | body | `array<object>` | no | — |
 | `filter[].filtervalue` | body | `string` | no | — |

@@ -9,6 +9,10 @@ Retrieves inbox messages from Microsoft 365 Outlook.
 - **Base URL:** `https://graph.microsoft.com`
 - **Official documentation:** [List Inbox Messages](https://learn.microsoft.com/en-us/graph/api/mailfolder-list-messages?view=graph-rest-1.0)
 
+## Capabilities
+
+This operation supports [pagination](../README.md#pagination).
+
 ## Parameters
 
 | Parameter | Location | Type | Required | Description |

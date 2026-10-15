@@ -13,10 +13,10 @@ Every action below is called through one REST interface, authenticated with a Mi
 
 Read more in [authentication.md](authentication.md).
 
-For example, to [Get Action Instance](actions/get-action-instance.md):
+For example, to [List AR Objects](actions/list-ar-objects.md):
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/viewpointVista/latest/actions/get-action-instance?connectionId=$CONNECTION_ID&action_key_value=action-id" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/viewpointVista/latest/actions/list-ar-objects?connectionId=$CONNECTION_ID&object=string" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 

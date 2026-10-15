@@ -33,5 +33,5 @@ This operation supports [pagination](../README.md#pagination).
 | `jobId` | query | `string` | no | — |
 | `createdBefore` | query | `string` | no | — |
 | `totalGreater` | query | `number` | no | Retrieve all invoices with a total greater than or equal to the input value. |
-| `statuses` | query | `list` | no | — |
+| `statuses` | query | `list` | no | Accepted values: `Exported`, `Pending`, `Posted`. |
 | `createdOnOrAfter` | query | `string` | no | Return items created on or after certain date/time (in UTC) |

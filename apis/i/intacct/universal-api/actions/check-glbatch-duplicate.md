@@ -42,7 +42,31 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native Sage Intacct API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "BATCH_TITLE": "string",
+      "REFERENCENO": "string",
+      "JOURNAL": "string",
+      "BATCH_DATE": "string",
+      "RECORDNO": "string"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `BATCH_TITLE` | string |  |
+| `REFERENCENO` | string |  |
+| `JOURNAL` | string |  |
+| `BATCH_DATE` | string |  |
+| `RECORDNO` | string |  |
 
 ## Native endpoint
 

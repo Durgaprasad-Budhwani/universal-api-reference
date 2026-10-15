@@ -192276,7 +192276,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/memento-database_1774529998734.png",
     "websiteUrl": "https://mementodatabase.com",
     "nativeDocumentationUrl": "https://mementodatabase.docs.apiary.io/",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "authentication": [
       {
         "type": "apiKey",
@@ -192700,7 +192700,8 @@
             {
               "key": "libraryId",
               "name": "Library ID",
-              "dataType": "string",
+              "dataType": "list",
+              "itemDataType": "string",
               "location": "param",
               "required": true,
               "description": "The ID of the library."
@@ -192748,7 +192749,8 @@
           {
             "key": "libraryId",
             "name": "Library ID",
-            "dataType": "string",
+            "dataType": "list",
+            "itemDataType": "string",
             "required": true,
             "description": "The ID of the library."
           },
@@ -246911,7 +246913,7 @@
     "websiteUrl": "https://www.microsoft.com/microsoft-365/outlook/email-and-calendar-software-microsoft-outlook",
     "nativeBaseUrl": "https://graph.microsoft.com",
     "nativeDocumentationUrl": "https://learn.microsoft.com/en-us/graph/use-the-api",
-    "version": "0.0.6",
+    "version": "0.0.8",
     "authentication": [
       {
         "type": "oAuth2",
@@ -247698,7 +247700,7 @@
           ]
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },
@@ -247909,7 +247911,7 @@
           ]
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },

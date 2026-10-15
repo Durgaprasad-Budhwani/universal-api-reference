@@ -37,7 +37,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | --- | --- | --- | --- |
 | `start_date` | string | no | Start date for the report period. Use YYYY-MM-DD format. |
 | `end_date` | string | no | End date for the report period. Use YYYY-MM-DD format. |
-| `accounting_method` | list | no | Accounting basis to use for the report. One of: `0`, `1`. |
+| `accounting_method` | list | no | Accounting basis to use for the report. One of: `Accrual`, `Cash`. |
 
 ### Advanced
 

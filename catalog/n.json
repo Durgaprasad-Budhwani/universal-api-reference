@@ -76761,7 +76761,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/net-suite_1780348776698.png",
     "websiteUrl": "https://www.netsuite.com/",
     "nativeDocumentationUrl": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/chapter_1540391670.html",
-    "version": "0.0.17",
+    "version": "0.0.18",
     "authentication": [
       {
         "type": "oAuth2",
@@ -84447,7 +84447,7 @@
           ]
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },

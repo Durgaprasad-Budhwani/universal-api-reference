@@ -120413,7 +120413,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/apple-touch-icon_1782233203690.png",
     "websiteUrl": "https://www.sage.com/en-us/sage-business-cloud/intacct/",
     "nativeDocumentationUrl": "https://developer.intacct.com/api/",
-    "version": "1.0.146",
+    "version": "1.0.150",
     "authentication": [
       {
         "type": "custom",
@@ -120605,28 +120605,28 @@
               "key": "referenceNo",
               "name": "Reference No",
               "dataType": "string",
-              "location": "param",
+              "location": "body",
               "required": false
             },
             {
               "key": "payoutId",
               "name": "Payout Id",
               "dataType": "string",
-              "location": "param",
+              "location": "body",
               "required": false
             },
             {
               "key": "batchTitleContains",
               "name": "Batch Title Contains",
               "dataType": "string",
-              "location": "param",
+              "location": "body",
               "required": false
             },
             {
               "key": "pageSize",
               "name": "Page Size",
               "dataType": "number",
-              "location": "param",
+              "location": "body",
               "required": false
             }
           ]
@@ -120662,7 +120662,33 @@
             "required": false
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "BATCH_TITLE",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "REFERENCENO",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "JOURNAL",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "BATCH_DATE",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "RECORDNO",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "Create Attachment",
@@ -125163,7 +125189,17 @@
               "dataType": "list",
               "itemDataType": "string",
               "location": "body",
-              "required": false
+              "required": false,
+              "enumValues": [
+                "equalto",
+                "greaterthan",
+                "greaterthanorequalto",
+                "isnotnull",
+                "isnull",
+                "lessthan",
+                "lessthanorequalto",
+                "notequalto"
+              ]
             },
             {
               "key": "options[].showprivate",
@@ -125263,7 +125299,17 @@
             "name": "Type",
             "dataType": "list",
             "itemDataType": "string",
-            "required": false
+            "required": false,
+            "enumValues": [
+              "equalto",
+              "greaterthan",
+              "greaterthanorequalto",
+              "isnotnull",
+              "isnull",
+              "lessthan",
+              "lessthanorequalto",
+              "notequalto"
+            ]
           },
           {
             "key": "options[].showprivate",
@@ -125448,6 +125494,7 @@
           "filtering": false,
           "sorting": false
         },
+        "schemaDynamic": true,
         "arguments": [
           {
             "key": "object",
@@ -125469,7 +125516,18 @@
             "required": false
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "BATCHNO",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "RECORDNO",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "Update Invoice",

@@ -13,7 +13,7 @@ Retrieves entries from a library in Memento Database.
 
 | Parameter | Location | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| `libraryId` | path | `string` | yes | The ID of the library. |
+| `libraryId` | path | `list<string>` | yes | The ID of the library. |
 | `limit` | query | `number` | no | Maximum number of entries to return. |
 | `pageToken` | query | `string` | no | Page token returned by a previous list response. |
 | `createdAfter` | query | `string` | no | Only return entries created after this ISO-8601 timestamp. |

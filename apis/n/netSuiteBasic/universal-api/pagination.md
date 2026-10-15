@@ -69,4 +69,5 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/netSuiteBasic/latest/acti
 - [List Vendor Return Authorizations](actions/list-vendor-return-authorizations.md)
 - [List Vendors](actions/list-vendors.md)
 - [List Work Orders](actions/list-work-orders.md)
+- [Search using SuiteQL](actions/search-using-suite-ql.md)
 - [Test Connection](actions/test-connection.md)

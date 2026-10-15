@@ -13,6 +13,6 @@
 | --- | --- | --- | --- | --- |
 | `start_date` | query | `string` | no | Start date for the report period. Use YYYY-MM-DD format. |
 | `end_date` | query | `string` | no | End date for the report period. Use YYYY-MM-DD format. |
-| `accounting_method` | query | `list` | no | Accounting basis to use for the report. Accepted values: `0`, `1`. |
+| `accounting_method` | query | `list` | no | Accounting basis to use for the report. Accepted values: `Accrual`, `Cash`. |
 | `vendor` | query | `string` | no | Optional QuickBooks vendor filter for the transaction report. |
 | `customer` | query | `string` | no | Optional QuickBooks customer filter for the transaction report. |

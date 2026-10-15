@@ -12,10 +12,12 @@ Start with `offset=0`, add `limit` to the offset after each page, and stop when 
 ## Example
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/microsoft365Outlook/latest/actions/list-messages-in-folder?connectionId=$CONNECTION_ID&limit=25&offset=0&mailFolderId=inbox" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/microsoft365Outlook/latest/actions/list-inbox-messages?connectionId=$CONNECTION_ID&limit=25&offset=0" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ## Microsoft 365 Outlook actions that support pagination
 
+- [List Inbox Messages](actions/list-inbox-messages.md)
+- [List Message Attachments](actions/list-message-attachments.md)
 - [List Messages in Folder](actions/list-messages-in-folder.md)

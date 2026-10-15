@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "ServiceTitan Universal API",
-    "version": "0.0.374",
+    "version": "0.0.380",
     "description": "ServiceTitan is a cloud-based software platform for home and commercial service businesses that manages customers, jobs, scheduling, dispatching, invoicing, payments, and other field service operations."
   },
   "servers": [
@@ -4500,7 +4500,21 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "accessToken": {
+                            "type": "string"
+                          },
+                          "expiresIn": {
+                            "type": "number"
+                          },
+                          "scope": {
+                            "type": "string"
+                          },
+                          "tokenType": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -6882,7 +6896,148 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "id": {
+                            "type": "number",
+                            "description": "ServiceTitan customer ID."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Customer name."
+                          },
+                          "type": {
+                            "type": "string",
+                            "description": "Customer type (Residential or Commercial)."
+                          },
+                          "active": {
+                            "type": "boolean",
+                            "description": "Whether the customer is active."
+                          },
+                          "balance": {
+                            "type": "number",
+                            "description": "Outstanding account balance."
+                          },
+                          "taxExempt": {
+                            "type": "boolean",
+                            "description": "Whether the customer is tax exempt."
+                          },
+                          "doNotMail": {
+                            "type": "boolean",
+                            "description": "Whether the customer is excluded from mailings."
+                          },
+                          "doNotService": {
+                            "type": "boolean",
+                            "description": "Whether the customer is excluded from service."
+                          },
+                          "nationalAccount": {
+                            "type": "boolean",
+                            "description": "Whether the customer is a national account."
+                          },
+                          "address": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "description": "Billing address of the customer.",
+                            "properties": {
+                              "city": {
+                                "type": "string",
+                                "description": "City."
+                              },
+                              "country": {
+                                "type": "string",
+                                "description": "Country."
+                              },
+                              "latitude": {
+                                "type": "number",
+                                "description": "Latitude."
+                              },
+                              "longitude": {
+                                "type": "number",
+                                "description": "Longitude."
+                              },
+                              "state": {
+                                "type": "string",
+                                "description": "State."
+                              },
+                              "street": {
+                                "type": "string",
+                                "description": "Street address."
+                              },
+                              "unit": {
+                                "type": "string",
+                                "description": "Unit."
+                              },
+                              "zip": {
+                                "type": "string",
+                                "description": "Postal code."
+                              }
+                            }
+                          },
+                          "customFields": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "description": "Custom field name."
+                                },
+                                "typeId": {
+                                  "type": "number",
+                                  "description": "Custom field type ID."
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "description": "Custom field value."
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "tagTypeIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "array",
+                              "items": {
+                                "type": "number"
+                              },
+                              "description": "Tag type IDs."
+                            }
+                          },
+                          "createdOn": {
+                            "type": "string",
+                            "description": "Timestamp when the customer was created."
+                          },
+                          "createdById": {
+                            "type": "number",
+                            "description": "ID of the user who created the customer."
+                          },
+                          "modifiedOn": {
+                            "type": "string",
+                            "description": "Timestamp when the customer was last modified."
+                          },
+                          "mergedToId": {
+                            "type": "number",
+                            "description": "ID of the customer this customer was merged into."
+                          },
+                          "paymentTermId": {
+                            "type": "number",
+                            "description": "Payment term ID."
+                          },
+                          "creditLimit": {
+                            "type": "number",
+                            "description": "Credit limit."
+                          },
+                          "creditLimitBalance": {
+                            "type": "number",
+                            "description": "Credit limit balance."
+                          },
+                          "externalData": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "External data associated with the customer."
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -7239,7 +7394,148 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "id": {
+                            "type": "number",
+                            "description": "ServiceTitan customer ID."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Customer name."
+                          },
+                          "type": {
+                            "type": "string",
+                            "description": "Customer type (Residential or Commercial)."
+                          },
+                          "active": {
+                            "type": "boolean",
+                            "description": "Whether the customer is active."
+                          },
+                          "balance": {
+                            "type": "number",
+                            "description": "Outstanding account balance."
+                          },
+                          "taxExempt": {
+                            "type": "boolean",
+                            "description": "Whether the customer is tax exempt."
+                          },
+                          "doNotMail": {
+                            "type": "boolean",
+                            "description": "Whether the customer is excluded from mailings."
+                          },
+                          "doNotService": {
+                            "type": "boolean",
+                            "description": "Whether the customer is excluded from service."
+                          },
+                          "nationalAccount": {
+                            "type": "boolean",
+                            "description": "Whether the customer is a national account."
+                          },
+                          "address": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "description": "Billing address of the customer.",
+                            "properties": {
+                              "city": {
+                                "type": "string",
+                                "description": "City."
+                              },
+                              "country": {
+                                "type": "string",
+                                "description": "Country."
+                              },
+                              "latitude": {
+                                "type": "number",
+                                "description": "Latitude."
+                              },
+                              "longitude": {
+                                "type": "number",
+                                "description": "Longitude."
+                              },
+                              "state": {
+                                "type": "string",
+                                "description": "State."
+                              },
+                              "street": {
+                                "type": "string",
+                                "description": "Street address."
+                              },
+                              "unit": {
+                                "type": "string",
+                                "description": "Unit."
+                              },
+                              "zip": {
+                                "type": "string",
+                                "description": "Postal code."
+                              }
+                            }
+                          },
+                          "customFields": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "description": "Custom field name."
+                                },
+                                "typeId": {
+                                  "type": "number",
+                                  "description": "Custom field type ID."
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "description": "Custom field value."
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "tagTypeIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "array",
+                              "items": {
+                                "type": "number"
+                              },
+                              "description": "Tag type IDs."
+                            }
+                          },
+                          "createdOn": {
+                            "type": "string",
+                            "description": "Timestamp when the customer was created."
+                          },
+                          "createdById": {
+                            "type": "number",
+                            "description": "ID of the user who created the customer."
+                          },
+                          "modifiedOn": {
+                            "type": "string",
+                            "description": "Timestamp when the customer was last modified."
+                          },
+                          "mergedToId": {
+                            "type": "number",
+                            "description": "ID of the customer this customer was merged into."
+                          },
+                          "paymentTermId": {
+                            "type": "number",
+                            "description": "Payment term ID."
+                          },
+                          "creditLimit": {
+                            "type": "number",
+                            "description": "Credit limit."
+                          },
+                          "creditLimitBalance": {
+                            "type": "number",
+                            "description": "Credit limit balance."
+                          },
+                          "externalData": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "External data associated with the customer."
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -9540,7 +9836,12 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "Exported",
+                "Pending",
+                "Posted"
+              ]
             }
           },
           {
@@ -12343,7 +12644,128 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "id": {
+                            "type": "number",
+                            "description": "ServiceTitan location ID."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Location name."
+                          },
+                          "customerId": {
+                            "type": "number",
+                            "description": "ID of the location's customer."
+                          },
+                          "active": {
+                            "type": "boolean",
+                            "description": "Whether the location is active."
+                          },
+                          "taxExempt": {
+                            "type": "boolean",
+                            "description": "Whether the location is tax exempt."
+                          },
+                          "taxZoneId": {
+                            "type": "number",
+                            "description": "Tax zone ID."
+                          },
+                          "zoneId": {
+                            "type": "number",
+                            "description": "Zone ID."
+                          },
+                          "mergedToId": {
+                            "type": "number",
+                            "description": "ID of the location this location was merged into."
+                          },
+                          "address": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "description": "Location address.",
+                            "properties": {
+                              "city": {
+                                "type": "string",
+                                "description": "City."
+                              },
+                              "country": {
+                                "type": "string",
+                                "description": "Country."
+                              },
+                              "latitude": {
+                                "type": "number",
+                                "description": "Latitude."
+                              },
+                              "longitude": {
+                                "type": "number",
+                                "description": "Longitude."
+                              },
+                              "state": {
+                                "type": "string",
+                                "description": "State."
+                              },
+                              "street": {
+                                "type": "string",
+                                "description": "Street address."
+                              },
+                              "unit": {
+                                "type": "string",
+                                "description": "Unit."
+                              },
+                              "zip": {
+                                "type": "string",
+                                "description": "Postal code."
+                              }
+                            }
+                          },
+                          "customFields": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "description": "Custom field name."
+                                },
+                                "typeId": {
+                                  "type": "number",
+                                  "description": "Custom field type ID."
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "description": "Custom field value."
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "tagTypeIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "array",
+                              "items": {
+                                "type": "number"
+                              },
+                              "description": "Tag type IDs."
+                            }
+                          },
+                          "externalData": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "External data associated with the location."
+                          },
+                          "createdOn": {
+                            "type": "string",
+                            "description": "Timestamp when the location was created."
+                          },
+                          "createdById": {
+                            "type": "number",
+                            "description": "ID of the user who created the location."
+                          },
+                          "modifiedOn": {
+                            "type": "string",
+                            "description": "Timestamp when the location was last modified."
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -15450,7 +15872,89 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "number": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "summary": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "statusId": {
+                            "type": "number"
+                          },
+                          "subStatus": {
+                            "type": "string"
+                          },
+                          "subStatusId": {
+                            "type": "number"
+                          },
+                          "customerId": {
+                            "type": "number"
+                          },
+                          "locationId": {
+                            "type": "number"
+                          },
+                          "projectTypeId": {
+                            "type": "number"
+                          },
+                          "projectManagerIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            }
+                          },
+                          "businessUnitIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            }
+                          },
+                          "startDate": {
+                            "type": "string"
+                          },
+                          "targetCompletionDate": {
+                            "type": "string"
+                          },
+                          "actualCompletionDate": {
+                            "type": "string"
+                          },
+                          "contractStartDate": {
+                            "type": "string"
+                          },
+                          "modifiedOn": {
+                            "type": "string"
+                          },
+                          "createdOn": {
+                            "type": "string"
+                          },
+                          "customFields": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "externalData": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "jobIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            }
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

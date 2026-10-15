@@ -40,7 +40,79 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native ServiceTitan API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "name": "Ava Chen",
+      "customerId": 1,
+      "active": true,
+      "taxExempt": true,
+      "taxZoneId": 1,
+      "zoneId": 1,
+      "mergedToId": 1,
+      "address": {
+        "city": "string",
+        "country": "string",
+        "latitude": 1,
+        "longitude": 1,
+        "state": "string",
+        "street": "string",
+        "unit": "string",
+        "zip": "string"
+      },
+      "customFields": [
+        [
+          {}
+        ]
+      ],
+      "tagTypeIds": [
+        [
+          1
+        ]
+      ],
+      "externalData": {},
+      "createdOn": "string",
+      "createdById": 1,
+      "modifiedOn": "string"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `id` | number | ServiceTitan location ID. |
+| `name` | string | Location name. |
+| `customerId` | number | ID of the location's customer. |
+| `active` | boolean | Whether the location is active. |
+| `taxExempt` | boolean | Whether the location is tax exempt. |
+| `taxZoneId` | number | Tax zone ID. |
+| `zoneId` | number | Zone ID. |
+| `mergedToId` | number | ID of the location this location was merged into. |
+| `address` | object | Location address. |
+| `customFields[]` | array<object> | Location custom fields. |
+| `tagTypeIds[]` | array<number> | Tag type IDs. |
+| `externalData` | object | External data associated with the location. |
+| `createdOn` | string | Timestamp when the location was created. |
+| `createdById` | number | ID of the user who created the location. |
+| `modifiedOn` | string | Timestamp when the location was last modified. |
+| `address.city` | string | City. |
+| `address.country` | string | Country. |
+| `address.latitude` | number | Latitude. |
+| `address.longitude` | number | Longitude. |
+| `address.state` | string | State. |
+| `address.street` | string | Street address. |
+| `address.unit` | string | Unit. |
+| `address.zip` | string | Postal code. |
+| `customFields[].name` | string | Custom field name. |
+| `customFields[].typeId` | number | Custom field type ID. |
+| `customFields[].value` | string | Custom field value. |
 
 ## Native endpoint
 

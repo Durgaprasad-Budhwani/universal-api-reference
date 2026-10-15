@@ -42,7 +42,29 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native ServiceTitan API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "accessToken": "string",
+      "expiresIn": 1,
+      "scope": "string",
+      "tokenType": "string"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `accessToken` | string |  |
+| `expiresIn` | number |  |
+| `scope` | string |  |
+| `tokenType` | string |  |
 
 ## Native endpoint
 

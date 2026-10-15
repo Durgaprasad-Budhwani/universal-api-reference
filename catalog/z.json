@@ -98643,7 +98643,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/zoho-crm_1782741849165.png",
     "websiteUrl": "https://www.zoho.com/crm/",
     "nativeDocumentationUrl": "https://www.zoho.com/crm/developer/docs/api/v8/",
-    "version": "0.0.26",
+    "version": "0.0.27",
     "authentication": [
       {
         "type": "oAuth2",
@@ -102685,6 +102685,20 @@
               "dataType": "string",
               "location": "body",
               "required": false
+            },
+            {
+              "key": "data[].Owner",
+              "name": "Account Owner",
+              "dataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "data[].Owner.id",
+              "name": "Account Owner ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false
             }
           ]
         },
@@ -102821,6 +102835,18 @@
           {
             "key": "data[].Confirmed_Exhibitor_Events",
             "name": "Confirmed Exhibitor Events",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "data[].Owner",
+            "name": "Account Owner",
+            "dataType": "object",
+            "required": false
+          },
+          {
+            "key": "data[].Owner.id",
+            "name": "Account Owner ID",
             "dataType": "string",
             "required": false
           }

@@ -46,7 +46,110 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native Aspire API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "bankDepositID": 1,
+      "billingAddressID": 1,
+      "branchID": 1,
+      "branchName": "Ava Chen",
+      "companyID": 1,
+      "companyName": "Ava Chen",
+      "contactID": 1,
+      "contactName": "Ava Chen",
+      "createdByUserID": 1,
+      "createdByUserName": "Ava Chen",
+      "createdDateTime": "string",
+      "creditMemoNumber": 1,
+      "divisionID": 1,
+      "divisionName": "Ava Chen",
+      "electronicPaymentID": 1,
+      "emailStatus": "ava@example.com",
+      "isExpense": true,
+      "lastModifiedByUserID": 1,
+      "lastModifiedByUserName": "Ava Chen",
+      "lastModifiedDateTime": "string",
+      "opportunityID": 1,
+      "paymentAllocations": [
+        {
+          "amount": 1,
+          "createdByUserID": 1,
+          "createdByUserName": "Ava Chen",
+          "createdDateTime": "string",
+          "invoiceID": 1,
+          "invoiceNumber": 1,
+          "paymentAllocationID": 1
+        }
+      ],
+      "paymentAmount": 1,
+      "paymentCategoryID": 1,
+      "paymentCategoryName": "Ava Chen",
+      "paymentDate": "string",
+      "paymentID": 1,
+      "paymentNote": "string",
+      "paymentReference": "string",
+      "paymentType": "string",
+      "propertyID": 1,
+      "saleAmount": 1,
+      "taxableAmount": 1,
+      "taxAmount": 1,
+      "taxJurisdictionID": 1,
+      "taxJurisdictionName": "Ava Chen"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `bankDepositID` | number |  |
+| `billingAddressID` | number |  |
+| `branchID` | number |  |
+| `branchName` | string |  |
+| `companyID` | number |  |
+| `companyName` | string |  |
+| `contactID` | number |  |
+| `contactName` | string |  |
+| `createdByUserID` | number |  |
+| `createdByUserName` | string |  |
+| `createdDateTime` | string |  |
+| `creditMemoNumber` | number |  |
+| `divisionID` | number |  |
+| `divisionName` | string |  |
+| `electronicPaymentID` | number |  |
+| `emailStatus` | string |  |
+| `isExpense` | boolean |  |
+| `lastModifiedByUserID` | number |  |
+| `lastModifiedByUserName` | string |  |
+| `lastModifiedDateTime` | string |  |
+| `opportunityID` | number |  |
+| `paymentAllocations` | array<object> |  |
+| `paymentAllocations[].amount` | number |  |
+| `paymentAllocations[].createdByUserID` | number |  |
+| `paymentAllocations[].createdByUserName` | string |  |
+| `paymentAllocations[].createdDateTime` | string |  |
+| `paymentAllocations[].invoiceID` | number |  |
+| `paymentAllocations[].invoiceNumber` | number |  |
+| `paymentAllocations[].paymentAllocationID` | number |  |
+| `paymentAmount` | number |  |
+| `paymentCategoryID` | number |  |
+| `paymentCategoryName` | string |  |
+| `paymentDate` | string |  |
+| `paymentID` | number |  |
+| `paymentNote` | string |  |
+| `paymentReference` | string |  |
+| `paymentType` | string |  |
+| `propertyID` | number |  |
+| `saleAmount` | number |  |
+| `taxableAmount` | number |  |
+| `taxAmount` | number |  |
+| `taxJurisdictionID` | number |  |
+| `taxJurisdictionName` | string |  |
 
 ## Native endpoint
 

@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Microsoft 365 Outlook Universal API",
-    "version": "0.0.6",
+    "version": "0.0.8",
     "description": "Access Microsoft 365 Outlook mail through Microsoft Graph, including messages, folders, attachments, replies, forwarding, and sending mail for the signed-in user."
   },
   "servers": [
@@ -1609,6 +1609,26 @@
             }
           },
           {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
             "name": "fields",
             "in": "query",
             "required": false,
@@ -2093,6 +2113,26 @@
               "type": "string",
               "description": "The Outlook message ID whose attachments you want to list.",
               "example": "AAMkAG..."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
             }
           },
           {
