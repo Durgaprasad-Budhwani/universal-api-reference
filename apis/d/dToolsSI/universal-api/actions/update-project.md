@@ -3,7 +3,7 @@
 
 
 ```
-POST https://connect.mindcloud.co/v1/universal/dToolsSI/latest/actions/update-project
+PUT https://connect.mindcloud.co/v1/universal/dToolsSI/latest/actions/update-project
 ```
 
 Authenticate with `Authorization: Bearer $MINDCLOUD_API_KEY` and pass a D-Tools SI `connectionId` ([setup](../authentication.md)).
@@ -11,7 +11,7 @@ Authenticate with `Authorization: Bearer $MINDCLOUD_API_KEY` and pass a D-Tools 
 ## Example request
 
 ```bash
-curl -X POST "https://connect.mindcloud.co/v1/universal/dToolsSI/latest/actions/update-project" \
+curl -X PUT "https://connect.mindcloud.co/v1/universal/dToolsSI/latest/actions/update-project" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -21,7 +21,7 @@ curl -X POST "https://connect.mindcloud.co/v1/universal/dToolsSI/latest/actions/
 
 ```js
 const response = await fetch('https://connect.mindcloud.co/v1/universal/dToolsSI/latest/actions/update-project', {
-  method: 'POST',
+  method: 'PUT',
   headers: {
     Authorization: `Bearer ${process.env.MINDCLOUD_API_KEY}`,
     'Content-Type': 'application/json'

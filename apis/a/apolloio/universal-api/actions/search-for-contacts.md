@@ -45,7 +45,203 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native Apollo API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "account": {},
+      "accountId": "string",
+      "accountPhoneNote": "string",
+      "callOptedOut": true,
+      "city": "string",
+      "contactCampaignStatuses": [
+        {}
+      ],
+      "contactEmails": [
+        {}
+      ],
+      "contactJobChangeEvent": {},
+      "contactRoles": [
+        {}
+      ],
+      "contactStageId": "string",
+      "country": "string",
+      "createdAt": "2026-05-07T12:00:00.000Z",
+      "creatorId": "string",
+      "crmId": "string",
+      "crmOwnerId": "string",
+      "crmRecordUrl": "https://example.com",
+      "customFieldErrors": {},
+      "directDialEnrichmentFailedAt": "2026-05-07T12:00:00.000Z",
+      "directDialStatus": "string",
+      "directoryUrl": "https://example.com",
+      "email": "ava@example.com",
+      "emailDomainCatchall": true,
+      "emailDomainCatchallVerdict": "ava@example.com",
+      "emailerCampaignIds": [
+        "ava@example.com"
+      ],
+      "emailFromCustomer": true,
+      "emailNeedsTickling": true,
+      "emailSource": "ava@example.com",
+      "emailStatus": "ava@example.com",
+      "emailStatusUnavailableReason": "ava@example.com",
+      "emailTrueStatus": "ava@example.com",
+      "emailUnsubscribed": true,
+      "existenceLevel": "string",
+      "extrapolatedEmailConfidence": 1,
+      "facebookUrl": "https://example.com",
+      "firstName": "Ava",
+      "formattedAddress": "string",
+      "freeDomain": true,
+      "godmodeApolloCreator": true,
+      "hasEmailArcgateRequest": true,
+      "hasPendingEmailArcgateRequest": true,
+      "headline": "string",
+      "hubspotCompanyId": "string",
+      "hubspotRecordUrl": "https://example.com",
+      "hubspotVid": "string",
+      "id": "string",
+      "intentStrength": 1,
+      "labelIds": [
+        "string"
+      ],
+      "lastActivityDate": "2026-05-07T12:00:00.000Z",
+      "lastName": "Chen",
+      "linkedinUid": "https://example.com",
+      "linkedinUrl": "https://example.com",
+      "mergedCrmIds": [
+        "string"
+      ],
+      "name": "Ava Chen",
+      "organization": {},
+      "organizationId": "string",
+      "organizationName": "Ava Chen",
+      "originalSource": "string",
+      "outboundSubscriptions": [
+        {}
+      ],
+      "ownerId": "string",
+      "personDeleted": true,
+      "personId": "string",
+      "phoneNumbers": [
+        {}
+      ],
+      "photoUrl": "https://example.com",
+      "postalCode": "string",
+      "presentRawAddress": "string",
+      "queuedForCrmPush": true,
+      "salesforceAccountId": "string",
+      "salesforceContactId": "string",
+      "salesforceId": "string",
+      "salesforceLeadId": "string",
+      "sanitizedPhone": "string",
+      "showIntent": true,
+      "source": "string",
+      "sourceDisplayName": "Ava Chen",
+      "state": "string",
+      "streetAddress": "string",
+      "suggestedFromRuleEngineConfigId": "string",
+      "timeZone": "string",
+      "title": "string",
+      "twitterUrl": "https://example.com",
+      "typedCustomFields": {},
+      "updatedAt": "2026-05-07T12:00:00.000Z",
+      "updatedEmailTrueStatus": "ava@example.com"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `account` | object |  |
+| `accountId` | string |  |
+| `accountPhoneNote` | string |  |
+| `callOptedOut` | boolean |  |
+| `city` | string |  |
+| `contactCampaignStatuses` | array<object> |  |
+| `contactEmails` | array<object> |  |
+| `contactJobChangeEvent` | object |  |
+| `contactRoles` | array<object> |  |
+| `contactStageId` | string |  |
+| `country` | string |  |
+| `createdAt` | date |  |
+| `creatorId` | string |  |
+| `crmId` | string |  |
+| `crmOwnerId` | string |  |
+| `crmRecordUrl` | string |  |
+| `customFieldErrors` | object |  |
+| `directDialEnrichmentFailedAt` | date |  |
+| `directDialStatus` | string |  |
+| `directoryUrl` | string |  |
+| `email` | string |  |
+| `emailDomainCatchall` | boolean |  |
+| `emailDomainCatchallVerdict` | string |  |
+| `emailerCampaignIds` | array<string> |  |
+| `emailFromCustomer` | boolean |  |
+| `emailNeedsTickling` | boolean |  |
+| `emailSource` | string |  |
+| `emailStatus` | string |  |
+| `emailStatusUnavailableReason` | string |  |
+| `emailTrueStatus` | string |  |
+| `emailUnsubscribed` | boolean |  |
+| `existenceLevel` | string |  |
+| `extrapolatedEmailConfidence` | number |  |
+| `facebookUrl` | string |  |
+| `firstName` | string |  |
+| `formattedAddress` | string |  |
+| `freeDomain` | boolean |  |
+| `godmodeApolloCreator` | boolean |  |
+| `hasEmailArcgateRequest` | boolean |  |
+| `hasPendingEmailArcgateRequest` | boolean |  |
+| `headline` | string |  |
+| `hubspotCompanyId` | string |  |
+| `hubspotRecordUrl` | string |  |
+| `hubspotVid` | string |  |
+| `id` | string |  |
+| `intentStrength` | number |  |
+| `labelIds` | array<string> |  |
+| `lastActivityDate` | date |  |
+| `lastName` | string |  |
+| `linkedinUid` | string |  |
+| `linkedinUrl` | string |  |
+| `mergedCrmIds` | array<string> |  |
+| `name` | string |  |
+| `organization` | object |  |
+| `organizationId` | string |  |
+| `organizationName` | string |  |
+| `originalSource` | string |  |
+| `outboundSubscriptions` | array<object> |  |
+| `ownerId` | string |  |
+| `personDeleted` | boolean |  |
+| `personId` | string |  |
+| `phoneNumbers` | array<object> |  |
+| `photoUrl` | string |  |
+| `postalCode` | string |  |
+| `presentRawAddress` | string |  |
+| `queuedForCrmPush` | boolean |  |
+| `salesforceAccountId` | string |  |
+| `salesforceContactId` | string |  |
+| `salesforceId` | string |  |
+| `salesforceLeadId` | string |  |
+| `sanitizedPhone` | string |  |
+| `showIntent` | boolean |  |
+| `source` | string |  |
+| `sourceDisplayName` | string |  |
+| `state` | string |  |
+| `streetAddress` | string |  |
+| `suggestedFromRuleEngineConfigId` | string |  |
+| `timeZone` | string |  |
+| `title` | string |  |
+| `twitterUrl` | string |  |
+| `typedCustomFields` | object |  |
+| `updatedAt` | date |  |
+| `updatedEmailTrueStatus` | string |  |
 
 ## Native endpoint
 

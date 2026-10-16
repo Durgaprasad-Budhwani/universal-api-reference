@@ -223012,7 +223012,7 @@
     "websiteUrl": "https://www.apollo.io",
     "nativeBaseUrl": "https://app.apollo.io",
     "nativeDocumentationUrl": "https://docs.apollo.io/reference",
-    "version": "0.0.67",
+    "version": "0.0.68",
     "authentication": [
       {
         "type": "oAuth2",
@@ -230647,7 +230647,431 @@
             "description": "Set to `true` to sort the matching contacts in ascending order. This parameter must be used with `sort_by_field`. Otherwise, the sorting logic is not applied. Example: `true`"
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "account",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "accountId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "accountPhoneNote",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "callOptedOut",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "city",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "contactCampaignStatuses",
+            "dataType": "array",
+            "itemDataType": "object",
+            "mockType": "array"
+          },
+          {
+            "key": "contactEmails",
+            "dataType": "array",
+            "itemDataType": "object",
+            "mockType": "array"
+          },
+          {
+            "key": "contactJobChangeEvent",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "contactRoles",
+            "dataType": "array",
+            "itemDataType": "object",
+            "mockType": "array"
+          },
+          {
+            "key": "contactStageId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "country",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "createdAt",
+            "dataType": "date",
+            "mockType": "string"
+          },
+          {
+            "key": "creatorId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "crmId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "crmOwnerId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "crmRecordUrl",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "customFieldErrors",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "directDialEnrichmentFailedAt",
+            "dataType": "date",
+            "mockType": "string"
+          },
+          {
+            "key": "directDialStatus",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "directoryUrl",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "email",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "emailDomainCatchall",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "emailDomainCatchallVerdict",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "emailerCampaignIds",
+            "dataType": "array",
+            "itemDataType": "string",
+            "mockType": "array"
+          },
+          {
+            "key": "emailFromCustomer",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "emailNeedsTickling",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "emailSource",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "emailStatus",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "emailStatusUnavailableReason",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "emailTrueStatus",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "emailUnsubscribed",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "existenceLevel",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "extrapolatedEmailConfidence",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "facebookUrl",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "firstName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "formattedAddress",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "freeDomain",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "godmodeApolloCreator",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "hasEmailArcgateRequest",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "hasPendingEmailArcgateRequest",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "headline",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "hubspotCompanyId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "hubspotRecordUrl",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "hubspotVid",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "intentStrength",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "labelIds",
+            "dataType": "array",
+            "itemDataType": "string",
+            "mockType": "array"
+          },
+          {
+            "key": "lastActivityDate",
+            "dataType": "date",
+            "mockType": "string"
+          },
+          {
+            "key": "lastName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "linkedinUid",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "linkedinUrl",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mergedCrmIds",
+            "dataType": "array",
+            "itemDataType": "string",
+            "mockType": "array"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "organization",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "organizationId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "organizationName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "originalSource",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "outboundSubscriptions",
+            "dataType": "array",
+            "itemDataType": "object",
+            "mockType": "array"
+          },
+          {
+            "key": "ownerId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "personDeleted",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "personId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "phoneNumbers",
+            "dataType": "array",
+            "itemDataType": "object",
+            "mockType": "array"
+          },
+          {
+            "key": "photoUrl",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "postalCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "presentRawAddress",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "queuedForCrmPush",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "salesforceAccountId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "salesforceContactId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "salesforceId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "salesforceLeadId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "sanitizedPhone",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "showIntent",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "source",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "sourceDisplayName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "state",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "streetAddress",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "suggestedFromRuleEngineConfigId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "timeZone",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "title",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "twitterUrl",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "typedCustomFields",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "updatedAt",
+            "dataType": "date",
+            "mockType": "string"
+          },
+          {
+            "key": "updatedEmailTrueStatus",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "Search for Outreach Emails",
@@ -342240,7 +342664,7 @@
     "websiteUrl": "https://www.youraspire.com/",
     "nativeBaseUrl": "https://cloud.youraspire.com/app/",
     "nativeDocumentationUrl": "https://guide.youraspire.com/apidocs",
-    "version": "0.1.508",
+    "version": "0.1.512",
     "authentication": [
       {
         "type": "custom",
@@ -432363,7 +432787,7 @@
     "websiteUrl": "https://www.kaseya.com/products/",
     "nativeBaseUrl": "https://ww14.autotask.net",
     "nativeDocumentationUrl": "https://www.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm",
-    "version": "0.0.5",
+    "version": "0.0.8",
     "authentication": [
       {
         "type": "custom",
@@ -432463,9 +432887,18 @@
             "value": "application/json"
           }
         ],
+        "pagination": {
+          "offset": {
+            "type": "cursor",
+            "parameter": "nextPageUrl",
+            "location": "query",
+            "useFullUrl": true
+          }
+        },
         "responses": [
           {
-            "parser": "auto"
+            "parser": "auto",
+            "cursorKey": "pageDetails.nextPageUrl"
           }
         ]
       }
@@ -434857,7 +435290,14 @@
           "sorting": false
         },
         "arguments": [],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "fields",
+            "dataType": "array",
+            "itemDataType": "object",
+            "description": "User-defined field definitions for the Opportunity entity."
+          }
+        ]
       },
       {
         "name": "Get Project",
@@ -435546,7 +435986,19 @@
             "defaultValue": "false"
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "items",
+            "dataType": "array",
+            "itemDataType": "object",
+            "description": "Opportunity records returned by the query."
+          },
+          {
+            "key": "pageDetails",
+            "dataType": "object",
+            "description": "Autotask pagination details for the query result."
+          }
+        ]
       },
       {
         "name": "List Opportunity Attachments",

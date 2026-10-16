@@ -8,16 +8,20 @@ GET https://connect.mindcloud.co/v1/universal/dToolsSI/latest/actions/list-subsc
 
 Authenticate with `Authorization: Bearer $MINDCLOUD_API_KEY` and pass a D-Tools SI `connectionId` ([setup](../authentication.md)).
 
+This action also supports [pagination](../pagination.md) (`limit`, `offset`).
+
 ## Example request
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/dToolsSI/latest/actions/list-subscribed-projects?connectionId=$CONNECTION_ID" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/dToolsSI/latest/actions/list-subscribed-projects?connectionId=$CONNECTION_ID&limit=25&offset=0" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
-  connectionId
+  connectionId,
+  limit: '25',
+  offset: '0'
 });
 
 const response = await fetch(`https://connect.mindcloud.co/v1/universal/dToolsSI/latest/actions/list-subscribed-projects?${params}`, {
@@ -40,9 +44,59 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native D-Tools SI API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "name": "Ava Chen",
+      "client": "string",
+      "number": "string",
+      "progress": "string",
+      "id": "string",
+      "price": 1,
+      "approved": true,
+      "currencyCode": "string",
+      "clientId": "string",
+      "clientNumber": "string",
+      "messageId": "string",
+      "integrationProjectId": "string",
+      "cONumber": "string",
+      "importedOn": "string",
+      "publishedOn": "string",
+      "publishedOnUnixTimeMs": 1,
+      "deleted": true,
+      "archived": true
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `name` | string |  |
+| `client` | string |  |
+| `number` | string |  |
+| `progress` | string |  |
+| `id` | string |  |
+| `price` | number |  |
+| `approved` | boolean |  |
+| `currencyCode` | string |  |
+| `clientId` | string |  |
+| `clientNumber` | string |  |
+| `messageId` | string |  |
+| `integrationProjectId` | string |  |
+| `cONumber` | string |  |
+| `importedOn` | string |  |
+| `publishedOn` | string |  |
+| `publishedOnUnixTimeMs` | number |  |
+| `deleted` | boolean |  |
+| `archived` | boolean |  |
 
 ## Native endpoint
 
-Through the native D-Tools SI API, this operation is `GET Subscribe/Projects` (base URL `https://api.d-tools.com/SI/`). The Universal API call above is translated to it by MindCloud, including authentication. See the [native action reference](../../native-api/actions/list-subscribed-projects.md) for the provider-specific parameters and requirements.
+Through the native D-Tools SI API, this operation is `GET Subscribe/Projects` (base URL `https://api.d-tools.com/SI/`). The Universal API call above is translated to it by MindCloud, including authentication and pagination. See the [native action reference](../../native-api/actions/list-subscribed-projects.md) for the provider-specific parameters and requirements.
 

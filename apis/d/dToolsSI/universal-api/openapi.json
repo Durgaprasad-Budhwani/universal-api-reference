@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "D-Tools SI Universal API",
-    "version": "0.0.10",
+    "version": "0.0.13",
     "description": "Call D-Tools SI actions through MindCloud's Universal API."
   },
   "servers": [
@@ -21,7 +21,7 @@
   ],
   "paths": {
     "/v1/universal/dToolsSI/latest/actions/archive-projects": {
-      "post": {
+      "put": {
         "operationId": "dToolsSI.archive-projects",
         "summary": "Archive Projects",
         "externalDocs": {
@@ -424,6 +424,24 @@
             }
           },
           {
+            "name": "includeImported",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "includeArchived",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
             "name": "fields",
             "in": "query",
             "required": false,
@@ -454,7 +472,107 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "templateName": {
+                            "type": "string"
+                          },
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "packages": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "publishedOn": {
+                            "type": "string"
+                          },
+                          "importedOn": {
+                            "type": "string"
+                          },
+                          "publishedOnUnixTimeMs": {
+                            "type": "number"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "integrationProjectId": {
+                            "type": "string"
+                          },
+                          "client": {
+                            "type": "string"
+                          },
+                          "clientId": {
+                            "type": "string"
+                          },
+                          "integrationClientId": {
+                            "type": "string"
+                          },
+                          "clientNumber": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "number": {
+                            "type": "string"
+                          },
+                          "quantityBased": {
+                            "type": "boolean"
+                          },
+                          "progress": {
+                            "type": "string"
+                          },
+                          "assignedTo": {
+                            "type": "string"
+                          },
+                          "salesRep": {
+                            "type": "string"
+                          },
+                          "projectManager": {
+                            "type": "string"
+                          },
+                          "designer": {
+                            "type": "string"
+                          },
+                          "revision": {
+                            "type": "number"
+                          },
+                          "currencyCode": {
+                            "type": "string"
+                          },
+                          "currencyRate": {
+                            "type": "number"
+                          },
+                          "cost": {
+                            "type": "number"
+                          },
+                          "priceWithoutTax": {
+                            "type": "number"
+                          },
+                          "margin": {
+                            "type": "number"
+                          },
+                          "markup": {
+                            "type": "number"
+                          },
+                          "tax": {
+                            "type": "number"
+                          },
+                          "price": {
+                            "type": "number"
+                          },
+                          "hours": {
+                            "type": "number"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -852,6 +970,26 @@
             }
           },
           {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
             "name": "fields",
             "in": "query",
             "required": false,
@@ -882,7 +1020,63 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "client": {
+                            "type": "string"
+                          },
+                          "number": {
+                            "type": "string"
+                          },
+                          "progress": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "price": {
+                            "type": "number"
+                          },
+                          "approved": {
+                            "type": "boolean"
+                          },
+                          "currencyCode": {
+                            "type": "string"
+                          },
+                          "clientId": {
+                            "type": "string"
+                          },
+                          "clientNumber": {
+                            "type": "string"
+                          },
+                          "messageId": {
+                            "type": "string"
+                          },
+                          "integrationProjectId": {
+                            "type": "string"
+                          },
+                          "cONumber": {
+                            "type": "string"
+                          },
+                          "importedOn": {
+                            "type": "string"
+                          },
+                          "publishedOn": {
+                            "type": "string"
+                          },
+                          "publishedOnUnixTimeMs": {
+                            "type": "number"
+                          },
+                          "deleted": {
+                            "type": "boolean"
+                          },
+                          "archived": {
+                            "type": "boolean"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -1445,7 +1639,7 @@
       }
     },
     "/v1/universal/dToolsSI/latest/actions/update-project": {
-      "post": {
+      "put": {
         "operationId": "dToolsSI.update-project",
         "summary": "Update Project",
         "externalDocs": {

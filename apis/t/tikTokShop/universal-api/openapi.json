@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "TikTok Shop Universal API",
-    "version": "0.0.158",
+    "version": "0.0.159",
     "description": "Call TikTok Shop actions through MindCloud's Universal API."
   },
   "servers": [
@@ -3457,7 +3457,7 @@
           {
             "name": "statement_id",
             "in": "query",
-            "required": false,
+            "required": true,
             "schema": {
               "type": "string"
             }

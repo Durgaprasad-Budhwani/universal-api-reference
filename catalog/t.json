@@ -129906,7 +129906,7 @@
     "slug": "tikTokShop",
     "iconUrl": "https://images.mindcloud.co/apps/icons/tiktok-shop-icon-logo-symbol-free-png_1770912979719.png",
     "nativeDocumentationUrl": "https://partner.tiktokshop.com/docv2/page/666012dd609d4402cc3be995?external_id=666012dd609d4402cc3be995",
-    "version": "0.0.158",
+    "version": "0.0.159",
     "authentication": [
       {
         "type": "oAuth2",
@@ -132143,7 +132143,7 @@
               "name": "Statement Id",
               "dataType": "string",
               "location": "param",
-              "required": false
+              "required": true
             },
             {
               "key": "sort_field",
@@ -132177,7 +132177,7 @@
             "key": "statement_id",
             "name": "Statement Id",
             "dataType": "string",
-            "required": false
+            "required": true
           },
           {
             "key": "sort_field",

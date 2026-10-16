@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Apollo Universal API",
-    "version": "0.0.67",
+    "version": "0.0.68",
     "description": "Apollo: Find prospects, enrich contacts, and automate sales outreach"
   },
   "servers": [
@@ -8163,7 +8163,296 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "account": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "accountId": {
+                            "type": "string"
+                          },
+                          "accountPhoneNote": {
+                            "type": "string"
+                          },
+                          "callOptedOut": {
+                            "type": "boolean"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "contactCampaignStatuses": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "contactEmails": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "contactJobChangeEvent": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "contactRoles": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "contactStageId": {
+                            "type": "string"
+                          },
+                          "country": {
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "creatorId": {
+                            "type": "string"
+                          },
+                          "crmId": {
+                            "type": "string"
+                          },
+                          "crmOwnerId": {
+                            "type": "string"
+                          },
+                          "crmRecordUrl": {
+                            "type": "string"
+                          },
+                          "customFieldErrors": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "directDialEnrichmentFailedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "directDialStatus": {
+                            "type": "string"
+                          },
+                          "directoryUrl": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          },
+                          "emailDomainCatchall": {
+                            "type": "boolean"
+                          },
+                          "emailDomainCatchallVerdict": {
+                            "type": "string"
+                          },
+                          "emailerCampaignIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "emailFromCustomer": {
+                            "type": "boolean"
+                          },
+                          "emailNeedsTickling": {
+                            "type": "boolean"
+                          },
+                          "emailSource": {
+                            "type": "string"
+                          },
+                          "emailStatus": {
+                            "type": "string"
+                          },
+                          "emailStatusUnavailableReason": {
+                            "type": "string"
+                          },
+                          "emailTrueStatus": {
+                            "type": "string"
+                          },
+                          "emailUnsubscribed": {
+                            "type": "boolean"
+                          },
+                          "existenceLevel": {
+                            "type": "string"
+                          },
+                          "extrapolatedEmailConfidence": {
+                            "type": "number"
+                          },
+                          "facebookUrl": {
+                            "type": "string"
+                          },
+                          "firstName": {
+                            "type": "string"
+                          },
+                          "formattedAddress": {
+                            "type": "string"
+                          },
+                          "freeDomain": {
+                            "type": "boolean"
+                          },
+                          "godmodeApolloCreator": {
+                            "type": "boolean"
+                          },
+                          "hasEmailArcgateRequest": {
+                            "type": "boolean"
+                          },
+                          "hasPendingEmailArcgateRequest": {
+                            "type": "boolean"
+                          },
+                          "headline": {
+                            "type": "string"
+                          },
+                          "hubspotCompanyId": {
+                            "type": "string"
+                          },
+                          "hubspotRecordUrl": {
+                            "type": "string"
+                          },
+                          "hubspotVid": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "intentStrength": {
+                            "type": "number"
+                          },
+                          "labelIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "lastActivityDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "lastName": {
+                            "type": "string"
+                          },
+                          "linkedinUid": {
+                            "type": "string"
+                          },
+                          "linkedinUrl": {
+                            "type": "string"
+                          },
+                          "mergedCrmIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "organization": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "organizationId": {
+                            "type": "string"
+                          },
+                          "organizationName": {
+                            "type": "string"
+                          },
+                          "originalSource": {
+                            "type": "string"
+                          },
+                          "outboundSubscriptions": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "ownerId": {
+                            "type": "string"
+                          },
+                          "personDeleted": {
+                            "type": "boolean"
+                          },
+                          "personId": {
+                            "type": "string"
+                          },
+                          "phoneNumbers": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "photoUrl": {
+                            "type": "string"
+                          },
+                          "postalCode": {
+                            "type": "string"
+                          },
+                          "presentRawAddress": {
+                            "type": "string"
+                          },
+                          "queuedForCrmPush": {
+                            "type": "boolean"
+                          },
+                          "salesforceAccountId": {
+                            "type": "string"
+                          },
+                          "salesforceContactId": {
+                            "type": "string"
+                          },
+                          "salesforceId": {
+                            "type": "string"
+                          },
+                          "salesforceLeadId": {
+                            "type": "string"
+                          },
+                          "sanitizedPhone": {
+                            "type": "string"
+                          },
+                          "showIntent": {
+                            "type": "boolean"
+                          },
+                          "source": {
+                            "type": "string"
+                          },
+                          "sourceDisplayName": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "streetAddress": {
+                            "type": "string"
+                          },
+                          "suggestedFromRuleEngineConfigId": {
+                            "type": "string"
+                          },
+                          "timeZone": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "twitterUrl": {
+                            "type": "string"
+                          },
+                          "typedCustomFields": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "updatedEmailTrueStatus": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

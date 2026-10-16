@@ -59,7 +59,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | `externalDataApplicationGuid` | string | no |  |
 | `externalDataKey` | string | no |  |
 | `externalDataValues` | string | no |  |
-| `jobStatus` | list<string> | no | Filters by job status Values: [Scheduled, Dispatched, InProgress, Hold, Completed, Canceled] |
+| `jobStatus` | list<string> | no | Filters by job status Values: [Scheduled, Dispatched, InProgress, Hold, Completed, Canceled] One of: `Canceled`, `Completed`, `Dispatched`, `Hold`, `InProgress`, `Scheduled`. |
 | `appointmentStatus` | string | no |  |
 | `priority` | string | no |  |
 | `technicianId` | number | no |  |

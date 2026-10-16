@@ -74,7 +74,113 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native ServiceTitan API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "batch": {},
+      "billAmount": "string",
+      "billDate": "string",
+      "billType": "string",
+      "budgetCodeId": 1,
+      "businessUnit": {},
+      "canceledBy": "string",
+      "createdBy": "string",
+      "createdOn": "string",
+      "customFields": {},
+      "dateCanceled": "string",
+      "dateReconciled": "string",
+      "doNotPay": true,
+      "dueDate": "string",
+      "earlyDiscountDate": "string",
+      "expenseItems": [
+        {}
+      ],
+      "id": 1,
+      "items": [
+        {}
+      ],
+      "jobId": 1,
+      "jobNumber": "string",
+      "landedCostMethod": 1,
+      "modifiedOn": "string",
+      "otherAmount": "string",
+      "postDate": "string",
+      "postTaxCharge": "string",
+      "postTaxDiscountAmount": "string",
+      "preTaxCharge": "string",
+      "preTaxDiscountAmount": "string",
+      "purchaseOrderId": 1,
+      "referenceNumber": "string",
+      "remittanceVendorInfo": {},
+      "shippingAmount": "string",
+      "shipTo": {},
+      "shipToDescription": "string",
+      "source": "string",
+      "status": "string",
+      "summary": "string",
+      "syncStatus": "string",
+      "taxAmount": "string",
+      "taxZone": {},
+      "termName": "Ava Chen",
+      "vendor": {},
+      "vendorInvoiceTotal": "string",
+      "vendorNumber": "string"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `batch` | object | Batch the bill belongs to. |
+| `billAmount` | string | Total bill amount. |
+| `billDate` | string | Invoice date of the bill. |
+| `billType` | string | Type of the bill. |
+| `budgetCodeId` | number | Budget code ID. |
+| `businessUnit` | object | Business unit the bill belongs to. |
+| `canceledBy` | string | User who canceled the bill. |
+| `createdBy` | string | User who created the bill. |
+| `createdOn` | string | Timestamp when the bill was created. |
+| `customFields` | object | Custom fields on the bill. |
+| `dateCanceled` | string | Date the bill was canceled. |
+| `dateReconciled` | string | Date the bill was reconciled. |
+| `doNotPay` | boolean | Whether the bill is excluded from payment. |
+| `dueDate` | string | Payment due date. |
+| `earlyDiscountDate` | string | Early payment discount date. |
+| `expenseItems` | array<object> | Expense items on the bill. |
+| `id` | number | AP bill ID. |
+| `items` | array<object> | Line items on the bill. |
+| `jobId` | number | Related job ID. |
+| `jobNumber` | string | Related job number. |
+| `landedCostMethod` | number | Landed cost method. |
+| `modifiedOn` | string | Timestamp when the bill was last modified. |
+| `otherAmount` | string | Other amount. |
+| `postDate` | string | Date the bill was posted. |
+| `postTaxCharge` | string | Post-tax charge. |
+| `postTaxDiscountAmount` | string | Post-tax discount amount. |
+| `preTaxCharge` | string | Pre-tax charge. |
+| `preTaxDiscountAmount` | string | Pre-tax discount amount. |
+| `purchaseOrderId` | number | Related purchase order ID. |
+| `referenceNumber` | string | Reference number of the bill. |
+| `remittanceVendorInfo` | object | Remittance vendor information. |
+| `shippingAmount` | string | Shipping amount. |
+| `shipTo` | object | Ship-to address. |
+| `shipToDescription` | string | Ship-to description. |
+| `source` | string | Source of the bill. |
+| `status` | string | Reconciliation status of the bill. |
+| `summary` | string | Bill summary. |
+| `syncStatus` | string | Sync status of the bill. |
+| `taxAmount` | string | Tax amount. |
+| `taxZone` | object | Tax zone for the bill. |
+| `termName` | string | Payment term name. |
+| `vendor` | object | Vendor for the bill. |
+| `vendorInvoiceTotal` | string | Vendor invoice total. |
+| `vendorNumber` | string | Vendor number. |
 
 ## Native endpoint
 

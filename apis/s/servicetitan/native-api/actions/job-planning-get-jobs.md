@@ -35,7 +35,7 @@ This operation supports [pagination](../README.md#pagination).
 | `externalDataApplicationGuid` | query | `string` | no | — |
 | `externalDataKey` | query | `string` | no | — |
 | `externalDataValues` | query | `string` | no | — |
-| `jobStatus` | query | `list<string>` | no | Filters by job status Values: [Scheduled, Dispatched, InProgress, Hold, Completed, Canceled] |
+| `jobStatus` | query | `list<string>` | no | Filters by job status Values: [Scheduled, Dispatched, InProgress, Hold, Completed, Canceled] Accepted values: `Canceled`, `Completed`, `Dispatched`, `Hold`, `InProgress`, `Scheduled`. |
 | `appointmentStatus` | query | `string` | no | — |
 | `priority` | query | `string` | no | — |
 | `technicianId` | query | `number` | no | — |

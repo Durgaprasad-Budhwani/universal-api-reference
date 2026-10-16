@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "ServiceTitan Universal API",
-    "version": "0.0.380",
+    "version": "0.0.383",
     "description": "ServiceTitan is a cloud-based software platform for home and commercial service businesses that manages customers, jobs, scheduling, dispatching, invoicing, payments, and other field service operations."
   },
   "servers": [
@@ -21401,7 +21401,15 @@
             "description": "Filters by job status\nValues: [Scheduled, Dispatched, InProgress, Hold, Completed, Canceled]",
             "schema": {
               "type": "string",
-              "description": "Filters by job status\nValues: [Scheduled, Dispatched, InProgress, Hold, Completed, Canceled]"
+              "description": "Filters by job status\nValues: [Scheduled, Dispatched, InProgress, Hold, Completed, Canceled]",
+              "enum": [
+                "Canceled",
+                "Completed",
+                "Dispatched",
+                "Hold",
+                "InProgress",
+                "Scheduled"
+              ]
             }
           },
           {
@@ -23079,7 +23087,200 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "batch": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Batch the bill belongs to."
+                          },
+                          "billAmount": {
+                            "type": "string",
+                            "description": "Total bill amount."
+                          },
+                          "billDate": {
+                            "type": "string",
+                            "description": "Invoice date of the bill."
+                          },
+                          "billType": {
+                            "type": "string",
+                            "description": "Type of the bill."
+                          },
+                          "budgetCodeId": {
+                            "type": "number",
+                            "description": "Budget code ID."
+                          },
+                          "businessUnit": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Business unit the bill belongs to."
+                          },
+                          "canceledBy": {
+                            "type": "string",
+                            "description": "User who canceled the bill."
+                          },
+                          "createdBy": {
+                            "type": "string",
+                            "description": "User who created the bill."
+                          },
+                          "createdOn": {
+                            "type": "string",
+                            "description": "Timestamp when the bill was created."
+                          },
+                          "customFields": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Custom fields on the bill."
+                          },
+                          "dateCanceled": {
+                            "type": "string",
+                            "description": "Date the bill was canceled."
+                          },
+                          "dateReconciled": {
+                            "type": "string",
+                            "description": "Date the bill was reconciled."
+                          },
+                          "doNotPay": {
+                            "type": "boolean",
+                            "description": "Whether the bill is excluded from payment."
+                          },
+                          "dueDate": {
+                            "type": "string",
+                            "description": "Payment due date."
+                          },
+                          "earlyDiscountDate": {
+                            "type": "string",
+                            "description": "Early payment discount date."
+                          },
+                          "expenseItems": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            },
+                            "description": "Expense items on the bill."
+                          },
+                          "id": {
+                            "type": "number",
+                            "description": "AP bill ID."
+                          },
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            },
+                            "description": "Line items on the bill."
+                          },
+                          "jobId": {
+                            "type": "number",
+                            "description": "Related job ID."
+                          },
+                          "jobNumber": {
+                            "type": "string",
+                            "description": "Related job number."
+                          },
+                          "landedCostMethod": {
+                            "type": "number",
+                            "description": "Landed cost method."
+                          },
+                          "modifiedOn": {
+                            "type": "string",
+                            "description": "Timestamp when the bill was last modified."
+                          },
+                          "otherAmount": {
+                            "type": "string",
+                            "description": "Other amount."
+                          },
+                          "postDate": {
+                            "type": "string",
+                            "description": "Date the bill was posted."
+                          },
+                          "postTaxCharge": {
+                            "type": "string",
+                            "description": "Post-tax charge."
+                          },
+                          "postTaxDiscountAmount": {
+                            "type": "string",
+                            "description": "Post-tax discount amount."
+                          },
+                          "preTaxCharge": {
+                            "type": "string",
+                            "description": "Pre-tax charge."
+                          },
+                          "preTaxDiscountAmount": {
+                            "type": "string",
+                            "description": "Pre-tax discount amount."
+                          },
+                          "purchaseOrderId": {
+                            "type": "number",
+                            "description": "Related purchase order ID."
+                          },
+                          "referenceNumber": {
+                            "type": "string",
+                            "description": "Reference number of the bill."
+                          },
+                          "remittanceVendorInfo": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Remittance vendor information."
+                          },
+                          "shippingAmount": {
+                            "type": "string",
+                            "description": "Shipping amount."
+                          },
+                          "shipTo": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Ship-to address."
+                          },
+                          "shipToDescription": {
+                            "type": "string",
+                            "description": "Ship-to description."
+                          },
+                          "source": {
+                            "type": "string",
+                            "description": "Source of the bill."
+                          },
+                          "status": {
+                            "type": "string",
+                            "description": "Reconciliation status of the bill."
+                          },
+                          "summary": {
+                            "type": "string",
+                            "description": "Bill summary."
+                          },
+                          "syncStatus": {
+                            "type": "string",
+                            "description": "Sync status of the bill."
+                          },
+                          "taxAmount": {
+                            "type": "string",
+                            "description": "Tax amount."
+                          },
+                          "taxZone": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Tax zone for the bill."
+                          },
+                          "termName": {
+                            "type": "string",
+                            "description": "Payment term name."
+                          },
+                          "vendor": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Vendor for the bill."
+                          },
+                          "vendorInvoiceTotal": {
+                            "type": "string",
+                            "description": "Vendor invoice total."
+                          },
+                          "vendorNumber": {
+                            "type": "string",
+                            "description": "Vendor number."
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -23914,7 +24115,161 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "id": {
+                            "type": "number",
+                            "description": "ServiceTitan customer ID."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Customer name."
+                          },
+                          "type": {
+                            "type": "string",
+                            "description": "Customer type (Residential or Commercial)."
+                          },
+                          "active": {
+                            "type": "boolean",
+                            "description": "Whether the customer is active."
+                          },
+                          "balance": {
+                            "type": "number",
+                            "description": "Outstanding account balance."
+                          },
+                          "taxExempt": {
+                            "type": "boolean",
+                            "description": "Whether the customer is tax exempt."
+                          },
+                          "doNotMail": {
+                            "type": "boolean",
+                            "description": "Whether the customer is excluded from mailings."
+                          },
+                          "doNotService": {
+                            "type": "boolean",
+                            "description": "Whether the customer is excluded from service."
+                          },
+                          "nationalAccount": {
+                            "type": "boolean",
+                            "description": "Whether the customer is a national account."
+                          },
+                          "address": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "description": "Billing address of the customer.",
+                            "properties": {
+                              "city": {
+                                "type": "string",
+                                "description": "City."
+                              },
+                              "country": {
+                                "type": "string",
+                                "description": "Country."
+                              },
+                              "latitude": {
+                                "type": "number",
+                                "description": "Latitude."
+                              },
+                              "longitude": {
+                                "type": "number",
+                                "description": "Longitude."
+                              },
+                              "state": {
+                                "type": "string",
+                                "description": "State."
+                              },
+                              "street": {
+                                "type": "string",
+                                "description": "Street address."
+                              },
+                              "unit": {
+                                "type": "string",
+                                "description": "Unit."
+                              },
+                              "zip": {
+                                "type": "string",
+                                "description": "Postal code."
+                              }
+                            }
+                          },
+                          "customFields": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "description": "Custom field name."
+                                },
+                                "typeId": {
+                                  "type": "number",
+                                  "description": "Custom field type ID."
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "description": "Custom field value."
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "tagTypeIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "array",
+                              "items": {
+                                "type": "number"
+                              },
+                              "description": "Tag type IDs."
+                            }
+                          },
+                          "createdOn": {
+                            "type": "string",
+                            "description": "Timestamp when the customer was created."
+                          },
+                          "createdById": {
+                            "type": "number",
+                            "description": "ID of the user who created the customer."
+                          },
+                          "modifiedOn": {
+                            "type": "string",
+                            "description": "Timestamp when the customer was last modified."
+                          },
+                          "mergedToId": {
+                            "type": "number",
+                            "description": "ID of the customer this customer was merged into."
+                          },
+                          "paymentTermId": {
+                            "type": "number",
+                            "description": "Payment term ID."
+                          },
+                          "creditLimit": {
+                            "type": "number",
+                            "description": "Credit limit."
+                          },
+                          "creditLimitBalance": {
+                            "type": "number",
+                            "description": "Credit limit balance."
+                          },
+                          "externalData": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "key": {
+                                  "type": "string",
+                                  "description": "External data key."
+                                },
+                                "value": {
+                                  "type": "string",
+                                  "description": "External data value."
+                                }
+                              }
+                            },
+                            "description": "External data entries associated with the customer for the requested application GUID."
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

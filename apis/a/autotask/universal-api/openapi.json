@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Autotask Universal API",
-    "version": "0.0.5",
+    "version": "0.0.8",
     "description": "Autotask: Manage companies, opportunities, projects, contacts, resources, and attachments"
   },
   "servers": [
@@ -3761,7 +3761,17 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "fields": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            },
+                            "description": "User-defined field definitions for the Opportunity entity."
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -5544,7 +5554,22 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            },
+                            "description": "Opportunity records returned by the query."
+                          },
+                          "pageDetails": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Autotask pagination details for the query result."
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

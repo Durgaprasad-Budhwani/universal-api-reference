@@ -349234,7 +349234,7 @@
     "slug": "dToolsSI",
     "iconUrl": "https://images.mindcloud.co/apps/icons/clip-path-group-2_1781888917815.png",
     "nativeDocumentationUrl": "https://api.d-tools.com/si/doc",
-    "version": "0.0.10",
+    "version": "0.0.13",
     "authentication": [
       {
         "type": "apiKey",
@@ -349267,6 +349267,19 @@
             "value": "application/json; charset=utf-8"
           }
         ],
+        "pagination": {
+          "limit": {
+            "parameter": "pageSize",
+            "location": "query",
+            "default": "50"
+          },
+          "offset": {
+            "type": "page",
+            "parameter": "pageNumber",
+            "location": "query",
+            "pageStartIndex": "1"
+          }
+        },
         "responses": [
           {
             "parser": "auto"
@@ -349278,7 +349291,8 @@
       {
         "name": "Archive Projects",
         "slug": "archive-projects",
-        "method": "POST",
+        "operation": "update",
+        "method": "PUT",
         "documentationUrl": "https://api.d-tools.com/SI/doc/Api/POST-Publish-Projects",
         "native": {
           "method": "POST",
@@ -349314,6 +349328,7 @@
       {
         "name": "Get Partial Project by Id",
         "slug": "get-partial-project",
+        "operation": "read",
         "method": "GET",
         "documentationUrl": "https://api.d-tools.com/SI/doc/Api/POST-Publish-Projects",
         "native": {
@@ -349350,6 +349365,7 @@
       {
         "name": "Get Project by Id",
         "slug": "get-project",
+        "operation": "read",
         "method": "GET",
         "documentationUrl": "https://api.d-tools.com/SI/doc/Api/POST-Publish-Projects",
         "native": {
@@ -349363,6 +349379,20 @@
               "key": "id",
               "name": "Id",
               "dataType": "string",
+              "location": "query",
+              "required": false
+            },
+            {
+              "key": "includeImported",
+              "name": "Include Imported",
+              "dataType": "boolean",
+              "location": "query",
+              "required": false
+            },
+            {
+              "key": "includeArchived",
+              "name": "Include Archived",
+              "dataType": "boolean",
               "location": "query",
               "required": false
             }
@@ -349379,13 +349409,151 @@
             "name": "Id",
             "dataType": "string",
             "required": false
+          },
+          {
+            "key": "includeImported",
+            "name": "Include Imported",
+            "dataType": "boolean",
+            "required": false,
+            "defaultValue": "false"
+          },
+          {
+            "key": "includeArchived",
+            "name": "Include Archived",
+            "dataType": "boolean",
+            "required": false,
+            "defaultValue": "false"
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "templateName",
+            "dataType": "string"
+          },
+          {
+            "key": "items",
+            "dataType": "array",
+            "itemDataType": "object"
+          },
+          {
+            "key": "packages",
+            "dataType": "array",
+            "itemDataType": "object"
+          },
+          {
+            "key": "publishedOn",
+            "dataType": "string"
+          },
+          {
+            "key": "importedOn",
+            "dataType": "string"
+          },
+          {
+            "key": "publishedOnUnixTimeMs",
+            "dataType": "number"
+          },
+          {
+            "key": "id",
+            "dataType": "string"
+          },
+          {
+            "key": "integrationProjectId",
+            "dataType": "string"
+          },
+          {
+            "key": "client",
+            "dataType": "string"
+          },
+          {
+            "key": "clientId",
+            "dataType": "string"
+          },
+          {
+            "key": "integrationClientId",
+            "dataType": "string"
+          },
+          {
+            "key": "clientNumber",
+            "dataType": "string"
+          },
+          {
+            "key": "name",
+            "dataType": "string"
+          },
+          {
+            "key": "number",
+            "dataType": "string"
+          },
+          {
+            "key": "quantityBased",
+            "dataType": "boolean"
+          },
+          {
+            "key": "progress",
+            "dataType": "string"
+          },
+          {
+            "key": "assignedTo",
+            "dataType": "string"
+          },
+          {
+            "key": "salesRep",
+            "dataType": "string"
+          },
+          {
+            "key": "projectManager",
+            "dataType": "string"
+          },
+          {
+            "key": "designer",
+            "dataType": "string"
+          },
+          {
+            "key": "revision",
+            "dataType": "number"
+          },
+          {
+            "key": "currencyCode",
+            "dataType": "string"
+          },
+          {
+            "key": "currencyRate",
+            "dataType": "number"
+          },
+          {
+            "key": "cost",
+            "dataType": "number"
+          },
+          {
+            "key": "priceWithoutTax",
+            "dataType": "number"
+          },
+          {
+            "key": "margin",
+            "dataType": "number"
+          },
+          {
+            "key": "markup",
+            "dataType": "number"
+          },
+          {
+            "key": "tax",
+            "dataType": "number"
+          },
+          {
+            "key": "price",
+            "dataType": "number"
+          },
+          {
+            "key": "hours",
+            "dataType": "number"
+          }
+        ]
       },
       {
         "name": "List Client Info",
         "slug": "list-client-info",
+        "operation": "read",
         "method": "GET",
         "description": "Get clients published by a SI user.",
         "native": {
@@ -349490,6 +349658,7 @@
         "operation": "read",
         "method": "GET",
         "model": "project",
+        "documentationUrl": "https://api.d-tools.com/si/doc/Api/GET-Subscribe-Projects",
         "native": {
           "method": "GET",
           "path": "Subscribe/Projects",
@@ -349514,7 +349683,7 @@
           ]
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },
@@ -349532,11 +349701,85 @@
             "required": false
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "name",
+            "dataType": "string"
+          },
+          {
+            "key": "client",
+            "dataType": "string"
+          },
+          {
+            "key": "number",
+            "dataType": "string"
+          },
+          {
+            "key": "progress",
+            "dataType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string"
+          },
+          {
+            "key": "price",
+            "dataType": "number"
+          },
+          {
+            "key": "approved",
+            "dataType": "boolean"
+          },
+          {
+            "key": "currencyCode",
+            "dataType": "string"
+          },
+          {
+            "key": "clientId",
+            "dataType": "string"
+          },
+          {
+            "key": "clientNumber",
+            "dataType": "string"
+          },
+          {
+            "key": "messageId",
+            "dataType": "string"
+          },
+          {
+            "key": "integrationProjectId",
+            "dataType": "string"
+          },
+          {
+            "key": "cONumber",
+            "dataType": "string"
+          },
+          {
+            "key": "importedOn",
+            "dataType": "string"
+          },
+          {
+            "key": "publishedOn",
+            "dataType": "string"
+          },
+          {
+            "key": "publishedOnUnixTimeMs",
+            "dataType": "number"
+          },
+          {
+            "key": "deleted",
+            "dataType": "boolean"
+          },
+          {
+            "key": "archived",
+            "dataType": "boolean"
+          }
+        ]
       },
       {
         "name": "Publish Projects",
         "slug": "publish-projects",
+        "operation": "create",
         "method": "POST",
         "documentationUrl": "https://api.d-tools.com/SI/doc/Api/POST-Publish-Projects",
         "native": {
@@ -350579,7 +350822,8 @@
       {
         "name": "Update Project",
         "slug": "update-project",
-        "method": "POST",
+        "operation": "update",
+        "method": "PUT",
         "documentationUrl": "https://api.d-tools.com/SI/doc/Api/POST-Publish-Projects",
         "native": {
           "method": "POST",

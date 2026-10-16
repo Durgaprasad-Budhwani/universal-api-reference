@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Shopify Universal API",
-    "version": "0.2.322",
+    "version": "0.2.323",
     "description": "Manage products, orders, customers, and inventory levels"
   },
   "servers": [
@@ -3487,7 +3487,187 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "billingAddress": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Billing address."
+                          },
+                          "cancelledAt": {
+                            "type": "string",
+                            "description": "When the order was cancelled."
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "description": "When the order was created."
+                          },
+                          "currencyCode": {
+                            "type": "string",
+                            "description": "Shop currency code."
+                          },
+                          "customer": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Customer associated with the order."
+                          },
+                          "displayFinancialStatus": {
+                            "type": "string",
+                            "description": "Financial status shown in Shopify."
+                          },
+                          "displayFulfillmentStatus": {
+                            "type": "string",
+                            "description": "Fulfillment status shown in Shopify."
+                          },
+                          "email": {
+                            "type": "string",
+                            "description": "Customer email on the order."
+                          },
+                          "id": {
+                            "type": "string",
+                            "description": "Shopify order GID."
+                          },
+                          "legacyResourceId": {
+                            "type": "string",
+                            "description": "Numeric order ID as a string."
+                          },
+                          "lineItems": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            },
+                            "description": "Order line items."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Order name, for example #1001."
+                          },
+                          "note": {
+                            "type": "string",
+                            "description": "Order note."
+                          },
+                          "paymentGatewayNames": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Payment gateway names."
+                          },
+                          "paymentTerms": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Payment terms."
+                          },
+                          "phone": {
+                            "type": "string",
+                            "description": "Customer phone on the order."
+                          },
+                          "poNumber": {
+                            "type": "string",
+                            "description": "Purchase order number."
+                          },
+                          "presentmentCurrencyCode": {
+                            "type": "string",
+                            "description": "Presentment currency code."
+                          },
+                          "processedAt": {
+                            "type": "string",
+                            "description": "When the order was processed."
+                          },
+                          "purchasingEntity": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Purchasing entity for the order."
+                          },
+                          "shippingAddress": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Shipping address."
+                          },
+                          "shippingLines": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            },
+                            "description": "Shipping lines."
+                          },
+                          "subtotalPriceSet": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Subtotal price set."
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Order tags."
+                          },
+                          "taxesIncluded": {
+                            "type": "boolean",
+                            "description": "Whether taxes are included in prices."
+                          },
+                          "taxExempt": {
+                            "type": "boolean",
+                            "description": "Whether the order is tax exempt."
+                          },
+                          "taxLines": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            },
+                            "description": "Tax lines."
+                          },
+                          "totalDiscountsSet": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Total discounts set."
+                          },
+                          "totalOutstandingSet": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Total outstanding set."
+                          },
+                          "totalPriceSet": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Total price set."
+                          },
+                          "totalReceivedSet": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Total received set."
+                          },
+                          "totalShippingPriceSet": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Total shipping price set."
+                          },
+                          "totalTaxSet": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Total tax set."
+                          },
+                          "transactions": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            },
+                            "description": "Order transactions."
+                          },
+                          "unpaid": {
+                            "type": "boolean",
+                            "description": "Whether the order is unpaid."
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "description": "When the order was last updated."
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

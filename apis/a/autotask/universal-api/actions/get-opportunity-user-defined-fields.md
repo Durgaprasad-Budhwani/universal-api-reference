@@ -33,7 +33,25 @@ const { success, data } = await response.json();
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native Autotask API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "fields": [
+        {}
+      ]
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `fields` | array<object> | User-defined field definitions for the Opportunity entity. |
 
 ## Native endpoint
 

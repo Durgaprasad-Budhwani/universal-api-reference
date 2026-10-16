@@ -38,7 +38,11 @@ Shared headers:
 | `Accept` | `application/json` |
 | `Content-Type` | `application/json` |
 
-Responses from this API use JSON.
+Responses from this API use JSON. The next-page cursor is read from `pageDetails.nextPageUrl`.
+
+## Pagination
+
+Use `nextPageUrl` in the query string as the pagination cursor. Follow the complete next-page URL returned by the API.
 
 ## Endpoints (35 documented)
 

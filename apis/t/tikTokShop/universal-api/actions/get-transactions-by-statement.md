@@ -13,7 +13,7 @@ This action also supports [pagination](../pagination.md) (`limit`, `offset`).
 ## Example request
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/tikTokShop/latest/actions/get-transactions-by-statement?connectionId=$CONNECTION_ID&limit=25&offset=0" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/tikTokShop/latest/actions/get-transactions-by-statement?connectionId=$CONNECTION_ID&limit=25&offset=0&statement_id=string" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
@@ -21,7 +21,8 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/tikTokShop/latest/actions
 const params = new URLSearchParams({
   connectionId,
   limit: '25',
-  offset: '0'
+  offset: '0',
+  "statement_id": "string"
 });
 
 const response = await fetch(`https://connect.mindcloud.co/v1/universal/tikTokShop/latest/actions/get-transactions-by-statement?${params}`, {
@@ -40,7 +41,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `shop_cipher` | string | no |  |
-| `statement_id` | string | no |  |
+| `statement_id` | string | yes |  |
 | `sort_field` | string | no | Default: `order_create_time`. |
 | `version` | string | no | Default: `202501`. |
 

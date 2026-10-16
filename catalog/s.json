@@ -230048,7 +230048,7 @@
     "description": "ServiceTitan is a cloud-based software platform for home and commercial service businesses that manages customers, jobs, scheduling, dispatching, invoicing, payments, and other field service operations.",
     "iconUrl": "https://images.mindcloud.co/apps/icons/service-titan_1777386591371.png",
     "nativeDocumentationUrl": "https://developer.servicetitan.io/api-details/#api=tenant-crm-v2",
-    "version": "0.0.380",
+    "version": "0.0.383",
     "authentication": [
       {
         "type": "custom",
@@ -243078,7 +243078,15 @@
               "itemDataType": "string",
               "location": "query",
               "required": false,
-              "description": "Filters by job status\nValues: [Scheduled, Dispatched, InProgress, Hold, Completed, Canceled]"
+              "description": "Filters by job status\nValues: [Scheduled, Dispatched, InProgress, Hold, Completed, Canceled]",
+              "enumValues": [
+                "Canceled",
+                "Completed",
+                "Dispatched",
+                "Hold",
+                "InProgress",
+                "Scheduled"
+              ]
             },
             {
               "key": "appointmentStatus",
@@ -243288,7 +243296,15 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": false,
-            "description": "Filters by job status\nValues: [Scheduled, Dispatched, InProgress, Hold, Completed, Canceled]"
+            "description": "Filters by job status\nValues: [Scheduled, Dispatched, InProgress, Hold, Completed, Canceled]",
+            "enumValues": [
+              "Canceled",
+              "Completed",
+              "Dispatched",
+              "Hold",
+              "InProgress",
+              "Scheduled"
+            ]
           },
           {
             "key": "appointmentStatus",
@@ -244407,7 +244423,274 @@
             ]
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "batch",
+            "dataType": "object",
+            "description": "Batch the bill belongs to.",
+            "mockType": "object"
+          },
+          {
+            "key": "billAmount",
+            "dataType": "string",
+            "description": "Total bill amount.",
+            "mockType": "string"
+          },
+          {
+            "key": "billDate",
+            "dataType": "string",
+            "description": "Invoice date of the bill.",
+            "mockType": "string"
+          },
+          {
+            "key": "billType",
+            "dataType": "string",
+            "description": "Type of the bill.",
+            "mockType": "string"
+          },
+          {
+            "key": "budgetCodeId",
+            "dataType": "number",
+            "description": "Budget code ID.",
+            "mockType": "number"
+          },
+          {
+            "key": "businessUnit",
+            "dataType": "object",
+            "description": "Business unit the bill belongs to.",
+            "mockType": "object"
+          },
+          {
+            "key": "canceledBy",
+            "dataType": "string",
+            "description": "User who canceled the bill.",
+            "mockType": "string"
+          },
+          {
+            "key": "createdBy",
+            "dataType": "string",
+            "description": "User who created the bill.",
+            "mockType": "string"
+          },
+          {
+            "key": "createdOn",
+            "dataType": "string",
+            "description": "Timestamp when the bill was created.",
+            "mockType": "string"
+          },
+          {
+            "key": "customFields",
+            "dataType": "object",
+            "description": "Custom fields on the bill.",
+            "mockType": "object"
+          },
+          {
+            "key": "dateCanceled",
+            "dataType": "string",
+            "description": "Date the bill was canceled.",
+            "mockType": "string"
+          },
+          {
+            "key": "dateReconciled",
+            "dataType": "string",
+            "description": "Date the bill was reconciled.",
+            "mockType": "string"
+          },
+          {
+            "key": "doNotPay",
+            "dataType": "boolean",
+            "description": "Whether the bill is excluded from payment.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "dueDate",
+            "dataType": "string",
+            "description": "Payment due date.",
+            "mockType": "string"
+          },
+          {
+            "key": "earlyDiscountDate",
+            "dataType": "string",
+            "description": "Early payment discount date.",
+            "mockType": "string"
+          },
+          {
+            "key": "expenseItems",
+            "dataType": "array",
+            "itemDataType": "object",
+            "description": "Expense items on the bill.",
+            "mockType": "array"
+          },
+          {
+            "key": "id",
+            "dataType": "number",
+            "description": "AP bill ID.",
+            "mockType": "number"
+          },
+          {
+            "key": "items",
+            "dataType": "array",
+            "itemDataType": "object",
+            "description": "Line items on the bill.",
+            "mockType": "array"
+          },
+          {
+            "key": "jobId",
+            "dataType": "number",
+            "description": "Related job ID.",
+            "mockType": "number"
+          },
+          {
+            "key": "jobNumber",
+            "dataType": "string",
+            "description": "Related job number.",
+            "mockType": "string"
+          },
+          {
+            "key": "landedCostMethod",
+            "dataType": "number",
+            "description": "Landed cost method.",
+            "mockType": "number"
+          },
+          {
+            "key": "modifiedOn",
+            "dataType": "string",
+            "description": "Timestamp when the bill was last modified.",
+            "mockType": "string"
+          },
+          {
+            "key": "otherAmount",
+            "dataType": "string",
+            "description": "Other amount.",
+            "mockType": "string"
+          },
+          {
+            "key": "postDate",
+            "dataType": "string",
+            "description": "Date the bill was posted.",
+            "mockType": "string"
+          },
+          {
+            "key": "postTaxCharge",
+            "dataType": "string",
+            "description": "Post-tax charge.",
+            "mockType": "string"
+          },
+          {
+            "key": "postTaxDiscountAmount",
+            "dataType": "string",
+            "description": "Post-tax discount amount.",
+            "mockType": "string"
+          },
+          {
+            "key": "preTaxCharge",
+            "dataType": "string",
+            "description": "Pre-tax charge.",
+            "mockType": "string"
+          },
+          {
+            "key": "preTaxDiscountAmount",
+            "dataType": "string",
+            "description": "Pre-tax discount amount.",
+            "mockType": "string"
+          },
+          {
+            "key": "purchaseOrderId",
+            "dataType": "number",
+            "description": "Related purchase order ID.",
+            "mockType": "number"
+          },
+          {
+            "key": "referenceNumber",
+            "dataType": "string",
+            "description": "Reference number of the bill.",
+            "mockType": "string"
+          },
+          {
+            "key": "remittanceVendorInfo",
+            "dataType": "object",
+            "description": "Remittance vendor information.",
+            "mockType": "object"
+          },
+          {
+            "key": "shippingAmount",
+            "dataType": "string",
+            "description": "Shipping amount.",
+            "mockType": "string"
+          },
+          {
+            "key": "shipTo",
+            "dataType": "object",
+            "description": "Ship-to address.",
+            "mockType": "object"
+          },
+          {
+            "key": "shipToDescription",
+            "dataType": "string",
+            "description": "Ship-to description.",
+            "mockType": "string"
+          },
+          {
+            "key": "source",
+            "dataType": "string",
+            "description": "Source of the bill.",
+            "mockType": "string"
+          },
+          {
+            "key": "status",
+            "dataType": "string",
+            "description": "Reconciliation status of the bill.",
+            "mockType": "string"
+          },
+          {
+            "key": "summary",
+            "dataType": "string",
+            "description": "Bill summary.",
+            "mockType": "string"
+          },
+          {
+            "key": "syncStatus",
+            "dataType": "string",
+            "description": "Sync status of the bill.",
+            "mockType": "string"
+          },
+          {
+            "key": "taxAmount",
+            "dataType": "string",
+            "description": "Tax amount.",
+            "mockType": "string"
+          },
+          {
+            "key": "taxZone",
+            "dataType": "object",
+            "description": "Tax zone for the bill.",
+            "mockType": "object"
+          },
+          {
+            "key": "termName",
+            "dataType": "string",
+            "description": "Payment term name.",
+            "mockType": "string"
+          },
+          {
+            "key": "vendor",
+            "dataType": "object",
+            "description": "Vendor for the bill.",
+            "mockType": "object"
+          },
+          {
+            "key": "vendorInvoiceTotal",
+            "dataType": "string",
+            "description": "Vendor invoice total.",
+            "mockType": "string"
+          },
+          {
+            "key": "vendorNumber",
+            "dataType": "string",
+            "description": "Vendor number.",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "List Customer Contact",
@@ -244826,7 +245109,209 @@
             "description": "Applies sorting by the specified field:\n\"?sort=+FieldName\" for ascending order,\n\"?sort=-FieldName\" for descending order.\n\nAvailable fields are: Id, ModifiedOn, CreatedOn."
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "id",
+            "dataType": "number",
+            "description": "ServiceTitan customer ID.",
+            "mockType": "number"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "description": "Customer name.",
+            "mockType": "string"
+          },
+          {
+            "key": "type",
+            "dataType": "string",
+            "description": "Customer type (Residential or Commercial).",
+            "mockType": "string"
+          },
+          {
+            "key": "active",
+            "dataType": "boolean",
+            "description": "Whether the customer is active.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "balance",
+            "dataType": "number",
+            "description": "Outstanding account balance.",
+            "mockType": "number"
+          },
+          {
+            "key": "taxExempt",
+            "dataType": "boolean",
+            "description": "Whether the customer is tax exempt.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "doNotMail",
+            "dataType": "boolean",
+            "description": "Whether the customer is excluded from mailings.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "doNotService",
+            "dataType": "boolean",
+            "description": "Whether the customer is excluded from service.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "nationalAccount",
+            "dataType": "boolean",
+            "description": "Whether the customer is a national account.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "address",
+            "dataType": "object",
+            "description": "Billing address of the customer.",
+            "mockType": "object"
+          },
+          {
+            "key": "customFields[]",
+            "dataType": "array",
+            "itemDataType": "object",
+            "description": "Customer custom fields.",
+            "mockType": "array"
+          },
+          {
+            "key": "tagTypeIds[]",
+            "dataType": "array",
+            "itemDataType": "number",
+            "description": "Tag type IDs.",
+            "mockType": "array"
+          },
+          {
+            "key": "createdOn",
+            "dataType": "string",
+            "description": "Timestamp when the customer was created.",
+            "mockType": "string"
+          },
+          {
+            "key": "createdById",
+            "dataType": "number",
+            "description": "ID of the user who created the customer.",
+            "mockType": "number"
+          },
+          {
+            "key": "modifiedOn",
+            "dataType": "string",
+            "description": "Timestamp when the customer was last modified.",
+            "mockType": "string"
+          },
+          {
+            "key": "mergedToId",
+            "dataType": "number",
+            "description": "ID of the customer this customer was merged into.",
+            "mockType": "number"
+          },
+          {
+            "key": "paymentTermId",
+            "dataType": "number",
+            "description": "Payment term ID.",
+            "mockType": "number"
+          },
+          {
+            "key": "creditLimit",
+            "dataType": "number",
+            "description": "Credit limit.",
+            "mockType": "number"
+          },
+          {
+            "key": "creditLimitBalance",
+            "dataType": "number",
+            "description": "Credit limit balance.",
+            "mockType": "number"
+          },
+          {
+            "key": "externalData",
+            "dataType": "array",
+            "itemDataType": "object",
+            "description": "External data entries associated with the customer for the requested application GUID.",
+            "mockType": "array"
+          },
+          {
+            "key": "address.city",
+            "dataType": "string",
+            "description": "City.",
+            "mockType": "string"
+          },
+          {
+            "key": "address.country",
+            "dataType": "string",
+            "description": "Country.",
+            "mockType": "string"
+          },
+          {
+            "key": "address.latitude",
+            "dataType": "number",
+            "description": "Latitude.",
+            "mockType": "number"
+          },
+          {
+            "key": "address.longitude",
+            "dataType": "number",
+            "description": "Longitude.",
+            "mockType": "number"
+          },
+          {
+            "key": "address.state",
+            "dataType": "string",
+            "description": "State.",
+            "mockType": "string"
+          },
+          {
+            "key": "address.street",
+            "dataType": "string",
+            "description": "Street address.",
+            "mockType": "string"
+          },
+          {
+            "key": "address.unit",
+            "dataType": "string",
+            "description": "Unit.",
+            "mockType": "string"
+          },
+          {
+            "key": "address.zip",
+            "dataType": "string",
+            "description": "Postal code.",
+            "mockType": "string"
+          },
+          {
+            "key": "customFields[].name",
+            "dataType": "string",
+            "description": "Custom field name.",
+            "mockType": "string"
+          },
+          {
+            "key": "customFields[].typeId",
+            "dataType": "number",
+            "description": "Custom field type ID.",
+            "mockType": "number"
+          },
+          {
+            "key": "customFields[].value",
+            "dataType": "string",
+            "description": "Custom field value.",
+            "mockType": "string"
+          },
+          {
+            "key": "externalData[].key",
+            "dataType": "string",
+            "description": "External data key.",
+            "mockType": "string"
+          },
+          {
+            "key": "externalData[].value",
+            "dataType": "string",
+            "description": "External data value.",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "List Dynamic Set Values",
@@ -299983,7 +300468,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/shopify_1776706561167.png",
     "websiteUrl": "shopify.com",
     "nativeDocumentationUrl": "https://shopify.dev/docs/api",
-    "version": "0.2.322",
+    "version": "0.2.323",
     "authentication": [
       {
         "type": "apiKey",
@@ -301953,7 +302438,230 @@
             "description": "Optional cursor for manually continuing from a previous page. Standard pagination controls handle this automatically in most workflows."
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "billingAddress",
+            "dataType": "object",
+            "description": "Billing address.",
+            "mockType": "object"
+          },
+          {
+            "key": "cancelledAt",
+            "dataType": "string",
+            "description": "When the order was cancelled.",
+            "mockType": "string"
+          },
+          {
+            "key": "createdAt",
+            "dataType": "string",
+            "description": "When the order was created.",
+            "mockType": "string"
+          },
+          {
+            "key": "currencyCode",
+            "dataType": "string",
+            "description": "Shop currency code.",
+            "mockType": "string"
+          },
+          {
+            "key": "customer",
+            "dataType": "object",
+            "description": "Customer associated with the order.",
+            "mockType": "object"
+          },
+          {
+            "key": "displayFinancialStatus",
+            "dataType": "string",
+            "description": "Financial status shown in Shopify.",
+            "mockType": "string"
+          },
+          {
+            "key": "displayFulfillmentStatus",
+            "dataType": "string",
+            "description": "Fulfillment status shown in Shopify.",
+            "mockType": "string"
+          },
+          {
+            "key": "email",
+            "dataType": "string",
+            "description": "Customer email on the order.",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "description": "Shopify order GID.",
+            "mockType": "string"
+          },
+          {
+            "key": "legacyResourceId",
+            "dataType": "string",
+            "description": "Numeric order ID as a string.",
+            "mockType": "string"
+          },
+          {
+            "key": "lineItems",
+            "dataType": "array",
+            "itemDataType": "object",
+            "description": "Order line items.",
+            "mockType": "array"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "description": "Order name, for example #1001.",
+            "mockType": "string"
+          },
+          {
+            "key": "note",
+            "dataType": "string",
+            "description": "Order note.",
+            "mockType": "string"
+          },
+          {
+            "key": "paymentGatewayNames",
+            "dataType": "array",
+            "itemDataType": "string",
+            "description": "Payment gateway names.",
+            "mockType": "array"
+          },
+          {
+            "key": "paymentTerms",
+            "dataType": "object",
+            "description": "Payment terms.",
+            "mockType": "object"
+          },
+          {
+            "key": "phone",
+            "dataType": "string",
+            "description": "Customer phone on the order.",
+            "mockType": "string"
+          },
+          {
+            "key": "poNumber",
+            "dataType": "string",
+            "description": "Purchase order number.",
+            "mockType": "string"
+          },
+          {
+            "key": "presentmentCurrencyCode",
+            "dataType": "string",
+            "description": "Presentment currency code.",
+            "mockType": "string"
+          },
+          {
+            "key": "processedAt",
+            "dataType": "string",
+            "description": "When the order was processed.",
+            "mockType": "string"
+          },
+          {
+            "key": "purchasingEntity",
+            "dataType": "object",
+            "description": "Purchasing entity for the order.",
+            "mockType": "object"
+          },
+          {
+            "key": "shippingAddress",
+            "dataType": "object",
+            "description": "Shipping address.",
+            "mockType": "object"
+          },
+          {
+            "key": "shippingLines",
+            "dataType": "array",
+            "itemDataType": "object",
+            "description": "Shipping lines.",
+            "mockType": "array"
+          },
+          {
+            "key": "subtotalPriceSet",
+            "dataType": "object",
+            "description": "Subtotal price set.",
+            "mockType": "object"
+          },
+          {
+            "key": "tags",
+            "dataType": "array",
+            "itemDataType": "string",
+            "description": "Order tags.",
+            "mockType": "array"
+          },
+          {
+            "key": "taxesIncluded",
+            "dataType": "boolean",
+            "description": "Whether taxes are included in prices.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "taxExempt",
+            "dataType": "boolean",
+            "description": "Whether the order is tax exempt.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "taxLines",
+            "dataType": "array",
+            "itemDataType": "object",
+            "description": "Tax lines.",
+            "mockType": "array"
+          },
+          {
+            "key": "totalDiscountsSet",
+            "dataType": "object",
+            "description": "Total discounts set.",
+            "mockType": "object"
+          },
+          {
+            "key": "totalOutstandingSet",
+            "dataType": "object",
+            "description": "Total outstanding set.",
+            "mockType": "object"
+          },
+          {
+            "key": "totalPriceSet",
+            "dataType": "object",
+            "description": "Total price set.",
+            "mockType": "object"
+          },
+          {
+            "key": "totalReceivedSet",
+            "dataType": "object",
+            "description": "Total received set.",
+            "mockType": "object"
+          },
+          {
+            "key": "totalShippingPriceSet",
+            "dataType": "object",
+            "description": "Total shipping price set.",
+            "mockType": "object"
+          },
+          {
+            "key": "totalTaxSet",
+            "dataType": "object",
+            "description": "Total tax set.",
+            "mockType": "object"
+          },
+          {
+            "key": "transactions",
+            "dataType": "array",
+            "itemDataType": "object",
+            "description": "Order transactions.",
+            "mockType": "array"
+          },
+          {
+            "key": "unpaid",
+            "dataType": "boolean",
+            "description": "Whether the order is unpaid.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "updatedAt",
+            "dataType": "string",
+            "description": "When the order was last updated.",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "List Companies",

@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "QuickBooks Online Universal API",
-    "version": "0.0.48",
+    "version": "0.0.49",
     "description": "Manage invoices, customers, vendors, bills, reports, and accounting data"
   },
   "servers": [
@@ -4672,8 +4672,8 @@
               "type": "string",
               "description": "Accounting basis to use for the report.",
               "enum": [
-                "0",
-                "1"
+                "Accrual",
+                "Cash"
               ]
             }
           },

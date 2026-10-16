@@ -29,6 +29,10 @@ Shared headers:
 | --- | --- |
 | `Content-Type` | `application/json; charset=utf-8` |
 
+## Pagination
+
+Use `pageSize` in the query string to set the page size (default 50). Use `pageNumber` in the query string to choose the page; numbering starts at 1.
+
 ## Endpoints (7 documented)
 
 | Operation | Method & path | Vendor docs |
@@ -37,6 +41,6 @@ Shared headers:
 | [Get Partial Project by Id](actions/get-partial-project.md) | `GET https://api.d-tools.com/SI/SubscribePartialProjects/Projects` | [docs](https://api.d-tools.com/SI/doc/Api/POST-Publish-Projects) |
 | [Get Project by Id](actions/get-project.md) | `GET https://api.d-tools.com/SI/Subscribe/Projects` | [docs](https://api.d-tools.com/SI/doc/Api/POST-Publish-Projects) |
 | [List Client Info](actions/list-client-info.md) | `GET Subscribe/Clients?includeImported={includeImported}&searchText={searchText}&includeDeleted={includeDeleted}&pageNumber={pageNumber}&pageSize={pageSize}` |  |
-| [List Subscribed Projects](actions/list-subscribed-projects.md) | `GET Subscribe/Projects` |  |
+| [List Subscribed Projects](actions/list-subscribed-projects.md) | `GET Subscribe/Projects` | [docs](https://api.d-tools.com/si/doc/Api/GET-Subscribe-Projects) |
 | [Publish Projects](actions/publish-projects.md) | `POST https://api.d-tools.com/SI/Publish/Projects` | [docs](https://api.d-tools.com/SI/doc/Api/POST-Publish-Projects) |
 | [Update Project](actions/update-project.md) | `POST https://api.d-tools.com/SI/Publish/Projects/Update` | [docs](https://api.d-tools.com/SI/doc/Api/POST-Publish-Projects) |

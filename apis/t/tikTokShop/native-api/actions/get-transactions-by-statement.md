@@ -16,6 +16,6 @@ This operation supports [pagination](../README.md#pagination).
 | Parameter | Location | Type | Required |
 | --- | --- | --- | --- |
 | `shop_cipher` | query | `string` | no |
-| `statement_id` | path | `string` | no |
+| `statement_id` | path | `string` | yes |
 | `sort_field` | query | `string` | no |
 | `version` | path | `string` | no |

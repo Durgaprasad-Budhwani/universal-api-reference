@@ -12,3 +12,5 @@
 | Parameter | Location | Type | Required |
 | --- | --- | --- | --- |
 | `id` | query | `string` | no |
+| `includeImported` | query | `boolean` | no |
+| `includeArchived` | query | `boolean` | no |

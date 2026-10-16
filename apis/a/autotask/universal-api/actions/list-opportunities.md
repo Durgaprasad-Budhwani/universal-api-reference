@@ -49,7 +49,27 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native Autotask API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "items": [
+        {}
+      ],
+      "pageDetails": {}
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `items` | array<object> | Opportunity records returned by the query. |
+| `pageDetails` | object | Autotask pagination details for the query result. |
 
 ## Native endpoint
 

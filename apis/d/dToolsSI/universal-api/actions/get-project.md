@@ -36,10 +36,90 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `id` | string | no |  |
+| `includeImported` | boolean | no | Default: `false`. |
+| `includeArchived` | boolean | no | Default: `false`. |
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native D-Tools SI API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "templateName": "Ava Chen",
+      "items": [
+        {}
+      ],
+      "packages": [
+        {}
+      ],
+      "publishedOn": "string",
+      "importedOn": "string",
+      "publishedOnUnixTimeMs": 1,
+      "id": "string",
+      "integrationProjectId": "string",
+      "client": "string",
+      "clientId": "string",
+      "integrationClientId": "string",
+      "clientNumber": "string",
+      "name": "Ava Chen",
+      "number": "string",
+      "quantityBased": true,
+      "progress": "string",
+      "assignedTo": "string",
+      "salesRep": "string",
+      "projectManager": "string",
+      "designer": "string",
+      "revision": 1,
+      "currencyCode": "string",
+      "currencyRate": 1,
+      "cost": 1,
+      "priceWithoutTax": 1,
+      "margin": 1,
+      "markup": 1,
+      "tax": 1,
+      "price": 1,
+      "hours": 1
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `templateName` | string |  |
+| `items` | array<object> |  |
+| `packages` | array<object> |  |
+| `publishedOn` | string |  |
+| `importedOn` | string |  |
+| `publishedOnUnixTimeMs` | number |  |
+| `id` | string |  |
+| `integrationProjectId` | string |  |
+| `client` | string |  |
+| `clientId` | string |  |
+| `integrationClientId` | string |  |
+| `clientNumber` | string |  |
+| `name` | string |  |
+| `number` | string |  |
+| `quantityBased` | boolean |  |
+| `progress` | string |  |
+| `assignedTo` | string |  |
+| `salesRep` | string |  |
+| `projectManager` | string |  |
+| `designer` | string |  |
+| `revision` | number |  |
+| `currencyCode` | string |  |
+| `currencyRate` | number |  |
+| `cost` | number |  |
+| `priceWithoutTax` | number |  |
+| `margin` | number |  |
+| `markup` | number |  |
+| `tax` | number |  |
+| `price` | number |  |
+| `hours` | number |  |
 
 ## Native endpoint
 
