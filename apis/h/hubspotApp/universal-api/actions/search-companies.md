@@ -42,7 +42,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | `filterGroups[].filters[]` | array<object> | no |  |
 | `filterGroups[].filters[].propertyName` | string<string> | no |  |
 | `query` | string | no | The text to search across default searchable company properties. |
-| `filterGroups[].filters[].operator` | list | no |  |
+| `filterGroups[].filters[].operator` | list | no | One of: `BETWEEN`, `CONTAINS_TOKEN`, `EQ`, `GT`, `GTE`, `HAS_PROPERTY`, `IN`, `LT`, `LTE`, `NEQ`, `NOT_CONTAINS_TOKEN`, `NOT_HAS_PROPERTY`, `NOT_IN`. |
 | `filterGroups[].filters[].value` | string | no |  |
 | `filterGroups` | object<object> | no | Provide the full HubSpot filterGroups array, for example [{"filters":[{"propertyName":"hs_object_id","operator":"EQ","value":"123"}]}]. |
 

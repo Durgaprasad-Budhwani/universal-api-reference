@@ -36,8 +36,8 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `parents` | list<string> | no | Optionally, select a specific folder to search for files in. |
-| `mimeType` | list<string> | no | Restrict the search to specific file types. If you want all file types, leave this field blank. Default: `application/vnd.google-apps.file`. |
-| `searchType` | list<string> | no | Searching with 'Name' requires a Search Type. File Name Contains or File Name is Exactly. Use contains when looking for more than 1 file. Example, File Name Contains: 'PO# ' Default: `CONTAINS`. |
+| `mimeType` | list<string> | no | Restrict the search to specific file types. If you want all file types, leave this field blank. One of: `document`, `file`, `folder`, `spreadsheet`. Default: `application/vnd.google-apps.file`. |
+| `searchType` | list<string> | no | Searching with 'Name' requires a Search Type. File Name Contains or File Name is Exactly. Use contains when looking for more than 1 file. Example, File Name Contains: 'PO# ' One of: `CONTAINS`, `EQUALS`. Default: `CONTAINS`. |
 | `q` | string | no | Enter a File/Folder Name or type a phrase to search in file content. Example, "TEMPLATES". Then enter a "Search Type". |
 | `fields` | string | no | Default: `*`. |
 | `orderBy` | string | no | name,recency,etc. Default: `recency`. |

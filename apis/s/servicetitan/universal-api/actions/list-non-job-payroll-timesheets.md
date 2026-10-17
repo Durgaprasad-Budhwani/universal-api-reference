@@ -35,17 +35,49 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active` | list | no | Default: `Any`. |
+| `active` | list | no | One of: `Any`, `False`, `True`. Default: `Any`. |
 | `employeeId` | number | no |  |
 | `pageSize` | number | no | Default: `500`. |
-| `employeeType` | list | no | Default: `Technician`. Example: `Technician/Employee`. |
+| `employeeType` | list | no | One of: `Employee`, `Technician`. Default: `Technician`. Example: `Technician/Employee`. |
 | `createdBefore` | string | no |  |
 | `createdOnOrAfter` | string | no |  |
 | `modifiedOnOrAfter` | string | no |  |
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native ServiceTitan API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "active": true,
+      "createdOn": "string",
+      "employeeId": 1,
+      "employeeType": "string",
+      "endedOn": "string",
+      "id": 1,
+      "modifiedOn": "string",
+      "startedOn": "string",
+      "timesheetCodeId": 1
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `active` | boolean |  |
+| `createdOn` | string |  |
+| `employeeId` | number |  |
+| `employeeType` | string |  |
+| `endedOn` | string |  |
+| `id` | number |  |
+| `modifiedOn` | string |  |
+| `startedOn` | string |  |
+| `timesheetCodeId` | number |  |
 
 ## Native endpoint
 

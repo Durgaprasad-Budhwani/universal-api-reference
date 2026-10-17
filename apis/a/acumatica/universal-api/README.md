@@ -18,7 +18,7 @@ Read more in [authentication.md](authentication.md).
 For example, to [List Acumatica Endpoints](actions/get-acumatica-erp-endpoints.md):
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/acumatica/latest/actions/get-acumatica-erp-endpoints?connectionId=$CONNECTION_ID" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/acumatica/latest/actions/get-acumatica-erp-endpoints?connectionId=$CONNECTION_ID&unusedParam=endpoints" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 

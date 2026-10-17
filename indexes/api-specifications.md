@@ -1,6 +1,6 @@
 # API specifications
 
-Machine-readable API descriptions for 3225 apps. Universal API specifications are generated from the same action definitions as this reference; Native API links point to specifications published by each provider.
+Machine-readable API descriptions for 3226 apps. Universal API specifications are generated from the same action definitions as this reference; Native API links point to specifications published by each provider.
 
 | App | Universal API | Native API |
 | --- | --- | --- |
@@ -83,6 +83,7 @@ Machine-readable API descriptions for 3225 apps. Universal API specifications ar
 | [Alegra](../apis/a/alegra) | [OpenAPI 3.1](../apis/a/alegra/universal-api/openapi.json) |  |
 | [AlgoDocs](../apis/a/algoDocs) | [OpenAPI 3.1](../apis/a/algoDocs/universal-api/openapi.json) |  |
 | [Algolia](../apis/a/algolia) | [OpenAPI 3.1](../apis/a/algolia/universal-api/openapi.json) |  |
+| [Alliance HCM](../apis/a/allianceHCM) | [OpenAPI 3.1](../apis/a/allianceHCM/universal-api/openapi.json) |  |
 | [Allscreenshots](../apis/a/allscreenshots) | [OpenAPI 3.1](../apis/a/allscreenshots/universal-api/openapi.json) |  |
 | [All Things Considered Podcast](../apis/a/allThingsConsideredPodcast) | [OpenAPI 3.1](../apis/a/allThingsConsideredPodcast/universal-api/openapi.json) |  |
 | [Alltius](../apis/a/alltius) | [OpenAPI 3.1](../apis/a/alltius/universal-api/openapi.json) | [Provider OpenAPI](https://app.alltius.ai/api/platform/openapi.json) |

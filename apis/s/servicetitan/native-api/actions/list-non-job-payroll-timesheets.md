@@ -11,12 +11,12 @@ Retrieves non-job payroll timesheets from ServiceTitan.
 
 ## Parameters
 
-| Parameter | Location | Type | Required |
-| --- | --- | --- | --- |
-| `active` | query | `list` | no |
-| `employeeId` | query | `number` | no |
-| `pageSize` | query | `number` | no |
-| `employeeType` | query | `list` | no |
-| `createdBefore` | query | `string` | no |
-| `createdOnOrAfter` | query | `string` | no |
-| `modifiedOnOrAfter` | query | `string` | no |
+| Parameter | Location | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| `active` | query | `list` | no | Accepted values: `Any`, `False`, `True`. |
+| `employeeId` | query | `number` | no | — |
+| `pageSize` | query | `number` | no | — |
+| `employeeType` | query | `list` | no | Accepted values: `Employee`, `Technician`. |
+| `createdBefore` | query | `string` | no | — |
+| `createdOnOrAfter` | query | `string` | no | — |
+| `modifiedOnOrAfter` | query | `string` | no | — |

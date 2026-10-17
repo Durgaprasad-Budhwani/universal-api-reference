@@ -40,9 +40,9 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `marketplaceIds` | list<string> | no | Find orders placed in only the marketplaces you select here. One of: `A13V1IB3VIYZZH`, `A17E79C6D8DWNP`, `A1805IZSGTT6HS`, `A19VAU5U5O7RUS`, `A1AM78C64UM0Y8`, `A1C3SOZRARQ6R3`, `A1F83G8C2ARO7P`, `A1PA6795UKMFR9`, `A1RKKUPIHCS9HS`, `A1VC38T7YXB528`, `A21TJRUUN4KGV`, `A28R8C7NBKEWEA`, `A2EUQ1WTGCTBG2`, `A2NODRKZP88ZB9`, `A2Q3Y263D00KWC`, `A2VIGQ35RCS4UG`, `A33AVAJ2PDY3EV`, `A39IBJ37TRP1C6`, `AE08WJ6YKNBMC`, `AMEN7PMS3EDWL`, `APJ6JRA9NG5V4`, `ARBP9OOSHTCHU`, `ATVPDKIKX0DER`. Accepts multiple values in one string. |
-| `includedData` | list<string> | no | A list of datasets to include in the response. Accepts multiple values as an array. |
-| `fulfilledBy` | list<string> | no | The response includes orders that are fulfilled by the parties that you choose. When nothing is selected all are returned. Accepts multiple values as an array. |
-| `fulfillmentStatuses` | list<string> | no | Choose one or more statuses to filter the results. Accepts multiple values as an array. |
+| `includedData` | list<string> | no | A list of datasets to include in the response. One of: `BUYER`, `CANCELLATION`, `EXPENSE`, `FULFILLMENT`, `PACKAGES`, `PROCEEDS`, `PROMOTION`, `RECIPIENT`. Accepts multiple values as an array. |
+| `fulfilledBy` | list<string> | no | The response includes orders that are fulfilled by the parties that you choose. When nothing is selected all are returned. One of: `AMAZON`, `MERCHANT`. Accepts multiple values as an array. |
+| `fulfillmentStatuses` | list<string> | no | Choose one or more statuses to filter the results. One of: `CANCELLED`, `PARTIALLY_SHIPPED`, `PENDING`, `PENDING_AVAILABILITY`, `SHIPPED`, `UNFULFILLABLE`, `UNSHIPPED`. Accepts multiple values as an array. |
 | `createdAfter` | date | no |  |
 | `createdBefore` | string | no |  |
 | `lastUpdatedAfter` | string | no |  |

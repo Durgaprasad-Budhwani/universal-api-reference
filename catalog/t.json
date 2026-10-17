@@ -129906,7 +129906,7 @@
     "slug": "tikTokShop",
     "iconUrl": "https://images.mindcloud.co/apps/icons/tiktok-shop-icon-logo-symbol-free-png_1770912979719.png",
     "nativeDocumentationUrl": "https://partner.tiktokshop.com/docv2/page/666012dd609d4402cc3be995?external_id=666012dd609d4402cc3be995",
-    "version": "0.0.159",
+    "version": "0.0.160",
     "authentication": [
       {
         "type": "oAuth2",
@@ -130662,7 +130662,18 @@
               "dataType": "list",
               "itemDataType": "string",
               "location": "body",
-              "required": false
+              "required": false,
+              "enumValues": [
+                "AWAITING_COLLECTION",
+                "AWAITING_SHIPMENT",
+                "CANCELLED",
+                "COMPLETED",
+                "DELIVERED",
+                "IN_TRANSIT",
+                "ON_HOLD",
+                "PARTIALLY_SHIPPING",
+                "UNPAID"
+              ]
             },
             {
               "key": "shipping_type",
@@ -130671,7 +130682,11 @@
               "dataType": "list",
               "itemDataType": "string",
               "location": "body",
-              "required": false
+              "required": false,
+              "enumValues": [
+                "SELLER",
+                "TIKTOK"
+              ]
             },
             {
               "key": "shop_cipher",
@@ -130763,14 +130778,29 @@
             "name": "Order Status",
             "dataType": "list",
             "itemDataType": "string",
-            "required": false
+            "required": false,
+            "enumValues": [
+              "AWAITING_COLLECTION",
+              "AWAITING_SHIPMENT",
+              "CANCELLED",
+              "COMPLETED",
+              "DELIVERED",
+              "IN_TRANSIT",
+              "ON_HOLD",
+              "PARTIALLY_SHIPPING",
+              "UNPAID"
+            ]
           },
           {
             "key": "shippingType",
             "name": "Shipping Type",
             "dataType": "list",
             "itemDataType": "string",
-            "required": false
+            "required": false,
+            "enumValues": [
+              "SELLER",
+              "TIKTOK"
+            ]
           },
           {
             "key": "shopCipher",

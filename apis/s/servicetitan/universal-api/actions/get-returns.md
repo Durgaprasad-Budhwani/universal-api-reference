@@ -73,7 +73,158 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native ServiceTitan API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "active": true,
+      "batch": {
+        "id": 1,
+        "name": "Ava Chen",
+        "number": "string"
+      },
+      "batchId": 1,
+      "budgetCodeId": 1,
+      "businessUnitId": 1,
+      "canceledById": 1,
+      "canceledReason": "string",
+      "createdById": 1,
+      "createdOn": "string",
+      "creditReceivedOn": "string",
+      "customFields": {},
+      "dateCanceled": "string",
+      "externalData": {},
+      "id": 1,
+      "inventoryLocationId": 1,
+      "items": [
+        {
+          "active": true,
+          "assetAccount": {
+            "detailType": "string",
+            "name": "Ava Chen",
+            "number": "string",
+            "type": "string"
+          },
+          "budgetCodeId": 1,
+          "code": "string",
+          "cost": 1,
+          "costOfSaleAccount": {
+            "detailType": "string",
+            "name": "Ava Chen",
+            "number": "string",
+            "type": "string"
+          },
+          "createdById": 1,
+          "createdOn": "string",
+          "description": "string",
+          "generalLedgerAccount": {
+            "detailType": "string",
+            "name": "Ava Chen",
+            "number": "string",
+            "type": "string"
+          },
+          "id": 1,
+          "modifiedOn": "string",
+          "name": "Ava Chen",
+          "quantity": 1,
+          "receiptItemId": 1,
+          "serialNumbers": [
+            "string"
+          ],
+          "skuId": 1
+        }
+      ],
+      "jobId": 1,
+      "memo": "string",
+      "modifiedOn": "string",
+      "number": "string",
+      "projectId": 1,
+      "purchaseOrderId": 1,
+      "referenceNumber": "string",
+      "returnAmount": 1,
+      "returnDate": "string",
+      "returnedOn": "string",
+      "returnTypeId": 1,
+      "shippingAmount": 1,
+      "status": "string",
+      "syncStatus": "string",
+      "taxAmount": 1,
+      "vendorId": 1
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `active` | boolean |  |
+| `batch` | object |  |
+| `batch.id` | number |  |
+| `batch.name` | string |  |
+| `batch.number` | string |  |
+| `batchId` | number |  |
+| `budgetCodeId` | number |  |
+| `businessUnitId` | number |  |
+| `canceledById` | number |  |
+| `canceledReason` | string |  |
+| `createdById` | number |  |
+| `createdOn` | string |  |
+| `creditReceivedOn` | string |  |
+| `customFields` | object |  |
+| `dateCanceled` | string |  |
+| `externalData` | object |  |
+| `id` | number |  |
+| `inventoryLocationId` | number |  |
+| `items` | array<object> |  |
+| `items[].active` | boolean |  |
+| `items[].assetAccount` | object |  |
+| `items[].assetAccount.detailType` | string |  |
+| `items[].assetAccount.name` | string |  |
+| `items[].assetAccount.number` | string |  |
+| `items[].assetAccount.type` | string |  |
+| `items[].budgetCodeId` | number |  |
+| `items[].code` | string |  |
+| `items[].cost` | number |  |
+| `items[].costOfSaleAccount` | object |  |
+| `items[].costOfSaleAccount.detailType` | string |  |
+| `items[].costOfSaleAccount.name` | string |  |
+| `items[].costOfSaleAccount.number` | string |  |
+| `items[].costOfSaleAccount.type` | string |  |
+| `items[].createdById` | number |  |
+| `items[].createdOn` | string |  |
+| `items[].description` | string |  |
+| `items[].generalLedgerAccount` | object |  |
+| `items[].generalLedgerAccount.detailType` | string |  |
+| `items[].generalLedgerAccount.name` | string |  |
+| `items[].generalLedgerAccount.number` | string |  |
+| `items[].generalLedgerAccount.type` | string |  |
+| `items[].id` | number |  |
+| `items[].modifiedOn` | string |  |
+| `items[].name` | string |  |
+| `items[].quantity` | number |  |
+| `items[].receiptItemId` | number |  |
+| `items[].serialNumbers` | array |  |
+| `items[].skuId` | number |  |
+| `jobId` | number |  |
+| `memo` | string |  |
+| `modifiedOn` | string |  |
+| `number` | string |  |
+| `projectId` | number |  |
+| `purchaseOrderId` | number |  |
+| `referenceNumber` | string |  |
+| `returnAmount` | number |  |
+| `returnDate` | string |  |
+| `returnedOn` | string |  |
+| `returnTypeId` | number |  |
+| `shippingAmount` | number |  |
+| `status` | string |  |
+| `syncStatus` | string |  |
+| `taxAmount` | number |  |
+| `vendorId` | number |  |
 
 ## Native endpoint
 

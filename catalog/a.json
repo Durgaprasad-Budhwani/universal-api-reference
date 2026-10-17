@@ -33390,7 +33390,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/brandmark-logo-acumatica-1_1782232690604.png",
     "websiteUrl": "https://www.acumatica.com/",
     "nativeDocumentationUrl": "https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=91dda8ed-5e92-48a5-a176-9a255506d0d6",
-    "version": "0.0.168",
+    "version": "0.0.170",
     "authentication": [
       {
         "type": "custom",
@@ -38412,8 +38412,13 @@
               "dataType": "list",
               "itemDataType": "string",
               "location": "param",
-              "required": false,
-              "description": "Choose what data to retrieve in the response. Accepted values are 'version' (to retrieve the Acumatica ERP version) and 'endpoints' to retrieve the endpoints."
+              "required": true,
+              "description": "Choose what data to retrieve in the response. Accepted values are 'version' (to retrieve the Acumatica ERP version) and 'endpoints' to retrieve the endpoints.",
+              "enumValues": [
+                "endpoints",
+                "version",
+                "version_endpoints"
+              ]
             }
           ]
         },
@@ -38428,8 +38433,13 @@
             "name": "Response",
             "dataType": "list",
             "itemDataType": "string",
-            "required": false,
-            "description": "Choose what data to retrieve in the response. Accepted values are 'version' (to retrieve the Acumatica ERP version) and 'endpoints' to retrieve the endpoints."
+            "required": true,
+            "description": "Choose what data to retrieve in the response. Accepted values are 'version' (to retrieve the Acumatica ERP version) and 'endpoints' to retrieve the endpoints.",
+            "enumValues": [
+              "endpoints",
+              "version",
+              "version_endpoints"
+            ]
           }
         ],
         "responseSchema": [
@@ -136044,6 +136054,2333 @@
     "universalOpenApiPath": "apis/a/algolia/universal-api/openapi.json"
   },
   {
+    "name": "Alliance HCM",
+    "slug": "allianceHCM",
+    "category": "HRIS",
+    "categoryGroup": "Human Resources",
+    "description": "Alliance HCM: Read employees, employee changes, and pay rates",
+    "iconUrl": "https://images.mindcloud.co/apps/icons/alliance-hcm_1792020310025.png",
+    "websiteUrl": "https://alliancehcm.com/",
+    "nativeBaseUrl": "https://www.hralliance.net",
+    "nativeDocumentationUrl": "https://api2.hralliance.net/JSONAPIManual.html",
+    "version": "0.0.2",
+    "authentication": [
+      {
+        "type": "custom",
+        "name": "AllPay username, password, and API token",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html",
+        "credentials": [
+          {
+            "key": "username",
+            "name": "AllPay Username",
+            "dataType": "string",
+            "required": true
+          },
+          {
+            "key": "password",
+            "name": "AllPay Password",
+            "dataType": "string",
+            "required": true,
+            "description": "Enter your AllPay account password."
+          },
+          {
+            "key": "token",
+            "name": "API Token",
+            "dataType": "string",
+            "required": true,
+            "description": "The API token emailed by AllPay after choosing Reset API Token in Settings → Profile."
+          }
+        ],
+        "setupGuide": {
+          "title": "Connect Alliance HCM",
+          "beforeYouBegin": "Use your AllPay account. A company administrator must enable API access before you can connect.",
+          "docsUrl": "https://api2.hralliance.net/JSONAPIManual.html",
+          "glossary": [
+            {
+              "term": "API token",
+              "definition": "A secret code emailed by AllPay that allows connected software to access your account."
+            },
+            {
+              "term": "API access",
+              "definition": "The company setting that allows connected software to use AllPay."
+            }
+          ],
+          "steps": [
+            {
+              "title": "Enable API access",
+              "description": "In AllPay, open Company → Security → Security Settings and change API Access to the setting appropriate for your integration.",
+              "breadcrumb": [
+                "Company",
+                "Security",
+                "Security Settings"
+              ]
+            },
+            {
+              "title": "Request your API token",
+              "description": "Open Settings → Profile and press Reset API Token. AllPay will email the token to you.",
+              "breadcrumb": [
+                "Settings",
+                "Profile"
+              ]
+            },
+            {
+              "title": "Complete the connection form",
+              "description": "Enter your username in AllPay Username, your account password in AllPay Password, and the emailed token in API Token. Enter the password and token separately; they are combined automatically when a request is sent."
+            }
+          ]
+        }
+      }
+    ],
+    "nativeApis": [
+      {
+        "type": "rest",
+        "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+        "headers": [
+          {
+            "name": "Accept",
+            "value": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "pagination": {
+          "limit": {
+            "parameter": "queryOptions.batchSize",
+            "location": "body"
+          },
+          "offset": {
+            "type": "offset",
+            "parameter": "queryOptions.startRecord",
+            "location": "body",
+            "pageStartIndex": "0"
+          }
+        },
+        "filtering": {
+          "location": "body",
+          "advanced": true,
+          "operators": [
+            "eq"
+          ]
+        },
+        "sorting": {
+          "location": "body",
+          "parameter": "sortOrder",
+          "ascending": "asc",
+          "descending": "desc",
+          "multipleFields": true
+        },
+        "responses": [
+          {
+            "parser": "json"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "name": "Get Database Time",
+        "slug": "get-database-time",
+        "operation": "read",
+        "method": "GET",
+        "group": "Connection",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html",
+        "native": {
+          "method": "POST",
+          "path": "/getDatabaseTime",
+          "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+          "apiType": "rest"
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [],
+        "responseSchema": [
+          {
+            "key": "response",
+            "dataType": "string",
+            "description": "Current Alliance database-server time returned after successful authentication.",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Get Employee",
+        "slug": "get-employee",
+        "operation": "read",
+        "method": "GET",
+        "group": "Employee",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html#Load",
+        "native": {
+          "method": "POST",
+          "path": "/load",
+          "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "companyCode",
+              "name": "Company",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Choose the company, or map co from List Employee Changes. Employee IDs are specific to a company.",
+              "maxLength": 10
+            },
+            {
+              "key": "employeeId",
+              "name": "Employee ID",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Map id from List Employee Changes or List Employees. Use the value exactly as returned, including any leading spaces.",
+              "maxLength": 10
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "companyCode",
+            "name": "Company",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true,
+            "description": "Choose the company, or map co from List Employee Changes. Employee IDs are specific to a company."
+          },
+          {
+            "key": "employeeId",
+            "name": "Employee ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Map id from List Employee Changes or List Employees. Use the value exactly as returned, including any leading spaces."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "address1",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "address2",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "adjSeniorityDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "autoPay",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc1",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc2",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc3",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc4",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc5",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cellPhone",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "city",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "clock",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "co",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "country",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "county",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "defaultHours",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "distributionCodes",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "eeoClass",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "emailAddress",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "empStatus",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "empType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "firstName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "flsaOTExempt",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "guidfield",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "hireDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "homePhone",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "jobCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastChange",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "lastChangeUser",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastRaiseAmount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "lastRaiseDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "lastRaiseReason",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastReviewDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "lastReviewRating",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mailStop",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "middleName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "nextRaiseDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "nextReviewDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "nickname",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "payFrequency",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "payGrade",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "payGroup",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "positionCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "positionInfoLocked",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "priorLastName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "probation",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "ratePer",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "rehireDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "salutation",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "seasonal",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "soc",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "state",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "supervisorID",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "supervisorName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "surname",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "termDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "termReason",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "tipped",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "title",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "user7",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "wageType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "wcc",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "workPhone",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "workPhoneExt",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "workState",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "zip",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Get Employee Change Log Sync Time",
+        "slug": "get-employee-change-checkpoint",
+        "operation": "read",
+        "method": "GET",
+        "group": "Employee Change",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html#getLastChangeTime",
+        "native": {
+          "method": "POST",
+          "path": "/getlastchangetime",
+          "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "co",
+              "internalKey": "companyCode",
+              "name": "Company",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "companyCode",
+            "name": "Company",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "response",
+            "dataType": "string",
+            "description": "Alliance server-time checkpoint. Keep this text unchanged when mapping it into Previous Checkpoint or Current Checkpoint.",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Get Employee Employment Details",
+        "slug": "get-employee-employment-details",
+        "operation": "read",
+        "method": "GET",
+        "group": "Employee",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html#Load",
+        "native": {
+          "method": "POST",
+          "path": "/load",
+          "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "companyCode",
+              "name": "Company",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Choose the company, or map co from List Employee Changes.",
+              "maxLength": 10
+            },
+            {
+              "key": "employeeId",
+              "name": "Employee ID",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Map id from List Employee Changes or Get Employee. Use the value exactly as returned, including any leading spaces.",
+              "maxLength": 10
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "companyCode",
+            "name": "Company",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true,
+            "description": "Choose the company, or map co from List Employee Changes."
+          },
+          {
+            "key": "employeeId",
+            "name": "Employee ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Map id from List Employee Changes or Get Employee. Use the value exactly as returned, including any leading spaces."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "co",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "desiredHours",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "employmentNote",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "geid",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "guidfield",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastChange",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "lastChangeUser",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastDayWorked",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "preferredLanguage",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "rehireEligible",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "retirementDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "timeSheet",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "workArrangement",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Get Pay Rate Change Checkpoint",
+        "slug": "get-pay-rate-change-checkpoint",
+        "operation": "read",
+        "method": "GET",
+        "group": "Employee Pay Rate",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html#getLastChangeTime",
+        "native": {
+          "method": "POST",
+          "path": "/getlastchangetime",
+          "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "co",
+              "internalKey": "companyCode",
+              "name": "Company",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "companyCode",
+            "name": "Company",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "response",
+            "dataType": "string",
+            "description": "Alliance server-time checkpoint. Keep this text unchanged when mapping it into Previous Checkpoint or Current Checkpoint.",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Companies",
+        "slug": "list-companies",
+        "operation": "read",
+        "method": "GET",
+        "group": "Company",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html#Load",
+        "native": {
+          "method": "POST",
+          "path": "/load",
+          "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+          "apiType": "rest"
+        },
+        "supports": {
+          "pagination": true,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [],
+        "responseSchema": [
+          {
+            "key": "co",
+            "dataType": "string",
+            "description": "Company code. Use together with id to identify an employee across companies.",
+            "mockType": "string"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Employee Changes",
+        "slug": "list-employee-changes",
+        "operation": "read",
+        "method": "GET",
+        "group": "Employee Change",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html#Load",
+        "native": {
+          "method": "POST",
+          "path": "/load",
+          "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "companyCode",
+              "name": "Company",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "previousCheckpoint",
+              "name": "Start Date",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Return changes after this date and time. For your first run, enter when you want to start. For later runs, use the End Date from the last fully completed run. Use Alliance's date/time format, for example 2026-10-01T00:00:00."
+            },
+            {
+              "key": "currentCheckpoint",
+              "name": "End Date",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Return changes up to and including this date and time. Run Get Employee Change Log Sync Time for the same company and use its returned date/time exactly as provided. This is the latest time Alliance has finished processing, helping avoid missing delayed changes. After processing all pages, save this value as the next Start Date."
+            },
+            {
+              "key": "employeeId",
+              "name": "Employee ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Optional. Map id from an employee or change record; leave empty for all employees in the chosen company.",
+              "maxLength": 10
+            },
+            {
+              "key": "changeType",
+              "name": "Change Type",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "enumValues": [
+                "D",
+                "I",
+                "U"
+              ]
+            }
+          ]
+        },
+        "supports": {
+          "pagination": true,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "companyCode",
+            "name": "Company",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true
+          },
+          {
+            "key": "previousCheckpoint",
+            "name": "Start Date",
+            "dataType": "string",
+            "required": true,
+            "description": "Return changes after this date and time. For your first run, enter when you want to start. For later runs, use the End Date from the last fully completed run. Use Alliance's date/time format, for example 2026-10-01T00:00:00.",
+            "example": "2026-10-01T00:00:00"
+          },
+          {
+            "key": "currentCheckpoint",
+            "name": "End Date",
+            "dataType": "string",
+            "required": true,
+            "description": "Return changes up to and including this date and time. Run Get Employee Change Log Sync Time for the same company and use its returned date/time exactly as provided. This is the latest time Alliance has finished processing, helping avoid missing delayed changes. After processing all pages, save this value as the next Start Date."
+          },
+          {
+            "key": "employeeId",
+            "name": "Employee ID",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Optional. Map id from an employee or change record; leave empty for all employees in the chosen company."
+          },
+          {
+            "key": "changeType",
+            "name": "Change Type",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "enumValues": [
+              "D",
+              "I",
+              "U"
+            ]
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "changeDate",
+            "dataType": "date",
+            "description": "Time of the change in Alliance's server time.",
+            "mockType": "date"
+          },
+          {
+            "key": "changedBy",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "changeTable",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "changeType",
+            "dataType": "string",
+            "description": "I = Added, U = Updated, D = Deleted.",
+            "mockType": "string"
+          },
+          {
+            "key": "co",
+            "dataType": "string",
+            "description": "Company code. Use together with id to identify an employee across companies.",
+            "mockType": "string"
+          },
+          {
+            "key": "fieldName",
+            "dataType": "string",
+            "description": "The employee or pay-rate field that changed.",
+            "mockType": "string"
+          },
+          {
+            "key": "guidfield",
+            "dataType": "string",
+            "description": "Unique identifier of the record; in a change log this is the changed record, not a unique change event.",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "description": "Employee ID. Map this value into Employee ID in List Employee Pay Rates.",
+            "mockType": "string"
+          },
+          {
+            "key": "newValue",
+            "dataType": "string",
+            "description": "New field value, as text.",
+            "mockType": "string"
+          },
+          {
+            "key": "oldValue",
+            "dataType": "string",
+            "description": "Previous field value, as text.",
+            "mockType": "string"
+          },
+          {
+            "key": "sourceDB",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Employee Employment Type Changes",
+        "slug": "list-employee-employment-type-changes",
+        "operation": "read",
+        "method": "GET",
+        "group": "Employee",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html#Load",
+        "native": {
+          "method": "POST",
+          "path": "/load",
+          "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "companyCode",
+              "name": "Company",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Choose the company, or map co from the employee change or paycheck record.",
+              "maxLength": 10
+            },
+            {
+              "key": "employeeId",
+              "name": "Employee ID",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Map id from List Employee Changes or Get Employee. Keep the value exactly as returned, including any leading spaces.",
+              "maxLength": 10
+            }
+          ]
+        },
+        "supports": {
+          "pagination": true,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "companyCode",
+            "name": "Company",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true,
+            "description": "Choose the company, or map co from the employee change or paycheck record."
+          },
+          {
+            "key": "employeeId",
+            "name": "Employee ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Map id from List Employee Changes or Get Employee. Keep the value exactly as returned, including any leading spaces."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "changeDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "changeReason",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "co",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "guidfield",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastChange",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "lastChangeUser",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "newType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "notes",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oldType",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Employee Job Changes",
+        "slug": "list-employee-job-changes",
+        "operation": "read",
+        "method": "GET",
+        "group": "Employee Job",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html#Load",
+        "native": {
+          "method": "POST",
+          "path": "/load",
+          "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "companyCode",
+              "name": "Company",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Choose the company, or map co from List Employee Changes.",
+              "maxLength": 10
+            },
+            {
+              "key": "employeeId",
+              "name": "Employee ID",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Map id from List Employee Changes or Get Employee. Use the value exactly as returned, including any leading spaces.",
+              "maxLength": 10
+            }
+          ]
+        },
+        "supports": {
+          "pagination": true,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "companyCode",
+            "name": "Company",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true,
+            "description": "Choose the company, or map co from List Employee Changes."
+          },
+          {
+            "key": "employeeId",
+            "name": "Employee ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Map id from List Employee Changes or Get Employee. Use the value exactly as returned, including any leading spaces."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "changeDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "co",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "guidfield",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastChange",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "lastChangeUser",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "newcc1",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "newcc2",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "newcc3",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "newcc4",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "newcc5",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "neweeoclass",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "newFLSAOtExempt",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "newpositioncode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "newSocCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "newSupervisorId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "newtitle",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "newWcc",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "notes",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oldcc1",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oldcc2",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oldcc3",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oldcc4",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oldcc5",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oldeeoclass",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oldFLSAOtExempt",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "oldpositioncode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oldSocCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oldSupervisorId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oldtitle",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oldWcc",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "reason",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Employee Pay History",
+        "slug": "list-employee-pay-history",
+        "operation": "read",
+        "method": "GET",
+        "group": "Employee Paycheck",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html#Load",
+        "native": {
+          "method": "POST",
+          "path": "/load",
+          "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "companyCode",
+              "name": "Company",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Choose the company, or map co from the employee change or paycheck record.",
+              "maxLength": 10
+            },
+            {
+              "key": "employeeId",
+              "name": "Employee ID",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Map id from List Employee Changes or Get Employee. Keep the value exactly as returned, including any leading spaces.",
+              "maxLength": 10
+            }
+          ]
+        },
+        "supports": {
+          "pagination": true,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "companyCode",
+            "name": "Company",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true,
+            "description": "Choose the company, or map co from the employee change or paycheck record."
+          },
+          {
+            "key": "employeeId",
+            "name": "Employee ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Map id from List Employee Changes or Get Employee. Keep the value exactly as returned, including any leading spaces."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "autoPay",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "batch",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "beginDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "calendarId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc1",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc2",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc3",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc4",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc5",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "checkAttributes",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "checkDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "checkNumber",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "checkstubMemo",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "co",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "dirDepAmount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "documentNumber",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "endDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "gross",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "hours",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "inytd",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "isManual",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "isNocalc",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "isVoid",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "jobCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastChange",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "lastChangeUser",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "net",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "netCheck",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "otDollars",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "otHours",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "process",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "regDollars",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "regHours",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "specialCheck",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "trans",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "userMemo",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "voidedTrans",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "voucherNumber",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "wcc",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "ww",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "wwType",
+            "dataType": "number",
+            "mockType": "number"
+          }
+        ]
+      },
+      {
+        "name": "List Employee Pay Rate Changes",
+        "slug": "list-employee-pay-rate-changes",
+        "operation": "read",
+        "method": "GET",
+        "group": "Employee Pay Rate",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html#Load",
+        "native": {
+          "method": "POST",
+          "path": "/load",
+          "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "companyCode",
+              "name": "Company",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "previousCheckpoint",
+              "name": "Start Date",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Return pay-rate changes after this date and time. For your first run, enter when you want to start. For later runs, use the End Date from the last fully completed run. Use Alliance's date/time format, for example 2026-10-01T00:00:00."
+            },
+            {
+              "key": "currentCheckpoint",
+              "name": "End Date",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Return pay-rate changes up to and including this date and time. Run Get Pay Rate Change Checkpoint for the same company and use its returned date/time exactly as provided. This is the latest time Alliance has finished processing, helping avoid missing delayed changes. After processing all pages, save this value as the next Start Date."
+            },
+            {
+              "key": "employeeId",
+              "name": "Employee ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Optional. Map id from an employee or change record; leave empty for all employees in the chosen company.",
+              "maxLength": 10
+            },
+            {
+              "key": "changeType",
+              "name": "Change Type",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "enumValues": [
+                "D",
+                "I",
+                "U"
+              ]
+            }
+          ]
+        },
+        "supports": {
+          "pagination": true,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "companyCode",
+            "name": "Company",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true
+          },
+          {
+            "key": "previousCheckpoint",
+            "name": "Start Date",
+            "dataType": "string",
+            "required": true,
+            "description": "Return pay-rate changes after this date and time. For your first run, enter when you want to start. For later runs, use the End Date from the last fully completed run. Use Alliance's date/time format, for example 2026-10-01T00:00:00.",
+            "example": "2026-10-01T00:00:00"
+          },
+          {
+            "key": "currentCheckpoint",
+            "name": "End Date",
+            "dataType": "string",
+            "required": true,
+            "description": "Return pay-rate changes up to and including this date and time. Run Get Pay Rate Change Checkpoint for the same company and use its returned date/time exactly as provided. This is the latest time Alliance has finished processing, helping avoid missing delayed changes. After processing all pages, save this value as the next Start Date."
+          },
+          {
+            "key": "employeeId",
+            "name": "Employee ID",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Optional. Map id from an employee or change record; leave empty for all employees in the chosen company."
+          },
+          {
+            "key": "changeType",
+            "name": "Change Type",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "enumValues": [
+              "D",
+              "I",
+              "U"
+            ]
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "changeDate",
+            "dataType": "date",
+            "description": "Time of the change in Alliance's server time.",
+            "mockType": "date"
+          },
+          {
+            "key": "changedBy",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "changeTable",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "changeType",
+            "dataType": "string",
+            "description": "I = Added, U = Updated, D = Deleted.",
+            "mockType": "string"
+          },
+          {
+            "key": "co",
+            "dataType": "string",
+            "description": "Company code. Use together with id to identify an employee across companies.",
+            "mockType": "string"
+          },
+          {
+            "key": "fieldName",
+            "dataType": "string",
+            "description": "The employee or pay-rate field that changed.",
+            "mockType": "string"
+          },
+          {
+            "key": "guidfield",
+            "dataType": "string",
+            "description": "Unique identifier of the record; in a change log this is the changed record, not a unique change event.",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "description": "Employee ID. Map this value into Employee ID in List Employee Pay Rates.",
+            "mockType": "string"
+          },
+          {
+            "key": "newValue",
+            "dataType": "string",
+            "description": "New field value, as text.",
+            "mockType": "string"
+          },
+          {
+            "key": "oldValue",
+            "dataType": "string",
+            "description": "Previous field value, as text.",
+            "mockType": "string"
+          },
+          {
+            "key": "sourceDB",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Employee Pay Rates",
+        "slug": "list-employee-pay-rates",
+        "operation": "read",
+        "method": "GET",
+        "group": "Employee Pay Rate",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html#Load",
+        "native": {
+          "method": "POST",
+          "path": "/load",
+          "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "companyCode",
+              "name": "Company",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "employeeId",
+              "name": "Employee ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Optional. Use id from an employee or change record. Leave empty to list rates for all employees in the chosen company.",
+              "maxLength": 10
+            },
+            {
+              "key": "rateCode",
+              "name": "Rate Code",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Optional. Enter a known rate code such as Base, or leave empty to include every pay rate.",
+              "maxLength": 10
+            }
+          ]
+        },
+        "supports": {
+          "pagination": true,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "companyCode",
+            "name": "Company",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true
+          },
+          {
+            "key": "employeeId",
+            "name": "Employee ID",
+            "dataType": "string",
+            "required": false,
+            "description": "Optional. Use id from an employee or change record. Leave empty to list rates for all employees in the chosen company."
+          },
+          {
+            "key": "rateCode",
+            "name": "Rate Code",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Optional. Enter a known rate code such as Base, or leave empty to include every pay rate."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "cc1",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc2",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc3",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc4",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc5",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "changeReason",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "co",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "effectiveDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "endDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "guidfield",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "jobCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastChange",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "lastChangeUser",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "notes",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "paygrade",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "rate",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "rateCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "ratePer",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "salary",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "shift",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "startDate",
+            "dataType": "date",
+            "mockType": "date"
+          }
+        ]
+      },
+      {
+        "name": "List Employee Paycheck Line Items",
+        "slug": "list-employee-paycheck-line-items",
+        "operation": "read",
+        "method": "GET",
+        "group": "Employee Paycheck",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html#Load",
+        "native": {
+          "method": "POST",
+          "path": "/load",
+          "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "companyCode",
+              "name": "Company",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Choose the company, or map co from the employee change or paycheck record.",
+              "maxLength": 10
+            },
+            {
+              "key": "paycheckTransactionId",
+              "name": "Paycheck Transaction ID",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Map trans from List Employee Pay History. This identifies one processed paycheck. Retrieve pay history using the Employee ID first.",
+              "maxLength": 36
+            }
+          ]
+        },
+        "supports": {
+          "pagination": true,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "companyCode",
+            "name": "Company",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true,
+            "description": "Choose the company, or map co from the employee change or paycheck record."
+          },
+          {
+            "key": "paycheckTransactionId",
+            "name": "Paycheck Transaction ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Map trans from List Employee Pay History. This identifies one processed paycheck. Retrieve pay history using the Employee ID first."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "amount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "beginDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "cc1",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc2",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc3",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc4",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "cc5",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "co",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "comment",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "det",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "detCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "endDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "guidfield",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "hours",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "jobCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastChange",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "lastChangeUser",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "rate",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "rateCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "shift",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "subTrans",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "trans",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "transType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "wcc",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "List Employee Status Changes",
+        "slug": "list-employee-status-changes",
+        "operation": "read",
+        "method": "GET",
+        "group": "Employee",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html#Load",
+        "native": {
+          "method": "POST",
+          "path": "/load",
+          "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "companyCode",
+              "name": "Company",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Choose the company, or map co from the employee change or paycheck record.",
+              "maxLength": 10
+            },
+            {
+              "key": "employeeId",
+              "name": "Employee ID",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Map id from List Employee Changes or Get Employee. Keep the value exactly as returned, including any leading spaces.",
+              "maxLength": 10
+            }
+          ]
+        },
+        "supports": {
+          "pagination": true,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "companyCode",
+            "name": "Company",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true,
+            "description": "Choose the company, or map co from the employee change or paycheck record."
+          },
+          {
+            "key": "employeeId",
+            "name": "Employee ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Map id from List Employee Changes or Get Employee. Keep the value exactly as returned, including any leading spaces."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "changeDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "changeReason",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "co",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "guidfield",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastChange",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "lastChangeUser",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "lastDayWorkedDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "newStatus",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "notes",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "oldStatus",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "rehireEligible",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          }
+        ]
+      },
+      {
+        "name": "List Employees",
+        "slug": "list-employees",
+        "operation": "read",
+        "method": "GET",
+        "group": "Employee",
+        "documentationUrl": "https://api2.hralliance.net/JSONAPIManual.html",
+        "native": {
+          "method": "POST",
+          "path": "/load",
+          "baseUrl": "https://api2.hralliance.net/AllPayRestData.svc/json",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "companyCode",
+              "name": "Company",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": true
+            }
+          ]
+        },
+        "supports": {
+          "pagination": true,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "companyCode",
+            "name": "Company",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "co",
+            "dataType": "string",
+            "description": "Company code. Use together with id to identify an employee across companies.",
+            "mockType": "string"
+          },
+          {
+            "key": "empStatus",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "firstName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "guidfield",
+            "dataType": "string",
+            "description": "Unique identifier of the record; in a change log this is the changed record, not a unique change event.",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "description": "Employee ID. Map this value into Employee ID in List Employee Pay Rates.",
+            "mockType": "string"
+          },
+          {
+            "key": "lastChange",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "lastName",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      }
+    ],
+    "universalOpenApiPath": "apis/a/allianceHCM/universal-api/openapi.json"
+  },
+  {
     "name": "Allscreenshots",
     "slug": "allscreenshots",
     "category": "Developer Tools",
@@ -162166,7 +164503,7 @@
     "description": "Manage Amazon listings, inventory, orders, and shipments",
     "iconUrl": "https://images.mindcloud.co/apps/icons/amazon-1_1768252959060.png",
     "nativeDocumentationUrl": "https://developer-docs.amazon.com/sp-api/reference/welcome-to-api-references",
-    "version": "0.0.92",
+    "version": "0.0.93",
     "authentication": [
       {
         "type": "oAuth2",
@@ -173148,6 +175485,16 @@
               "location": "query",
               "required": false,
               "description": "A list of datasets to include in the response.",
+              "enumValues": [
+                "BUYER",
+                "CANCELLATION",
+                "EXPENSE",
+                "FULFILLMENT",
+                "PACKAGES",
+                "PROCEEDS",
+                "PROMOTION",
+                "RECIPIENT"
+              ],
               "multipleValues": {
                 "format": "array"
               }
@@ -173160,6 +175507,10 @@
               "location": "query",
               "required": false,
               "description": "The response includes orders that are fulfilled by the parties that you choose. When nothing is selected all are returned.",
+              "enumValues": [
+                "AMAZON",
+                "MERCHANT"
+              ],
               "multipleValues": {
                 "format": "array"
               }
@@ -173172,6 +175523,15 @@
               "location": "query",
               "required": false,
               "description": "Choose one or more statuses to filter the results.",
+              "enumValues": [
+                "CANCELLED",
+                "PARTIALLY_SHIPPED",
+                "PENDING",
+                "PENDING_AVAILABILITY",
+                "SHIPPED",
+                "UNFULFILLABLE",
+                "UNSHIPPED"
+              ],
               "multipleValues": {
                 "format": "array"
               }
@@ -173255,6 +175615,16 @@
             "itemDataType": "string",
             "required": false,
             "description": "A list of datasets to include in the response.",
+            "enumValues": [
+              "BUYER",
+              "CANCELLATION",
+              "EXPENSE",
+              "FULFILLMENT",
+              "PACKAGES",
+              "PROCEEDS",
+              "PROMOTION",
+              "RECIPIENT"
+            ],
             "multipleValues": {
               "format": "array"
             }
@@ -173266,6 +175636,10 @@
             "itemDataType": "string",
             "required": false,
             "description": "The response includes orders that are fulfilled by the parties that you choose. When nothing is selected all are returned.",
+            "enumValues": [
+              "AMAZON",
+              "MERCHANT"
+            ],
             "multipleValues": {
               "format": "array"
             }
@@ -173277,6 +175651,15 @@
             "itemDataType": "string",
             "required": false,
             "description": "Choose one or more statuses to filter the results.",
+            "enumValues": [
+              "CANCELLED",
+              "PARTIALLY_SHIPPED",
+              "PENDING",
+              "PENDING_AVAILABILITY",
+              "SHIPPED",
+              "UNFULFILLABLE",
+              "UNSHIPPED"
+            ],
             "multipleValues": {
               "format": "array"
             }
@@ -342664,7 +345047,7 @@
     "websiteUrl": "https://www.youraspire.com/",
     "nativeBaseUrl": "https://cloud.youraspire.com/app/",
     "nativeDocumentationUrl": "https://guide.youraspire.com/apidocs",
-    "version": "0.1.512",
+    "version": "0.1.518",
     "authentication": [
       {
         "type": "custom",

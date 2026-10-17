@@ -187559,7 +187559,7 @@
       "format": "openapi",
       "url": "https://github.com/APIs-guru/openapi-directory/blob/main/APIs/googleapis.com/drive/v3/openapi.yaml"
     },
-    "version": "0.0.189",
+    "version": "0.0.192",
     "authentication": [
       {
         "type": "oAuth2",
@@ -189879,7 +189879,17 @@
               "itemDataType": "string",
               "location": "query",
               "required": false,
-              "description": "Choose one or multiple order options to sort the results."
+              "description": "Choose one or multiple order options to sort the results.",
+              "enumValues": [
+                "createdTime",
+                "modifiedByMeTime",
+                "modifiedTime",
+                "name",
+                "name desc",
+                "recency",
+                "starred",
+                "viewedByMeTime"
+              ]
             }
           ]
         },
@@ -189902,7 +189912,17 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": false,
-            "description": "Choose one or multiple order options to sort the results."
+            "description": "Choose one or multiple order options to sort the results.",
+            "enumValues": [
+              "createdTime",
+              "modifiedByMeTime",
+              "modifiedTime",
+              "name",
+              "name desc",
+              "recency",
+              "starred",
+              "viewedByMeTime"
+            ]
           }
         ],
         "responseSchema": [
@@ -190594,7 +190614,13 @@
               "itemDataType": "string",
               "location": "query",
               "required": false,
-              "description": "Restrict the search to specific file types. If you want all file types, leave this field blank."
+              "description": "Restrict the search to specific file types. If you want all file types, leave this field blank.",
+              "enumValues": [
+                "document",
+                "file",
+                "folder",
+                "spreadsheet"
+              ]
             },
             {
               "key": "searchType",
@@ -190603,7 +190629,11 @@
               "itemDataType": "string",
               "location": "param",
               "required": false,
-              "description": "Searching with 'Name' requires a Search Type. File Name Contains or File Name is Exactly. Use contains when looking for more than 1 file. Example, File Name Contains: 'PO# '"
+              "description": "Searching with 'Name' requires a Search Type. File Name Contains or File Name is Exactly. Use contains when looking for more than 1 file. Example, File Name Contains: 'PO# '",
+              "enumValues": [
+                "CONTAINS",
+                "EQUALS"
+              ]
             },
             {
               "key": "q",
@@ -190651,7 +190681,13 @@
             "itemDataType": "string",
             "required": false,
             "description": "Restrict the search to specific file types. If you want all file types, leave this field blank.",
-            "defaultValue": "application/vnd.google-apps.file"
+            "defaultValue": "application/vnd.google-apps.file",
+            "enumValues": [
+              "document",
+              "file",
+              "folder",
+              "spreadsheet"
+            ]
           },
           {
             "key": "searchType",
@@ -190660,7 +190696,11 @@
             "itemDataType": "string",
             "required": false,
             "description": "Searching with 'Name' requires a Search Type. File Name Contains or File Name is Exactly. Use contains when looking for more than 1 file. Example, File Name Contains: 'PO# '",
-            "defaultValue": "CONTAINS"
+            "defaultValue": "CONTAINS",
+            "enumValues": [
+              "CONTAINS",
+              "EQUALS"
+            ]
           },
           {
             "key": "q",

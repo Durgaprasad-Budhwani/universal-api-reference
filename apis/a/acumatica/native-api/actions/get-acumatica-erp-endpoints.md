@@ -13,4 +13,4 @@ Retrieve the Acumatica ERP Endpoints and the build version.
 
 | Parameter | Location | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| `unusedParam` | path | `list<string>` | no | Choose what data to retrieve in the response. Accepted values are 'version' (to retrieve the Acumatica ERP version) and 'endpoints' to retrieve the endpoints. |
+| `unusedParam` | path | `list<string>` | yes | Choose what data to retrieve in the response. Accepted values are 'version' (to retrieve the Acumatica ERP version) and 'endpoints' to retrieve the endpoints. Accepted values: `endpoints`, `version`, `version_endpoints`. |

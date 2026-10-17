@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Acumatica Universal API",
-    "version": "0.0.168",
+    "version": "0.0.170",
     "description": "An intuitive Cloud ERP system to power your whole business."
   },
   "servers": [
@@ -5030,11 +5030,16 @@
           {
             "name": "unusedParam",
             "in": "query",
-            "required": false,
+            "required": true,
             "description": "Choose what data to retrieve in the response. Accepted values are 'version' (to retrieve the Acumatica ERP version) and 'endpoints' to retrieve the endpoints.",
             "schema": {
               "type": "string",
-              "description": "Choose what data to retrieve in the response. Accepted values are 'version' (to retrieve the Acumatica ERP version) and 'endpoints' to retrieve the endpoints."
+              "description": "Choose what data to retrieve in the response. Accepted values are 'version' (to retrieve the Acumatica ERP version) and 'endpoints' to retrieve the endpoints.",
+              "enum": [
+                "endpoints",
+                "version",
+                "version_endpoints"
+              ]
             }
           },
           {

@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Sage Intacct Universal API",
-    "version": "1.0.150",
+    "version": "1.0.151",
     "description": "Call Sage Intacct actions through MindCloud's Universal API."
   },
   "servers": [
@@ -5229,7 +5229,17 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "equalto",
+                "greaterthan",
+                "greaterthanorequalto",
+                "isnotnull",
+                "isnull",
+                "lessthan",
+                "lessthanorequalto",
+                "notequalto"
+              ]
             }
           },
           {

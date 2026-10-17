@@ -36,7 +36,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `technicianId` | number | no |  |
-| `active` | list | no | Default: `Any`. |
+| `active` | list | no | One of: `Any`, `False`, `True`. Default: `Any`. |
 | `pageSize` | number | no | Default: `500`. |
 | `modifiedOnOrAfter` | string | no |  |
 | `endedOn` | string | no |  |
@@ -45,7 +45,43 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native ServiceTitan API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "jobId": 1,
+      "appointmentId": 1,
+      "technicianId": 1,
+      "dispatchedOn": "string",
+      "arrivedOn": "string",
+      "doneOn": "string",
+      "canceledOn": "string",
+      "active": true,
+      "createdOn": "string",
+      "modifiedOn": "string"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `id` | number | Timesheet ID. |
+| `jobId` | number | ID of the associated job. |
+| `appointmentId` | number | ID of the associated appointment. |
+| `technicianId` | number | ID of the technician. |
+| `dispatchedOn` | string | Timestamp when the technician was dispatched. |
+| `arrivedOn` | string | Timestamp when the technician arrived. |
+| `doneOn` | string | Timestamp when the work was completed. |
+| `canceledOn` | string | Timestamp when the timesheet was canceled. |
+| `active` | boolean | Whether the timesheet is active. |
+| `createdOn` | string | Timestamp when the timesheet was created. |
+| `modifiedOn` | string | Timestamp when the timesheet was last modified. |
 
 ## Native endpoint
 

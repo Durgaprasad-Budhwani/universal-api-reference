@@ -22,7 +22,7 @@ This operation supports [pagination](../README.md#pagination).
 | `filterGroups[].filters[].propertyName` | body | `string<string>` | no | — |
 | `query` | body | `string` | no | The text to search across default searchable company properties. |
 | `after` | body | `string` | no | The paging cursor for the next set of search results. |
-| `filterGroups[].filters[].operator` | body | `list` | no | — |
+| `filterGroups[].filters[].operator` | body | `list` | no | Accepted values: `BETWEEN`, `CONTAINS_TOKEN`, `EQ`, `GT`, `GTE`, `HAS_PROPERTY`, `IN`, `LT`, `LTE`, `NEQ`, `NOT_CONTAINS_TOKEN`, `NOT_HAS_PROPERTY`, `NOT_IN`. |
 | `filterGroups[].filters[].value` | body | `string` | no | — |
 | `limit` | body | `number` | no | The maximum number of companies to return. |
 | `filterGroups[].filters[].values[]` | body | `array<string>` | no | — |

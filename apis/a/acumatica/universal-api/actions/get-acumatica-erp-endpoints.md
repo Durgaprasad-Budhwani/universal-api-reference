@@ -11,13 +11,14 @@ Authenticate with `Authorization: Bearer $MINDCLOUD_API_KEY` and pass a Acumatic
 ## Example request
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/acumatica/latest/actions/get-acumatica-erp-endpoints?connectionId=$CONNECTION_ID" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/acumatica/latest/actions/get-acumatica-erp-endpoints?connectionId=$CONNECTION_ID&unusedParam=endpoints" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
-  connectionId
+  connectionId,
+  "unusedParam": "endpoints"
 });
 
 const response = await fetch(`https://connect.mindcloud.co/v1/universal/acumatica/latest/actions/get-acumatica-erp-endpoints?${params}`, {
@@ -35,7 +36,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
-| `unusedParam` | list<string> | no | Choose what data to retrieve in the response. Accepted values are 'version' (to retrieve the Acumatica ERP version) and 'endpoints' to retrieve the endpoints. |
+| `unusedParam` | list<string> | yes | Choose what data to retrieve in the response. Accepted values are 'version' (to retrieve the Acumatica ERP version) and 'endpoints' to retrieve the endpoints. One of: `endpoints`, `version`, `version_endpoints`. |
 
 ## Response
 

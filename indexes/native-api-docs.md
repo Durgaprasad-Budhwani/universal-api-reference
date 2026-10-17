@@ -1,6 +1,6 @@
 # Native API documentation by app
 
-The official vendor API documentation for each of the 3225 apps in this repo. Each app name links to our normalized reference for it.
+The official vendor API documentation for each of the 3226 apps in this repo. Each app name links to our normalized reference for it.
 
 - [aamarPay](../apis/a/aamarPay/native-api) - https://aamarpay.readme.io/reference/overview
 - [Abbreviations](../apis/a/abbreviations/native-api) - https://www.abbreviations.com/abbr_api.php
@@ -82,6 +82,7 @@ The official vendor API documentation for each of the 3225 apps in this repo. Ea
 - [Alegra](../apis/a/alegra/native-api) - https://developer.alegra.com/
 - [AlgoDocs](../apis/a/algoDocs/native-api) - https://api.algodocs.com/
 - [Algolia](../apis/a/algolia/native-api) - https://www.algolia.com/doc/rest
+- [Alliance HCM](../apis/a/allianceHCM/native-api) - https://api2.hralliance.net/JSONAPIManual.html
 - [Allscreenshots](../apis/a/allscreenshots/native-api) - https://docs.allscreenshots.com
 - [All Things Considered Podcast](../apis/a/allThingsConsideredPodcast/native-api) - https://www.npr.org/programs/all-things-considered/archive
 - [Alltius](../apis/a/alltius/native-api) - https://app.alltius.ai/api/platform/documentation

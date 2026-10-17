@@ -94593,7 +94593,7 @@
     "slug": "viewpointVista",
     "iconUrl": "https://images.mindcloud.co/apps/icons/vv_1772640224458.png",
     "nativeDocumentationUrl": "https://direct-api.xchange.trimble.com/reference/setup",
-    "version": "0.0.82",
+    "version": "0.0.84",
     "authentication": [
       {
         "type": "custom",
@@ -102219,7 +102219,24 @@
               "itemDataType": "string",
               "location": "param",
               "required": true,
-              "description": "Specify the type of Object from the Service Management V2 Direct API that you'd like to retrieve."
+              "description": "Specify the type of Object from the Service Management V2 Direct API that you'd like to retrieve.",
+              "enumValues": [
+                "ag_services",
+                "agreements",
+                "call_handlers",
+                "cost_types",
+                "customers",
+                "departments",
+                "invoice_headers",
+                "service_centers",
+                "service_sites",
+                "serviceable_items",
+                "standard_items",
+                "wo_trips",
+                "wo_work_completeds",
+                "work_order_quotes",
+                "work_orders"
+              ]
             }
           ]
         },
@@ -102243,7 +102260,24 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": true,
-            "description": "Specify the type of Object from the Service Management V2 Direct API that you'd like to retrieve."
+            "description": "Specify the type of Object from the Service Management V2 Direct API that you'd like to retrieve.",
+            "enumValues": [
+              "ag_services",
+              "agreements",
+              "call_handlers",
+              "cost_types",
+              "customers",
+              "departments",
+              "invoice_headers",
+              "service_centers",
+              "service_sites",
+              "serviceable_items",
+              "standard_items",
+              "wo_trips",
+              "wo_work_completeds",
+              "work_order_quotes",
+              "work_orders"
+            ]
           }
         ],
         "responseSchema": []
@@ -103914,7 +103948,39 @@
               "itemDataType": "string",
               "location": "param",
               "required": true,
-              "description": "Specify the type of Object from the User Defined Tables V2 Direct API that you'd like to retrieve."
+              "description": "Specify the type of Object from the User Defined Tables V2 Direct API that you'd like to retrieve.",
+              "enumValues": [
+                "automatic_earnings",
+                "class_templates",
+                "classes",
+                "company_parameters",
+                "craft_templates",
+                "crafts",
+                "crews",
+                "dedn_liab_codes",
+                "departments",
+                "earning_codes",
+                "employee_daily_times",
+                "employee_dedn_liabs",
+                "employee_leave_history",
+                "employee_leaves",
+                "employees",
+                "employees_lite",
+                "groups",
+                "insurance_codes",
+                "leave_batch_entries",
+                "leave_batches",
+                "leave_codes",
+                "locals",
+                "pay_periods",
+                "pay_sequences",
+                "race_codes",
+                "states",
+                "templates",
+                "time_batch_entries",
+                "time_batches",
+                "time_entries"
+              ]
             },
             {
               "key": "modifiedUtcBefore",
@@ -103944,7 +104010,39 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": true,
-            "description": "Specify the type of Object from the User Defined Tables V2 Direct API that you'd like to retrieve."
+            "description": "Specify the type of Object from the User Defined Tables V2 Direct API that you'd like to retrieve.",
+            "enumValues": [
+              "automatic_earnings",
+              "class_templates",
+              "classes",
+              "company_parameters",
+              "craft_templates",
+              "crafts",
+              "crews",
+              "dedn_liab_codes",
+              "departments",
+              "earning_codes",
+              "employee_daily_times",
+              "employee_dedn_liabs",
+              "employee_leave_history",
+              "employee_leaves",
+              "employees",
+              "employees_lite",
+              "groups",
+              "insurance_codes",
+              "leave_batch_entries",
+              "leave_batches",
+              "leave_codes",
+              "locals",
+              "pay_periods",
+              "pay_sequences",
+              "race_codes",
+              "states",
+              "templates",
+              "time_batch_entries",
+              "time_batches",
+              "time_entries"
+            ]
           },
           {
             "key": "modifiedUtcBefore",

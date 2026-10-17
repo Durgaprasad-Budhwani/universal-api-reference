@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Google Drive Universal API",
-    "version": "0.0.189",
+    "version": "0.0.192",
     "description": "Store files, share folders, collaborate on content, and manage access."
   },
   "servers": [
@@ -3286,7 +3286,17 @@
             "description": "Choose one or multiple order options to sort the results.",
             "schema": {
               "type": "string",
-              "description": "Choose one or multiple order options to sort the results."
+              "description": "Choose one or multiple order options to sort the results.",
+              "enum": [
+                "createdTime",
+                "modifiedByMeTime",
+                "modifiedTime",
+                "name",
+                "name desc",
+                "recency",
+                "starred",
+                "viewedByMeTime"
+              ]
             }
           },
           {
@@ -4449,6 +4459,12 @@
             "schema": {
               "type": "string",
               "description": "Restrict the search to specific file types. If you want all file types, leave this field blank.",
+              "enum": [
+                "document",
+                "file",
+                "folder",
+                "spreadsheet"
+              ],
               "default": "application/vnd.google-apps.file"
             }
           },
@@ -4460,6 +4476,10 @@
             "schema": {
               "type": "string",
               "description": "Searching with 'Name' requires a Search Type. File Name Contains or File Name is Exactly. Use contains when looking for more than 1 file. Example, File Name Contains: 'PO# '",
+              "enum": [
+                "CONTAINS",
+                "EQUALS"
+              ],
               "default": "CONTAINS"
             }
           },

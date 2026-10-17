@@ -168125,7 +168125,7 @@
     "websiteUrl": "https://www.hubspot.com/",
     "nativeBaseUrl": "https://app.hubspot.com",
     "nativeDocumentationUrl": "https://developers.hubspot.com/docs/api-reference/latest/overview",
-    "version": "0.1.35",
+    "version": "0.1.36",
     "authentication": [
       {
         "type": "oAuth2",
@@ -178672,7 +178672,22 @@
               "name": "Operator",
               "dataType": "list",
               "location": "body",
-              "required": false
+              "required": false,
+              "enumValues": [
+                "BETWEEN",
+                "CONTAINS_TOKEN",
+                "EQ",
+                "GT",
+                "GTE",
+                "HAS_PROPERTY",
+                "IN",
+                "LT",
+                "LTE",
+                "NEQ",
+                "NOT_CONTAINS_TOKEN",
+                "NOT_HAS_PROPERTY",
+                "NOT_IN"
+              ]
             },
             {
               "key": "filterGroups[].filters[].value",
@@ -178772,7 +178787,22 @@
             "key": "filterGroups[].filters[].operator",
             "name": "Operator",
             "dataType": "list",
-            "required": false
+            "required": false,
+            "enumValues": [
+              "BETWEEN",
+              "CONTAINS_TOKEN",
+              "EQ",
+              "GT",
+              "GTE",
+              "HAS_PROPERTY",
+              "IN",
+              "LT",
+              "LTE",
+              "NEQ",
+              "NOT_CONTAINS_TOKEN",
+              "NOT_HAS_PROPERTY",
+              "NOT_IN"
+            ]
           },
           {
             "key": "filterGroups[].filters[].value",

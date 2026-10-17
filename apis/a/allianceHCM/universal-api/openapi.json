@@ -1,0 +1,4112 @@
+{
+  "openapi": "3.1.2",
+  "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
+  "info": {
+    "title": "Alliance HCM Universal API",
+    "version": "0.0.2",
+    "description": "Alliance HCM: Read employees, employee changes, and pay rates"
+  },
+  "servers": [
+    {
+      "url": "https://connect.mindcloud.co"
+    }
+  ],
+  "externalDocs": {
+    "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest"
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/v1/universal/allianceHCM/latest/actions/get-database-time": {
+      "get": {
+        "operationId": "allianceHCM.get-database-time",
+        "summary": "Get Database Time",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest/actions/get-database-time"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "response": {
+                            "type": "string",
+                            "description": "Current Alliance database-server time returned after successful authentication."
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/allianceHCM/latest/actions/get-employee": {
+      "get": {
+        "operationId": "allianceHCM.get-employee",
+        "summary": "Get Employee",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest/actions/get-employee"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyCode",
+            "in": "query",
+            "required": true,
+            "description": "Choose the company, or map co from List Employee Changes. Employee IDs are specific to a company.",
+            "schema": {
+              "type": "string",
+              "description": "Choose the company, or map co from List Employee Changes. Employee IDs are specific to a company."
+            }
+          },
+          {
+            "name": "employeeId",
+            "in": "query",
+            "required": true,
+            "description": "Map id from List Employee Changes or List Employees. Use the value exactly as returned, including any leading spaces.",
+            "schema": {
+              "type": "string",
+              "description": "Map id from List Employee Changes or List Employees. Use the value exactly as returned, including any leading spaces."
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "address1": {
+                            "type": "string"
+                          },
+                          "address2": {
+                            "type": "string"
+                          },
+                          "adjSeniorityDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "autoPay": {
+                            "type": "string"
+                          },
+                          "cc1": {
+                            "type": "string"
+                          },
+                          "cc2": {
+                            "type": "string"
+                          },
+                          "cc3": {
+                            "type": "string"
+                          },
+                          "cc4": {
+                            "type": "string"
+                          },
+                          "cc5": {
+                            "type": "string"
+                          },
+                          "cellPhone": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "clock": {
+                            "type": "string"
+                          },
+                          "co": {
+                            "type": "string"
+                          },
+                          "country": {
+                            "type": "string"
+                          },
+                          "county": {
+                            "type": "string"
+                          },
+                          "defaultHours": {
+                            "type": "number"
+                          },
+                          "distributionCodes": {
+                            "type": "string"
+                          },
+                          "eeoClass": {
+                            "type": "string"
+                          },
+                          "emailAddress": {
+                            "type": "string"
+                          },
+                          "empStatus": {
+                            "type": "string"
+                          },
+                          "empType": {
+                            "type": "string"
+                          },
+                          "firstName": {
+                            "type": "string"
+                          },
+                          "flsaOTExempt": {
+                            "type": "boolean"
+                          },
+                          "guidfield": {
+                            "type": "string"
+                          },
+                          "hireDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "homePhone": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "jobCode": {
+                            "type": "string"
+                          },
+                          "lastChange": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "lastChangeUser": {
+                            "type": "string"
+                          },
+                          "lastName": {
+                            "type": "string"
+                          },
+                          "lastRaiseAmount": {
+                            "type": "number"
+                          },
+                          "lastRaiseDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "lastRaiseReason": {
+                            "type": "string"
+                          },
+                          "lastReviewDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "lastReviewRating": {
+                            "type": "string"
+                          },
+                          "mailStop": {
+                            "type": "string"
+                          },
+                          "middleName": {
+                            "type": "string"
+                          },
+                          "nextRaiseDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "nextReviewDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "nickname": {
+                            "type": "string"
+                          },
+                          "payFrequency": {
+                            "type": "string"
+                          },
+                          "payGrade": {
+                            "type": "string"
+                          },
+                          "payGroup": {
+                            "type": "string"
+                          },
+                          "positionCode": {
+                            "type": "string"
+                          },
+                          "positionInfoLocked": {
+                            "type": "boolean"
+                          },
+                          "priorLastName": {
+                            "type": "string"
+                          },
+                          "probation": {
+                            "type": "boolean"
+                          },
+                          "ratePer": {
+                            "type": "string"
+                          },
+                          "rehireDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "salutation": {
+                            "type": "string"
+                          },
+                          "seasonal": {
+                            "type": "boolean"
+                          },
+                          "soc": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "supervisorID": {
+                            "type": "string"
+                          },
+                          "supervisorName": {
+                            "type": "string"
+                          },
+                          "surname": {
+                            "type": "string"
+                          },
+                          "termDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "termReason": {
+                            "type": "string"
+                          },
+                          "tipped": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "user7": {
+                            "type": "string"
+                          },
+                          "wageType": {
+                            "type": "string"
+                          },
+                          "wcc": {
+                            "type": "string"
+                          },
+                          "workPhone": {
+                            "type": "string"
+                          },
+                          "workPhoneExt": {
+                            "type": "string"
+                          },
+                          "workState": {
+                            "type": "string"
+                          },
+                          "zip": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/allianceHCM/latest/actions/get-employee-change-checkpoint": {
+      "get": {
+        "operationId": "allianceHCM.get-employee-change-checkpoint",
+        "summary": "Get Employee Change Log Sync Time",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest/actions/get-employee-change-checkpoint"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyCode",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "response": {
+                            "type": "string",
+                            "description": "Alliance server-time checkpoint. Keep this text unchanged when mapping it into Previous Checkpoint or Current Checkpoint."
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/allianceHCM/latest/actions/get-employee-employment-details": {
+      "get": {
+        "operationId": "allianceHCM.get-employee-employment-details",
+        "summary": "Get Employee Employment Details",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest/actions/get-employee-employment-details"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyCode",
+            "in": "query",
+            "required": true,
+            "description": "Choose the company, or map co from List Employee Changes.",
+            "schema": {
+              "type": "string",
+              "description": "Choose the company, or map co from List Employee Changes."
+            }
+          },
+          {
+            "name": "employeeId",
+            "in": "query",
+            "required": true,
+            "description": "Map id from List Employee Changes or Get Employee. Use the value exactly as returned, including any leading spaces.",
+            "schema": {
+              "type": "string",
+              "description": "Map id from List Employee Changes or Get Employee. Use the value exactly as returned, including any leading spaces."
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "co": {
+                            "type": "string"
+                          },
+                          "desiredHours": {
+                            "type": "number"
+                          },
+                          "employmentNote": {
+                            "type": "string"
+                          },
+                          "geid": {
+                            "type": "string"
+                          },
+                          "guidfield": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "lastChange": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "lastChangeUser": {
+                            "type": "string"
+                          },
+                          "lastDayWorked": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "preferredLanguage": {
+                            "type": "string"
+                          },
+                          "rehireEligible": {
+                            "type": "boolean"
+                          },
+                          "retirementDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "timeSheet": {
+                            "type": "string"
+                          },
+                          "workArrangement": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/allianceHCM/latest/actions/get-pay-rate-change-checkpoint": {
+      "get": {
+        "operationId": "allianceHCM.get-pay-rate-change-checkpoint",
+        "summary": "Get Pay Rate Change Checkpoint",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest/actions/get-pay-rate-change-checkpoint"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyCode",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "response": {
+                            "type": "string",
+                            "description": "Alliance server-time checkpoint. Keep this text unchanged when mapping it into Previous Checkpoint or Current Checkpoint."
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/allianceHCM/latest/actions/list-companies": {
+      "get": {
+        "operationId": "allianceHCM.list-companies",
+        "summary": "List Companies",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest/actions/list-companies"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "co": {
+                            "type": "string",
+                            "description": "Company code. Use together with id to identify an employee across companies."
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/allianceHCM/latest/actions/list-employee-changes": {
+      "get": {
+        "operationId": "allianceHCM.list-employee-changes",
+        "summary": "List Employee Changes",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest/actions/list-employee-changes"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyCode",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "previousCheckpoint",
+            "in": "query",
+            "required": true,
+            "description": "Return changes after this date and time. For your first run, enter when you want to start. For later runs, use the End Date from the last fully completed run. Use Alliance's date/time format, for example 2026-10-01T00:00:00.",
+            "schema": {
+              "type": "string",
+              "description": "Return changes after this date and time. For your first run, enter when you want to start. For later runs, use the End Date from the last fully completed run. Use Alliance's date/time format, for example 2026-10-01T00:00:00.",
+              "example": "2026-10-01T00:00:00"
+            }
+          },
+          {
+            "name": "currentCheckpoint",
+            "in": "query",
+            "required": true,
+            "description": "Return changes up to and including this date and time. Run Get Employee Change Log Sync Time for the same company and use its returned date/time exactly as provided. This is the latest time Alliance has finished processing, helping avoid missing delayed changes. After processing all pages, save this value as the next Start Date.",
+            "schema": {
+              "type": "string",
+              "description": "Return changes up to and including this date and time. Run Get Employee Change Log Sync Time for the same company and use its returned date/time exactly as provided. This is the latest time Alliance has finished processing, helping avoid missing delayed changes. After processing all pages, save this value as the next Start Date."
+            }
+          },
+          {
+            "name": "employeeId",
+            "in": "query",
+            "required": false,
+            "description": "Optional. Map id from an employee or change record; leave empty for all employees in the chosen company.",
+            "schema": {
+              "type": "string",
+              "description": "Optional. Map id from an employee or change record; leave empty for all employees in the chosen company.",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "changeType",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "D",
+                "I",
+                "U"
+              ],
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "changeDate": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Time of the change in Alliance's server time."
+                          },
+                          "changedBy": {
+                            "type": "string"
+                          },
+                          "changeTable": {
+                            "type": "string"
+                          },
+                          "changeType": {
+                            "type": "string",
+                            "description": "I = Added, U = Updated, D = Deleted."
+                          },
+                          "co": {
+                            "type": "string",
+                            "description": "Company code. Use together with id to identify an employee across companies."
+                          },
+                          "fieldName": {
+                            "type": "string",
+                            "description": "The employee or pay-rate field that changed."
+                          },
+                          "guidfield": {
+                            "type": "string",
+                            "description": "Unique identifier of the record; in a change log this is the changed record, not a unique change event."
+                          },
+                          "id": {
+                            "type": "string",
+                            "description": "Employee ID. Map this value into Employee ID in List Employee Pay Rates."
+                          },
+                          "newValue": {
+                            "type": "string",
+                            "description": "New field value, as text."
+                          },
+                          "oldValue": {
+                            "type": "string",
+                            "description": "Previous field value, as text."
+                          },
+                          "sourceDB": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/allianceHCM/latest/actions/list-employee-employment-type-changes": {
+      "get": {
+        "operationId": "allianceHCM.list-employee-employment-type-changes",
+        "summary": "List Employee Employment Type Changes",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest/actions/list-employee-employment-type-changes"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyCode",
+            "in": "query",
+            "required": true,
+            "description": "Choose the company, or map co from the employee change or paycheck record.",
+            "schema": {
+              "type": "string",
+              "description": "Choose the company, or map co from the employee change or paycheck record."
+            }
+          },
+          {
+            "name": "employeeId",
+            "in": "query",
+            "required": true,
+            "description": "Map id from List Employee Changes or Get Employee. Keep the value exactly as returned, including any leading spaces.",
+            "schema": {
+              "type": "string",
+              "description": "Map id from List Employee Changes or Get Employee. Keep the value exactly as returned, including any leading spaces."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "changeDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "changeReason": {
+                            "type": "string"
+                          },
+                          "co": {
+                            "type": "string"
+                          },
+                          "guidfield": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "lastChange": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "lastChangeUser": {
+                            "type": "string"
+                          },
+                          "newType": {
+                            "type": "string"
+                          },
+                          "notes": {
+                            "type": "string"
+                          },
+                          "oldType": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/allianceHCM/latest/actions/list-employee-job-changes": {
+      "get": {
+        "operationId": "allianceHCM.list-employee-job-changes",
+        "summary": "List Employee Job Changes",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest/actions/list-employee-job-changes"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyCode",
+            "in": "query",
+            "required": true,
+            "description": "Choose the company, or map co from List Employee Changes.",
+            "schema": {
+              "type": "string",
+              "description": "Choose the company, or map co from List Employee Changes."
+            }
+          },
+          {
+            "name": "employeeId",
+            "in": "query",
+            "required": true,
+            "description": "Map id from List Employee Changes or Get Employee. Use the value exactly as returned, including any leading spaces.",
+            "schema": {
+              "type": "string",
+              "description": "Map id from List Employee Changes or Get Employee. Use the value exactly as returned, including any leading spaces."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "changeDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "co": {
+                            "type": "string"
+                          },
+                          "guidfield": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "lastChange": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "lastChangeUser": {
+                            "type": "string"
+                          },
+                          "newcc1": {
+                            "type": "string"
+                          },
+                          "newcc2": {
+                            "type": "string"
+                          },
+                          "newcc3": {
+                            "type": "string"
+                          },
+                          "newcc4": {
+                            "type": "string"
+                          },
+                          "newcc5": {
+                            "type": "string"
+                          },
+                          "neweeoclass": {
+                            "type": "string"
+                          },
+                          "newFLSAOtExempt": {
+                            "type": "boolean"
+                          },
+                          "newpositioncode": {
+                            "type": "string"
+                          },
+                          "newSocCode": {
+                            "type": "string"
+                          },
+                          "newSupervisorId": {
+                            "type": "string"
+                          },
+                          "newtitle": {
+                            "type": "string"
+                          },
+                          "newWcc": {
+                            "type": "string"
+                          },
+                          "notes": {
+                            "type": "string"
+                          },
+                          "oldcc1": {
+                            "type": "string"
+                          },
+                          "oldcc2": {
+                            "type": "string"
+                          },
+                          "oldcc3": {
+                            "type": "string"
+                          },
+                          "oldcc4": {
+                            "type": "string"
+                          },
+                          "oldcc5": {
+                            "type": "string"
+                          },
+                          "oldeeoclass": {
+                            "type": "string"
+                          },
+                          "oldFLSAOtExempt": {
+                            "type": "boolean"
+                          },
+                          "oldpositioncode": {
+                            "type": "string"
+                          },
+                          "oldSocCode": {
+                            "type": "string"
+                          },
+                          "oldSupervisorId": {
+                            "type": "string"
+                          },
+                          "oldtitle": {
+                            "type": "string"
+                          },
+                          "oldWcc": {
+                            "type": "string"
+                          },
+                          "reason": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/allianceHCM/latest/actions/list-employee-pay-history": {
+      "get": {
+        "operationId": "allianceHCM.list-employee-pay-history",
+        "summary": "List Employee Pay History",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest/actions/list-employee-pay-history"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyCode",
+            "in": "query",
+            "required": true,
+            "description": "Choose the company, or map co from the employee change or paycheck record.",
+            "schema": {
+              "type": "string",
+              "description": "Choose the company, or map co from the employee change or paycheck record."
+            }
+          },
+          {
+            "name": "employeeId",
+            "in": "query",
+            "required": true,
+            "description": "Map id from List Employee Changes or Get Employee. Keep the value exactly as returned, including any leading spaces.",
+            "schema": {
+              "type": "string",
+              "description": "Map id from List Employee Changes or Get Employee. Keep the value exactly as returned, including any leading spaces."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "autoPay": {
+                            "type": "boolean"
+                          },
+                          "batch": {
+                            "type": "string"
+                          },
+                          "beginDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "calendarId": {
+                            "type": "string"
+                          },
+                          "cc": {
+                            "type": "string"
+                          },
+                          "cc1": {
+                            "type": "string"
+                          },
+                          "cc2": {
+                            "type": "string"
+                          },
+                          "cc3": {
+                            "type": "string"
+                          },
+                          "cc4": {
+                            "type": "string"
+                          },
+                          "cc5": {
+                            "type": "string"
+                          },
+                          "checkAttributes": {
+                            "type": "string"
+                          },
+                          "checkDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "checkNumber": {
+                            "type": "number"
+                          },
+                          "checkstubMemo": {
+                            "type": "string"
+                          },
+                          "co": {
+                            "type": "string"
+                          },
+                          "dirDepAmount": {
+                            "type": "number"
+                          },
+                          "documentNumber": {
+                            "type": "number"
+                          },
+                          "endDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "gross": {
+                            "type": "number"
+                          },
+                          "hours": {
+                            "type": "number"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "inytd": {
+                            "type": "boolean"
+                          },
+                          "isManual": {
+                            "type": "number"
+                          },
+                          "isNocalc": {
+                            "type": "number"
+                          },
+                          "isVoid": {
+                            "type": "number"
+                          },
+                          "jobCode": {
+                            "type": "string"
+                          },
+                          "lastChange": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "lastChangeUser": {
+                            "type": "string"
+                          },
+                          "net": {
+                            "type": "number"
+                          },
+                          "netCheck": {
+                            "type": "number"
+                          },
+                          "otDollars": {
+                            "type": "number"
+                          },
+                          "otHours": {
+                            "type": "number"
+                          },
+                          "process": {
+                            "type": "number"
+                          },
+                          "regDollars": {
+                            "type": "number"
+                          },
+                          "regHours": {
+                            "type": "number"
+                          },
+                          "specialCheck": {
+                            "type": "boolean"
+                          },
+                          "trans": {
+                            "type": "string"
+                          },
+                          "userMemo": {
+                            "type": "string"
+                          },
+                          "voidedTrans": {
+                            "type": "string"
+                          },
+                          "voucherNumber": {
+                            "type": "number"
+                          },
+                          "wcc": {
+                            "type": "string"
+                          },
+                          "ww": {
+                            "type": "number"
+                          },
+                          "wwType": {
+                            "type": "number"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/allianceHCM/latest/actions/list-employee-pay-rate-changes": {
+      "get": {
+        "operationId": "allianceHCM.list-employee-pay-rate-changes",
+        "summary": "List Employee Pay Rate Changes",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest/actions/list-employee-pay-rate-changes"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyCode",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "previousCheckpoint",
+            "in": "query",
+            "required": true,
+            "description": "Return pay-rate changes after this date and time. For your first run, enter when you want to start. For later runs, use the End Date from the last fully completed run. Use Alliance's date/time format, for example 2026-10-01T00:00:00.",
+            "schema": {
+              "type": "string",
+              "description": "Return pay-rate changes after this date and time. For your first run, enter when you want to start. For later runs, use the End Date from the last fully completed run. Use Alliance's date/time format, for example 2026-10-01T00:00:00.",
+              "example": "2026-10-01T00:00:00"
+            }
+          },
+          {
+            "name": "currentCheckpoint",
+            "in": "query",
+            "required": true,
+            "description": "Return pay-rate changes up to and including this date and time. Run Get Pay Rate Change Checkpoint for the same company and use its returned date/time exactly as provided. This is the latest time Alliance has finished processing, helping avoid missing delayed changes. After processing all pages, save this value as the next Start Date.",
+            "schema": {
+              "type": "string",
+              "description": "Return pay-rate changes up to and including this date and time. Run Get Pay Rate Change Checkpoint for the same company and use its returned date/time exactly as provided. This is the latest time Alliance has finished processing, helping avoid missing delayed changes. After processing all pages, save this value as the next Start Date."
+            }
+          },
+          {
+            "name": "employeeId",
+            "in": "query",
+            "required": false,
+            "description": "Optional. Map id from an employee or change record; leave empty for all employees in the chosen company.",
+            "schema": {
+              "type": "string",
+              "description": "Optional. Map id from an employee or change record; leave empty for all employees in the chosen company.",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "changeType",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "D",
+                "I",
+                "U"
+              ],
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "changeDate": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Time of the change in Alliance's server time."
+                          },
+                          "changedBy": {
+                            "type": "string"
+                          },
+                          "changeTable": {
+                            "type": "string"
+                          },
+                          "changeType": {
+                            "type": "string",
+                            "description": "I = Added, U = Updated, D = Deleted."
+                          },
+                          "co": {
+                            "type": "string",
+                            "description": "Company code. Use together with id to identify an employee across companies."
+                          },
+                          "fieldName": {
+                            "type": "string",
+                            "description": "The employee or pay-rate field that changed."
+                          },
+                          "guidfield": {
+                            "type": "string",
+                            "description": "Unique identifier of the record; in a change log this is the changed record, not a unique change event."
+                          },
+                          "id": {
+                            "type": "string",
+                            "description": "Employee ID. Map this value into Employee ID in List Employee Pay Rates."
+                          },
+                          "newValue": {
+                            "type": "string",
+                            "description": "New field value, as text."
+                          },
+                          "oldValue": {
+                            "type": "string",
+                            "description": "Previous field value, as text."
+                          },
+                          "sourceDB": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/allianceHCM/latest/actions/list-employee-pay-rates": {
+      "get": {
+        "operationId": "allianceHCM.list-employee-pay-rates",
+        "summary": "List Employee Pay Rates",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest/actions/list-employee-pay-rates"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyCode",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "employeeId",
+            "in": "query",
+            "required": false,
+            "description": "Optional. Use id from an employee or change record. Leave empty to list rates for all employees in the chosen company.",
+            "schema": {
+              "type": "string",
+              "description": "Optional. Use id from an employee or change record. Leave empty to list rates for all employees in the chosen company."
+            }
+          },
+          {
+            "name": "rateCode",
+            "in": "query",
+            "required": false,
+            "description": "Optional. Enter a known rate code such as Base, or leave empty to include every pay rate.",
+            "schema": {
+              "type": "string",
+              "description": "Optional. Enter a known rate code such as Base, or leave empty to include every pay rate.",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "cc1": {
+                            "type": "string"
+                          },
+                          "cc2": {
+                            "type": "string"
+                          },
+                          "cc3": {
+                            "type": "string"
+                          },
+                          "cc4": {
+                            "type": "string"
+                          },
+                          "cc5": {
+                            "type": "string"
+                          },
+                          "changeReason": {
+                            "type": "string"
+                          },
+                          "co": {
+                            "type": "string"
+                          },
+                          "effectiveDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "endDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "guidfield": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "jobCode": {
+                            "type": "string"
+                          },
+                          "lastChange": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "lastChangeUser": {
+                            "type": "string"
+                          },
+                          "notes": {
+                            "type": "string"
+                          },
+                          "paygrade": {
+                            "type": "string"
+                          },
+                          "rate": {
+                            "type": "number"
+                          },
+                          "rateCode": {
+                            "type": "string"
+                          },
+                          "ratePer": {
+                            "type": "string"
+                          },
+                          "salary": {
+                            "type": "number"
+                          },
+                          "shift": {
+                            "type": "string"
+                          },
+                          "startDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/allianceHCM/latest/actions/list-employee-paycheck-line-items": {
+      "get": {
+        "operationId": "allianceHCM.list-employee-paycheck-line-items",
+        "summary": "List Employee Paycheck Line Items",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest/actions/list-employee-paycheck-line-items"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyCode",
+            "in": "query",
+            "required": true,
+            "description": "Choose the company, or map co from the employee change or paycheck record.",
+            "schema": {
+              "type": "string",
+              "description": "Choose the company, or map co from the employee change or paycheck record."
+            }
+          },
+          {
+            "name": "paycheckTransactionId",
+            "in": "query",
+            "required": true,
+            "description": "Map trans from List Employee Pay History. This identifies one processed paycheck. Retrieve pay history using the Employee ID first.",
+            "schema": {
+              "type": "string",
+              "description": "Map trans from List Employee Pay History. This identifies one processed paycheck. Retrieve pay history using the Employee ID first."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "amount": {
+                            "type": "number"
+                          },
+                          "beginDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "cc1": {
+                            "type": "string"
+                          },
+                          "cc2": {
+                            "type": "string"
+                          },
+                          "cc3": {
+                            "type": "string"
+                          },
+                          "cc4": {
+                            "type": "string"
+                          },
+                          "cc5": {
+                            "type": "string"
+                          },
+                          "co": {
+                            "type": "string"
+                          },
+                          "comment": {
+                            "type": "string"
+                          },
+                          "det": {
+                            "type": "string"
+                          },
+                          "detCode": {
+                            "type": "string"
+                          },
+                          "endDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "guidfield": {
+                            "type": "string"
+                          },
+                          "hours": {
+                            "type": "number"
+                          },
+                          "jobCode": {
+                            "type": "string"
+                          },
+                          "lastChange": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "lastChangeUser": {
+                            "type": "string"
+                          },
+                          "rate": {
+                            "type": "number"
+                          },
+                          "rateCode": {
+                            "type": "string"
+                          },
+                          "shift": {
+                            "type": "string"
+                          },
+                          "subTrans": {
+                            "type": "number"
+                          },
+                          "trans": {
+                            "type": "string"
+                          },
+                          "transType": {
+                            "type": "string"
+                          },
+                          "wcc": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/allianceHCM/latest/actions/list-employee-status-changes": {
+      "get": {
+        "operationId": "allianceHCM.list-employee-status-changes",
+        "summary": "List Employee Status Changes",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest/actions/list-employee-status-changes"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyCode",
+            "in": "query",
+            "required": true,
+            "description": "Choose the company, or map co from the employee change or paycheck record.",
+            "schema": {
+              "type": "string",
+              "description": "Choose the company, or map co from the employee change or paycheck record."
+            }
+          },
+          {
+            "name": "employeeId",
+            "in": "query",
+            "required": true,
+            "description": "Map id from List Employee Changes or Get Employee. Keep the value exactly as returned, including any leading spaces.",
+            "schema": {
+              "type": "string",
+              "description": "Map id from List Employee Changes or Get Employee. Keep the value exactly as returned, including any leading spaces."
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "changeDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "changeReason": {
+                            "type": "string"
+                          },
+                          "co": {
+                            "type": "string"
+                          },
+                          "guidfield": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "lastChange": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "lastChangeUser": {
+                            "type": "string"
+                          },
+                          "lastDayWorkedDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "newStatus": {
+                            "type": "string"
+                          },
+                          "notes": {
+                            "type": "string"
+                          },
+                          "oldStatus": {
+                            "type": "string"
+                          },
+                          "rehireEligible": {
+                            "type": "boolean"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/allianceHCM/latest/actions/list-employees": {
+      "get": {
+        "operationId": "allianceHCM.list-employees",
+        "summary": "List Employees",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/allianceHCM/latest/actions/list-employees"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "companyCode",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "co": {
+                            "type": "string",
+                            "description": "Company code. Use together with id to identify an employee across companies."
+                          },
+                          "empStatus": {
+                            "type": "string"
+                          },
+                          "firstName": {
+                            "type": "string"
+                          },
+                          "guidfield": {
+                            "type": "string",
+                            "description": "Unique identifier of the record; in a change log this is the changed record, not a unique change event."
+                          },
+                          "id": {
+                            "type": "string",
+                            "description": "Employee ID. Map this value into Employee ID in List Employee Pay Rates."
+                          },
+                          "lastChange": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "lastName": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "A MindCloud API key."
+      }
+    }
+  }
+}

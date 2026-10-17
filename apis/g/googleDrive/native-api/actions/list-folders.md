@@ -14,4 +14,4 @@ Lists all Google Drive Folders. Optionally search folders you have access to in 
 | Parameter | Location | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | `q` | query | `string` | no | Search for folders based on specific parameters. Uses `q` param. See more here: https://developers.google.com/drive/api/guides/search-files |
-| `orderBy` | query | `list<string>` | no | Choose one or multiple order options to sort the results. |
+| `orderBy` | query | `list<string>` | no | Choose one or multiple order options to sort the results. Accepted values: `createdTime`, `modifiedByMeTime`, `modifiedTime`, `name`, `name desc`, `recency`, `starred`, `viewedByMeTime`. |

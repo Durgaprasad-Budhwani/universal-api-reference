@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Amazon Seller Universal API",
-    "version": "0.0.92",
+    "version": "0.0.93",
     "description": "Manage Amazon listings, inventory, orders, and shipments"
   },
   "servers": [
@@ -11676,7 +11676,17 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "BUYER",
+                  "CANCELLATION",
+                  "EXPENSE",
+                  "FULFILLMENT",
+                  "PACKAGES",
+                  "PROCEEDS",
+                  "PROMOTION",
+                  "RECIPIENT"
+                ]
               },
               "description": "A list of datasets to include in the response."
             },
@@ -11691,7 +11701,11 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "AMAZON",
+                  "MERCHANT"
+                ]
               },
               "description": "The response includes orders that are fulfilled by the parties that you choose. When nothing is selected all are returned."
             },
@@ -11706,7 +11720,16 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "CANCELLED",
+                  "PARTIALLY_SHIPPED",
+                  "PENDING",
+                  "PENDING_AVAILABILITY",
+                  "SHIPPED",
+                  "UNFULFILLABLE",
+                  "UNSHIPPED"
+                ]
               },
               "description": "Choose one or more statuses to filter the results."
             },

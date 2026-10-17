@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "HubSpot Universal API",
-    "version": "0.1.35",
+    "version": "0.1.36",
     "description": "Manage contacts, track deals, run campaigns, and support customers."
   },
   "servers": [
@@ -18592,7 +18592,22 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "BETWEEN",
+                "CONTAINS_TOKEN",
+                "EQ",
+                "GT",
+                "GTE",
+                "HAS_PROPERTY",
+                "IN",
+                "LT",
+                "LTE",
+                "NEQ",
+                "NOT_CONTAINS_TOKEN",
+                "NOT_HAS_PROPERTY",
+                "NOT_IN"
+              ]
             }
           },
           {

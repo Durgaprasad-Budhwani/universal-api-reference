@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "ServiceTitan Universal API",
-    "version": "0.0.383",
+    "version": "0.0.388",
     "description": "ServiceTitan is a cloud-based software platform for home and commercial service businesses that manages customers, jobs, scheduling, dispatching, invoicing, payments, and other field service operations."
   },
   "servers": [
@@ -17532,7 +17532,222 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "active": {
+                            "type": "boolean"
+                          },
+                          "batch": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "number": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "batchId": {
+                            "type": "number"
+                          },
+                          "budgetCodeId": {
+                            "type": "number"
+                          },
+                          "businessUnitId": {
+                            "type": "number"
+                          },
+                          "canceledById": {
+                            "type": "number"
+                          },
+                          "canceledReason": {
+                            "type": "string"
+                          },
+                          "createdById": {
+                            "type": "number"
+                          },
+                          "createdOn": {
+                            "type": "string"
+                          },
+                          "creditReceivedOn": {
+                            "type": "string"
+                          },
+                          "customFields": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "dateCanceled": {
+                            "type": "string"
+                          },
+                          "externalData": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "id": {
+                            "type": "number"
+                          },
+                          "inventoryLocationId": {
+                            "type": "number"
+                          },
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "active": {
+                                  "type": "boolean"
+                                },
+                                "assetAccount": {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "detailType": {
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "number": {
+                                      "type": "string"
+                                    },
+                                    "type": {
+                                      "type": "string"
+                                    }
+                                  }
+                                },
+                                "budgetCodeId": {
+                                  "type": "number"
+                                },
+                                "code": {
+                                  "type": "string"
+                                },
+                                "cost": {
+                                  "type": "number"
+                                },
+                                "costOfSaleAccount": {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "detailType": {
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "number": {
+                                      "type": "string"
+                                    },
+                                    "type": {
+                                      "type": "string"
+                                    }
+                                  }
+                                },
+                                "createdById": {
+                                  "type": "number"
+                                },
+                                "createdOn": {
+                                  "type": "string"
+                                },
+                                "description": {
+                                  "type": "string"
+                                },
+                                "generalLedgerAccount": {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "detailType": {
+                                      "type": "string"
+                                    },
+                                    "name": {
+                                      "type": "string"
+                                    },
+                                    "number": {
+                                      "type": "string"
+                                    },
+                                    "type": {
+                                      "type": "string"
+                                    }
+                                  }
+                                },
+                                "id": {
+                                  "type": "number"
+                                },
+                                "modifiedOn": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "quantity": {
+                                  "type": "number"
+                                },
+                                "receiptItemId": {
+                                  "type": "number"
+                                },
+                                "serialNumbers": {
+                                  "type": "array",
+                                  "items": {}
+                                },
+                                "skuId": {
+                                  "type": "number"
+                                }
+                              }
+                            }
+                          },
+                          "jobId": {
+                            "type": "number"
+                          },
+                          "memo": {
+                            "type": "string"
+                          },
+                          "modifiedOn": {
+                            "type": "string"
+                          },
+                          "number": {
+                            "type": "string"
+                          },
+                          "projectId": {
+                            "type": "number"
+                          },
+                          "purchaseOrderId": {
+                            "type": "number"
+                          },
+                          "referenceNumber": {
+                            "type": "string"
+                          },
+                          "returnAmount": {
+                            "type": "number"
+                          },
+                          "returnDate": {
+                            "type": "string"
+                          },
+                          "returnedOn": {
+                            "type": "string"
+                          },
+                          "returnTypeId": {
+                            "type": "number"
+                          },
+                          "shippingAmount": {
+                            "type": "number"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "syncStatus": {
+                            "type": "string"
+                          },
+                          "taxAmount": {
+                            "type": "number"
+                          },
+                          "vendorId": {
+                            "type": "number"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -25565,6 +25780,11 @@
             "required": false,
             "schema": {
               "type": "string",
+              "enum": [
+                "Any",
+                "False",
+                "True"
+              ],
               "default": "Any"
             }
           },
@@ -25591,6 +25811,10 @@
             "required": false,
             "schema": {
               "type": "string",
+              "enum": [
+                "Employee",
+                "Technician"
+              ],
               "example": "Technician/Employee",
               "default": "Technician"
             }
@@ -25650,7 +25874,36 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "active": {
+                            "type": "boolean"
+                          },
+                          "createdOn": {
+                            "type": "string"
+                          },
+                          "employeeId": {
+                            "type": "number"
+                          },
+                          "employeeType": {
+                            "type": "string"
+                          },
+                          "endedOn": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "number"
+                          },
+                          "modifiedOn": {
+                            "type": "string"
+                          },
+                          "startedOn": {
+                            "type": "string"
+                          },
+                          "timesheetCodeId": {
+                            "type": "number"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -26477,6 +26730,11 @@
             "required": false,
             "schema": {
               "type": "string",
+              "enum": [
+                "Any",
+                "False",
+                "True"
+              ],
               "default": "Any"
             }
           },
@@ -26552,7 +26810,53 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "id": {
+                            "type": "number",
+                            "description": "Timesheet ID."
+                          },
+                          "jobId": {
+                            "type": "number",
+                            "description": "ID of the associated job."
+                          },
+                          "appointmentId": {
+                            "type": "number",
+                            "description": "ID of the associated appointment."
+                          },
+                          "technicianId": {
+                            "type": "number",
+                            "description": "ID of the technician."
+                          },
+                          "dispatchedOn": {
+                            "type": "string",
+                            "description": "Timestamp when the technician was dispatched."
+                          },
+                          "arrivedOn": {
+                            "type": "string",
+                            "description": "Timestamp when the technician arrived."
+                          },
+                          "doneOn": {
+                            "type": "string",
+                            "description": "Timestamp when the work was completed."
+                          },
+                          "canceledOn": {
+                            "type": "string",
+                            "description": "Timestamp when the timesheet was canceled."
+                          },
+                          "active": {
+                            "type": "boolean",
+                            "description": "Whether the timesheet is active."
+                          },
+                          "createdOn": {
+                            "type": "string",
+                            "description": "Timestamp when the timesheet was created."
+                          },
+                          "modifiedOn": {
+                            "type": "string",
+                            "description": "Timestamp when the timesheet was last modified."
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

@@ -7,13 +7,14 @@ These examples use the MindCloud API key and Acumatica connection described in [
 Retrieve the Acumatica ERP Endpoints and the build version.
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/acumatica/latest/actions/get-acumatica-erp-endpoints?connectionId=$CONNECTION_ID" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/acumatica/latest/actions/get-acumatica-erp-endpoints?connectionId=$CONNECTION_ID&unusedParam=endpoints" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
-  connectionId
+  connectionId,
+  "unusedParam": "endpoints"
 });
 
 const response = await fetch(`https://connect.mindcloud.co/v1/universal/acumatica/latest/actions/get-acumatica-erp-endpoints?${params}`, {

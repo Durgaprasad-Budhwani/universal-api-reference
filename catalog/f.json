@@ -3382,7 +3382,7 @@
       "format": "openapi",
       "url": "https://faire.github.io/external-api-docs/#introduction"
     },
-    "version": "0.0.67",
+    "version": "0.0.69",
     "authentication": [
       {
         "type": "apiKey",

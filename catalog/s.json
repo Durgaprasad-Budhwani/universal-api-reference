@@ -230048,7 +230048,7 @@
     "description": "ServiceTitan is a cloud-based software platform for home and commercial service businesses that manages customers, jobs, scheduling, dispatching, invoicing, payments, and other field service operations.",
     "iconUrl": "https://images.mindcloud.co/apps/icons/service-titan_1777386591371.png",
     "nativeDocumentationUrl": "https://developer.servicetitan.io/api-details/#api=tenant-crm-v2",
-    "version": "0.0.383",
+    "version": "0.0.388",
     "authentication": [
       {
         "type": "custom",
@@ -240457,7 +240457,329 @@
             }
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "active",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "batch",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "batch.id",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "batch.name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "batch.number",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "batchId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "budgetCodeId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "businessUnitId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "canceledById",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "canceledReason",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "createdById",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "createdOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "creditReceivedOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "customFields",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "dateCanceled",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "externalData",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "id",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "inventoryLocationId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "items",
+            "dataType": "array",
+            "itemDataType": "object",
+            "mockType": "array"
+          },
+          {
+            "key": "items[].active",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "items[].assetAccount",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "items[].assetAccount.detailType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].assetAccount.name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].assetAccount.number",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].assetAccount.type",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].budgetCodeId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "items[].code",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].cost",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "items[].costOfSaleAccount",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "items[].costOfSaleAccount.detailType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].costOfSaleAccount.name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].costOfSaleAccount.number",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].costOfSaleAccount.type",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].createdById",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "items[].createdOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].description",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].generalLedgerAccount",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "items[].generalLedgerAccount.detailType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].generalLedgerAccount.name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].generalLedgerAccount.number",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].generalLedgerAccount.type",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].id",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "items[].modifiedOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "items[].quantity",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "items[].receiptItemId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "items[].serialNumbers",
+            "dataType": "array",
+            "mockType": "array"
+          },
+          {
+            "key": "items[].skuId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "jobId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "memo",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "modifiedOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "number",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "projectId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "purchaseOrderId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "referenceNumber",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "returnAmount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "returnDate",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "returnedOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "returnTypeId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "shippingAmount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "status",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "syncStatus",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "taxAmount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "vendorId",
+            "dataType": "number",
+            "mockType": "number"
+          }
+        ]
       },
       {
         "name": "Get Services by Id",
@@ -245966,7 +246288,12 @@
               "name": "Active",
               "dataType": "list",
               "location": "query",
-              "required": false
+              "required": false,
+              "enumValues": [
+                "Any",
+                "False",
+                "True"
+              ]
             },
             {
               "key": "employeeId",
@@ -245987,7 +246314,11 @@
               "name": "Employee Type",
               "dataType": "list",
               "location": "query",
-              "required": false
+              "required": false,
+              "enumValues": [
+                "Employee",
+                "Technician"
+              ]
             },
             {
               "key": "createdBefore",
@@ -246023,7 +246354,12 @@
             "name": "Active",
             "dataType": "list",
             "required": false,
-            "defaultValue": "Any"
+            "defaultValue": "Any",
+            "enumValues": [
+              "Any",
+              "False",
+              "True"
+            ]
           },
           {
             "key": "employeeId",
@@ -246044,7 +246380,11 @@
             "dataType": "list",
             "required": false,
             "example": "Technician/Employee",
-            "defaultValue": "Technician"
+            "defaultValue": "Technician",
+            "enumValues": [
+              "Employee",
+              "Technician"
+            ]
           },
           {
             "key": "createdBefore",
@@ -246065,7 +246405,53 @@
             "required": false
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "active",
+            "dataType": "boolean",
+            "mockType": "boolean"
+          },
+          {
+            "key": "createdOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "employeeId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "employeeType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "endedOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "modifiedOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "startedOn",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "timesheetCodeId",
+            "dataType": "number",
+            "mockType": "number"
+          }
+        ]
       },
       {
         "name": "List Payroll",
@@ -246316,7 +246702,12 @@
               "name": "Active",
               "dataType": "list",
               "location": "query",
-              "required": false
+              "required": false,
+              "enumValues": [
+                "Any",
+                "False",
+                "True"
+              ]
             },
             {
               "key": "pageSize",
@@ -246372,7 +246763,12 @@
             "name": "Active",
             "dataType": "list",
             "required": false,
-            "defaultValue": "Any"
+            "defaultValue": "Any",
+            "enumValues": [
+              "Any",
+              "False",
+              "True"
+            ]
           },
           {
             "key": "pageSize",
@@ -246406,7 +246802,74 @@
             "required": false
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "id",
+            "dataType": "number",
+            "description": "Timesheet ID.",
+            "mockType": "number"
+          },
+          {
+            "key": "jobId",
+            "dataType": "number",
+            "description": "ID of the associated job.",
+            "mockType": "number"
+          },
+          {
+            "key": "appointmentId",
+            "dataType": "number",
+            "description": "ID of the associated appointment.",
+            "mockType": "number"
+          },
+          {
+            "key": "technicianId",
+            "dataType": "number",
+            "description": "ID of the technician.",
+            "mockType": "number"
+          },
+          {
+            "key": "dispatchedOn",
+            "dataType": "string",
+            "description": "Timestamp when the technician was dispatched.",
+            "mockType": "string"
+          },
+          {
+            "key": "arrivedOn",
+            "dataType": "string",
+            "description": "Timestamp when the technician arrived.",
+            "mockType": "string"
+          },
+          {
+            "key": "doneOn",
+            "dataType": "string",
+            "description": "Timestamp when the work was completed.",
+            "mockType": "string"
+          },
+          {
+            "key": "canceledOn",
+            "dataType": "string",
+            "description": "Timestamp when the timesheet was canceled.",
+            "mockType": "string"
+          },
+          {
+            "key": "active",
+            "dataType": "boolean",
+            "description": "Whether the timesheet is active.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "createdOn",
+            "dataType": "string",
+            "description": "Timestamp when the timesheet was created.",
+            "mockType": "string"
+          },
+          {
+            "key": "modifiedOn",
+            "dataType": "string",
+            "description": "Timestamp when the timesheet was last modified.",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "List Purchase Order Types",

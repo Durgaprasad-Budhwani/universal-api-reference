@@ -120413,7 +120413,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/apple-touch-icon_1782233203690.png",
     "websiteUrl": "https://www.sage.com/en-us/sage-business-cloud/intacct/",
     "nativeDocumentationUrl": "https://developer.intacct.com/api/",
-    "version": "1.0.150",
+    "version": "1.0.151",
     "authentication": [
       {
         "type": "custom",
@@ -124977,7 +124977,17 @@
               "dataType": "list",
               "itemDataType": "string",
               "location": "body",
-              "required": false
+              "required": false,
+              "enumValues": [
+                "equalto",
+                "greaterthan",
+                "greaterthanorequalto",
+                "isnotnull",
+                "isnull",
+                "lessthan",
+                "lessthanorequalto",
+                "notequalto"
+              ]
             },
             {
               "key": "options[].showprivate",
@@ -125075,7 +125085,17 @@
             "name": "Type",
             "dataType": "list",
             "itemDataType": "string",
-            "required": false
+            "required": false,
+            "enumValues": [
+              "equalto",
+              "greaterthan",
+              "greaterthanorequalto",
+              "isnotnull",
+              "isnull",
+              "lessthan",
+              "lessthanorequalto",
+              "notequalto"
+            ]
           },
           {
             "key": "options[].showprivate",

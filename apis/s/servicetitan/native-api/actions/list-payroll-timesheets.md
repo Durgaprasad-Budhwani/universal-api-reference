@@ -11,12 +11,12 @@ Retrieves payroll job timesheets from ServiceTitan.
 
 ## Parameters
 
-| Parameter | Location | Type | Required |
-| --- | --- | --- | --- |
-| `technicianId` | query | `number` | no |
-| `active` | query | `list` | no |
-| `pageSize` | query | `number` | no |
-| `modifiedOnOrAfter` | query | `string` | no |
-| `endedOn` | query | `string` | no |
-| `jobIds` | query | `string` | no |
-| `startedOn` | query | `string` | no |
+| Parameter | Location | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| `technicianId` | query | `number` | no | — |
+| `active` | query | `list` | no | Accepted values: `Any`, `False`, `True`. |
+| `pageSize` | query | `number` | no | — |
+| `modifiedOnOrAfter` | query | `string` | no | — |
+| `endedOn` | query | `string` | no | — |
+| `jobIds` | query | `string` | no | — |
+| `startedOn` | query | `string` | no | — |

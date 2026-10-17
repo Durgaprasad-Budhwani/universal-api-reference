@@ -44,8 +44,8 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | `createTimeGe` | date | no |  |
 | `createTimeLt` | date | no |  |
 | `isBuyerRequestCancel` | boolean | no |  |
-| `orderStatus` | list<string> | no |  |
-| `shippingType` | list<string> | no |  |
+| `orderStatus` | list<string> | no | One of: `AWAITING_COLLECTION`, `AWAITING_SHIPMENT`, `CANCELLED`, `COMPLETED`, `DELIVERED`, `IN_TRANSIT`, `ON_HOLD`, `PARTIALLY_SHIPPING`, `UNPAID`. |
+| `shippingType` | list<string> | no | One of: `SELLER`, `TIKTOK`. |
 | `shopCipher` | list<string> | yes |  |
 | `sortField` | string | no |  |
 | `sortOrder` | string | no |  |

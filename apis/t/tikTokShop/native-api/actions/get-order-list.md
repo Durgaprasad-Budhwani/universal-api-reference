@@ -19,8 +19,8 @@ This operation supports [pagination](../README.md#pagination).
 | `create_time_ge` | body | `date` | no | — |
 | `create_time_lt` | body | `date` | no | — |
 | `is_buyer_request_cancel` | body | `boolean` | no | Format: `toggle`. |
-| `order_status` | body | `list<string>` | no | — |
-| `shipping_type` | body | `list<string>` | no | — |
+| `order_status` | body | `list<string>` | no | Accepted values: `AWAITING_COLLECTION`, `AWAITING_SHIPMENT`, `CANCELLED`, `COMPLETED`, `DELIVERED`, `IN_TRANSIT`, `ON_HOLD`, `PARTIALLY_SHIPPING`, `UNPAID`. |
+| `shipping_type` | body | `list<string>` | no | Accepted values: `SELLER`, `TIKTOK`. |
 | `shop_cipher` | query | `list<string>` | yes | — |
 | `sort_field` | query | `string` | no | — |
 | `sort_order` | query | `string` | no | — |
