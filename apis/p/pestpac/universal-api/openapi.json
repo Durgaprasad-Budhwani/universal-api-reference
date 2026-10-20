@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "PestPac Universal API",
-    "version": "0.0.168",
+    "version": "0.0.169",
     "description": "Call PestPac actions through MindCloud's Universal API."
   },
   "servers": [
@@ -5410,7 +5410,177 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "balance": {
+                            "type": "number"
+                          },
+                          "billTo": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "address": {
+                                "type": "string"
+                              },
+                              "address2": {
+                                "type": "string"
+                              },
+                              "city": {
+                                "type": "string"
+                              },
+                              "company": {
+                                "type": "string"
+                              },
+                              "fName": {
+                                "type": "string"
+                              },
+                              "lName": {
+                                "type": "string"
+                              },
+                              "state": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "zip": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "billToID": {
+                            "type": "number"
+                          },
+                          "branch": {
+                            "type": "string"
+                          },
+                          "branchID": {
+                            "type": "number"
+                          },
+                          "cost": {
+                            "type": "number"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "dueDate": {
+                            "type": "string"
+                          },
+                          "duration": {
+                            "type": "number"
+                          },
+                          "invoiceDate": {
+                            "type": "string"
+                          },
+                          "invoiceID": {
+                            "type": "number"
+                          },
+                          "invoiceNumber": {
+                            "type": "string"
+                          },
+                          "invoiceType": {
+                            "type": "string"
+                          },
+                          "locationID": {
+                            "type": "number"
+                          },
+                          "orderDate": {
+                            "type": "string"
+                          },
+                          "orderNumber": {
+                            "type": "string"
+                          },
+                          "orderType": {
+                            "type": "string"
+                          },
+                          "origin": {
+                            "type": "string"
+                          },
+                          "serviceCode": {
+                            "type": "string"
+                          },
+                          "serviceFeeTotal": {
+                            "type": "number"
+                          },
+                          "serviceLocation": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "address": {
+                                "type": "string"
+                              },
+                              "address2": {
+                                "type": "string"
+                              },
+                              "city": {
+                                "type": "string"
+                              },
+                              "company": {
+                                "type": "string"
+                              },
+                              "fName": {
+                                "type": "string"
+                              },
+                              "lName": {
+                                "type": "string"
+                              },
+                              "state": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": "string"
+                              },
+                              "zip": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "setupID": {
+                            "type": "number"
+                          },
+                          "setupType": {
+                            "type": "string"
+                          },
+                          "subTotal": {
+                            "type": "number"
+                          },
+                          "tax": {
+                            "type": "number"
+                          },
+                          "taxDetails": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "countryOfTax": {
+                                  "type": "string"
+                                },
+                                "taxAmount": {
+                                  "type": "number"
+                                },
+                                "taxLabel": {
+                                  "type": "string"
+                                },
+                                "taxRate": {
+                                  "type": "number"
+                                }
+                              }
+                            }
+                          },
+                          "taxRate": {
+                            "type": "number"
+                          },
+                          "timeRange": {
+                            "type": "string"
+                          },
+                          "total": {
+                            "type": "number"
+                          },
+                          "workDate": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

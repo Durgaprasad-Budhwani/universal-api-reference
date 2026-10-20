@@ -4,7 +4,7 @@ Field service software to drive growth
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/aspire/latest
 - **Category:** Human Resources / HRIS
-- **Actions:** 153
+- **Actions:** 154
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor website:** https://www.youraspire.com/
 - **Vendor API docs:** https://guide.youraspire.com/apidocs
@@ -22,7 +22,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/aspire/latest/actions/get
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
-## Actions (153)
+## Actions (154)
 
 ### Activity
 
@@ -226,6 +226,12 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/aspire/latest/actions/get
 | Action | Method | Description |
 | --- | --- | --- |
 | [List Inventory Locations](actions/list-inventory-locations.md) | GET | Retrieves inventory locations from your Aspire account. |
+
+### Object Codes
+
+| Action | Method | Description |
+| --- | --- | --- |
+| [List Object Codes](actions/list-object-codes.md) | GET | Retrieve a list of information related to object codes. |
 
 ### Opportunities
 

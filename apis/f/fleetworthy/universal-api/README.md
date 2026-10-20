@@ -15,10 +15,10 @@ Every action below is called through one REST interface, authenticated with a Mi
 
 Read more in [authentication.md](authentication.md).
 
-For example, to [Download Asset File](actions/download-asset-file.md):
+For example, to [Get Person Metadata](actions/get-person-metadata.md):
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/fleetworthy/latest/actions/download-asset-file?connectionId=$CONNECTION_ID&cpFileId=550e8400-e29b-41d4-a716-446655440000" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/fleetworthy/latest/actions/get-person-metadata?connectionId=$CONNECTION_ID" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 

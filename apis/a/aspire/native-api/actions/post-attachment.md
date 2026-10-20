@@ -17,13 +17,12 @@ Send these additional headers for this operation:
 
 ## Parameters
 
-| Parameter | Location | Type | Required |
-| --- | --- | --- | --- |
-| `$filter` | query | `string` | no |
-| `AttachmentTypeId` | body | `list<number>` | no |
-| `FileName` | body | `string` | no |
-| `FileData` | body | `file` | no |
-| `ObjectCode` | body | `list<string>` | no |
-| `ObjectId` | body | `number` | no |
-| `AttachToInvoice` | body | `boolean` | no |
-| `ExposeToCrew` | body | `boolean` | no |
+| Parameter | Location | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| `AttachmentTypeId` | body | `list<number>` | yes | — |
+| `FileName` | body | `string` | yes | — |
+| `FileData` | body | `file` | yes | File content as a base64-encoded string. When the user attached a file in the chat, pass the attachment reference provided by the chat. |
+| `ObjectCode` | body | `list<string>` | yes | Type of record receiving the attachment. Common values: WorkTicket (set objectId to workTicketID, not the ticket number), Opportunity (set objectId to opportunityID), and Receipt (set objectId to receiptID). Use listObjectCodes for the full list of supported values; do not guess the record type. |
+| `ObjectId` | body | `number` | yes | — |
+| `AttachToInvoice` | body | `boolean` | no | Only valid for Opportunity attachments. For any other objectCode, omit this field entirely; Aspire rejects it even when false. |
+| `ExposeToCrew` | body | `boolean` | no | — |

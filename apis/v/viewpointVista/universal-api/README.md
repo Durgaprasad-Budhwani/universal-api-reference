@@ -3,7 +3,7 @@
 Viewpoint Vista through the MindCloud Universal API.
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/viewpointVista/latest
-- **Actions:** 79
+- **Actions:** 80
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor API docs:** https://direct-api.xchange.trimble.com/reference/setup
 
@@ -20,7 +20,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/viewpointVista/latest/act
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
-## Actions (79)
+## Actions (80)
 
 ### Accounts Payable
 
@@ -228,6 +228,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/viewpointVista/latest/act
 | --- | --- | --- |
 | [Search Batch Entries](actions/search-batch-entries.md) | GET |  |
 | [Search Transactions](actions/search-transactions.md) | GET |  |
+| [Search Transactions Lines](actions/search-transactions-lines.md) | GET |  |
 
 ### User Defined Tables
 

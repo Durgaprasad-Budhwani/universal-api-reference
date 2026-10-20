@@ -35,3 +35,4 @@ Creates a new receipt in your Aspire account.
 | `ReceiptItems[].receiptItemPrice` | body | `number` | no | — |
 | `ReceivedDate` | body | `string` | no | — |
 | `ReceiptItems[].itemAllocations[]` | body | `array<object>` | no | — |
+| `receiptID` | body | `number` | no | — |

@@ -45,7 +45,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | `country` | string | no | Optional country to geocode in. Supported values are USA, Canada, or Mexico. Example: `USA`. |
 | `fields` | string | no | Optional comma-separated list of data append fields, such as timezone, cd, census, zip4, or acs-demographics. Accepts multiple values in one string, delimited by `,`. Example: `timezone,cd`. |
 | `limit` | number | no | Optional maximum number of geocoding results to return. Example: `5`. |
-| `format` | string | no | Optional response format. Geocodio currently documents simple as the alternate format. One of: `0`. Example: `simple`. |
+| `format` | list<string> | no | Optional response format. Geocodio currently documents simple as the alternate format. One of: `simple`. Example: `simple`. |
 
 ## Response
 

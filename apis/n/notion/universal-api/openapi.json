@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Notion Universal API",
-    "version": "0.0.20",
+    "version": "0.0.22",
     "description": "Write docs, organize projects, manage knowledge, and collaborate with teams."
   },
   "servers": [
@@ -5099,7 +5099,7 @@
               "type": "string",
               "description": "Property type to filter by.",
               "enum": [
-                "0"
+                "object"
               ],
               "example": "object",
               "x-mindcloud-advanced": true
@@ -5114,8 +5114,8 @@
               "type": "string",
               "description": "Object value to filter search results.",
               "enum": [
-                "0",
-                "1"
+                "data_source",
+                "page"
               ],
               "example": "data_source",
               "x-mindcloud-advanced": true
@@ -5130,8 +5130,8 @@
               "type": "string",
               "description": "Sort direction for result ordering.",
               "enum": [
-                "0",
-                "1"
+                "ascending",
+                "descending"
               ],
               "example": "ascending",
               "x-mindcloud-advanced": true
@@ -5146,7 +5146,7 @@
               "type": "string",
               "description": "Timestamp field used for sorting.",
               "enum": [
-                "0"
+                "last_edited_time"
               ],
               "example": "last_edited_time",
               "x-mindcloud-advanced": true

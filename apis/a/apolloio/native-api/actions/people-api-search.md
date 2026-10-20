@@ -7,6 +7,10 @@
 - **Base URL:** `https://app.apollo.io/api`
 - **Official documentation:** [People API Search](https://docs.apollo.io/reference/people-api-search)
 
+## Capabilities
+
+This operation supports [pagination](../README.md#pagination).
+
 ## Parameters
 
 | Parameter | Location | Type | Required | Description |

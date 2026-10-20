@@ -137552,7 +137552,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/bigin-256_1775165753307.png",
     "websiteUrl": "https://www.bigin.com/",
     "nativeDocumentationUrl": "https://www.bigin.com/developer/docs/apis/v2/",
-    "version": "0.0.15",
+    "version": "0.0.17",
     "authentication": [
       {
         "type": "oAuth2",
@@ -138244,7 +138244,170 @@
           "sorting": false
         },
         "arguments": [],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "moduleName",
+            "dataType": "string"
+          },
+          {
+            "key": "apiName",
+            "dataType": "string"
+          },
+          {
+            "key": "singularLabel",
+            "dataType": "string"
+          },
+          {
+            "key": "pluralLabel",
+            "dataType": "string"
+          },
+          {
+            "key": "actualSingularLabel",
+            "dataType": "string"
+          },
+          {
+            "key": "actualPluralLabel",
+            "dataType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string"
+          },
+          {
+            "key": "accessType",
+            "dataType": "string"
+          },
+          {
+            "key": "visibility",
+            "dataType": "number"
+          },
+          {
+            "key": "sequenceNumber",
+            "dataType": "number"
+          },
+          {
+            "key": "modifiedTime",
+            "dataType": "string"
+          },
+          {
+            "key": "generatedType",
+            "dataType": "string"
+          },
+          {
+            "key": "modifiedBy",
+            "dataType": "object"
+          },
+          {
+            "key": "parentModule",
+            "dataType": "object"
+          },
+          {
+            "key": "profileCount",
+            "dataType": "number"
+          },
+          {
+            "key": "businessCardFieldLimit",
+            "dataType": "number"
+          },
+          {
+            "key": "profiles",
+            "dataType": "array",
+            "itemDataType": "object"
+          },
+          {
+            "key": "arguments",
+            "dataType": "array",
+            "itemDataType": "object"
+          },
+          {
+            "key": "hasMoreProfiles",
+            "dataType": "boolean"
+          },
+          {
+            "key": "globalSearchSupported",
+            "dataType": "boolean"
+          },
+          {
+            "key": "deletable",
+            "dataType": "boolean"
+          },
+          {
+            "key": "creatable",
+            "dataType": "boolean"
+          },
+          {
+            "key": "editable",
+            "dataType": "boolean"
+          },
+          {
+            "key": "viewable",
+            "dataType": "boolean"
+          },
+          {
+            "key": "visible",
+            "dataType": "boolean"
+          },
+          {
+            "key": "convertable",
+            "dataType": "boolean"
+          },
+          {
+            "key": "apiSupported",
+            "dataType": "boolean"
+          },
+          {
+            "key": "filterSupported",
+            "dataType": "boolean"
+          },
+          {
+            "key": "showAsTab",
+            "dataType": "boolean"
+          },
+          {
+            "key": "webformSupported",
+            "dataType": "boolean"
+          },
+          {
+            "key": "inventoryTemplateSupported",
+            "dataType": "boolean"
+          },
+          {
+            "key": "isBlueprintSupported",
+            "dataType": "boolean"
+          },
+          {
+            "key": "presenceSubMenu",
+            "dataType": "boolean"
+          },
+          {
+            "key": "triggersSupported",
+            "dataType": "boolean"
+          },
+          {
+            "key": "quickCreate",
+            "dataType": "boolean"
+          },
+          {
+            "key": "feedsRequired",
+            "dataType": "boolean"
+          },
+          {
+            "key": "scoringSupported",
+            "dataType": "boolean"
+          },
+          {
+            "key": "publicFieldsConfigured",
+            "dataType": "boolean"
+          },
+          {
+            "key": "emailParserSupported",
+            "dataType": "boolean"
+          },
+          {
+            "key": "emailTemplateSupport",
+            "dataType": "boolean"
+          }
+        ]
       },
       {
         "name": "List Notes",

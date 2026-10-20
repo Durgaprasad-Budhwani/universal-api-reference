@@ -84491,7 +84491,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/v_1744240433900.png",
     "websiteUrl": "https://www.viewpoint.com/resource-library/spectrum",
     "nativeDocumentationUrl": "https://help.trimble.com/en/spectrum/spectrum/api-web-services/api-web-services",
-    "version": "0.0.166",
+    "version": "0.0.168",
     "authentication": [
       {
         "type": "custom",
@@ -91182,7 +91182,11 @@
               "name": "Customer Status",
               "dataType": "list",
               "location": "body",
-              "required": false
+              "required": false,
+              "enumValues": [
+                "ALL",
+                "I"
+              ]
             }
           ]
         },
@@ -91208,7 +91212,11 @@
             "key": "pStatus",
             "name": "Customer Status",
             "dataType": "list",
-            "required": false
+            "required": false,
+            "enumValues": [
+              "ALL",
+              "I"
+            ]
           }
         ],
         "responseSchema": [
@@ -91334,7 +91342,11 @@
               "name": "Customer Status",
               "dataType": "list",
               "location": "body",
-              "required": false
+              "required": false,
+              "enumValues": [
+                "ALL",
+                "I"
+              ]
             }
           ]
         },
@@ -91348,7 +91360,11 @@
             "key": "pStatus",
             "name": "Customer Status",
             "dataType": "list",
-            "required": false
+            "required": false,
+            "enumValues": [
+              "ALL",
+              "I"
+            ]
           }
         ],
         "responseSchema": [
@@ -94593,7 +94609,7 @@
     "slug": "viewpointVista",
     "iconUrl": "https://images.mindcloud.co/apps/icons/vv_1772640224458.png",
     "nativeDocumentationUrl": "https://direct-api.xchange.trimble.com/reference/setup",
-    "version": "0.0.84",
+    "version": "0.0.89",
     "authentication": [
       {
         "type": "custom",
@@ -101823,7 +101839,42 @@
               "itemDataType": "string",
               "location": "param",
               "required": true,
-              "description": "Specify the type of Object from the Job Cost V2 Direct API that you'd like to retrieve."
+              "description": "Specify the type of Object from the Job Cost V2 Direct API that you'd like to retrieve.",
+              "enumValues": [
+                "budget_codes",
+                "change_orders",
+                "company_parameters",
+                "contract_cls_batches",
+                "contract_cls_entries",
+                "contract_headers",
+                "contract_items",
+                "contracts",
+                "cost_adj_bat_entries",
+                "cost_adj_batches",
+                "cost_detail",
+                "cost_detail_period",
+                "cost_types",
+                "departments",
+                "field_tickets",
+                "fixed_rate_templates",
+                "insurance_templates",
+                "job_costs",
+                "job_phases",
+                "jobs",
+                "liability_templates",
+                "mat_use_bat_entries",
+                "mat_use_batches",
+                "metric_conversions",
+                "original_estimates",
+                "phases",
+                "progress_bat_entries",
+                "progress_batches",
+                "proj_bat_entries",
+                "proj_batches",
+                "project_managers",
+                "projection_notes",
+                "std_item_codes"
+              ]
             }
           ]
         },
@@ -101847,7 +101898,42 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": true,
-            "description": "Specify the type of Object from the Job Cost V2 Direct API that you'd like to retrieve."
+            "description": "Specify the type of Object from the Job Cost V2 Direct API that you'd like to retrieve.",
+            "enumValues": [
+              "budget_codes",
+              "change_orders",
+              "company_parameters",
+              "contract_cls_batches",
+              "contract_cls_entries",
+              "contract_headers",
+              "contract_items",
+              "contracts",
+              "cost_adj_bat_entries",
+              "cost_adj_batches",
+              "cost_detail",
+              "cost_detail_period",
+              "cost_types",
+              "departments",
+              "field_tickets",
+              "fixed_rate_templates",
+              "insurance_templates",
+              "job_costs",
+              "job_phases",
+              "jobs",
+              "liability_templates",
+              "mat_use_bat_entries",
+              "mat_use_batches",
+              "metric_conversions",
+              "original_estimates",
+              "phases",
+              "progress_bat_entries",
+              "progress_batches",
+              "proj_bat_entries",
+              "proj_batches",
+              "project_managers",
+              "projection_notes",
+              "std_item_codes"
+            ]
           }
         ],
         "responseSchema": []
@@ -102000,7 +102086,28 @@
               "itemDataType": "string",
               "location": "param",
               "required": true,
-              "description": "Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve."
+              "description": "Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve.",
+              "enumValues": [
+                "category_discounts",
+                "change_orders",
+                "co_batch_entries",
+                "co_batches",
+                "company_parameters",
+                "compliances",
+                "pending_po_headers",
+                "pending_po_lines",
+                "po_batch_entries",
+                "po_batches",
+                "po_distributions",
+                "po_headers",
+                "po_lines",
+                "purchase_orders",
+                "receipt_bat_entries",
+                "receipt_batches",
+                "receipts",
+                "shipping_locations",
+                "vendor_materials"
+              ]
             }
           ]
         },
@@ -102024,7 +102131,28 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": true,
-            "description": "Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve."
+            "description": "Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve.",
+            "enumValues": [
+              "category_discounts",
+              "change_orders",
+              "co_batch_entries",
+              "co_batches",
+              "company_parameters",
+              "compliances",
+              "pending_po_headers",
+              "pending_po_lines",
+              "po_batch_entries",
+              "po_batches",
+              "po_distributions",
+              "po_headers",
+              "po_lines",
+              "purchase_orders",
+              "receipt_bat_entries",
+              "receipt_batches",
+              "receipts",
+              "shipping_locations",
+              "vendor_materials"
+            ]
           }
         ],
         "responseSchema": []
@@ -102943,7 +103071,19 @@
               "itemDataType": "string",
               "location": "param",
               "required": true,
-              "description": "Specify the type of Object from the Accounts Receivable V2 Direct API that you'd like to retrieve."
+              "description": "Specify the type of Object from the Accounts Receivable V2 Direct API that you'd like to retrieve.",
+              "enumValues": [
+                "batch_entries",
+                "batch_entry_lines",
+                "batches",
+                "company_parameters",
+                "credit_notes",
+                "customers",
+                "distribution_codes",
+                "receivable_types",
+                "transaction_lines",
+                "transactions"
+              ]
             }
           ]
         },
@@ -102972,7 +103112,19 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": true,
-            "description": "Specify the type of Object from the Accounts Receivable V2 Direct API that you'd like to retrieve."
+            "description": "Specify the type of Object from the Accounts Receivable V2 Direct API that you'd like to retrieve.",
+            "enumValues": [
+              "batch_entries",
+              "batch_entry_lines",
+              "batches",
+              "company_parameters",
+              "credit_notes",
+              "customers",
+              "distribution_codes",
+              "receivable_types",
+              "transaction_lines",
+              "transactions"
+            ]
           }
         ],
         "responseSchema": []
@@ -103825,7 +103977,28 @@
               "itemDataType": "string",
               "location": "param",
               "required": true,
-              "description": "Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve."
+              "description": "Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve.",
+              "enumValues": [
+                "category_discounts",
+                "change_orders",
+                "co_batch_entries",
+                "co_batches",
+                "company_parameters",
+                "compliances",
+                "pending_po_headers",
+                "pending_po_lines",
+                "po_batch_entries",
+                "po_batches",
+                "po_distributions",
+                "po_headers",
+                "po_lines",
+                "purchase_orders",
+                "receipt_bat_entries",
+                "receipt_batches",
+                "receipts",
+                "shipping_locations",
+                "vendor_materials"
+              ]
             },
             {
               "key": "modifiedUtcBefore",
@@ -103855,7 +104028,28 @@
             "dataType": "list",
             "itemDataType": "string",
             "required": true,
-            "description": "Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve."
+            "description": "Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve.",
+            "enumValues": [
+              "category_discounts",
+              "change_orders",
+              "co_batch_entries",
+              "co_batches",
+              "company_parameters",
+              "compliances",
+              "pending_po_headers",
+              "pending_po_lines",
+              "po_batch_entries",
+              "po_batches",
+              "po_distributions",
+              "po_headers",
+              "po_lines",
+              "purchase_orders",
+              "receipt_bat_entries",
+              "receipt_batches",
+              "receipts",
+              "shipping_locations",
+              "vendor_materials"
+            ]
           },
           {
             "key": "modifiedUtcBefore",
@@ -104248,6 +104442,44 @@
             "dataType": "date",
             "required": false,
             "description": "Returns transactions modified before this timestamp. Format: yyyy-MM-ddThh:mm:ss.fffffffZ."
+          }
+        ],
+        "responseSchema": []
+      },
+      {
+        "name": "Search Transactions Lines",
+        "slug": "search-transactions-lines",
+        "operation": "read",
+        "method": "GET",
+        "model": "transaction",
+        "documentationUrl": "https://direct-api.xchange.trimble.com/reference/post-directsubscriberssubscriber_codevistaar2datatransactionscachesearchsearch",
+        "native": {
+          "method": "POST",
+          "path": "v1/direct/subscribers/{{credentials.subscriberCode}}/vista/ar/2/data/transactions_lines/cache/search/cache/search",
+          "baseUrl": "https://api.xchange.trimble.com/connect/",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "filters[]",
+              "name": "filters",
+              "dataType": "array",
+              "location": "body",
+              "required": false
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": true,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "filters[]",
+            "name": "filters",
+            "dataType": "array",
+            "required": false
           }
         ],
         "responseSchema": []

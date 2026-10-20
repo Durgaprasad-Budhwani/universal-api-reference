@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Zenoti Universal API",
-    "version": "0.0.71",
+    "version": "0.0.72",
     "description": "The AI First platform that helps your business grow"
   },
   "servers": [
@@ -809,7 +809,183 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "additionalInvoiceField": {
+                            "type": "string"
+                          },
+                          "brandId": {
+                            "type": "string"
+                          },
+                          "brandName": {
+                            "type": "string"
+                          },
+                          "bundleName": {
+                            "type": "string"
+                          },
+                          "businessUnit": {
+                            "type": "string"
+                          },
+                          "businessUnitId": {
+                            "type": "string"
+                          },
+                          "centerCode": {
+                            "type": "string"
+                          },
+                          "centerId": {
+                            "type": "string"
+                          },
+                          "centerName": {
+                            "type": "string"
+                          },
+                          "collected": {
+                            "type": "number"
+                          },
+                          "companyName": {
+                            "type": "string"
+                          },
+                          "createdBy": {
+                            "type": "string"
+                          },
+                          "createdById": {
+                            "type": "string"
+                          },
+                          "discount": {
+                            "type": "number"
+                          },
+                          "due": {
+                            "type": "number"
+                          },
+                          "guestCode": {
+                            "type": "string"
+                          },
+                          "guestGender": {
+                            "type": "number"
+                          },
+                          "guestId": {
+                            "type": "string"
+                          },
+                          "guestName": {
+                            "type": "string"
+                          },
+                          "guestNationality": {
+                            "type": "string"
+                          },
+                          "invoiceClosedDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "invoiceDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "invoiceId": {
+                            "type": "string"
+                          },
+                          "invoiceItemId": {
+                            "type": "string"
+                          },
+                          "invoiceNo": {
+                            "type": "string"
+                          },
+                          "invoiceSource": {
+                            "type": "string"
+                          },
+                          "itemCategory": {
+                            "type": "string"
+                          },
+                          "itemCategoryCode": {
+                            "type": "string"
+                          },
+                          "itemCode": {
+                            "type": "string"
+                          },
+                          "itemId": {
+                            "type": "string"
+                          },
+                          "itemName": {
+                            "type": "string"
+                          },
+                          "itemSubCategory": {
+                            "type": "string"
+                          },
+                          "itemType": {
+                            "type": "string"
+                          },
+                          "nonTaxableRedemption": {
+                            "type": "number"
+                          },
+                          "paymentType": {
+                            "type": "string"
+                          },
+                          "price": {
+                            "type": "number"
+                          },
+                          "qty": {
+                            "type": "number"
+                          },
+                          "receiptNo": {
+                            "type": "string"
+                          },
+                          "redeemed": {
+                            "type": "number"
+                          },
+                          "referralSource": {
+                            "type": "string"
+                          },
+                          "saleDate": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "salesExcludingRedemption": {
+                            "type": "number"
+                          },
+                          "salesExcTax": {
+                            "type": "number"
+                          },
+                          "salesIncTax": {
+                            "type": "number"
+                          },
+                          "saleType": {
+                            "type": "string"
+                          },
+                          "serviceShopCost": {
+                            "type": "number"
+                          },
+                          "soldBy": {
+                            "type": "string"
+                          },
+                          "soldByCode": {
+                            "type": "string"
+                          },
+                          "soldById": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "tax": {
+                            "type": "number"
+                          },
+                          "taxableRedemption": {
+                            "type": "number"
+                          },
+                          "taxRedeemedByGiftCard": {
+                            "type": "number"
+                          },
+                          "taxRedeemedByLoyaltyPoints": {
+                            "type": "number"
+                          },
+                          "totalGroupCount": {
+                            "type": "number"
+                          },
+                          "vendorId": {
+                            "type": "string"
+                          },
+                          "vendorName": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

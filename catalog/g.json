@@ -32007,7 +32007,7 @@
       "format": "openapi",
       "url": "https://api.geocod.io/openapi-spec.json"
     },
-    "version": "0.0.5",
+    "version": "0.0.6",
     "authentication": [
       {
         "type": "apiKey",
@@ -33381,12 +33381,13 @@
             {
               "key": "format",
               "name": "Response Format",
-              "dataType": "string",
+              "dataType": "list",
+              "itemDataType": "string",
               "location": "query",
               "required": false,
               "description": "Optional response format. Geocodio currently documents simple as the alternate format.",
               "enumValues": [
-                "0"
+                "simple"
               ]
             }
           ]
@@ -33439,13 +33440,14 @@
           {
             "key": "format",
             "name": "Response Format",
-            "dataType": "string",
+            "dataType": "list",
+            "itemDataType": "string",
             "required": false,
             "advanced": true,
             "description": "Optional response format. Geocodio currently documents simple as the alternate format.",
             "example": "simple",
             "enumValues": [
-              "0"
+              "simple"
             ]
           }
         ],
@@ -164051,7 +164053,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/como-criar-uma-propriedade-do-google-analytics-4_1758304207339.png",
     "websiteUrl": "https://analytics.google.com/",
     "nativeDocumentationUrl": "https://developers.google.com/analytics",
-    "version": "0.0.25",
+    "version": "0.0.26",
     "authentication": [
       {
         "type": "oAuth2",
@@ -164078,14 +164080,15 @@
         ],
         "pagination": {
           "limit": {
-            "parameter": "pageSize",
-            "location": "query",
-            "default": "200"
+            "parameter": "limit",
+            "location": "body",
+            "default": "100000"
           },
           "offset": {
-            "type": "cursor",
-            "parameter": "pageToken",
-            "location": "query"
+            "type": "offset",
+            "parameter": "offset",
+            "location": "body",
+            "pageStartIndex": "0"
           }
         },
         "retry": {
@@ -164861,27 +164864,11 @@
               "location": "body",
               "required": true,
               "description": "GA4 date ranges, such as 30daysAgo through today"
-            },
-            {
-              "key": "limit",
-              "name": "Row Limit",
-              "dataType": "number",
-              "location": "body",
-              "required": false,
-              "description": "Maximum report rows to return"
-            },
-            {
-              "key": "offset",
-              "name": "Row Offset",
-              "dataType": "number",
-              "location": "body",
-              "required": false,
-              "description": "Zero-based row offset"
             }
           ]
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },
@@ -164907,24 +164894,6 @@
                 "startDate": "30daysAgo"
               }
             ]
-          },
-          {
-            "key": "limit",
-            "name": "Row Limit",
-            "dataType": "number",
-            "required": false,
-            "advanced": true,
-            "description": "Maximum report rows to return",
-            "defaultValue": "1000"
-          },
-          {
-            "key": "offset",
-            "name": "Row Offset",
-            "dataType": "number",
-            "required": false,
-            "advanced": true,
-            "description": "Zero-based row offset",
-            "defaultValue": "0"
           }
         ],
         "responseSchema": [

@@ -95587,7 +95587,7 @@
     "websiteUrl": "https://instantly.ai",
     "nativeBaseUrl": "https://app.instantly.ai",
     "nativeDocumentationUrl": "https://developer.instantly.ai/llms.txt",
-    "version": "0.0.5",
+    "version": "0.0.7",
     "authentication": [
       {
         "type": "apiKey",

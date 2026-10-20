@@ -135372,7 +135372,7 @@
     "slug": "pestpac",
     "iconUrl": "https://images.mindcloud.co/apps/icons/image-56_1768253248612.png",
     "nativeDocumentationUrl": "https://developer.workwave.com/documentation#pestpac",
-    "version": "0.0.168",
+    "version": "0.0.169",
     "authentication": [
       {
         "type": "custom",
@@ -138222,7 +138222,266 @@
             "required": true
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "balance",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "billTo",
+            "dataType": "object"
+          },
+          {
+            "key": "billTo.address",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "billTo.address2",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "billTo.city",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "billTo.company",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "billTo.fName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "billTo.lName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "billTo.state",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "billTo.title",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "billTo.zip",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "billToID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "branch",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "branchID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "cost",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "description",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "dueDate",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "duration",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "invoiceDate",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "invoiceID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "invoiceNumber",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "invoiceType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "locationID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "orderDate",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "orderNumber",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "orderType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "origin",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "serviceCode",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "serviceFeeTotal",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "serviceLocation",
+            "dataType": "object"
+          },
+          {
+            "key": "serviceLocation.address",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "serviceLocation.address2",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "serviceLocation.city",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "serviceLocation.company",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "serviceLocation.fName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "serviceLocation.lName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "serviceLocation.state",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "serviceLocation.title",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "serviceLocation.zip",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "setupID",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "setupType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "subTotal",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "tax",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "taxDetails",
+            "dataType": "array",
+            "itemDataType": "object"
+          },
+          {
+            "key": "taxDetails[].countryOfTax",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "taxDetails[].taxAmount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "taxDetails[].taxLabel",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "taxDetails[].taxRate",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "taxRate",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "timeRange",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "total",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "workDate",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "List Location IDs",
@@ -338299,7 +338558,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/image-2840-vectorized_1777471197999.png",
     "websiteUrl": "https://posthog.com/",
     "nativeDocumentationUrl": "https://posthog.com/docs/api",
-    "version": "0.0.36",
+    "version": "0.0.37",
     "authentication": [
       {
         "type": "apiKey",

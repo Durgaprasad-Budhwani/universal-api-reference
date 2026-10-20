@@ -4,7 +4,7 @@ ServiceTitan is a cloud-based software platform for home and commercial service 
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/servicetitan/latest
 - **Category:** Support / Field Service
-- **Actions:** 117
+- **Actions:** 120
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor API docs:** https://developer.servicetitan.io/api-details/#api=tenant-crm-v2
 
@@ -21,7 +21,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/servicetitan/latest/actio
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
-## Actions (117)
+## Actions (120)
 
 ### Access Tokens
 
@@ -95,6 +95,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/servicetitan/latest/actio
 | [List Customers Contacts](actions/list-customers-contacts.md) | GET | Retrieves customer contacts from ServiceTitan. |
 | [List Customers With External Data](actions/list-customers-with-external-data.md) | GET |  |
 | [Update Costumer](actions/update-costumer.md) | PUT | Updates an existing customer in ServiceTitan. |
+| [Update Customer](actions/update-customer.md) | PUT | Updates an existing customer in ServiceTitan. |
 
 ### Discount And Fees
 
@@ -152,9 +153,11 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/servicetitan/latest/actio
 
 | Action | Method | Description |
 | --- | --- | --- |
+| [Create Adjustment Invoice](actions/create-adjustment-invoice.md) | POST |  |
 | [Get Invoices](actions/get-invoices.md) | GET | Retrieves invoices from ServiceTitan. |
 | [Get Invoices By Job Id](actions/get-invoices-by-job-id.md) | GET | Retrieves invoices from ServiceTitan by job ID. |
 | [Mark Invoice as Exported](actions/mark-invoice-as-exported.md) | PUT | Update Invoice record. |
+| [Update Invoice Items](actions/update-invoice-items.md) | PUT |  |
 
 ### Job
 

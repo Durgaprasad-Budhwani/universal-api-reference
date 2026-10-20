@@ -31,6 +31,10 @@ Shared headers:
 | --- | --- |
 | `Content-Type` | `application/json; charset=utf-8` |
 
+## Pagination
+
+Use `per_page` in the query string to set the page size (default 100; accepted range 1–100). Use `page` in the query string to choose the page; numbering starts at 1.
+
 ## Endpoints (25 documented)
 
 | Operation | Method & path | Vendor docs |

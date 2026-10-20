@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Viewpoint Spectrum Universal API",
-    "version": "0.0.166",
+    "version": "0.0.168",
     "description": "Web-based construction ERP solution with leading-edge tools"
   },
   "servers": [
@@ -3904,7 +3904,11 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "ALL",
+                "I"
+              ]
             }
           },
           {
@@ -4158,7 +4162,11 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "ALL",
+                "I"
+              ]
             }
           },
           {

@@ -225395,7 +225395,7 @@
     "websiteUrl": "https://www.apollo.io",
     "nativeBaseUrl": "https://app.apollo.io",
     "nativeDocumentationUrl": "https://docs.apollo.io/reference",
-    "version": "0.0.68",
+    "version": "0.0.69",
     "authentication": [
       {
         "type": "oAuth2",
@@ -225450,6 +225450,21 @@
             "value": "application/json; charset=utf-8"
           }
         ],
+        "pagination": {
+          "limit": {
+            "parameter": "per_page",
+            "location": "query",
+            "default": "100",
+            "minimum": "1",
+            "maximum": "100"
+          },
+          "offset": {
+            "type": "page",
+            "parameter": "page",
+            "location": "query",
+            "pageStartIndex": "1"
+          }
+        },
         "retry": {},
         "responses": [
           {
@@ -232095,7 +232110,7 @@
           ]
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },
@@ -232961,7 +232976,7 @@
           ]
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },
@@ -345047,7 +345062,7 @@
     "websiteUrl": "https://www.youraspire.com/",
     "nativeBaseUrl": "https://cloud.youraspire.com/app/",
     "nativeDocumentationUrl": "https://guide.youraspire.com/apidocs",
-    "version": "0.1.518",
+    "version": "0.1.527",
     "authentication": [
       {
         "type": "custom",
@@ -349270,6 +349285,13 @@
               "itemDataType": "object",
               "location": "body",
               "required": false
+            },
+            {
+              "key": "receiptID",
+              "name": "Receipt ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
             }
           ]
         },
@@ -349423,6 +349445,12 @@
             "name": "Item Allocations",
             "dataType": "array",
             "itemDataType": "object",
+            "required": false
+          },
+          {
+            "key": "receiptID",
+            "name": "Receipt ID",
+            "dataType": "number",
             "required": false
           }
         ],
@@ -358248,6 +358276,30 @@
         ]
       },
       {
+        "name": "List Object Codes",
+        "slug": "list-object-codes",
+        "operation": "read",
+        "method": "GET",
+        "group": "Object Codes",
+        "description": "Retrieve a list of information related to object codes.",
+        "documentationUrl": "https://guide.youraspire.com/apidocs/objectcodes-3",
+        "native": {
+          "method": "GET",
+          "path": "ObjectCodes",
+          "baseUrl": "https://{{credentials.environment}}.youraspire.com/",
+          "apiName": "REST",
+          "apiType": "rest"
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "schemaDynamic": true,
+        "arguments": [],
+        "responseSchema": []
+      },
+      {
         "name": "List Opportunity Service Items",
         "slug": "list-oportunity-service-items",
         "operation": "read",
@@ -366724,20 +366776,13 @@
           ],
           "arguments": [
             {
-              "key": "$filter",
-              "name": "Filter",
-              "dataType": "string",
-              "location": "query",
-              "required": false
-            },
-            {
               "key": "AttachmentTypeId",
               "internalKey": "attachmentTypeId",
               "name": "Attachment Type",
               "dataType": "list",
               "itemDataType": "number",
               "location": "body",
-              "required": false
+              "required": true
             },
             {
               "key": "FileName",
@@ -366745,7 +366790,7 @@
               "name": "File Name",
               "dataType": "string",
               "location": "body",
-              "required": false
+              "required": true
             },
             {
               "key": "FileData",
@@ -366753,7 +366798,8 @@
               "name": "File Data",
               "dataType": "file",
               "location": "body",
-              "required": false
+              "required": true,
+              "description": "File content as a base64-encoded string. When the user attached a file in the chat, pass the attachment reference provided by the chat."
             },
             {
               "key": "ObjectCode",
@@ -366762,7 +366808,8 @@
               "dataType": "list",
               "itemDataType": "string",
               "location": "body",
-              "required": false
+              "required": true,
+              "description": "Type of record receiving the attachment. Common values: WorkTicket (set objectId to workTicketID, not the ticket number), Opportunity (set objectId to opportunityID), and Receipt (set objectId to receiptID). Use listObjectCodes for the full list of supported values; do not guess the record type."
             },
             {
               "key": "ObjectId",
@@ -366770,7 +366817,7 @@
               "name": "Object ID",
               "dataType": "number",
               "location": "body",
-              "required": false
+              "required": true
             },
             {
               "key": "AttachToInvoice",
@@ -366778,7 +366825,8 @@
               "name": "Attach To Invoice",
               "dataType": "boolean",
               "location": "body",
-              "required": false
+              "required": false,
+              "description": "Only valid for Opportunity attachments. For any other objectCode, omit this field entirely; Aspire rejects it even when false."
             },
             {
               "key": "ExposeToCrew",
@@ -366797,48 +366845,45 @@
         },
         "arguments": [
           {
-            "key": "$filter",
-            "name": "Filter",
-            "dataType": "string",
-            "required": false
-          },
-          {
             "key": "attachmentTypeId",
             "name": "Attachment Type",
             "dataType": "list",
             "itemDataType": "number",
-            "required": false
+            "required": true
           },
           {
             "key": "fileName",
             "name": "File Name",
             "dataType": "string",
-            "required": false
+            "required": true
           },
           {
             "key": "fileData",
             "name": "File Data",
             "dataType": "file",
-            "required": false
+            "required": true,
+            "description": "File content as a base64-encoded string. When the user attached a file in the chat, pass the attachment reference provided by the chat."
           },
           {
             "key": "objectCode",
             "name": "Object Code",
             "dataType": "list",
             "itemDataType": "string",
-            "required": false
+            "required": true,
+            "description": "Type of record receiving the attachment. Common values: WorkTicket (set objectId to workTicketID, not the ticket number), Opportunity (set objectId to opportunityID), and Receipt (set objectId to receiptID). Use listObjectCodes for the full list of supported values; do not guess the record type."
           },
           {
             "key": "objectId",
             "name": "Object ID",
             "dataType": "number",
-            "required": false
+            "required": true
           },
           {
             "key": "attachToInvoice",
             "name": "Attach To Invoice",
             "dataType": "boolean",
-            "required": false
+            "required": false,
+            "description": "Only valid for Opportunity attachments. For any other objectCode, omit this field entirely; Aspire rejects it even when false."
           },
           {
             "key": "exposeToCrew",

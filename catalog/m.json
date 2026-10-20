@@ -276961,7 +276961,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/microsoft-exchange-2019-present_1776206436040.png",
     "nativeBaseUrl": "https://outlook.office365.com",
     "nativeDocumentationUrl": "https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview?view=graph-rest-1.0",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "authentication": [
       {
         "type": "oAuth2",

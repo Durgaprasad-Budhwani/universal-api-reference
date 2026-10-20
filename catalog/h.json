@@ -168125,7 +168125,7 @@
     "websiteUrl": "https://www.hubspot.com/",
     "nativeBaseUrl": "https://app.hubspot.com",
     "nativeDocumentationUrl": "https://developers.hubspot.com/docs/api-reference/latest/overview",
-    "version": "0.1.36",
+    "version": "0.1.37",
     "authentication": [
       {
         "type": "oAuth2",
@@ -179608,22 +179608,6 @@
               "description": "Optional full-text query applied to the default searchable properties for the selected activity type."
             },
             {
-              "key": "limit",
-              "name": "Limit",
-              "dataType": "number",
-              "location": "body",
-              "required": false,
-              "description": "Maximum number of records to return in this search page."
-            },
-            {
-              "key": "after",
-              "name": "After",
-              "dataType": "string",
-              "location": "body",
-              "required": false,
-              "description": "Paging cursor for the next search page."
-            },
-            {
               "key": "sorts[]",
               "name": "Sorts",
               "dataType": "array",
@@ -179652,7 +179636,7 @@
           ]
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },
@@ -179745,24 +179729,6 @@
             "required": false,
             "description": "Optional full-text query applied to the default searchable properties for the selected activity type.",
             "example": "a"
-          },
-          {
-            "key": "limit",
-            "name": "Limit",
-            "dataType": "number",
-            "required": false,
-            "advanced": true,
-            "description": "Maximum number of records to return in this search page.",
-            "example": "10"
-          },
-          {
-            "key": "after",
-            "name": "After",
-            "dataType": "string",
-            "required": false,
-            "advanced": true,
-            "description": "Paging cursor for the next search page.",
-            "example": "next-cursor"
           },
           {
             "key": "sorts[]",

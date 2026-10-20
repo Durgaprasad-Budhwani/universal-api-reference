@@ -1,6 +1,6 @@
 # ServiceTitan: Native API Reference
 
-A consolidated summary of ServiceTitan's API configuration and 117 documented operations, with links to official documentation.
+A consolidated summary of ServiceTitan's API configuration and 120 documented operations, with links to official documentation.
 
 - **Official docs:** https://developer.servicetitan.io/api-details/#api=tenant-crm-v2
 - **API base URL:** `https://{baseUrl}/`
@@ -43,11 +43,12 @@ Shared headers:
 
 Use `pageSize` in the query string to set the page size (default 50; accepted range 1–1000). Use `page` in the query string to choose the page; numbering starts at 1.
 
-## Endpoints (117 documented)
+## Endpoints (120 documented)
 
 | Operation | Method & path | Vendor docs |
 | --- | --- | --- |
 | [Add Customer Tag](actions/add-customer-tag.md) | `POST crm/v2/tenant/{{credentials.tenant}}/customers/:customerId/tags/:tagTypeId` |  |
+| [Create Adjustment Invoice](actions/create-adjustment-invoice.md) | `POST accounting/v2/tenant/{{credentials.tenant}}/invoices` | [docs](https://developer.servicetitan.io/docs/apis/tenant-accounting-v2/endpoints/Invoices_CreateAdjustmentInvoice) |
 | [Create Booking](actions/create-booking.md) | `POST crm/v2/tenant/{{credentials.tenant}}/booking-provider/:bookingProviderId/bookings` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-crm-v2&operation=Bookings_Create) |
 | [Create Customer](actions/create-customer.md) | `POST crm/v2/tenant/{{credentials.tenant}}/customers` |  |
 | [Create Customer Contact](actions/create-customer-contact.md) | `POST crm/v2/tenant/{{credentials.tenant}}/customers/:id/contacts` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-crm-v2&operation=Customers_CreateContact) |
@@ -152,10 +153,12 @@ Use `pageSize` in the query string to set the page size (default 50; accepted ra
 | [Add Vendor](actions/post-vendor.md) | `POST inventory/v2/tenant/{{credentials.tenant}}/vendors` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-inventory-v2&operation=Vendors_Create) |
 | [Update AP Bill Custom Fields](actions/update-ap-bill-custom-fields.md) | `PATCH accounting/v2/tenant/{{credentials.tenant}}/ap-bills/custom-fields` | [docs](https://developer.servicetitan.io/docs/apis/tenant-accounting-v2/endpoints/ApBills_UpdateCustomFields) |
 | [Update Costumer](actions/update-costumer.md) | `PATCH crm/v2/tenant/{{credentials.tenant}}/customers/:customerId` |  |
+| [Update Customer](actions/update-customer.md) | `PATCH crm/v2/tenant/{{credentials.tenant}}/customers/:id` |  |
 | [Update Customer Membership](actions/update-customer-membership.md) | `PATCH memberships/v2/tenant/{{credentials.tenant}}/memberships/:membershipId` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-memberships-v2&operation=CustomerMemberships_Update) |
 | [Update Employee](actions/update-employee.md) | `PATCH settings/v2/tenant/{{credentials.tenant}}/employees/:id` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-settings-v2&operation=Employees_GetList) |
 | [Update Employee Payroll Settings](actions/update-employee-payroll-settings.md) | `PUT payroll/v2/tenant/{{credentials.tenant}}/employees/:employee/payroll-settings` | [docs](https://developer.servicetitan.io/docs/apis/tenant-payroll-v2/endpoints/PayrollSettings_UpdateEmployeePayrollSettings) |
 | [Update GL Account](actions/update-gl-account.md) | `PATCH accounting/v2/tenant/{{credentials.tenant}}/gl-accounts/:id` |  |
+| [Update Invoice Items](actions/update-invoice-items.md) | `PATCH accounting/v2/tenant/{{credentials.tenant}}/invoices/:invoiceId/items` | [docs](https://developer.servicetitan.io/docs/apis/tenant-accounting-v2/endpoints/Invoices_UpdateInvoiceItems) |
 | [Update Job](actions/update-job.md) | `PATCH jpm/v2/tenant/{{credentials.tenant}}/jobs/:jobId` | [docs](https://developer.servicetitan.io/docs/apis/tenant-jpm-v2/endpoints/Jobs_Update) |
 | [Update Location Tags](actions/update-location-tags.md) | `PATCH crm/v2/tenant/{{credentials.tenant}}/locations/:id` |  |
 | [Update Payment](actions/update-payment.md) | `PATCH accounting/v2/tenant/{{credentials.tenant}}/payments/{{paymentId}}` |  |

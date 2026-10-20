@@ -9,6 +9,10 @@ Finds contacts in your Apollo account.
 - **Base URL:** `https://app.apollo.io/api`
 - **Official documentation:** [Search for Contacts](https://docs.apollo.io/reference/search-for-contacts)
 
+## Capabilities
+
+This operation supports [pagination](../README.md#pagination).
+
 ## Parameters
 
 | Parameter | Location | Type | Required | Description |

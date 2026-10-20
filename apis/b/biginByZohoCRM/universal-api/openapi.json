@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Bigin by Zoho CRM Universal API",
-    "version": "0.0.15",
+    "version": "0.0.17",
     "description": "Manage contacts, companies, deals, notes, and activities"
   },
   "servers": [
@@ -1898,7 +1898,139 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "moduleName": {
+                            "type": "string"
+                          },
+                          "apiName": {
+                            "type": "string"
+                          },
+                          "singularLabel": {
+                            "type": "string"
+                          },
+                          "pluralLabel": {
+                            "type": "string"
+                          },
+                          "actualSingularLabel": {
+                            "type": "string"
+                          },
+                          "actualPluralLabel": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "accessType": {
+                            "type": "string"
+                          },
+                          "visibility": {
+                            "type": "number"
+                          },
+                          "sequenceNumber": {
+                            "type": "number"
+                          },
+                          "modifiedTime": {
+                            "type": "string"
+                          },
+                          "generatedType": {
+                            "type": "string"
+                          },
+                          "modifiedBy": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "parentModule": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "profileCount": {
+                            "type": "number"
+                          },
+                          "businessCardFieldLimit": {
+                            "type": "number"
+                          },
+                          "profiles": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "arguments": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "hasMoreProfiles": {
+                            "type": "boolean"
+                          },
+                          "globalSearchSupported": {
+                            "type": "boolean"
+                          },
+                          "deletable": {
+                            "type": "boolean"
+                          },
+                          "creatable": {
+                            "type": "boolean"
+                          },
+                          "editable": {
+                            "type": "boolean"
+                          },
+                          "viewable": {
+                            "type": "boolean"
+                          },
+                          "visible": {
+                            "type": "boolean"
+                          },
+                          "convertable": {
+                            "type": "boolean"
+                          },
+                          "apiSupported": {
+                            "type": "boolean"
+                          },
+                          "filterSupported": {
+                            "type": "boolean"
+                          },
+                          "showAsTab": {
+                            "type": "boolean"
+                          },
+                          "webformSupported": {
+                            "type": "boolean"
+                          },
+                          "inventoryTemplateSupported": {
+                            "type": "boolean"
+                          },
+                          "isBlueprintSupported": {
+                            "type": "boolean"
+                          },
+                          "presenceSubMenu": {
+                            "type": "boolean"
+                          },
+                          "triggersSupported": {
+                            "type": "boolean"
+                          },
+                          "quickCreate": {
+                            "type": "boolean"
+                          },
+                          "feedsRequired": {
+                            "type": "boolean"
+                          },
+                          "scoringSupported": {
+                            "type": "boolean"
+                          },
+                          "publicFieldsConfigured": {
+                            "type": "boolean"
+                          },
+                          "emailParserSupported": {
+                            "type": "boolean"
+                          },
+                          "emailTemplateSupport": {
+                            "type": "boolean"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

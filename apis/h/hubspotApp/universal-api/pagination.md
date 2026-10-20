@@ -33,5 +33,6 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/hubspotApp/latest/actions
 - [Search Companies](actions/search-companies.md)
 - [Search Contacts](actions/search-contacts.md)
 - [Search Deals](actions/search-deals.md)
+- [Search Engagements](actions/search-engagements.md)
 - [Search Subscriptions](actions/search-subscriptions.md)
 - [Search Tickets](actions/search-tickets.md)

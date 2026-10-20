@@ -17,6 +17,6 @@ Send these additional headers for this operation:
 
 ## Parameters
 
-| Parameter | Location | Type | Required |
-| --- | --- | --- | --- |
-| `pStatus` | body | `list` | no |
+| Parameter | Location | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| `pStatus` | body | `list` | no | Accepted values: `ALL`, `I`. |

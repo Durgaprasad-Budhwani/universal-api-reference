@@ -17,8 +17,8 @@ Send these additional headers for this operation:
 
 ## Parameters
 
-| Parameter | Location | Type | Required |
-| --- | --- | --- | --- |
-| `companyCode` | body | `string` | no |
-| `customerCode` | body | `string` | no |
-| `pStatus` | body | `list` | no |
+| Parameter | Location | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| `companyCode` | body | `string` | no | — |
+| `customerCode` | body | `string` | no | — |
+| `pStatus` | body | `list` | no | Accepted values: `ALL`, `I`. |

@@ -24822,7 +24822,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/zenoti-icon_1782394814458.png",
     "websiteUrl": "https://www.zenoti.com/",
     "nativeDocumentationUrl": "https://docs.zenoti.com/reference/generate-an-access-token",
-    "version": "0.0.71",
+    "version": "0.0.72",
     "authentication": [
       {
         "type": "custom",
@@ -25440,7 +25440,293 @@
             "format": "toggle"
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "additionalInvoiceField",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "brandId",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "brandName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "bundleName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "businessUnit",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "businessUnitId",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "centerCode",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "centerId",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "centerName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "collected",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "companyName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "createdBy",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "createdById",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "discount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "due",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "guestCode",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "guestGender",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "guestId",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "guestName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "guestNationality",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "invoiceClosedDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "invoiceDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "invoiceId",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "invoiceItemId",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "invoiceNo",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "invoiceSource",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "itemCategory",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "itemCategoryCode",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "itemCode",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "itemId",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "itemName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "itemSubCategory",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "itemType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "nonTaxableRedemption",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "paymentType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "price",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "qty",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "receiptNo",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "redeemed",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "referralSource",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "saleDate",
+            "dataType": "date",
+            "mockType": "date"
+          },
+          {
+            "key": "salesExcludingRedemption",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "salesExcTax",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "salesIncTax",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "saleType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "serviceShopCost",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "soldBy",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "soldByCode",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "soldById",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "status",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "tax",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "taxableRedemption",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "taxRedeemedByGiftCard",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "taxRedeemedByLoyaltyPoints",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "totalGroupCount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "vendorId",
+            "dataType": "string",
+            "mockType": "alphanumeric"
+          },
+          {
+            "key": "vendorName",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "List Appointments",

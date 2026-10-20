@@ -22,9 +22,9 @@ Send these additional headers for this operation:
 | Parameter | Location | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | `query` | body | `string` | no | Text to search for in titles and content. |
-| `filter.property` | body | `list` | no | Property type to filter by. Accepted values: `0`. |
-| `filter.value` | body | `list` | no | Object value to filter search results. Accepted values: `0`, `1`. |
-| `sort.direction` | body | `list` | no | Sort direction for result ordering. Accepted values: `0`, `1`. |
-| `sort.timestamp` | body | `list` | no | Timestamp field used for sorting. Accepted values: `0`. |
+| `filter.property` | body | `list` | no | Property type to filter by. Accepted values: `object`. |
+| `filter.value` | body | `list` | no | Object value to filter search results. Accepted values: `data_source`, `page`. |
+| `sort.direction` | body | `list` | no | Sort direction for result ordering. Accepted values: `ascending`, `descending`. |
+| `sort.timestamp` | body | `list` | no | Timestamp field used for sorting. Accepted values: `last_edited_time`. |
 | `page_size` | body | `number` | no | Number of results to return (max 100). |
 | `start_cursor` | body | `string` | no | Pagination cursor returned by previous response. |

@@ -1,6 +1,6 @@
 # Viewpoint Vista: Native API Reference
 
-A consolidated summary of Viewpoint Vista's API configuration and 79 documented operations, with links to official documentation.
+A consolidated summary of Viewpoint Vista's API configuration and 80 documented operations, with links to official documentation.
 
 - **Official docs:** https://direct-api.xchange.trimble.com/reference/setup
 - **REST base URL:** `https://api.xchange.trimble.com/connect/`
@@ -53,7 +53,7 @@ Shared headers:
 
 - **REST:** Send filters in the request body.
 
-## Endpoints (79 documented)
+## Endpoints (80 documented)
 
 | Operation | API | Method & path | Vendor docs |
 | --- | --- | --- | --- |
@@ -124,6 +124,7 @@ Shared headers:
 | [Search SL Objects](actions/search-sl-objects.md) | REST | `POST v1/direct/subscribers/:subscriber_code/vista/:api/2/data/:object/cache/search` | [docs](https://direct-api.xchange.trimble.com/reference/get-directsubscriberssubscriber_codevistasm2datacustomerscache) |
 | [Search SM Objects](actions/search-sm-objects.md) | REST | `POST v1/direct/subscribers/:subscriber_code/vista/:api/2/data/:object/cache/search` | [docs](https://direct-api.xchange.trimble.com/reference/get-directsubscriberssubscriber_codevistasm2datacustomerscache) |
 | [Search Transactions](actions/search-transactions.md) | REST | `POST v1/direct/subscribers/{{credentials.subscriberCode}}/vista/ar/2/data/transactions/cache/search` | [docs](https://direct-api.xchange.trimble.com/reference/post-directsubscriberssubscriber_codevistaar2datatransactionscachesearchsearch) |
+| [Search Transactions Lines](actions/search-transactions-lines.md) | REST | `POST v1/direct/subscribers/{{credentials.subscriberCode}}/vista/ar/2/data/transactions_lines/cache/search/cache/search` | [docs](https://direct-api.xchange.trimble.com/reference/post-directsubscriberssubscriber_codevistaar2datatransactionscachesearchsearch) |
 | [Search UD Objects](actions/search-ud-objects.md) | REST | `POST v1/direct/subscribers/:subscriber_code/vista/:api/2/data/:object/cache/search` | [docs](https://direct-api.xchange.trimble.com/reference/get-directsubscriberssubscriber_codevistasm2datacustomerscache) |
 | [Update Contract](actions/update-contract.md) | REST | `POST v1/direct/subscribers/{{credentials.subscriberCode}}/vista/jc/2/data/contracts/actions/change` | [docs](https://direct-api.xchange.trimble.com/reference/post-directsubscriberssubscriber_codevistajc2datajobsactionsadd) |
 | [Update Customer Action](actions/update-customer-action.md) | REST | `POST v1/direct/subscribers/:subscriber_code/vista/:api/2/data/customers/actions/change` | [docs](https://direct-api.xchange.trimble.com/reference/post-directsubscriberssubscriber_codevistaar2datacustomersactionsadd) |

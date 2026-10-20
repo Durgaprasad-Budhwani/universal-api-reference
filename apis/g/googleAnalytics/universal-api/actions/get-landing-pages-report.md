@@ -8,16 +8,20 @@ GET https://connect.mindcloud.co/v1/universal/googleAnalytics/latest/actions/get
 
 Authenticate with `Authorization: Bearer $MINDCLOUD_API_KEY` and pass a Google Analytics `connectionId` ([setup](../authentication.md)).
 
+This action also supports [pagination](../pagination.md) (`limit`, `offset`).
+
 ## Example request
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/googleAnalytics/latest/actions/get-landing-pages-report?connectionId=$CONNECTION_ID&propertyId=123456789&dateRanges%5B%5D=%5Bobject%20Object%5D" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/googleAnalytics/latest/actions/get-landing-pages-report?connectionId=$CONNECTION_ID&limit=25&offset=0&propertyId=123456789&dateRanges%5B%5D=%5Bobject%20Object%5D" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
   connectionId,
+  limit: '25',
+  offset: '0',
   "propertyId": "123456789",
   "dateRanges[]": "[object Object]"
 });
@@ -39,13 +43,6 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | --- | --- | --- | --- |
 | `propertyId` | string | yes | GA4 property ID without the properties/ prefix Example: `123456789`. |
 | `dateRanges[]` | array<object> | yes | GA4 date ranges, such as 30daysAgo through today Default: `[{"endDate":"today","startDate":"30daysAgo"}]`. |
-
-### Advanced
-
-| Key | Type | Required | Description |
-| --- | --- | --- | --- |
-| `limit` | number | no | Maximum report rows to return Default: `1000`. |
-| `offset` | number | no | Zero-based row offset Default: `0`. |
 
 ## Response
 
@@ -85,5 +82,5 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Native endpoint
 
-Through the native Google Analytics API, this operation is `POST https://analyticsdata.googleapis.com/v1beta/properties/:propertyId:urlEnd` (base URL `https://analyticsdata.googleapis.com/v1beta`). The Universal API call above is translated to it by MindCloud, including authentication. See the [native action reference](../../native-api/actions/get-landing-pages-report.md) for the provider-specific parameters and requirements.
+Through the native Google Analytics API, this operation is `POST https://analyticsdata.googleapis.com/v1beta/properties/:propertyId:urlEnd` (base URL `https://analyticsdata.googleapis.com/v1beta`). The Universal API call above is translated to it by MindCloud, including authentication and pagination. See the [native action reference](../../native-api/actions/get-landing-pages-report.md) for the provider-specific parameters and requirements.
 

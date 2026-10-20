@@ -57,7 +57,135 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native Zenoti API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "additionalInvoiceField": "string",
+      "brandId": "string",
+      "brandName": "Ava Chen",
+      "bundleName": "Ava Chen",
+      "businessUnit": "string",
+      "businessUnitId": "string",
+      "centerCode": "string",
+      "centerId": "string",
+      "centerName": "Ava Chen",
+      "collected": 1,
+      "companyName": "Ava Chen",
+      "createdBy": "string",
+      "createdById": "string",
+      "discount": 1,
+      "due": 1,
+      "guestCode": "string",
+      "guestGender": 1,
+      "guestId": "string",
+      "guestName": "Ava Chen",
+      "guestNationality": "string",
+      "invoiceClosedDate": "2026-05-07T12:00:00.000Z",
+      "invoiceDate": "2026-05-07T12:00:00.000Z",
+      "invoiceId": "string",
+      "invoiceItemId": "string",
+      "invoiceNo": "string",
+      "invoiceSource": "string",
+      "itemCategory": "string",
+      "itemCategoryCode": "string",
+      "itemCode": "string",
+      "itemId": "string",
+      "itemName": "Ava Chen",
+      "itemSubCategory": "string",
+      "itemType": "string",
+      "nonTaxableRedemption": 1,
+      "paymentType": "string",
+      "price": 1,
+      "qty": 1,
+      "receiptNo": "string",
+      "redeemed": 1,
+      "referralSource": "string",
+      "saleDate": "2026-05-07T12:00:00.000Z",
+      "salesExcludingRedemption": 1,
+      "salesExcTax": 1,
+      "salesIncTax": 1,
+      "saleType": "string",
+      "serviceShopCost": 1,
+      "soldBy": "string",
+      "soldByCode": "string",
+      "soldById": "string",
+      "status": "string",
+      "tax": 1,
+      "taxableRedemption": 1,
+      "taxRedeemedByGiftCard": 1,
+      "taxRedeemedByLoyaltyPoints": 1,
+      "totalGroupCount": 1,
+      "vendorId": "string",
+      "vendorName": "Ava Chen"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `additionalInvoiceField` | string |  |
+| `brandId` | string |  |
+| `brandName` | string |  |
+| `bundleName` | string |  |
+| `businessUnit` | string |  |
+| `businessUnitId` | string |  |
+| `centerCode` | string |  |
+| `centerId` | string |  |
+| `centerName` | string |  |
+| `collected` | number |  |
+| `companyName` | string |  |
+| `createdBy` | string |  |
+| `createdById` | string |  |
+| `discount` | number |  |
+| `due` | number |  |
+| `guestCode` | string |  |
+| `guestGender` | number |  |
+| `guestId` | string |  |
+| `guestName` | string |  |
+| `guestNationality` | string |  |
+| `invoiceClosedDate` | date |  |
+| `invoiceDate` | date |  |
+| `invoiceId` | string |  |
+| `invoiceItemId` | string |  |
+| `invoiceNo` | string |  |
+| `invoiceSource` | string |  |
+| `itemCategory` | string |  |
+| `itemCategoryCode` | string |  |
+| `itemCode` | string |  |
+| `itemId` | string |  |
+| `itemName` | string |  |
+| `itemSubCategory` | string |  |
+| `itemType` | string |  |
+| `nonTaxableRedemption` | number |  |
+| `paymentType` | string |  |
+| `price` | number |  |
+| `qty` | number |  |
+| `receiptNo` | string |  |
+| `redeemed` | number |  |
+| `referralSource` | string |  |
+| `saleDate` | date |  |
+| `salesExcludingRedemption` | number |  |
+| `salesExcTax` | number |  |
+| `salesIncTax` | number |  |
+| `saleType` | string |  |
+| `serviceShopCost` | number |  |
+| `soldBy` | string |  |
+| `soldByCode` | string |  |
+| `soldById` | string |  |
+| `status` | string |  |
+| `tax` | number |  |
+| `taxableRedemption` | number |  |
+| `taxRedeemedByGiftCard` | number |  |
+| `taxRedeemedByLoyaltyPoints` | number |  |
+| `totalGroupCount` | number |  |
+| `vendorId` | string |  |
+| `vendorName` | string |  |
 
 ## Native endpoint
 

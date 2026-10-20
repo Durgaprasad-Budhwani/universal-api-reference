@@ -2,22 +2,23 @@
 
 These examples use the MindCloud API key and Bigin by Zoho CRM connection described in [authentication.md](authentication.md). Replace `$CONNECTION_ID` with the connection ID you copied from the Connections page.
 
-## Count Records
+## List Users
 
-Counts records in a Bigin by Zoho CRM module.
+Retrieves users from Bigin by Zoho CRM.
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/biginByZohoCRM/latest/actions/count-records?connectionId=$CONNECTION_ID&moduleApiName=Ava%20Chen" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/biginByZohoCRM/latest/actions/list-users?connectionId=$CONNECTION_ID&limit=25&offset=0" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
   connectionId,
-  "moduleApiName": "Ava Chen"
+  limit: '25',
+  offset: '0'
 });
 
-const response = await fetch(`https://connect.mindcloud.co/v1/universal/biginByZohoCRM/latest/actions/count-records?${params}`, {
+const response = await fetch(`https://connect.mindcloud.co/v1/universal/biginByZohoCRM/latest/actions/list-users?${params}`, {
   headers: {
     Authorization: `Bearer ${process.env.MINDCLOUD_API_KEY}`
   }
@@ -36,7 +37,7 @@ Example response:
 }
 ```
 
-See the full [Count Records action reference](actions/count-records.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/biginByZohoCRM/latest/actions/count-records).
+See the full [List Users action reference](actions/list-users.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/biginByZohoCRM/latest/actions/list-users).
 
 ## Add Notes
 

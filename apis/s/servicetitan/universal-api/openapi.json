@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "ServiceTitan Universal API",
-    "version": "0.0.388",
+    "version": "0.0.390",
     "description": "ServiceTitan is a cloud-based software platform for home and commercial service businesses that manages customers, jobs, scheduling, dispatching, invoicing, payments, and other field service operations."
   },
   "servers": [
@@ -51,6 +51,357 @@
                   },
                   "tagTypeId": {
                     "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/servicetitan/latest/actions/create-adjustment-invoice": {
+      "post": {
+        "operationId": "servicetitan.create-adjustment-invoice",
+        "summary": "Create Adjustment Invoice",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/servicetitan/latest/actions/create-adjustment-invoice"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "adjustmentToId",
+                  "items[].description",
+                  "items[].quantity"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "adjustmentToId": {
+                    "type": "number"
+                  },
+                  "number": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "typeId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "invoicedOn": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-mindcloud-advanced": true
+                  },
+                  "subtotal": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "tax": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "taxZoneId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "summary": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "royaltyStatus": {
+                    "type": "string",
+                    "enum": [
+                      "Failed",
+                      "Pending",
+                      "Sent"
+                    ],
+                    "x-mindcloud-advanced": true
+                  },
+                  "royaltyDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-mindcloud-advanced": true
+                  },
+                  "royaltySentOn": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-mindcloud-advanced": true
+                  },
+                  "royaltyMemo": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "exportId": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "reviewStatus": {
+                    "type": "string",
+                    "enum": [
+                      "Invoiced",
+                      "NeedsReview",
+                      "OnHold",
+                      "PendingApproval",
+                      "ReadyForBilling",
+                      "Rejected",
+                      "Reviewed"
+                    ],
+                    "x-mindcloud-advanced": true
+                  },
+                  "assignedToId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "budgetCodeId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "items[].skuId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].skuName": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].technicianId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].description": {
+                    "type": "string"
+                  },
+                  "items[].quantity": {
+                    "type": "number"
+                  },
+                  "items[].unitPrice": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].cost": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].isAddOn": {
+                    "type": "boolean",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].signature": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].technicianAcknowledgementSignature": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].installedOn": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].inventoryWarehouseName": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].skipUpdatingMembershipPrices": {
+                    "type": "boolean",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].itemGroupName": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].itemGroupRootId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].inventoryLocationId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].durationBillingId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].budgetCodeId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].id": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].serviceDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-mindcloud-advanced": true
                   }
                 },
                 "additionalProperties": false
@@ -11640,7 +11991,102 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "active": {
+                            "type": "boolean",
+                            "description": "Whether the job type is active."
+                          },
+                          "businessUnitIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "description": "Business unit IDs associated with the job type."
+                          },
+                          "class": {
+                            "type": "string",
+                            "description": "Job type class."
+                          },
+                          "createdOn": {
+                            "type": "string",
+                            "description": "Timestamp when the job type was created."
+                          },
+                          "customFieldTypeIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "description": "Custom field type IDs associated with the job type."
+                          },
+                          "defaultEstimateSoldAction": {
+                            "type": "string",
+                            "description": "Default estimate sold action."
+                          },
+                          "duration": {
+                            "type": "number",
+                            "description": "Default duration in seconds."
+                          },
+                          "enforceRecurringServiceEventSelection": {
+                            "type": "boolean",
+                            "description": "Whether recurring service event selection is enforced."
+                          },
+                          "externalData": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "External data associated with the job type."
+                          },
+                          "id": {
+                            "type": "number",
+                            "description": "Job type ID."
+                          },
+                          "invoiceSignaturesRequired": {
+                            "type": "boolean",
+                            "description": "Whether invoice signatures are required."
+                          },
+                          "isSmartDispatched": {
+                            "type": "boolean",
+                            "description": "Whether the job type is smart dispatched."
+                          },
+                          "modifiedOn": {
+                            "type": "string",
+                            "description": "Timestamp when the job type was last modified."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Job type name."
+                          },
+                          "noCharge": {
+                            "type": "boolean",
+                            "description": "Whether the job type is no charge."
+                          },
+                          "priority": {
+                            "type": "string",
+                            "description": "Priority of the job type."
+                          },
+                          "skills": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "description": "Skills associated with the job type."
+                          },
+                          "soldThreshold": {
+                            "type": "number",
+                            "description": "Sold threshold value."
+                          },
+                          "summary": {
+                            "type": "string",
+                            "description": "Job type summary."
+                          },
+                          "tagTypeIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            },
+                            "description": "Tag type IDs associated with the job type."
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -29782,6 +30228,298 @@
         }
       }
     },
+    "/v1/universal/servicetitan/latest/actions/update-customer": {
+      "put": {
+        "operationId": "servicetitan.update-customer",
+        "summary": "Update Customer",
+        "description": "Updates an existing customer in ServiceTitan.",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/servicetitan/latest/actions/update-customer"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "id"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "address.street": {
+                    "type": "string"
+                  },
+                  "customFields[].typeId": {
+                    "type": "number"
+                  },
+                  "externalData.applicationGuid": {
+                    "type": "string"
+                  },
+                  "externalData.externalData[].key": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "address.unit": {
+                    "type": "string"
+                  },
+                  "customFields[].value": {
+                    "type": "boolean"
+                  },
+                  "externalData.externalData[]": {
+                    "type": "array",
+                    "items": {}
+                  },
+                  "externalData.externalData[].value": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "Residential or commercial"
+                  },
+                  "address": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "description": "Bill-To address of the customer record"
+                  },
+                  "address.city": {
+                    "type": "string"
+                  },
+                  "address.state": {
+                    "type": "string"
+                  },
+                  "customFields[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "address.zip": {
+                    "type": "string"
+                  },
+                  "externalData": {
+                    "type": "object",
+                    "additionalProperties": true
+                  },
+                  "address.country": {
+                    "type": "string"
+                  },
+                  "doNotMail": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "address.longitude": {
+                    "type": "number"
+                  },
+                  "doNotService": {
+                    "type": "boolean",
+                    "default": false
+                  },
+                  "active": {
+                    "type": "boolean",
+                    "description": "Customer has been flagged as “active” ar \"innactive\""
+                  },
+                  "address.latitude": {
+                    "type": "number"
+                  },
+                  "tagTypeIds[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/universal/servicetitan/latest/actions/update-customer-membership": {
       "put": {
         "operationId": "servicetitan.update-customer-membership",
@@ -30545,6 +31283,273 @@
                   },
                   "id": {
                     "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/servicetitan/latest/actions/update-invoice-items": {
+      "put": {
+        "operationId": "servicetitan.update-invoice-items",
+        "summary": "Update Invoice Items",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/servicetitan/latest/actions/update-invoice-items"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "invoiceId",
+                  "description",
+                  "quantity"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "invoiceId": {
+                    "type": "number"
+                  },
+                  "skuId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "skuName": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "technicianId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "quantity": {
+                    "type": "number"
+                  },
+                  "unitPrice": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "cost": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "isAddOn": {
+                    "type": "boolean",
+                    "x-mindcloud-advanced": true
+                  },
+                  "signature": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "technicianAcknowledgementSignature": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "installedOn": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-mindcloud-advanced": true
+                  },
+                  "inventoryWarehouseName": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "skipUpdatingMembershipPrices": {
+                    "type": "boolean",
+                    "x-mindcloud-advanced": true
+                  },
+                  "itemGroupName": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "itemGroupRootId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "inventoryLocationId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "durationBillingId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "budgetCodeId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "id": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "serviceDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-mindcloud-advanced": true
                   }
                 },
                 "additionalProperties": false

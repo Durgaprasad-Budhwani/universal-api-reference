@@ -20,4 +20,4 @@ This operation supports [filtering](../README.md#filtering).
 | --- | --- | --- | --- | --- |
 | `modifiedUtcAfter` | body | `date` | no | — |
 | `modifiedUtcBefore` | body | `date` | no | — |
-| `object` | path | `list<string>` | yes | Specify the type of Object from the Accounts Receivable V2 Direct API that you'd like to retrieve. |
+| `object` | path | `list<string>` | yes | Specify the type of Object from the Accounts Receivable V2 Direct API that you'd like to retrieve. Accepted values: `batch_entries`, `batch_entry_lines`, `batches`, `company_parameters`, `credit_notes`, `customers`, `distribution_codes`, `receivable_types`, `transaction_lines`, `transactions`. |

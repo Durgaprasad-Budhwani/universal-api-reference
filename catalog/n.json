@@ -177251,7 +177251,7 @@
     "websiteUrl": "https://www.notion.so",
     "nativeBaseUrl": "https://api.notion.com/v1",
     "nativeDocumentationUrl": "https://developers.notion.com/reference",
-    "version": "0.0.20",
+    "version": "0.0.22",
     "authentication": [
       {
         "type": "oAuth2",
@@ -179831,7 +179831,7 @@
               "required": false,
               "description": "Property type to filter by.",
               "enumValues": [
-                "0"
+                "object"
               ]
             },
             {
@@ -179843,8 +179843,8 @@
               "required": false,
               "description": "Object value to filter search results.",
               "enumValues": [
-                "0",
-                "1"
+                "data_source",
+                "page"
               ]
             },
             {
@@ -179856,8 +179856,8 @@
               "required": false,
               "description": "Sort direction for result ordering.",
               "enumValues": [
-                "0",
-                "1"
+                "ascending",
+                "descending"
               ]
             },
             {
@@ -179869,7 +179869,7 @@
               "required": false,
               "description": "Timestamp field used for sorting.",
               "enumValues": [
-                "0"
+                "last_edited_time"
               ]
             },
             {
@@ -179915,7 +179915,7 @@
             "description": "Property type to filter by.",
             "example": "object",
             "enumValues": [
-              "0"
+              "object"
             ]
           },
           {
@@ -179927,8 +179927,8 @@
             "description": "Object value to filter search results.",
             "example": "data_source",
             "enumValues": [
-              "0",
-              "1"
+              "data_source",
+              "page"
             ]
           },
           {
@@ -179940,8 +179940,8 @@
             "description": "Sort direction for result ordering.",
             "example": "ascending",
             "enumValues": [
-              "0",
-              "1"
+              "ascending",
+              "descending"
             ]
           },
           {
@@ -179953,7 +179953,7 @@
             "description": "Timestamp field used for sorting.",
             "example": "last_edited_time",
             "enumValues": [
-              "0"
+              "last_edited_time"
             ]
           },
           {

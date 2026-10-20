@@ -8,16 +8,20 @@ GET https://connect.mindcloud.co/v1/universal/hubspotApp/latest/actions/search-e
 
 Authenticate with `Authorization: Bearer $MINDCLOUD_API_KEY` and pass a HubSpot `connectionId` ([setup](../authentication.md)).
 
+This action also supports [pagination](../pagination.md) (`limit`, `offset`).
+
 ## Example request
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/hubspotApp/latest/actions/search-engagements?connectionId=$CONNECTION_ID&engagementType=notes" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/hubspotApp/latest/actions/search-engagements?connectionId=$CONNECTION_ID&limit=25&offset=0&engagementType=notes" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
   connectionId,
+  limit: '25',
+  offset: '0',
   "engagementType": "notes"
 });
 
@@ -49,8 +53,6 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
-| `limit` | number | no | Maximum number of records to return in this search page. Example: `10`. |
-| `after` | string | no | Paging cursor for the next search page. Example: `next-cursor`. |
 | `sorts[]` | array<string> | no | Sort clauses to apply to the search results. |
 | `filterGroups[].filters[].values[]` | array<string> | no | Multiple comparison values for IN and NOT_IN filters. |
 | `filterGroups[].filters[].highValue` | string | no | Upper bound value for BETWEEN filters. Example: `z`. |
@@ -87,5 +89,5 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Native endpoint
 
-Through the native HubSpot API, this operation is `POST crm/v3/objects/:engagementType/search` (base URL `https://api.hubapi.com`). The Universal API call above is translated to it by MindCloud, including authentication. See the [native action reference](../../native-api/actions/search-engagements.md) for the provider-specific parameters and requirements.
+Through the native HubSpot API, this operation is `POST crm/v3/objects/:engagementType/search` (base URL `https://api.hubapi.com`). The Universal API call above is translated to it by MindCloud, including authentication and pagination. See the [native action reference](../../native-api/actions/search-engagements.md) for the provider-specific parameters and requirements.
 

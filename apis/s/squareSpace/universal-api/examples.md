@@ -2,23 +2,21 @@
 
 These examples use the MindCloud API key and SquareSpace connection described in [authentication.md](authentication.md). Replace `$CONNECTION_ID` with the connection ID you copied from the Connections page.
 
-## Get Image Processing Status
+## Retrieve Basic Site Information
 
-Retrieves product image processing status from Squarespace.
+Retrieves basic site information from Squarespace.
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/squareSpace/latest/actions/get-image-processing-status?connectionId=$CONNECTION_ID&imageId=string&productId=string" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/squareSpace/latest/actions/retrieve-basic-site-information?connectionId=$CONNECTION_ID" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
-  connectionId,
-  "imageId": "string",
-  "productId": "string"
+  connectionId
 });
 
-const response = await fetch(`https://connect.mindcloud.co/v1/universal/squareSpace/latest/actions/get-image-processing-status?${params}`, {
+const response = await fetch(`https://connect.mindcloud.co/v1/universal/squareSpace/latest/actions/retrieve-basic-site-information?${params}`, {
   headers: {
     Authorization: `Bearer ${process.env.MINDCLOUD_API_KEY}`
   }
@@ -34,15 +32,22 @@ Example response:
   "success": true,
   "data": [
     {
+      "currency": "string",
       "id": "string",
-      "status": "string"
+      "language": "string",
+      "location": {},
+      "measurementStandard": "string",
+      "siteId": "string",
+      "timeZone": "string",
+      "title": "string",
+      "url": "https://example.com"
     }
   ],
   "meta": {}
 }
 ```
 
-See the full [Get Image Processing Status action reference](actions/get-image-processing-status.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/squareSpace/latest/actions/get-image-processing-status).
+See the full [Retrieve Basic Site Information action reference](actions/retrieve-basic-site-information.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/squareSpace/latest/actions/retrieve-basic-site-information).
 
 ## Adjust Stock Quantities
 

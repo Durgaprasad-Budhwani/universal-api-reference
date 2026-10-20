@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Viewpoint Vista Universal API",
-    "version": "0.0.84",
+    "version": "0.0.89",
     "description": "Call Viewpoint Vista actions through MindCloud's Universal API."
   },
   "servers": [
@@ -8200,7 +8200,42 @@
             "description": "Specify the type of Object from the Job Cost V2 Direct API that you'd like to retrieve.",
             "schema": {
               "type": "string",
-              "description": "Specify the type of Object from the Job Cost V2 Direct API that you'd like to retrieve."
+              "description": "Specify the type of Object from the Job Cost V2 Direct API that you'd like to retrieve.",
+              "enum": [
+                "budget_codes",
+                "change_orders",
+                "company_parameters",
+                "contract_cls_batches",
+                "contract_cls_entries",
+                "contract_headers",
+                "contract_items",
+                "contracts",
+                "cost_adj_bat_entries",
+                "cost_adj_batches",
+                "cost_detail",
+                "cost_detail_period",
+                "cost_types",
+                "departments",
+                "field_tickets",
+                "fixed_rate_templates",
+                "insurance_templates",
+                "job_costs",
+                "job_phases",
+                "jobs",
+                "liability_templates",
+                "mat_use_bat_entries",
+                "mat_use_batches",
+                "metric_conversions",
+                "original_estimates",
+                "phases",
+                "progress_bat_entries",
+                "progress_batches",
+                "proj_bat_entries",
+                "proj_batches",
+                "project_managers",
+                "projection_notes",
+                "std_item_codes"
+              ]
             }
           },
           {
@@ -8806,7 +8841,28 @@
             "description": "Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve.",
             "schema": {
               "type": "string",
-              "description": "Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve."
+              "description": "Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve.",
+              "enum": [
+                "category_discounts",
+                "change_orders",
+                "co_batch_entries",
+                "co_batches",
+                "company_parameters",
+                "compliances",
+                "pending_po_headers",
+                "pending_po_lines",
+                "po_batch_entries",
+                "po_batches",
+                "po_distributions",
+                "po_headers",
+                "po_lines",
+                "purchase_orders",
+                "receipt_bat_entries",
+                "receipt_batches",
+                "receipts",
+                "shipping_locations",
+                "vendor_materials"
+              ]
             }
           },
           {
@@ -11494,7 +11550,19 @@
             "description": "Specify the type of Object from the Accounts Receivable V2 Direct API that you'd like to retrieve.",
             "schema": {
               "type": "string",
-              "description": "Specify the type of Object from the Accounts Receivable V2 Direct API that you'd like to retrieve."
+              "description": "Specify the type of Object from the Accounts Receivable V2 Direct API that you'd like to retrieve.",
+              "enum": [
+                "batch_entries",
+                "batch_entry_lines",
+                "batches",
+                "company_parameters",
+                "credit_notes",
+                "customers",
+                "distribution_codes",
+                "receivable_types",
+                "transaction_lines",
+                "transactions"
+              ]
             }
           },
           {
@@ -14145,7 +14213,28 @@
             "description": "Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve.",
             "schema": {
               "type": "string",
-              "description": "Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve."
+              "description": "Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve.",
+              "enum": [
+                "category_discounts",
+                "change_orders",
+                "co_batch_entries",
+                "co_batches",
+                "company_parameters",
+                "compliances",
+                "pending_po_headers",
+                "pending_po_lines",
+                "po_batch_entries",
+                "po_batches",
+                "po_distributions",
+                "po_headers",
+                "po_lines",
+                "purchase_orders",
+                "receipt_bat_entries",
+                "receipt_batches",
+                "receipts",
+                "shipping_locations",
+                "vendor_materials"
+              ]
             }
           },
           {
@@ -15270,6 +15359,207 @@
               "format": "date-time",
               "description": "Returns transactions modified before this timestamp. Format: yyyy-MM-ddThh:mm:ss.fffffffZ."
             }
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "required": false,
+            "description": "An RSQL expression used to filter the results.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/viewpointVista/latest/actions/search-transactions-lines": {
+      "get": {
+        "operationId": "viewpointVista.search-transactions-lines",
+        "summary": "Search Transactions Lines",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/viewpointVista/latest/actions/search-transactions-lines"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filters[]",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {}
+            },
+            "style": "form",
+            "explode": false
           },
           {
             "name": "where",

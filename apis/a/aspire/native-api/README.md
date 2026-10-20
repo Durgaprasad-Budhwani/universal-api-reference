@@ -1,6 +1,6 @@
 # Aspire: Native API Reference
 
-A consolidated summary of Aspire's API configuration and 153 documented operations, with links to official documentation.
+A consolidated summary of Aspire's API configuration and 154 documented operations, with links to official documentation.
 
 - **Official docs:** https://guide.youraspire.com/apidocs
 - **API base URL:** `https://{environment}.youraspire.com/`
@@ -49,7 +49,7 @@ Set the sort field with `$orderby` in the query string. Use `asc` for ascending 
 
 Wait 60000 ms before the first retry. Stop after 14 attempts. Multiply the delay by 3 after each failed attempt.
 
-## Endpoints (153 documented)
+## Endpoints (154 documented)
 
 | Operation | Method & path | Vendor docs |
 | --- | --- | --- |
@@ -138,6 +138,7 @@ Wait 60000 ms before the first retry. Stop after 14 attempts. Multiply the delay
 | [List Job Statuses](actions/list-job-statuses.md) | `GET JobStatuses` | [docs](https://cloud-api.youraspire.com/swagger/index.html#/JobStatuses/JobStatuses_Get) |
 | [List Jobs](actions/list-jobs.md) | `GET Jobs` | [docs](https://cloud-api.youraspire.com/swagger/index.html#/Jobs/Jobs_Get) |
 | [List Localities](actions/list-localities.md) | `GET Localities` | [docs](https://guide.youraspire.com/apidocs) |
+| [List Object Codes](actions/list-object-codes.md) | `GET ObjectCodes` | [docs](https://guide.youraspire.com/apidocs/objectcodes-3) |
 | [List Opportunity Service Items](actions/list-oportunity-service-items.md) | `GET OpportunityServiceItems` | [docs](https://guide.youraspire.com/apidocs/opportunityserviceitems-3) |
 | [List Opportunities](actions/list-opportunities.md) | `GET Opportunities` | [docs](https://guide.youraspire.com/apidocs/opportunities-2) |
 | [List Opportunity Lost Reasons](actions/list-opportunity-lost-reasons.md) | `GET OpportunityLostReasons` | [docs](https://cloud-api.youraspire.com/swagger/index.html#/OpportunityLostReasons/OpportunityLostReasons_Get) |

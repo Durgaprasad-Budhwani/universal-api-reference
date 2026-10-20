@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Geocodio Universal API",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "Geocodio provides geocoding, reverse geocoding, data append, list geocoding, and distance APIs for addresses and coordinates in the United States, Canada, and Mexico."
   },
   "servers": [
@@ -2602,7 +2602,7 @@
               "type": "string",
               "description": "Optional response format. Geocodio currently documents simple as the alternate format.",
               "enum": [
-                "0"
+                "simple"
               ],
               "example": "simple",
               "x-mindcloud-advanced": true

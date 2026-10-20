@@ -2,21 +2,22 @@
 
 These examples use the MindCloud API key and Microsoft Exchange connection described in [authentication.md](authentication.md). Replace `$CONNECTION_ID` with the connection ID you copied from the Connections page.
 
-## Authorize Application
+## List User Folders
 
-
+Finds messages in a user's mailbox.
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/microsoftExchange/latest/actions/authorize-application?connectionId=$CONNECTION_ID" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/microsoftExchange/latest/actions/list-user-folders?connectionId=$CONNECTION_ID&userIdOrPrincipalName=user%40company.com%20or%20Entra%20user%20id" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
-  connectionId
+  connectionId,
+  "userIdOrPrincipalName": "user@company.com or Entra user id"
 });
 
-const response = await fetch(`https://connect.mindcloud.co/v1/universal/microsoftExchange/latest/actions/authorize-application?${params}`, {
+const response = await fetch(`https://connect.mindcloud.co/v1/universal/microsoftExchange/latest/actions/list-user-folders?${params}`, {
   headers: {
     Authorization: `Bearer ${process.env.MINDCLOUD_API_KEY}`
   }
@@ -32,17 +33,66 @@ Example response:
   "success": true,
   "data": [
     {
-      "accessToken": "string",
-      "expiresIn": 1,
-      "extExpiresIn": 1,
-      "tokenType": "string"
+      "attachments": [
+        {
+          "contentType": "string",
+          "id": "string",
+          "isInline": true,
+          "name": "Ava Chen"
+        }
+      ],
+      "bccRecipients": [
+        {
+          "emailAddress": {
+            "address": "ava@example.com",
+            "name": "ava@example.com"
+          }
+        }
+      ],
+      "bodyPreview": "string",
+      "ccRecipients": [
+        {
+          "emailAddress": {
+            "address": "ava@example.com",
+            "name": "ava@example.com"
+          }
+        }
+      ],
+      "from": {
+        "emailAddress": {
+          "address": "ava@example.com",
+          "name": "ava@example.com"
+        }
+      },
+      "hasAttachments": true,
+      "id": "string",
+      "importance": "string",
+      "isRead": true,
+      "receivedDateTime": "2026-05-07T12:00:00.000Z",
+      "sender": {
+        "emailAddress": {
+          "address": "ava@example.com",
+          "name": "ava@example.com"
+        }
+      },
+      "sentDateTime": "2026-05-07T12:00:00.000Z",
+      "subject": "string",
+      "toRecipients": [
+        {
+          "emailAddress": {
+            "address": "ava@example.com",
+            "name": "ava@example.com"
+          }
+        }
+      ],
+      "webLink": "https://example.com"
     }
   ],
   "meta": {}
 }
 ```
 
-See the full [Authorize Application action reference](actions/authorize-application.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/microsoftExchange/latest/actions/authorize-application).
+See the full [List User Folders action reference](actions/list-user-folders.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/microsoftExchange/latest/actions/list-user-folders).
 
 ## Add File Attachment to Message
 

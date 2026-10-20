@@ -15,10 +15,10 @@ Every action below is called through one REST interface, authenticated with a Mi
 
 Read more in [authentication.md](authentication.md).
 
-For example, to [Get Image Processing Status](actions/get-image-processing-status.md):
+For example, to [Retrieve Basic Site Information](actions/retrieve-basic-site-information.md):
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/squareSpace/latest/actions/get-image-processing-status?connectionId=$CONNECTION_ID&imageId=string&productId=string" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/squareSpace/latest/actions/retrieve-basic-site-information?connectionId=$CONNECTION_ID" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 

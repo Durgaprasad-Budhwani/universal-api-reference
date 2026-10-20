@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Aspire Universal API",
-    "version": "0.1.518",
+    "version": "0.1.527",
     "description": "Field service software to drive growth"
   },
   "servers": [
@@ -5427,6 +5427,9 @@
                       "type": "object",
                       "additionalProperties": true
                     }
+                  },
+                  "receiptID": {
+                    "type": "number"
                   }
                 },
                 "additionalProperties": false
@@ -22493,6 +22496,188 @@
         }
       }
     },
+    "/v1/universal/aspire/latest/actions/list-object-codes": {
+      "get": {
+        "operationId": "aspire.list-object-codes",
+        "summary": "List Object Codes",
+        "description": "Retrieve a list of information related to object codes.",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/aspire/latest/actions/list-object-codes"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/universal/aspire/latest/actions/list-oportunity-service-items": {
       "get": {
         "operationId": "aspire.list-oportunity-service-items",
@@ -36689,15 +36874,17 @@
               "schema": {
                 "type": "object",
                 "required": [
-                  "connectionId"
+                  "connectionId",
+                  "attachmentTypeId",
+                  "fileName",
+                  "fileData",
+                  "objectCode",
+                  "objectId"
                 ],
                 "properties": {
                   "connectionId": {
                     "type": "string",
                     "description": "The MindCloud connection ID for this app."
-                  },
-                  "$filter": {
-                    "type": "string"
                   },
                   "attachmentTypeId": {
                     "type": "string"
@@ -36706,16 +36893,19 @@
                     "type": "string"
                   },
                   "fileData": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "File content as a base64-encoded string. When the user attached a file in the chat, pass the attachment reference provided by the chat."
                   },
                   "objectCode": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Type of record receiving the attachment. Common values: WorkTicket (set objectId to workTicketID, not the ticket number), Opportunity (set objectId to opportunityID), and Receipt (set objectId to receiptID). Use listObjectCodes for the full list of supported values; do not guess the record type."
                   },
                   "objectId": {
                     "type": "number"
                   },
                   "attachToInvoice": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Only valid for Opportunity attachments. For any other objectCode, omit this field entirely; Aspire rejects it even when false."
                   },
                   "exposeToCrew": {
                     "type": "boolean"

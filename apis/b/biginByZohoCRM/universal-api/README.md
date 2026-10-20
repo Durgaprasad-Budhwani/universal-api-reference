@@ -15,10 +15,10 @@ Every action below is called through one REST interface, authenticated with a Mi
 
 Read more in [authentication.md](authentication.md).
 
-For example, to [Count Records](actions/count-records.md):
+For example, to [List Users](actions/list-users.md):
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/biginByZohoCRM/latest/actions/count-records?connectionId=$CONNECTION_ID&moduleApiName=Ava%20Chen" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/biginByZohoCRM/latest/actions/list-users?connectionId=$CONNECTION_ID&limit=25&offset=0" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 

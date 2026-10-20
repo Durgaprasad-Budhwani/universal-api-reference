@@ -2,22 +2,21 @@
 
 These examples use the MindCloud API key and Fleetworthy connection described in [authentication.md](authentication.md). Replace `$CONNECTION_ID` with the connection ID you copied from the Connections page.
 
-## Download Asset File
+## Get Person Metadata
 
 
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/fleetworthy/latest/actions/download-asset-file?connectionId=$CONNECTION_ID&cpFileId=550e8400-e29b-41d4-a716-446655440000" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/fleetworthy/latest/actions/get-person-metadata?connectionId=$CONNECTION_ID" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
-  connectionId,
-  "cpFileId": "550e8400-e29b-41d4-a716-446655440000"
+  connectionId
 });
 
-const response = await fetch(`https://connect.mindcloud.co/v1/universal/fleetworthy/latest/actions/download-asset-file?${params}`, {
+const response = await fetch(`https://connect.mindcloud.co/v1/universal/fleetworthy/latest/actions/get-person-metadata?${params}`, {
   headers: {
     Authorization: `Bearer ${process.env.MINDCLOUD_API_KEY}`
   }
@@ -31,12 +30,18 @@ Example response:
 ```json
 {
   "success": true,
-  "data": [],
+  "data": [
+    {
+      "regulatedDocumentStatuses": [
+        {}
+      ]
+    }
+  ],
   "meta": {}
 }
 ```
 
-See the full [Download Asset File action reference](actions/download-asset-file.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/fleetworthy/latest/actions/download-asset-file).
+See the full [Get Person Metadata action reference](actions/get-person-metadata.md), or [try it interactively](https://mindcloud.co/docs/universal/rest/fleetworthy/latest/actions/get-person-metadata).
 
 ## Create Person Regulated Document
 

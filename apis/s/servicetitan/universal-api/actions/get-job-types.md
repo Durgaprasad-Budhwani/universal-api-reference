@@ -44,7 +44,69 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native ServiceTitan API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "active": true,
+      "businessUnitIds": [
+        1
+      ],
+      "class": "string",
+      "createdOn": "string",
+      "customFieldTypeIds": [
+        1
+      ],
+      "defaultEstimateSoldAction": "string",
+      "duration": 1,
+      "enforceRecurringServiceEventSelection": true,
+      "externalData": {},
+      "id": 1,
+      "invoiceSignaturesRequired": true,
+      "isSmartDispatched": true,
+      "modifiedOn": "string",
+      "name": "Ava Chen",
+      "noCharge": true,
+      "priority": "string",
+      "skills": [
+        1
+      ],
+      "soldThreshold": 1,
+      "summary": "string",
+      "tagTypeIds": [
+        1
+      ]
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `active` | boolean | Whether the job type is active. |
+| `businessUnitIds` | array<number> | Business unit IDs associated with the job type. |
+| `class` | string | Job type class. |
+| `createdOn` | string | Timestamp when the job type was created. |
+| `customFieldTypeIds` | array<number> | Custom field type IDs associated with the job type. |
+| `defaultEstimateSoldAction` | string | Default estimate sold action. |
+| `duration` | number | Default duration in seconds. |
+| `enforceRecurringServiceEventSelection` | boolean | Whether recurring service event selection is enforced. |
+| `externalData` | object | External data associated with the job type. |
+| `id` | number | Job type ID. |
+| `invoiceSignaturesRequired` | boolean | Whether invoice signatures are required. |
+| `isSmartDispatched` | boolean | Whether the job type is smart dispatched. |
+| `modifiedOn` | string | Timestamp when the job type was last modified. |
+| `name` | string | Job type name. |
+| `noCharge` | boolean | Whether the job type is no charge. |
+| `priority` | string | Priority of the job type. |
+| `skills` | array<number> | Skills associated with the job type. |
+| `soldThreshold` | number | Sold threshold value. |
+| `summary` | string | Job type summary. |
+| `tagTypeIds` | array<number> | Tag type IDs associated with the job type. |
 
 ## Native endpoint
 

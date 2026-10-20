@@ -13,14 +13,14 @@ This action also supports [filtering](../filtering.md) (`where`).
 ## Example request
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/viewpointVista/latest/actions/search-po-objects?connectionId=$CONNECTION_ID&object=string" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/viewpointVista/latest/actions/search-po-objects?connectionId=$CONNECTION_ID&object=category_discounts" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
   connectionId,
-  "object": "string"
+  "object": "category_discounts"
 });
 
 const response = await fetch(`https://connect.mindcloud.co/v1/universal/viewpointVista/latest/actions/search-po-objects?${params}`, {
@@ -39,7 +39,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `modifiedUtcAfter` | date | no |  |
-| `object` | list<string> | yes | Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve. |
+| `object` | list<string> | yes | Specify the type of Object from the Purchase Order V2 Direct API that you'd like to retrieve. One of: `category_discounts`, `change_orders`, `co_batch_entries`, `co_batches`, `company_parameters`, `compliances`, `pending_po_headers`, `pending_po_lines`, `po_batch_entries`, `po_batches`, `po_distributions`, `po_headers`, `po_lines`, `purchase_orders`, `receipt_bat_entries`, `receipt_batches`, `receipts`, `shipping_locations`, `vendor_materials`. |
 | `modifiedUtcBefore` | date | no |  |
 
 ## Response

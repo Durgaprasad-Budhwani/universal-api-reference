@@ -35,7 +35,7 @@ The next-page cursor is read from `nextPageToken`.
 
 ## Pagination
 
-Use `pageSize` in the query string to set the page size (default 200). Use `pageToken` in the query string as the pagination cursor.
+Use `limit` in the request body to set the page size (default 100000). Use `offset` in the request body as the record offset; numbering starts at 0.
 
 ## Retry behavior
 

@@ -69887,7 +69887,7 @@
     "websiteUrl": "https://savvycal.com",
     "nativeBaseUrl": "https://savvycal.com",
     "nativeDocumentationUrl": "https://developers.savvycal.com/category/rest-api",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "authentication": [
       {
         "type": "oAuth2",
@@ -230048,7 +230048,7 @@
     "description": "ServiceTitan is a cloud-based software platform for home and commercial service businesses that manages customers, jobs, scheduling, dispatching, invoicing, payments, and other field service operations.",
     "iconUrl": "https://images.mindcloud.co/apps/icons/service-titan_1777386591371.png",
     "nativeDocumentationUrl": "https://developer.servicetitan.io/api-details/#api=tenant-crm-v2",
-    "version": "0.0.388",
+    "version": "0.0.390",
     "authentication": [
       {
         "type": "custom",
@@ -230251,6 +230251,579 @@
             "name": "Tag Type Id",
             "dataType": "string",
             "required": false
+          }
+        ],
+        "responseSchema": []
+      },
+      {
+        "name": "Create Adjustment Invoice",
+        "slug": "create-adjustment-invoice",
+        "operation": "create",
+        "method": "POST",
+        "model": "invoice",
+        "documentationUrl": "https://developer.servicetitan.io/docs/apis/tenant-accounting-v2/endpoints/Invoices_CreateAdjustmentInvoice",
+        "native": {
+          "method": "POST",
+          "path": "accounting/v2/tenant/{{credentials.tenant}}/invoices",
+          "baseUrl": "https://{{credentials.baseUrl}}/",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "adjustmentToId",
+              "name": "Adjustment to ID",
+              "dataType": "number",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "number",
+              "name": "Number",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "typeId",
+              "name": "Type ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "invoicedOn",
+              "name": "Invoiced On",
+              "dataType": "date",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "subtotal",
+              "name": "Subtotal",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "tax",
+              "name": "Tax",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "taxZoneId",
+              "name": "Tax Zone ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "summary",
+              "name": "Summary",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "royaltyStatus",
+              "name": "Royalty Status",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "enumValues": [
+                "Failed",
+                "Pending",
+                "Sent"
+              ]
+            },
+            {
+              "key": "royaltyDate",
+              "name": "Royalty Date",
+              "dataType": "date",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "royaltySentOn",
+              "name": "Royalty Sent On",
+              "dataType": "date",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "royaltyMemo",
+              "name": "Royalty Memo",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "exportId",
+              "name": "Export ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "reviewStatus",
+              "name": "Review Status",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "enumValues": [
+                "Invoiced",
+                "NeedsReview",
+                "OnHold",
+                "PendingApproval",
+                "ReadyForBilling",
+                "Rejected",
+                "Reviewed"
+              ]
+            },
+            {
+              "key": "assignedToId",
+              "name": "Assigned to ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "budgetCodeId",
+              "name": "Budget Code ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[]",
+              "name": "Items",
+              "dataType": "array",
+              "itemDataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].skuId",
+              "name": "SKU ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].skuName",
+              "name": "SKU Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].technicianId",
+              "name": "Technician ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].description",
+              "name": "Description",
+              "dataType": "string",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "items[].quantity",
+              "name": "Quantity",
+              "dataType": "number",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "items[].unitPrice",
+              "name": "Unit Price",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].cost",
+              "name": "Cost",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].isAddOn",
+              "name": "Is Add On",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].signature",
+              "name": "Signature",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].technicianAcknowledgementSignature",
+              "name": "Technician Acknowledgement Signature",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].installedOn",
+              "name": "Installed On",
+              "dataType": "date",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].inventoryWarehouseName",
+              "name": "Inventory Warehouse Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].skipUpdatingMembershipPrices",
+              "name": "Skip Updating Membership Prices",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].itemGroupName",
+              "name": "Item Group Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].itemGroupRootId",
+              "name": "Item Group Root ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].inventoryLocationId",
+              "name": "Inventory Location ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].durationBillingId",
+              "name": "Duration Billing ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].budgetCodeId",
+              "name": "Budget Code ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].id",
+              "name": "ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].serviceDate",
+              "name": "Service Date",
+              "dataType": "date",
+              "location": "body",
+              "required": false
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "adjustmentToId",
+            "name": "Adjustment to ID",
+            "dataType": "number",
+            "required": true
+          },
+          {
+            "key": "number",
+            "name": "Number",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "typeId",
+            "name": "Type ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "invoicedOn",
+            "name": "Invoiced On",
+            "dataType": "date",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "subtotal",
+            "name": "Subtotal",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "tax",
+            "name": "Tax",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "taxZoneId",
+            "name": "Tax Zone ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "summary",
+            "name": "Summary",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "royaltyStatus",
+            "name": "Royalty Status",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "enumValues": [
+              "Failed",
+              "Pending",
+              "Sent"
+            ]
+          },
+          {
+            "key": "royaltyDate",
+            "name": "Royalty Date",
+            "dataType": "date",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "royaltySentOn",
+            "name": "Royalty Sent On",
+            "dataType": "date",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "royaltyMemo",
+            "name": "Royalty Memo",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "exportId",
+            "name": "Export ID",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "reviewStatus",
+            "name": "Review Status",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "enumValues": [
+              "Invoiced",
+              "NeedsReview",
+              "OnHold",
+              "PendingApproval",
+              "ReadyForBilling",
+              "Rejected",
+              "Reviewed"
+            ]
+          },
+          {
+            "key": "assignedToId",
+            "name": "Assigned to ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "budgetCodeId",
+            "name": "Budget Code ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[]",
+            "name": "Items",
+            "dataType": "array",
+            "itemDataType": "object",
+            "required": false
+          },
+          {
+            "key": "items[].skuId",
+            "name": "SKU ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].skuName",
+            "name": "SKU Name",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].technicianId",
+            "name": "Technician ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].description",
+            "name": "Description",
+            "dataType": "string",
+            "required": true
+          },
+          {
+            "key": "items[].quantity",
+            "name": "Quantity",
+            "dataType": "number",
+            "required": true
+          },
+          {
+            "key": "items[].unitPrice",
+            "name": "Unit Price",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].cost",
+            "name": "Cost",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].isAddOn",
+            "name": "Is Add On",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].signature",
+            "name": "Signature",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].technicianAcknowledgementSignature",
+            "name": "Technician Acknowledgement Signature",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].installedOn",
+            "name": "Installed On",
+            "dataType": "date",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].inventoryWarehouseName",
+            "name": "Inventory Warehouse Name",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].skipUpdatingMembershipPrices",
+            "name": "Skip Updating Membership Prices",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].itemGroupName",
+            "name": "Item Group Name",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].itemGroupRootId",
+            "name": "Item Group Root ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].inventoryLocationId",
+            "name": "Inventory Location ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].durationBillingId",
+            "name": "Duration Billing ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].budgetCodeId",
+            "name": "Budget Code ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].id",
+            "name": "ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].serviceDate",
+            "name": "Service Date",
+            "dataType": "date",
+            "required": false,
+            "advanced": true
           }
         ],
         "responseSchema": []
@@ -237403,7 +237976,132 @@
             "required": false
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "active",
+            "dataType": "boolean",
+            "description": "Whether the job type is active.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "businessUnitIds",
+            "dataType": "array",
+            "itemDataType": "number",
+            "description": "Business unit IDs associated with the job type.",
+            "mockType": "array"
+          },
+          {
+            "key": "class",
+            "dataType": "string",
+            "description": "Job type class.",
+            "mockType": "string"
+          },
+          {
+            "key": "createdOn",
+            "dataType": "string",
+            "description": "Timestamp when the job type was created.",
+            "mockType": "string"
+          },
+          {
+            "key": "customFieldTypeIds",
+            "dataType": "array",
+            "itemDataType": "number",
+            "description": "Custom field type IDs associated with the job type.",
+            "mockType": "array"
+          },
+          {
+            "key": "defaultEstimateSoldAction",
+            "dataType": "string",
+            "description": "Default estimate sold action.",
+            "mockType": "string"
+          },
+          {
+            "key": "duration",
+            "dataType": "number",
+            "description": "Default duration in seconds.",
+            "mockType": "number"
+          },
+          {
+            "key": "enforceRecurringServiceEventSelection",
+            "dataType": "boolean",
+            "description": "Whether recurring service event selection is enforced.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "externalData",
+            "dataType": "object",
+            "description": "External data associated with the job type.",
+            "mockType": "object"
+          },
+          {
+            "key": "id",
+            "dataType": "number",
+            "description": "Job type ID.",
+            "mockType": "number"
+          },
+          {
+            "key": "invoiceSignaturesRequired",
+            "dataType": "boolean",
+            "description": "Whether invoice signatures are required.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "isSmartDispatched",
+            "dataType": "boolean",
+            "description": "Whether the job type is smart dispatched.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "modifiedOn",
+            "dataType": "string",
+            "description": "Timestamp when the job type was last modified.",
+            "mockType": "string"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "description": "Job type name.",
+            "mockType": "string"
+          },
+          {
+            "key": "noCharge",
+            "dataType": "boolean",
+            "description": "Whether the job type is no charge.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "priority",
+            "dataType": "string",
+            "description": "Priority of the job type.",
+            "mockType": "string"
+          },
+          {
+            "key": "skills",
+            "dataType": "array",
+            "itemDataType": "number",
+            "description": "Skills associated with the job type.",
+            "mockType": "array"
+          },
+          {
+            "key": "soldThreshold",
+            "dataType": "number",
+            "description": "Sold threshold value.",
+            "mockType": "number"
+          },
+          {
+            "key": "summary",
+            "dataType": "string",
+            "description": "Job type summary.",
+            "mockType": "string"
+          },
+          {
+            "key": "tagTypeIds",
+            "dataType": "array",
+            "itemDataType": "number",
+            "description": "Tag type IDs associated with the job type.",
+            "mockType": "array"
+          }
+        ]
       },
       {
         "name": "Get Journal Entries",
@@ -249111,6 +249809,361 @@
         "responseSchema": []
       },
       {
+        "name": "Update Customer",
+        "slug": "update-customer",
+        "operation": "update",
+        "method": "PUT",
+        "model": "accounting.customer",
+        "description": "Updates an existing customer in ServiceTitan.",
+        "native": {
+          "method": "PATCH",
+          "path": "crm/v2/tenant/{{credentials.tenant}}/customers/:id",
+          "baseUrl": "https://{{credentials.baseUrl}}/",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "address.street",
+              "name": "Street",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "customFields[].typeId",
+              "name": "Type Id",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "externalData.applicationGuid",
+              "name": "Application GUID",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "externalData.externalData[].key",
+              "name": "Key",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "name",
+              "name": "Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "address.unit",
+              "name": "Unit",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "customFields[].value",
+              "name": "Value",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "externalData.externalData[]",
+              "name": "External Data",
+              "dataType": "array",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "externalData.externalData[].value",
+              "name": "Value",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "type",
+              "name": "Type",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Residential or commercial"
+            },
+            {
+              "key": "address",
+              "name": "Address",
+              "dataType": "object",
+              "itemDataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "Bill-To address of the customer record"
+            },
+            {
+              "key": "address.city",
+              "name": "City",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "address.state",
+              "name": "State",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "customFields[]",
+              "name": "Custom Fields",
+              "dataType": "array",
+              "itemDataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "address.zip",
+              "name": "Zip",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "externalData",
+              "name": "External Data",
+              "dataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "address.country",
+              "name": "Country",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "doNotMail",
+              "name": "Do Not Mail",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false,
+              "format": "toggle"
+            },
+            {
+              "key": "id",
+              "name": "Customer Id",
+              "dataType": "string",
+              "location": "param",
+              "required": true
+            },
+            {
+              "key": "address.longitude",
+              "name": "Longitude",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "doNotService",
+              "name": "Do Not Service",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false,
+              "format": "toggle"
+            },
+            {
+              "key": "active",
+              "name": "Active",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false,
+              "description": "Customer has been flagged as “active” ar \"innactive\""
+            },
+            {
+              "key": "address.latitude",
+              "name": "Latitude",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "tagTypeIds[]",
+              "name": "Tag Type Ids",
+              "dataType": "array",
+              "itemDataType": "number",
+              "location": "body",
+              "required": false
+            }
+          ]
+        },
+        "supports": {
+          "pagination": true,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "address.street",
+            "name": "Street",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "customFields[].typeId",
+            "name": "Type Id",
+            "dataType": "number",
+            "required": false
+          },
+          {
+            "key": "externalData.applicationGuid",
+            "name": "Application GUID",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "externalData.externalData[].key",
+            "name": "Key",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "name",
+            "name": "Name",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "address.unit",
+            "name": "Unit",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "customFields[].value",
+            "name": "Value",
+            "dataType": "boolean",
+            "required": false
+          },
+          {
+            "key": "externalData.externalData[]",
+            "name": "External Data",
+            "dataType": "array",
+            "required": false
+          },
+          {
+            "key": "externalData.externalData[].value",
+            "name": "Value",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "type",
+            "name": "Type",
+            "dataType": "string",
+            "required": false,
+            "description": "Residential or commercial"
+          },
+          {
+            "key": "address",
+            "name": "Address",
+            "dataType": "object",
+            "itemDataType": "object",
+            "required": false,
+            "description": "Bill-To address of the customer record"
+          },
+          {
+            "key": "address.city",
+            "name": "City",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "address.state",
+            "name": "State",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "customFields[]",
+            "name": "Custom Fields",
+            "dataType": "array",
+            "itemDataType": "object",
+            "required": false
+          },
+          {
+            "key": "address.zip",
+            "name": "Zip",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "externalData",
+            "name": "External Data",
+            "dataType": "object",
+            "required": false
+          },
+          {
+            "key": "address.country",
+            "name": "Country",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "doNotMail",
+            "name": "Do Not Mail",
+            "dataType": "boolean",
+            "required": false,
+            "defaultValue": "false",
+            "format": "toggle"
+          },
+          {
+            "key": "id",
+            "name": "Customer Id",
+            "dataType": "string",
+            "required": true
+          },
+          {
+            "key": "address.longitude",
+            "name": "Longitude",
+            "dataType": "number",
+            "required": false
+          },
+          {
+            "key": "doNotService",
+            "name": "Do Not Service",
+            "dataType": "boolean",
+            "required": false,
+            "defaultValue": "false",
+            "format": "toggle"
+          },
+          {
+            "key": "active",
+            "name": "Active",
+            "dataType": "boolean",
+            "required": false,
+            "description": "Customer has been flagged as “active” ar \"innactive\""
+          },
+          {
+            "key": "address.latitude",
+            "name": "Latitude",
+            "dataType": "number",
+            "required": false
+          },
+          {
+            "key": "tagTypeIds[]",
+            "name": "Tag Type Ids",
+            "dataType": "array",
+            "itemDataType": "number",
+            "required": false
+          }
+        ],
+        "responseSchema": []
+      },
+      {
         "name": "Update Customer Membership",
         "slug": "update-customer-membership",
         "operation": "update",
@@ -249894,6 +250947,322 @@
             "name": "id",
             "dataType": "string",
             "required": false
+          }
+        ],
+        "responseSchema": []
+      },
+      {
+        "name": "Update Invoice Items",
+        "slug": "update-invoice-items",
+        "operation": "update",
+        "method": "PUT",
+        "model": "invoice",
+        "documentationUrl": "https://developer.servicetitan.io/docs/apis/tenant-accounting-v2/endpoints/Invoices_UpdateInvoiceItems",
+        "native": {
+          "method": "PATCH",
+          "path": "accounting/v2/tenant/{{credentials.tenant}}/invoices/:invoiceId/items",
+          "baseUrl": "https://{{credentials.baseUrl}}/",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "invoiceId",
+              "name": "Invoice ID",
+              "dataType": "number",
+              "location": "param",
+              "required": true
+            },
+            {
+              "key": "skuId",
+              "name": "SKU ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "skuName",
+              "name": "SKU Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "technicianId",
+              "name": "Technician ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "description",
+              "name": "Description",
+              "dataType": "string",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "quantity",
+              "name": "Quantity",
+              "dataType": "number",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "unitPrice",
+              "name": "Unit Price",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "cost",
+              "name": "Cost",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "isAddOn",
+              "name": "Is Add On",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "signature",
+              "name": "Signature",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "technicianAcknowledgementSignature",
+              "name": "Technician Acknowledgement Signature",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "installedOn",
+              "name": "Installed On",
+              "dataType": "date",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "inventoryWarehouseName",
+              "name": "Inventory Warehouse Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "skipUpdatingMembershipPrices",
+              "name": "Skip Updating Membership Prices",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "itemGroupName",
+              "name": "Item Group Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "itemGroupRootId",
+              "name": "Item Group Root ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "inventoryLocationId",
+              "name": "Inventory Location ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "durationBillingId",
+              "name": "Duration Billing ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "budgetCodeId",
+              "name": "Budget Code ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "id",
+              "name": "ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "serviceDate",
+              "name": "Service Date",
+              "dataType": "date",
+              "location": "body",
+              "required": false
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "invoiceId",
+            "name": "Invoice ID",
+            "dataType": "number",
+            "required": true
+          },
+          {
+            "key": "skuId",
+            "name": "SKU ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "skuName",
+            "name": "SKU Name",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "technicianId",
+            "name": "Technician ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "description",
+            "name": "Description",
+            "dataType": "string",
+            "required": true
+          },
+          {
+            "key": "quantity",
+            "name": "Quantity",
+            "dataType": "number",
+            "required": true
+          },
+          {
+            "key": "unitPrice",
+            "name": "Unit Price",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "cost",
+            "name": "Cost",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "isAddOn",
+            "name": "Is Add On",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "signature",
+            "name": "Signature",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "technicianAcknowledgementSignature",
+            "name": "Technician Acknowledgement Signature",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "installedOn",
+            "name": "Installed On",
+            "dataType": "date",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "inventoryWarehouseName",
+            "name": "Inventory Warehouse Name",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "skipUpdatingMembershipPrices",
+            "name": "Skip Updating Membership Prices",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "itemGroupName",
+            "name": "Item Group Name",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "itemGroupRootId",
+            "name": "Item Group Root ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "inventoryLocationId",
+            "name": "Inventory Location ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "durationBillingId",
+            "name": "Duration Billing ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "budgetCodeId",
+            "name": "Budget Code ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "id",
+            "name": "ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "serviceDate",
+            "name": "Service Date",
+            "dataType": "date",
+            "required": false,
+            "advanced": true
           }
         ],
         "responseSchema": []
@@ -282161,7 +283530,7 @@
     "name": "ShipBob",
     "slug": "shipbob",
     "iconUrl": "https://images.mindcloud.co/apps/icons/shipbob-icon_1782394422728.svg",
-    "version": "0.0.38",
+    "version": "0.0.39",
     "authentication": [
       {
         "type": "apiKey",
@@ -282991,7 +284360,74 @@
           "sorting": false
         },
         "arguments": [],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "inventoryId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "locations",
+            "dataType": "array",
+            "itemDataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "locations[].awaitingQuantity",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "locations[].committedQuantity",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "locations[].damagedQuantity",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "locations[].fulfillableQuantity",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "locations[].internalTransferQuantity",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "locations[].locationId",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "locations[].name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "locations[].onHandQuantity",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "locations[].quarantineQuantity",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "sku",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "List Return Orders",
@@ -676014,7 +677450,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/square-space_1773072178168.png",
     "websiteUrl": "https://www.squarespace.com",
     "nativeDocumentationUrl": "https://developers.squarespace.com/commerce-apis/overview",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "authentication": [
       {
         "type": "apiKey",

@@ -37,7 +37,50 @@ const { success, data } = await response.json();
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native ShipBob API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "inventoryId": 1,
+      "locations": [
+        {
+          "awaitingQuantity": 1,
+          "committedQuantity": 1,
+          "damagedQuantity": 1,
+          "fulfillableQuantity": 1,
+          "internalTransferQuantity": 1,
+          "locationId": 1,
+          "name": "Ava Chen",
+          "onHandQuantity": 1,
+          "quarantineQuantity": 1
+        }
+      ],
+      "name": "Ava Chen",
+      "sku": "string"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `inventoryId` | number |  |
+| `locations` | array<object> |  |
+| `locations[].awaitingQuantity` | number |  |
+| `locations[].committedQuantity` | number |  |
+| `locations[].damagedQuantity` | number |  |
+| `locations[].fulfillableQuantity` | number |  |
+| `locations[].internalTransferQuantity` | number |  |
+| `locations[].locationId` | number |  |
+| `locations[].name` | string |  |
+| `locations[].onHandQuantity` | number |  |
+| `locations[].quarantineQuantity` | number |  |
+| `name` | string |  |
+| `sku` | string |  |
 
 ## Native endpoint
 

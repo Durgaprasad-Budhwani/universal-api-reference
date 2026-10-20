@@ -143129,7 +143129,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/fleetio_1782742767607.png",
     "websiteUrl": "https://www.fleetio.com/",
     "nativeDocumentationUrl": "https://developer.fleetio.com/docs/api/fleetio-developer-api",
-    "version": "0.0.9",
+    "version": "0.0.10",
     "authentication": [
       {
         "type": "custom",
@@ -158761,7 +158761,7 @@
     "websiteUrl": "https://www.fleetworthy.com",
     "nativeBaseUrl": "https://www.fleetworthy.com",
     "nativeDocumentationUrl": "https://developer.fleetworthy.com/api-details",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "authentication": [
       {
         "type": "custom",

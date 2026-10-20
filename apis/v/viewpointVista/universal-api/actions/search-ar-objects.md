@@ -13,14 +13,14 @@ This action also supports [filtering](../filtering.md) (`where`).
 ## Example request
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/viewpointVista/latest/actions/search-ar-objects?connectionId=$CONNECTION_ID&object=string" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/viewpointVista/latest/actions/search-ar-objects?connectionId=$CONNECTION_ID&object=batch_entries" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
 ```js
 const params = new URLSearchParams({
   connectionId,
-  "object": "string"
+  "object": "batch_entries"
 });
 
 const response = await fetch(`https://connect.mindcloud.co/v1/universal/viewpointVista/latest/actions/search-ar-objects?${params}`, {
@@ -40,7 +40,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | --- | --- | --- | --- |
 | `modifiedUtcAfter` | date | no |  |
 | `modifiedUtcBefore` | date | no |  |
-| `object` | list<string> | yes | Specify the type of Object from the Accounts Receivable V2 Direct API that you'd like to retrieve. |
+| `object` | list<string> | yes | Specify the type of Object from the Accounts Receivable V2 Direct API that you'd like to retrieve. One of: `batch_entries`, `batch_entry_lines`, `batches`, `company_parameters`, `credit_notes`, `customers`, `distribution_codes`, `receivable_types`, `transaction_lines`, `transactions`. |
 
 ## Response
 

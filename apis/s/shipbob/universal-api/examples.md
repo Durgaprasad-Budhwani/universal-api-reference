@@ -32,7 +32,26 @@ Example response:
 ```json
 {
   "success": true,
-  "data": [],
+  "data": [
+    {
+      "inventoryId": 1,
+      "locations": [
+        {
+          "awaitingQuantity": 1,
+          "committedQuantity": 1,
+          "damagedQuantity": 1,
+          "fulfillableQuantity": 1,
+          "internalTransferQuantity": 1,
+          "locationId": 1,
+          "name": "Ava Chen",
+          "onHandQuantity": 1,
+          "quarantineQuantity": 1
+        }
+      ],
+      "name": "Ava Chen",
+      "sku": "string"
+    }
+  ],
   "meta": {}
 }
 ```

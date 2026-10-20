@@ -14,10 +14,10 @@ Every action below is called through one REST interface, authenticated with a Mi
 
 Read more in [authentication.md](authentication.md).
 
-For example, to [Authorize Application](actions/authorize-application.md):
+For example, to [List User Folders](actions/list-user-folders.md):
 
 ```bash
-curl -X GET "https://connect.mindcloud.co/v1/universal/microsoftExchange/latest/actions/authorize-application?connectionId=$CONNECTION_ID" \
+curl -X GET "https://connect.mindcloud.co/v1/universal/microsoftExchange/latest/actions/list-user-folders?connectionId=$CONNECTION_ID&userIdOrPrincipalName=user%40company.com%20or%20Entra%20user%20id" \
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 

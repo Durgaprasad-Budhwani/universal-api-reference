@@ -29,4 +29,5 @@ Combine conditions with `;` for AND and `,` for OR. For example, `where=status==
 - [Search SL Objects](actions/search-sl-objects.md)
 - [Search SM Objects](actions/search-sm-objects.md)
 - [Search Transactions](actions/search-transactions.md)
+- [Search Transactions Lines](actions/search-transactions-lines.md)
 - [Search UD Objects](actions/search-ud-objects.md)

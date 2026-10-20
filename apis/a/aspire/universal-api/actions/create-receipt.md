@@ -76,6 +76,7 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | `ReceiptItems[].receiptItemPrice` | number | no |  |
 | `ReceivedDate` | string | no |  |
 | `ReceiptItems[].itemAllocations[]` | array<object> | no |  |
+| `receiptID` | number | no |  |
 
 ## Response
 

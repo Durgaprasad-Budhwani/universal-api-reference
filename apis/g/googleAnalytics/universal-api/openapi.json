@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Google Analytics Universal API",
-    "version": "0.0.25",
+    "version": "0.0.26",
     "description": "Read Google Analytics 4 account, property, traffic, engagement, event, conversion, and ecommerce reporting data."
   },
   "servers": [
@@ -1486,24 +1486,20 @@
             "name": "limit",
             "in": "query",
             "required": false,
-            "description": "Maximum report rows to return",
+            "description": "Maximum number of records to return.",
             "schema": {
-              "type": "number",
-              "description": "Maximum report rows to return",
-              "default": 1000,
-              "x-mindcloud-advanced": true
+              "type": "integer",
+              "minimum": 1
             }
           },
           {
             "name": "offset",
             "in": "query",
             "required": false,
-            "description": "Zero-based row offset",
+            "description": "Number of records to skip before returning results.",
             "schema": {
-              "type": "number",
-              "description": "Zero-based row offset",
-              "default": 0,
-              "x-mindcloud-advanced": true
+              "type": "integer",
+              "minimum": 0
             }
           },
           {

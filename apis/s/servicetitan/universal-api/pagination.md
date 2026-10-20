@@ -67,3 +67,4 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/servicetitan/latest/actio
 - [List Report Categories](actions/list-report-categories.md)
 - [List Reports](actions/list-reports.md)
 - [Update Costumer](actions/update-costumer.md)
+- [Update Customer](actions/update-customer.md)

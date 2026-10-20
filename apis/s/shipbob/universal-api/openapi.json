@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "ShipBob Universal API",
-    "version": "0.0.38",
+    "version": "0.0.39",
     "description": "Call ShipBob actions through MindCloud's Universal API."
   },
   "servers": [
@@ -2266,7 +2266,54 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "inventoryId": {
+                            "type": "number"
+                          },
+                          "locations": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "awaitingQuantity": {
+                                  "type": "number"
+                                },
+                                "committedQuantity": {
+                                  "type": "number"
+                                },
+                                "damagedQuantity": {
+                                  "type": "number"
+                                },
+                                "fulfillableQuantity": {
+                                  "type": "number"
+                                },
+                                "internalTransferQuantity": {
+                                  "type": "number"
+                                },
+                                "locationId": {
+                                  "type": "number"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "onHandQuantity": {
+                                  "type": "number"
+                                },
+                                "quarantineQuantity": {
+                                  "type": "number"
+                                }
+                              }
+                            }
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "sku": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

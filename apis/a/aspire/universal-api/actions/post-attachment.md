@@ -15,7 +15,12 @@ curl -X POST "https://connect.mindcloud.co/v1/universal/aspire/latest/actions/po
   -H "Authorization: Bearer $MINDCLOUD_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-  "connectionId": "$CONNECTION_ID"
+  "connectionId": "$CONNECTION_ID",
+  "attachmentTypeId": 1,
+  "fileName": "Ava Chen",
+  "fileData": "string",
+  "objectCode": "string",
+  "objectId": 1
 }'
 ```
 
@@ -27,7 +32,12 @@ const response = await fetch('https://connect.mindcloud.co/v1/universal/aspire/l
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
-    connectionId
+    connectionId,
+    "attachmentTypeId": 1,
+    "fileName": "Ava Chen",
+    "fileData": "string",
+    "objectCode": "string",
+    "objectId": 1
   })
 });
 
@@ -40,13 +50,12 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
-| `$filter` | string | no |  |
-| `attachmentTypeId` | list<number> | no |  |
-| `fileName` | string | no |  |
-| `fileData` | file | no |  |
-| `objectCode` | list<string> | no |  |
-| `objectId` | number | no |  |
-| `attachToInvoice` | boolean | no |  |
+| `attachmentTypeId` | list<number> | yes |  |
+| `fileName` | string | yes |  |
+| `fileData` | file | yes | File content as a base64-encoded string. When the user attached a file in the chat, pass the attachment reference provided by the chat. |
+| `objectCode` | list<string> | yes | Type of record receiving the attachment. Common values: WorkTicket (set objectId to workTicketID, not the ticket number), Opportunity (set objectId to opportunityID), and Receipt (set objectId to receiptID). Use listObjectCodes for the full list of supported values; do not guess the record type. |
+| `objectId` | number | yes |  |
+| `attachToInvoice` | boolean | no | Only valid for Opportunity attachments. For any other objectCode, omit this field entirely; Aspire rejects it even when false. |
 | `exposeToCrew` | boolean | no |  |
 
 ## Response

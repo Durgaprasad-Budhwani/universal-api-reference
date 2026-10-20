@@ -10,6 +10,10 @@ Finds engagement records in HubSpot.
 - **API:** REST - Body Pagination
 - **Official documentation:** [Search Engagements](https://developers.hubspot.com/docs/api-reference/crm-objects-v3/search/post-crm-v3-objects-objectType-search)
 
+## Capabilities
+
+This operation supports [pagination](../README.md#pagination).
+
 ## Parameters
 
 | Parameter | Location | Type | Required | Description |
@@ -22,8 +26,6 @@ Finds engagement records in HubSpot.
 | `filterGroups[].filters[].value` | body | `string` | no | Single comparison value for the filter. For deal activity lookups, pass the deal ID such as `9018868490`. |
 | `properties[]` | body | `array<string>` | no | Properties to return for each activity. For deal emails, try `hs_email_subject`, `hs_email_text`, `hs_email_from_email`, `hs_email_to_email`, and `hs_timestamp`. For deal notes, try `hs_note_body` and `hs_timestamp`. |
 | `query` | body | `string` | no | Optional full-text query applied to the default searchable properties for the selected activity type. |
-| `limit` | body | `number` | no | Maximum number of records to return in this search page. |
-| `after` | body | `string` | no | Paging cursor for the next search page. |
 | `sorts[]` | body | `array<string>` | no | Sort clauses to apply to the search results. |
 | `filterGroups[].filters[].values[]` | body | `array<string>` | no | Multiple comparison values for IN and NOT_IN filters. |
 | `filterGroups[].filters[].highValue` | body | `string` | no | Upper bound value for BETWEEN filters. |

@@ -41,10 +41,10 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
-| `filterProperty` | list | no | Property type to filter by. One of: `0`. Example: `object`. |
-| `filterValue` | list | no | Object value to filter search results. One of: `0`, `1`. Example: `data_source`. |
-| `sortDirection` | list | no | Sort direction for result ordering. One of: `0`, `1`. Example: `ascending`. |
-| `sortTimestamp` | list | no | Timestamp field used for sorting. One of: `0`. Example: `last_edited_time`. |
+| `filterProperty` | list | no | Property type to filter by. One of: `object`. Example: `object`. |
+| `filterValue` | list | no | Object value to filter search results. One of: `data_source`, `page`. Example: `data_source`. |
+| `sortDirection` | list | no | Sort direction for result ordering. One of: `ascending`, `descending`. Example: `ascending`. |
+| `sortTimestamp` | list | no | Timestamp field used for sorting. One of: `last_edited_time`. Example: `last_edited_time`. |
 | `pageSize` | number | no | Number of results to return (max 100). Default: `100`. Example: `100`. |
 | `startCursor` | string | no | Pagination cursor returned by previous response. Example: `d7f7f7f7-7f7f-7f7f-7f7f-d7f7f7f7f7f7`. |
 

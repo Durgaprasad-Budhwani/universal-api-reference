@@ -33,7 +33,105 @@ const { success, data } = await response.json();
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native Bigin by Zoho CRM API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "moduleName": "Ava Chen",
+      "apiName": "Ava Chen",
+      "singularLabel": "string",
+      "pluralLabel": "string",
+      "actualSingularLabel": "string",
+      "actualPluralLabel": "string",
+      "id": "string",
+      "accessType": "string",
+      "visibility": 1,
+      "sequenceNumber": 1,
+      "modifiedTime": "string",
+      "generatedType": "string",
+      "modifiedBy": {},
+      "parentModule": {},
+      "profileCount": 1,
+      "businessCardFieldLimit": 1,
+      "profiles": [
+        {}
+      ],
+      "arguments": [
+        {}
+      ],
+      "hasMoreProfiles": true,
+      "globalSearchSupported": true,
+      "deletable": true,
+      "creatable": true,
+      "editable": true,
+      "viewable": true,
+      "visible": true,
+      "convertable": true,
+      "apiSupported": true,
+      "filterSupported": true,
+      "showAsTab": true,
+      "webformSupported": true,
+      "inventoryTemplateSupported": true,
+      "isBlueprintSupported": true,
+      "presenceSubMenu": true,
+      "triggersSupported": true,
+      "quickCreate": true,
+      "feedsRequired": true,
+      "scoringSupported": true,
+      "publicFieldsConfigured": true,
+      "emailParserSupported": true,
+      "emailTemplateSupport": true
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `moduleName` | string |  |
+| `apiName` | string |  |
+| `singularLabel` | string |  |
+| `pluralLabel` | string |  |
+| `actualSingularLabel` | string |  |
+| `actualPluralLabel` | string |  |
+| `id` | string |  |
+| `accessType` | string |  |
+| `visibility` | number |  |
+| `sequenceNumber` | number |  |
+| `modifiedTime` | string |  |
+| `generatedType` | string |  |
+| `modifiedBy` | object |  |
+| `parentModule` | object |  |
+| `profileCount` | number |  |
+| `businessCardFieldLimit` | number |  |
+| `profiles` | array<object> |  |
+| `arguments` | array<object> |  |
+| `hasMoreProfiles` | boolean |  |
+| `globalSearchSupported` | boolean |  |
+| `deletable` | boolean |  |
+| `creatable` | boolean |  |
+| `editable` | boolean |  |
+| `viewable` | boolean |  |
+| `visible` | boolean |  |
+| `convertable` | boolean |  |
+| `apiSupported` | boolean |  |
+| `filterSupported` | boolean |  |
+| `showAsTab` | boolean |  |
+| `webformSupported` | boolean |  |
+| `inventoryTemplateSupported` | boolean |  |
+| `isBlueprintSupported` | boolean |  |
+| `presenceSubMenu` | boolean |  |
+| `triggersSupported` | boolean |  |
+| `quickCreate` | boolean |  |
+| `feedsRequired` | boolean |  |
+| `scoringSupported` | boolean |  |
+| `publicFieldsConfigured` | boolean |  |
+| `emailParserSupported` | boolean |  |
+| `emailTemplateSupport` | boolean |  |
 
 ## Native endpoint
 
