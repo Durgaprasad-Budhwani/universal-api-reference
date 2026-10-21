@@ -8,7 +8,7 @@ GET https://connect.mindcloud.co/v1/universal/netsuite/latest/actions/list-recor
 
 Authenticate with `Authorization: Bearer $MINDCLOUD_API_KEY` and pass a NetSuite - Advanced `connectionId` ([setup](../authentication.md)).
 
-This action also supports [pagination](../pagination.md) (`limit`, `offset`), [filtering](../filtering.md) (`where`).
+This action also supports [pagination](../pagination.md) (`limit`, `offset`).
 
 ## Example request
 

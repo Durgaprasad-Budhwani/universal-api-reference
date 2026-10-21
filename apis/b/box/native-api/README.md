@@ -1,6 +1,6 @@
 # Box: Native API Reference
 
-A consolidated summary of Box's API configuration and 8 documented operations, with links to official documentation.
+A consolidated summary of Box's API configuration and 10 documented operations, with links to official documentation.
 
 - **Official docs:** https://developer.box.com/reference
 - **API base URL:** `https://api.box.com/2.0`
@@ -44,15 +44,17 @@ Authorization: Bearer <apiKey>
 
 [Official authentication documentation](https://developer.box.com/guides/authentication/oauth2/oauth2-setup)
 
-## Endpoints (8 documented)
+## Endpoints (10 documented)
 
 | Operation | Method & path | Vendor docs |
 | --- | --- | --- |
 | [Commit Upload Session](actions/commit-upload-session.md) | `POST https://upload.box.com/api/2.0/files/upload_sessions/:session_id/commit` | [docs](https://developer.box.com/reference/post-files-upload-sessions-id-commit) |
 | [Create Folder](actions/create-folder.md) | `POST /folders` | [docs](https://developer.box.com/reference/post-folders) |
 | [Create Upload Session](actions/create-upload-session.md) | `POST https://upload.box.com/api/2.0/files/upload_sessions` | [docs](https://developer.box.com/reference/post-files-upload-sessions) |
+| [Download File](actions/download-file.md) | `GET /files/:file_id/content` | [docs](https://developer.box.com/reference/get-files-id-content) |
 | [Get Current User](actions/get-current-user.md) | `GET /users/me` | [docs](https://developer.box.com/reference/get-users-me) |
 | [Get Folder](actions/get-folder.md) | `GET /folders/:folder_id` | [docs](https://developer.box.com/reference/get-folders-id) |
+| [List all webhooks](actions/list-all-webhooks.md) | `GET /webhooks` | [docs](https://developer.box.com/reference/get-users-me) |
 | [List Root Folder Items](actions/list-root-folder-items.md) | `GET /folders/:folder_id/items` | [docs](https://developer.box.com/reference/get-folders-id-items) |
 | [Search Folders](actions/search-folders.md) | `GET /search` | [docs](https://developer.box.com/reference/get-search) |
 | [Upload Part](actions/upload-part.md) | `PUT https://upload.box.com/api/2.0/files/upload_sessions/:session_id` | [docs](https://developer.box.com/reference/put-files-upload-sessions-id) |

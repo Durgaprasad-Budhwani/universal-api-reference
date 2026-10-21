@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Autotask Universal API",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "description": "Autotask: Manage companies, opportunities, projects, contacts, resources, and attachments"
   },
   "servers": [
@@ -276,7 +276,13 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "queryCount": {
+                            "type": "number",
+                            "description": "Number of opportunities matching the search criteria."
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

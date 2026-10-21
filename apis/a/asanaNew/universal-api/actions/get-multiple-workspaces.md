@@ -45,7 +45,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `optPretty` | boolean | no | Comma-separated list of fields to include in each workspace record. Default: `gid,name,resource_type,is_organization`. |
-| `optFields` | list<string> | no |  |
+| `optFields` | string | no |  |
 
 ## Response
 

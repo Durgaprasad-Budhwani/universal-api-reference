@@ -301450,12 +301450,14 @@
   {
     "name": "Microsoft SharePoint Online",
     "slug": "microsoftSharePointOnline",
+    "category": "Storage",
+    "categoryGroup": "Content & Files",
     "description": "Access Microsoft SharePoint Online sites, document libraries, files, folders, lists, and list items through Microsoft Graph for organizational Microsoft 365 tenants.",
     "iconUrl": "https://images.mindcloud.co/apps/icons/sharepoint-icon_1776192069750.png",
     "websiteUrl": "https://www.microsoft.com/microsoft-365/sharepoint/collaboration",
     "nativeBaseUrl": "https://graph.microsoft.com",
     "nativeDocumentationUrl": "https://learn.microsoft.com/en-us/graph/api/resources/sharepoint?view=graph-rest-1.0",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "authentication": [
       {
         "type": "oAuth2",
@@ -301708,8 +301710,7 @@
             "name": "Fields",
             "dataType": "object",
             "required": true,
-            "description": "Object containing SharePoint list column values for the new item.",
-            "example": "[object Object]"
+            "description": "Object containing SharePoint list column values for the new item."
           }
         ],
         "responseSchema": [
@@ -301932,7 +301933,6 @@
           "filtering": false,
           "sorting": false
         },
-        "schemaDynamic": true,
         "arguments": [
           {
             "key": "driveId",
@@ -301951,7 +301951,14 @@
             "example": "itemId"
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "response",
+            "dataType": "string",
+            "description": "Base64-encoded file content. Decode this value to obtain the stored file bytes, or pass it to a file upload argument.",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "Get Drive Item",
@@ -303044,6 +303051,12 @@
           "path": "/v1.0/drives/{{driveId}}/root:/{{folderPath}}/{{fileName}}:/content",
           "baseUrl": "https://graph.microsoft.com",
           "apiType": "rest",
+          "headers": [
+            {
+              "name": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
           "arguments": [
             {
               "key": "driveId",
@@ -303075,7 +303088,7 @@
               "dataType": "file",
               "location": "body",
               "required": true,
-              "description": "File content to upload."
+              "description": "Plain base64 file content or a direct HTTPS download URL accessible without additional headers. The file is sent as binary bytes. A URL keeps file bytes out of the JSON request body; a web page or sign-in link is not a direct download URL."
             }
           ]
         },
@@ -303114,7 +303127,7 @@
             "name": "Content",
             "dataType": "file",
             "required": true,
-            "description": "File content to upload."
+            "description": "Plain base64 file content or a direct HTTPS download URL accessible without additional headers. The file is sent as binary bytes. A URL keeps file bytes out of the JSON request body; a web page or sign-in link is not a direct download URL."
           }
         ],
         "responseSchema": [

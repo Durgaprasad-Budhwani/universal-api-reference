@@ -187528,7 +187528,7 @@
       "format": "openapi",
       "url": "https://github.com/APIs-guru/openapi-directory/blob/main/APIs/googleapis.com/drive/v3/openapi.yaml"
     },
-    "version": "0.0.192",
+    "version": "0.0.193",
     "authentication": [
       {
         "type": "oAuth2",
@@ -188658,6 +188658,53 @@
             "key": "writersCanShare",
             "dataType": "boolean",
             "mockType": "boolean"
+          }
+        ]
+      },
+      {
+        "name": "Download File",
+        "slug": "download-file",
+        "operation": "read",
+        "method": "GET",
+        "model": "storage.file",
+        "documentationUrl": "https://developers.google.com/workspace/drive/api/reference/rest/v3/files/get",
+        "native": {
+          "method": "GET",
+          "path": "/drive/v3/files/:fileId",
+          "baseUrl": "https://www.googleapis.com",
+          "apiName": "REST API",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "fileId",
+              "name": "File ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "ID of the binary file stored in Drive. Use Export File for native Google Docs, Sheets, or Slides."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "fileId",
+            "name": "File ID",
+            "dataType": "string",
+            "required": true,
+            "description": "ID of the binary file stored in Drive. Use Export File for native Google Docs, Sheets, or Slides."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "response",
+            "dataType": "string",
+            "description": "Original binary file content encoded as base64. Decode this value to obtain the original PDF, Excel, or other stored file bytes.",
+            "mockType": "string"
           }
         ]
       },
@@ -190699,6 +190746,99 @@
             "key": "id",
             "dataType": "string",
             "mockType": "alphanumeric"
+          },
+          {
+            "key": "kind",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "mimeType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Upload File",
+        "slug": "upload-file",
+        "operation": "create",
+        "method": "POST",
+        "model": "storage.file",
+        "description": "Uploads a new file to Google Drive.",
+        "documentationUrl": "https://developers.google.com/workspace/drive/api/reference/rest/v3/files/create",
+        "native": {
+          "method": "POST",
+          "path": "/upload/drive/v3/files",
+          "baseUrl": "https://www.googleapis.com",
+          "apiName": "REST API",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "fileType",
+              "name": "File Type",
+              "dataType": "list",
+              "location": "param",
+              "required": true,
+              "description": "MIME type of the uploaded file. Choose PDF for .pdf or Excel (.xlsx) for .xlsx files.",
+              "enumValues": [
+                "application/pdf",
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "image/gif",
+                "image/jpeg",
+                "image/png"
+              ]
+            },
+            {
+              "key": "file",
+              "name": "File",
+              "dataType": "file",
+              "location": "body",
+              "required": true,
+              "description": "Base64-encoded file content or a direct download URL that works without interactive sign-in. PDF and Excel (.xlsx) are supported. Prefer a URL for larger files. This simple upload supports files up to 5 MB and creates the file without custom name or folder metadata."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "fileType",
+            "name": "File Type",
+            "dataType": "list",
+            "required": true,
+            "description": "MIME type of the uploaded file. Choose PDF for .pdf or Excel (.xlsx) for .xlsx files.",
+            "enumValues": [
+              "application/pdf",
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+              "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+              "image/gif",
+              "image/jpeg",
+              "image/png"
+            ]
+          },
+          {
+            "key": "file",
+            "name": "File",
+            "dataType": "file",
+            "required": true,
+            "description": "Base64-encoded file content or a direct download URL that works without interactive sign-in. PDF and Excel (.xlsx) are supported. Prefer a URL for larger files. This simple upload supports files up to 5 MB and creates the file without custom name or folder metadata."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
           },
           {
             "key": "kind",

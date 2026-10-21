@@ -48,7 +48,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | --- | --- | --- | --- |
 | `optPretty` | boolean | no |  |
 | `archived` | boolean | no |  |
-| `optFields` | list<string> | no |  |
+| `optFields` | string | no |  |
 
 ## Response
 

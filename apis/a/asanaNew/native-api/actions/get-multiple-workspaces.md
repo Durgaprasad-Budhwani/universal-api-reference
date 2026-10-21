@@ -18,4 +18,4 @@ This operation supports [pagination](../README.md#pagination).
 | Parameter | Location | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | `opt_pretty` | query | `boolean` | no | Comma-separated list of fields to include in each workspace record. |
-| `opt_fields` | query | `list<string>` | no | — |
+| `opt_fields` | query | `string` | no | — |

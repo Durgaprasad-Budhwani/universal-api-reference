@@ -1,6 +1,6 @@
 # SOS Inventory: List Shipments
 
-Retrieves customers from SOS Inventory.
+Retrieves shipments from SOS Inventory.
 
 ```
 GET https://connect.mindcloud.co/v1/universal/sOSInventory/latest/actions/list-shipments
@@ -51,82 +51,70 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
   "success": true,
   "data": [
     {
-      "altPhone": "string",
       "archived": true,
+      "assignedToUser": {},
       "billing": {
-        "city": {},
-        "country": {},
-        "line1": {},
-        "line2": {},
-        "line3": {},
-        "line4": {},
-        "line5": {},
-        "postalCode": {},
-        "stateProvince": {}
+        "address": "string",
+        "addressName": "Ava Chen",
+        "addressType": "string",
+        "company": "string",
+        "contact": "string",
+        "email": "ava@example.com",
+        "phone": "string"
       },
-      "billWithParent": true,
-      "businessLicense": "string",
-      "companyName": "Ava Chen",
-      "contact": {
-        "firstName": {},
-        "lastName": {},
-        "middleName": {},
-        "suffix": {},
-        "title": {}
+      "channel": {
+        "id": 1,
+        "name": "Ava Chen"
       },
-      "contractorNumber": "string",
-      "creditHold": true,
-      "currency": {},
-      "customerType": {},
+      "comment": "string",
+      "createBillForShippingAmount": true,
+      "customer": {
+        "fullname": "Ava Chen",
+        "id": 1,
+        "name": "Ava Chen"
+      },
+      "customerMessage": {},
+      "customerNotes": {},
+      "customerPO": "string",
       "customFields": {},
-      "email": "ava@example.com",
-      "expMonth": {},
-      "expYear": {},
-      "fax": "string",
-      "foundUsVia": "string",
-      "fullname": "Ava Chen",
-      "hasCardOnFile": true,
-      "hasChildren": true,
+      "date": "string",
+      "department": {},
+      "forceToShipStation": true,
+      "hasSignature": true,
       "id": 1,
-      "isInQuickBooks": true,
       "keys": {},
-      "lastFour": {},
-      "lastSync": "string",
-      "mobile": "string",
-      "name": "Ava Chen",
-      "notes": "string",
-      "parent": {},
-      "paymentMethod": {},
-      "phone": "string",
-      "portalPassword": "string",
-      "priceTier": {},
-      "resaleNumber": "string",
-      "salesRep": {},
+      "lines": [
+        {}
+      ],
+      "linkedTransaction": {},
+      "location": {
+        "id": 1,
+        "name": "Ava Chen"
+      },
+      "number": "string",
+      "priority": {},
+      "shipBy": "string",
       "shipping": {
-        "city": {},
-        "country": {},
-        "line1": {},
-        "line2": {},
-        "line3": {},
-        "line4": {},
-        "line5": {},
-        "postalCode": {},
-        "stateProvince": {}
+        "address": "string",
+        "addressName": "Ava Chen",
+        "addressType": "string",
+        "company": "string",
+        "contact": "string",
+        "email": "ava@example.com",
+        "phone": "string"
+      },
+      "shippingAmount": 1,
+      "shippingMethod": {
+        "id": 1,
+        "name": "Ava Chen"
       },
       "starred": 1,
-      "sublevel": 1,
       "summaryOnly": true,
-      "syncMessage": {},
       "syncToken": 1,
-      "tax": {
-        "taxable": true,
-        "taxCode": {},
-        "taxExemptReasonId": {}
-      },
-      "terms": {},
-      "tokenType": {},
-      "values": {},
-      "website": "string"
+      "total": 1,
+      "trackingLink": "https://example.com",
+      "trackingNumber": "string",
+      "values": {}
     }
   ],
   "meta": {}
@@ -137,74 +125,56 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 | Key | Type | Description |
 | --- | --- | --- |
-| `altPhone` | string |  |
 | `archived` | boolean |  |
-| `billing.city` | object |  |
-| `billing.country` | object |  |
-| `billing.line1` | object |  |
-| `billing.line2` | object |  |
-| `billing.line3` | object |  |
-| `billing.line4` | object |  |
-| `billing.line5` | object |  |
-| `billing.postalCode` | object |  |
-| `billing.stateProvince` | object |  |
-| `billWithParent` | boolean |  |
-| `businessLicense` | string |  |
-| `companyName` | string |  |
-| `contact.firstName` | object |  |
-| `contact.lastName` | object |  |
-| `contact.middleName` | object |  |
-| `contact.suffix` | object |  |
-| `contact.title` | object |  |
-| `contractorNumber` | string |  |
-| `creditHold` | boolean |  |
-| `currency` | object |  |
-| `customerType` | object |  |
+| `assignedToUser` | object |  |
+| `billing.address` | string |  |
+| `billing.addressName` | string |  |
+| `billing.addressType` | string |  |
+| `billing.company` | string |  |
+| `billing.contact` | string |  |
+| `billing.email` | string |  |
+| `billing.phone` | string |  |
+| `channel.id` | number |  |
+| `channel.name` | string |  |
+| `comment` | string |  |
+| `createBillForShippingAmount` | boolean |  |
+| `customer.fullname` | string |  |
+| `customer.id` | number |  |
+| `customer.name` | string |  |
+| `customerMessage` | object |  |
+| `customerNotes` | object |  |
+| `customerPO` | string |  |
 | `customFields` | object |  |
-| `email` | string |  |
-| `expMonth` | object |  |
-| `expYear` | object |  |
-| `fax` | string |  |
-| `foundUsVia` | string |  |
-| `fullname` | string |  |
-| `hasCardOnFile` | boolean |  |
-| `hasChildren` | boolean |  |
+| `date` | string |  |
+| `department` | object |  |
+| `forceToShipStation` | boolean |  |
+| `hasSignature` | boolean |  |
 | `id` | number |  |
-| `isInQuickBooks` | boolean |  |
 | `keys` | object |  |
-| `lastFour` | object |  |
-| `lastSync` | string |  |
-| `mobile` | string |  |
-| `name` | string |  |
-| `notes` | string |  |
-| `parent` | object |  |
-| `paymentMethod` | object |  |
-| `phone` | string |  |
-| `portalPassword` | string |  |
-| `priceTier` | object |  |
-| `resaleNumber` | string |  |
-| `salesRep` | object |  |
-| `shipping.city` | object |  |
-| `shipping.country` | object |  |
-| `shipping.line1` | object |  |
-| `shipping.line2` | object |  |
-| `shipping.line3` | object |  |
-| `shipping.line4` | object |  |
-| `shipping.line5` | object |  |
-| `shipping.postalCode` | object |  |
-| `shipping.stateProvince` | object |  |
+| `lines` | array<object> |  |
+| `linkedTransaction` | object |  |
+| `location.id` | number |  |
+| `location.name` | string |  |
+| `number` | string |  |
+| `priority` | object |  |
+| `shipBy` | string |  |
+| `shipping.address` | string |  |
+| `shipping.addressName` | string |  |
+| `shipping.addressType` | string |  |
+| `shipping.company` | string |  |
+| `shipping.contact` | string |  |
+| `shipping.email` | string |  |
+| `shipping.phone` | string |  |
+| `shippingAmount` | number |  |
+| `shippingMethod.id` | number |  |
+| `shippingMethod.name` | string |  |
 | `starred` | number |  |
-| `sublevel` | number |  |
 | `summaryOnly` | boolean |  |
-| `syncMessage` | object |  |
 | `syncToken` | number |  |
-| `tax.taxable` | boolean |  |
-| `tax.taxCode` | object |  |
-| `tax.taxExemptReasonId` | object |  |
-| `terms` | object |  |
-| `tokenType` | object |  |
+| `total` | number |  |
+| `trackingLink` | string |  |
+| `trackingNumber` | string |  |
 | `values` | object |  |
-| `website` | string |  |
 
 ## Native endpoint
 

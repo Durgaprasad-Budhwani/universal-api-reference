@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "EHS Insight Universal API",
-    "version": "0.0.30",
+    "version": "0.0.34",
     "description": "Call EHS Insight actions through MindCloud's Universal API."
   },
   "servers": [
@@ -492,20 +492,23 @@
             }
           },
           {
-            "name": "customparams",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "entityName",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string",
               "default": "Asset"
+            }
+          },
+          {
+            "name": "customparams",
+            "in": "query",
+            "required": false,
+            "description": "Optional provider-specific query string segment appended after the list route.",
+            "schema": {
+              "type": "string",
+              "description": "Optional provider-specific query string segment appended after the list route.",
+              "x-mindcloud-advanced": true
             }
           },
           {
@@ -539,7 +542,72 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "rowUID": {
+                            "type": "string"
+                          },
+                          "createdDtm": {
+                            "type": "string"
+                          },
+                          "updatedDtm": {
+                            "type": "string"
+                          },
+                          "changeToken": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "acquiredDate": {
+                            "type": "string"
+                          },
+                          "businessEntity": {
+                            "type": "string"
+                          },
+                          "isEnabled": {
+                            "type": "number"
+                          },
+                          "assetPhoto": {
+                            "type": "string"
+                          },
+                          "number": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "make": {
+                            "type": "string"
+                          },
+                          "model": {
+                            "type": "string"
+                          },
+                          "year": {
+                            "type": "number"
+                          },
+                          "color": {
+                            "type": "string"
+                          },
+                          "serial": {
+                            "type": "string"
+                          },
+                          "state": {
+                            "type": "string"
+                          },
+                          "plate": {
+                            "type": "string"
+                          },
+                          "marketValue": {
+                            "type": "number"
+                          },
+                          "comments": {
+                            "type": "string"
+                          },
+                          "entityName": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -720,7 +788,30 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "rowUID": {
+                            "type": "string"
+                          },
+                          "changeToken": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "startDate": {
+                            "type": "string"
+                          },
+                          "endDate": {
+                            "type": "string"
+                          },
+                          "comments": {
+                            "type": "string"
+                          },
+                          "parentHierarchyUID": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -919,7 +1010,166 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "rowUID": {
+                            "type": "string"
+                          },
+                          "changeToken": {
+                            "type": "string"
+                          },
+                          "createdDtm": {
+                            "type": "string"
+                          },
+                          "updatedDtm": {
+                            "type": "string"
+                          },
+                          "userContactNumber": {
+                            "type": "string"
+                          },
+                          "userContactType": {
+                            "type": "string"
+                          },
+                          "inviteSent": {
+                            "type": "number"
+                          },
+                          "fullName": {
+                            "type": "string"
+                          },
+                          "userContactPhoto": {
+                            "type": "string"
+                          },
+                          "userContactPhotoAttachmentUID": {
+                            "type": "string"
+                          },
+                          "userContactPhotoContentType": {
+                            "type": "string"
+                          },
+                          "userContactPhotoFileSize": {
+                            "type": "string"
+                          },
+                          "language": {
+                            "type": "string"
+                          },
+                          "languageOther": {
+                            "type": "string"
+                          },
+                          "uIMode": {
+                            "type": "string"
+                          },
+                          "uIModeOther": {
+                            "type": "string"
+                          },
+                          "isEnabled": {
+                            "type": "number"
+                          },
+                          "firstName": {
+                            "type": "string"
+                          },
+                          "lastName": {
+                            "type": "string"
+                          },
+                          "gender": {
+                            "type": "string"
+                          },
+                          "genderOther": {
+                            "type": "string"
+                          },
+                          "birthDate": {
+                            "type": "string"
+                          },
+                          "homeAddress": {
+                            "type": "string"
+                          },
+                          "homeCity": {
+                            "type": "string"
+                          },
+                          "homeState": {
+                            "type": "string"
+                          },
+                          "homeZip": {
+                            "type": "string"
+                          },
+                          "phoneNumber": {
+                            "type": "string"
+                          },
+                          "businessEntity": {
+                            "type": "string"
+                          },
+                          "position": {
+                            "type": "string"
+                          },
+                          "positionOther": {
+                            "type": "string"
+                          },
+                          "employer": {
+                            "type": "string"
+                          },
+                          "employerOther": {
+                            "type": "string"
+                          },
+                          "supervisor": {
+                            "type": "string"
+                          },
+                          "employeeID": {
+                            "type": "string"
+                          },
+                          "hireDate": {
+                            "type": "string"
+                          },
+                          "positionStartDate": {
+                            "type": "string"
+                          },
+                          "industryStartDate": {
+                            "type": "string"
+                          },
+                          "authProvider": {
+                            "type": "string"
+                          },
+                          "authProviderOther": {
+                            "type": "string"
+                          },
+                          "username": {
+                            "type": "string"
+                          },
+                          "emailAddress": {
+                            "type": "string"
+                          },
+                          "mobilePhoneNumber": {
+                            "type": "string"
+                          },
+                          "roleAssignmentType": {
+                            "type": "string"
+                          },
+                          "userContactPhotoPreviousVersions": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "trainingGroup": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "securityGroups": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          },
+                          "userRoles": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "additionalProperties": true
+                            }
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

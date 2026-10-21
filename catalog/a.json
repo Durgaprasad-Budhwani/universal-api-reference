@@ -57626,7 +57626,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/image-2848-vectorized_1782233120520.png",
     "websiteUrl": "https://www.adp.com/",
     "nativeDocumentationUrl": "https://developers.adp.com/build/api-explorer",
-    "version": "0.0.57",
+    "version": "0.0.58",
     "authentication": [
       {
         "type": "oAuth2",
@@ -59095,6 +59095,61 @@
         ]
       },
       {
+        "name": "Get Worker Reportable Benefits Metadata",
+        "slug": "get-worker-reportable-benefits-meta",
+        "operation": "read",
+        "method": "GET",
+        "group": "Worker Reportable Benefits Metadata",
+        "documentationUrl": "https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-hr-hr-worker-profiles-v1-hr-worker-profiles?operation=GET%2Fhr%2Fworker-profile%2Fv1%2Fworkers%2F%7Baoid%7D%2Fwork-assignments%2F%7Bassignment-id%7D%2Fadditional-remunerations%2Fmeta#swagger",
+        "native": {
+          "method": "GET",
+          "path": "hr/worker-profile/v1/workers/:aoid/work-assignments/:assignmentId/reportable-benefits/meta",
+          "baseUrl": "https://api.adp.com/",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "aoid",
+              "name": "Associate OID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "The ADP associate object identifier for the worker whose payroll instructions should be returned."
+            },
+            {
+              "key": "assignmentId",
+              "name": "Work Assignment ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "The ID of the worker's work assignment. Find it in the worker record returned by Get Worker or List Workers, in workAssignments[].itemID. Choose the work assignment whose compensation information you want to retrieve."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "aoid",
+            "name": "Associate OID",
+            "dataType": "string",
+            "required": true,
+            "description": "The ADP associate object identifier for the worker whose payroll instructions should be returned."
+          },
+          {
+            "key": "assignmentId",
+            "name": "Work Assignment ID",
+            "dataType": "string",
+            "required": true,
+            "description": "The ID of the worker's work assignment. Find it in the worker record returned by Get Worker or List Workers, in workAssignments[].itemID. Choose the work assignment whose compensation information you want to retrieve."
+          }
+        ],
+        "responseSchema": []
+      },
+      {
         "name": "List Workers",
         "slug": "get-workers",
         "operation": "read",
@@ -60072,6 +60127,61 @@
         "responseSchema": []
       },
       {
+        "name": "List Worker Additional Remunerations",
+        "slug": "list-worker-additional-remunerations",
+        "operation": "read",
+        "method": "GET",
+        "group": "Worker Additional Remuneration",
+        "documentationUrl": "https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-hr-hr-worker-profiles-v1-hr-worker-profiles?operation=GET%2Fhr%2Fworker-profile%2Fv1%2Fworkers%2F%7Baoid%7D%2Fwork-assignments%2F%7Bassignment-id%7D%2Fadditional-remunerations%2Fmeta#swagger",
+        "native": {
+          "method": "GET",
+          "path": "hr/worker-profile/v1/workers/:aoid/work-assignments/:assignmentId/additional-remunerations",
+          "baseUrl": "https://api.adp.com/",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "aoid",
+              "name": "Associate OID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "The ADP associate object identifier for the worker whose payroll instructions should be returned."
+            },
+            {
+              "key": "assignmentId",
+              "name": "Work Assignment ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "The ID of the worker's work assignment. Find it in the worker record returned by Get Worker or List Workers, in workAssignments[].itemID. Choose the work assignment whose compensation information you want to retrieve."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "aoid",
+            "name": "Associate OID",
+            "dataType": "string",
+            "required": true,
+            "description": "The ADP associate object identifier for the worker whose payroll instructions should be returned."
+          },
+          {
+            "key": "assignmentId",
+            "name": "Work Assignment ID",
+            "dataType": "string",
+            "required": true,
+            "description": "The ID of the worker's work assignment. Find it in the worker record returned by Get Worker or List Workers, in workAssignments[].itemID. Choose the work assignment whose compensation information you want to retrieve."
+          }
+        ],
+        "responseSchema": []
+      },
+      {
         "name": "List Worker Leaves",
         "slug": "list-worker-leaves",
         "operation": "read",
@@ -60250,6 +60360,46 @@
             "dataType": "string",
             "required": true,
             "description": "The ADP associate object identifier for the worker whose pay statements should be returned."
+          }
+        ],
+        "responseSchema": []
+      },
+      {
+        "name": "List Worker Payroll Instructions",
+        "slug": "list-worker-payroll-instructions",
+        "operation": "read",
+        "method": "GET",
+        "group": "Worker Payroll Instruction",
+        "documentationUrl": "https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-payroll-worker-payroll-instructions-v1-worker-payroll-instructions?operation=GET%2Fpayroll%2Fv1%2Fworkers%2F%7Baoid%7D%2Fpayroll-instructions#swagger",
+        "native": {
+          "method": "GET",
+          "path": "payroll/v1/workers/:aoid/payroll-instructions",
+          "baseUrl": "https://api.adp.com/",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "aoid",
+              "name": "Associate OID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "The ADP associate object identifier for the worker whose payroll instructions should be returned."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "aoid",
+            "name": "Associate OID",
+            "dataType": "string",
+            "required": true,
+            "description": "The ADP associate object identifier for the worker whose payroll instructions should be returned."
           }
         ],
         "responseSchema": []
@@ -316662,7 +316812,7 @@
       "format": "openapi",
       "url": "https://raw.githubusercontent.com/Asana/openapi/master/defs/asana_oas.yaml"
     },
-    "version": "0.0.15",
+    "version": "0.0.17",
     "authentication": [
       {
         "type": "oAuth2",
@@ -324904,8 +325054,7 @@
               "key": "opt_fields",
               "internalKey": "optFields",
               "name": "Opt Fields",
-              "dataType": "list",
-              "itemDataType": "string",
+              "dataType": "string",
               "location": "query",
               "required": false
             }
@@ -324940,8 +325089,7 @@
           {
             "key": "optFields",
             "name": "Opt Fields",
-            "dataType": "list",
-            "itemDataType": "string",
+            "dataType": "string",
             "required": false,
             "advanced": true
           }
@@ -327048,8 +327196,7 @@
               "key": "opt_fields",
               "internalKey": "optFields",
               "name": "Opt Fields",
-              "dataType": "list",
-              "itemDataType": "string",
+              "dataType": "string",
               "location": "query",
               "required": false
             }
@@ -327073,8 +327220,7 @@
           {
             "key": "optFields",
             "name": "Opt Fields",
-            "dataType": "list",
-            "itemDataType": "string",
+            "dataType": "string",
             "required": false,
             "advanced": true
           }
@@ -345062,7 +345208,7 @@
     "websiteUrl": "https://www.youraspire.com/",
     "nativeBaseUrl": "https://cloud.youraspire.com/app/",
     "nativeDocumentationUrl": "https://guide.youraspire.com/apidocs",
-    "version": "0.1.527",
+    "version": "0.1.532",
     "authentication": [
       {
         "type": "custom",
@@ -435215,7 +435361,7 @@
     "websiteUrl": "https://www.kaseya.com/products/",
     "nativeBaseUrl": "https://ww14.autotask.net",
     "nativeDocumentationUrl": "https://www.autotask.net/help/developerhelp/Content/APIs/REST/REST_API_Home.htm",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "authentication": [
       {
         "type": "custom",
@@ -435411,7 +435557,14 @@
             "description": "Autotask search JSON, for example {\"filter\":[{\"op\":\"exist\",\"field\":\"id\"}]}."
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "queryCount",
+            "dataType": "number",
+            "description": "Number of opportunities matching the search criteria.",
+            "mockType": "number"
+          }
+        ]
       },
       {
         "name": "Count Projects",

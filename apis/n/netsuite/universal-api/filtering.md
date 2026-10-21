@@ -51,7 +51,6 @@ Combine conditions with `;` for AND and `,` for OR. For example, `where=status==
 - [List Projects](actions/list-projects.md)
 - [List Promotion Codes](actions/list-promotion-codes.md)
 - [List Purchase Orders](actions/list-purchase-orders.md)
-- [List Record Fields](actions/list-record-fields.md)
 - [List Return Authorizations](actions/list-return-authorizations.md)
 - [List Sales Orders](actions/list-sales-orders.md)
 - [List Serialized Assembly Items](actions/list-serialized-assembly-items.md)

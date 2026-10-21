@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Notion Universal API",
-    "version": "0.0.22",
+    "version": "0.0.23",
     "description": "Write docs, organize projects, manage knowledge, and collaborate with teams."
   },
   "servers": [

@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "ServiceTitan Universal API",
-    "version": "0.0.390",
+    "version": "0.0.393",
     "description": "ServiceTitan is a cloud-based software platform for home and commercial service businesses that manages customers, jobs, scheduling, dispatching, invoicing, payments, and other field service operations."
   },
   "servers": [
@@ -30297,7 +30297,7 @@
                     "type": "string"
                   },
                   "customFields[].value": {
-                    "type": "boolean"
+                    "type": "string"
                   },
                   "externalData.externalData[]": {
                     "type": "array",
@@ -31283,6 +31283,393 @@
                   },
                   "id": {
                     "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/servicetitan/latest/actions/update-invoice": {
+      "put": {
+        "operationId": "servicetitan.update-invoice",
+        "summary": "Update Invoice",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/servicetitan/latest/actions/update-invoice"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "id",
+                  "items[].description",
+                  "items[].quantity",
+                  "payments[].id"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "id": {
+                    "type": "number"
+                  },
+                  "number": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "typeId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "invoicedOn": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-mindcloud-advanced": true
+                  },
+                  "subtotal": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "tax": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "taxZoneId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "summary": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "royaltyStatus": {
+                    "type": "string",
+                    "enum": [
+                      "Failed",
+                      "Pending",
+                      "Sent"
+                    ],
+                    "x-mindcloud-advanced": true
+                  },
+                  "royaltyDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-mindcloud-advanced": true
+                  },
+                  "royaltySentOn": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-mindcloud-advanced": true
+                  },
+                  "royaltyMemo": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "exportId": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "reviewStatus": {
+                    "type": "string",
+                    "enum": [
+                      "Invoiced",
+                      "NeedsReview",
+                      "OnHold",
+                      "PendingApproval",
+                      "ReadyForBilling",
+                      "Rejected",
+                      "Reviewed"
+                    ],
+                    "x-mindcloud-advanced": true
+                  },
+                  "assignedToId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "budgetCodeId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "items[].skuId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].skuName": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].technicianId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].description": {
+                    "type": "string"
+                  },
+                  "items[].quantity": {
+                    "type": "number"
+                  },
+                  "items[].unitPrice": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].cost": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].isAddOn": {
+                    "type": "boolean",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].signature": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].technicianAcknowledgementSignature": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].installedOn": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].inventoryWarehouseName": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].skipUpdatingMembershipPrices": {
+                    "type": "boolean",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].itemGroupName": {
+                    "type": "string",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].itemGroupRootId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].inventoryLocationId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].durationBillingId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].budgetCodeId": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].id": {
+                    "type": "number",
+                    "x-mindcloud-advanced": true
+                  },
+                  "items[].serviceDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-mindcloud-advanced": true
+                  },
+                  "dueDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2026-10-19",
+                    "x-mindcloud-advanced": true
+                  },
+                  "payments[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "x-mindcloud-advanced": true
+                  },
+                  "payments[].id": {
+                    "type": "number"
+                  },
+                  "payments[].settlementStatus": {
+                    "type": "string",
+                    "enum": [
+                      "NotSettled",
+                      "Settled"
+                    ],
+                    "x-mindcloud-advanced": true
+                  },
+                  "payments[].settlementDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-mindcloud-advanced": true
+                  },
+                  "rateSheetId": {
+                    "type": "number",
+                    "description": "Omit to leave the invoice's rate sheet unchanged.",
+                    "x-mindcloud-advanced": true
                   }
                 },
                 "additionalProperties": false
@@ -32823,7 +33210,14 @@
               "schema": {
                 "type": "object",
                 "required": [
-                  "connectionId"
+                  "connectionId",
+                  "id",
+                  "items[].id",
+                  "items[].skuId",
+                  "items[].description",
+                  "items[].vendorPartNumber",
+                  "items[].quantity",
+                  "items[].cost"
                 ],
                 "properties": {
                   "connectionId": {
@@ -32831,12 +33225,145 @@
                     "description": "The MindCloud connection ID for this app."
                   },
                   "id": {
-                    "type": "string",
-                    "description": "Purchase Order ID"
+                    "type": "number",
+                    "description": "ServiceTitan purchase order ID to update."
                   },
-                  "customFields[]": {
+                  "items[].id": {
+                    "type": "number",
+                    "description": "ID of the purchase order item to update."
+                  },
+                  "shipTo.address.street": {
+                    "type": "string",
+                    "description": "Street."
+                  },
+                  "shipTo.description": {
+                    "type": "string",
+                    "description": "Description of the shipping address, such as a customer address or technician truck."
+                  },
+                  "items[].skuId": {
+                    "type": "number",
+                    "description": "ID of the SKU from the pricebook. It can be any active material or equipment."
+                  },
+                  "shipTo.address": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "description": "Actual shipping address."
+                  },
+                  "shipTo.address.unit": {
+                    "type": "string",
+                    "description": "Unit."
+                  },
+                  "vendorId": {
+                    "type": "number",
+                    "description": "Id of the vendor for this purchase order."
+                  },
+                  "items[].description": {
+                    "type": "string",
+                    "description": "Item description."
+                  },
+                  "shipTo.address.city": {
+                    "type": "string",
+                    "description": "City."
+                  },
+                  "typeId": {
+                    "type": "number",
+                    "description": "Id of the purchase order type for this purchase order."
+                  },
+                  "businessUnitId": {
+                    "type": "number",
+                    "description": "Id of the business unit for this purchase order."
+                  },
+                  "items[].vendorPartNumber": {
+                    "type": "string",
+                    "description": "Part number of this item for the current vendor."
+                  },
+                  "shipTo.address.state": {
+                    "type": "string",
+                    "description": "State."
+                  },
+                  "inventoryLocationId": {
+                    "type": "number",
+                    "description": "Id of the inventory location for this purchase order."
+                  },
+                  "items[].quantity": {
+                    "type": "number",
+                    "description": "Item quantity."
+                  },
+                  "shipTo.address.zip": {
+                    "type": "string",
+                    "description": "Zip code."
+                  },
+                  "items[].cost": {
+                    "type": "number",
+                    "description": "Item cost."
+                  },
+                  "jobId": {
+                    "type": "number",
+                    "description": "Id of the job for this purchase order. Omit for a non-job purchase order."
+                  },
+                  "shipTo.address.country": {
+                    "type": "string",
+                    "description": "Country code."
+                  },
+                  "items[].budgetCodeId": {
+                    "type": "number",
+                    "description": "ID of the budget code for this purchase order item.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "technicianId": {
+                    "type": "number",
+                    "description": "Id of the technician for this purchase order."
+                  },
+                  "projectId": {
+                    "type": "number",
+                    "description": "Id of the project for this purchase order."
+                  },
+                  "budgetCodeId": {
+                    "type": "number",
+                    "description": "Id of the budget code for this purchase order."
+                  },
+                  "shipTo": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "description": "Address where the purchase order will be shipped."
+                  },
+                  "vendorInvoiceNumber": {
+                    "type": "string",
+                    "description": "Vendor invoice number."
+                  },
+                  "impactsTechnicianPayroll": {
+                    "type": "boolean",
+                    "description": "Whether this purchase order affects technician payroll."
+                  },
+                  "memo": {
+                    "type": "string",
+                    "description": "Summary or memo for this purchase order."
+                  },
+                  "date": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Purchase order date."
+                  },
+                  "requiredOn": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Date the purchase order is required."
+                  },
+                  "tax": {
+                    "type": "number",
+                    "description": "Tax amount."
+                  },
+                  "shipping": {
+                    "type": "number",
+                    "description": "Shipping cost."
+                  },
+                  "items[]": {
                     "type": "array",
-                    "items": {}
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "description": "New or updated purchase order items. Sending this field replaces the active item set: active items omitted from the list are marked inactive."
                   }
                 },
                 "additionalProperties": false

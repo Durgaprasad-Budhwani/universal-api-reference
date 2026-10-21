@@ -4,7 +4,7 @@ Store files, share folders, collaborate on content, and manage access.
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/googleDrive/latest
 - **Category:** Content & Files / Storage
-- **Actions:** 13
+- **Actions:** 15
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor website:** https://drive.google.com/
 - **Vendor API docs:** https://developers.google.com/workspace/drive/api/reference/rest/v3
@@ -22,7 +22,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/googleDrive/latest/action
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
-## Actions (13)
+## Actions (15)
 
 ### Document
 
@@ -36,9 +36,11 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/googleDrive/latest/action
 | --- | --- | --- |
 | [Copy File](actions/copy-file.md) | POST | Creates a copy of a file in Google Drive. |
 | [Create File](actions/create-file.md) | POST | Creates a new file in Google Drive. |
+| [Download File](actions/download-file.md) | GET |  |
 | [Export File](actions/export-file.md) | GET | Exports a Google Workspace document from Google Drive. |
 | [List Files](actions/list-files.md) | GET | List all Files in your Google Drive. Does not return Folders. Optionally filter for a specific file. |
 | [Move File](actions/move-file.md) | PUT | Move a File to a Folder. |
+| [Upload File](actions/upload-file.md) | POST | Uploads a new file to Google Drive. |
 
 ### Folders
 

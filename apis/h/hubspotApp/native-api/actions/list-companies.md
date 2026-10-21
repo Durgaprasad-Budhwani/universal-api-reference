@@ -18,7 +18,7 @@ This operation supports [pagination](../README.md#pagination).
 
 | Parameter | Location | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| `properties[]` | query | `array<string>` | no | Company properties to return in the response. |
-| `propertiesWithHistory[]` | query | `array<string>` | no | Company properties to return with value history. |
-| `associations[]` | query | `array<string>` | no | Company-associated object types to include as associated IDs. |
+| `properties[]` | query | `array<string>` | no | Company properties to return in the response. Send multiple values as a string separated by `,`. |
+| `propertiesWithHistory[]` | query | `array<string>` | no | Company properties to return with value history. Send multiple values as a string separated by `,`. |
+| `associations[]` | query | `array<string>` | no | Company-associated object types to include as associated IDs. Send multiple values as a string separated by `,`. |
 | `archived` | query | `boolean` | no | Whether to return only archived company records. |

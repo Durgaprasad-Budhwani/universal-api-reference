@@ -22,7 +22,7 @@ This operation supports [pagination](../README.md#pagination).
 | `externalData.externalData[].key` | body | `string` | no | — |
 | `name` | body | `string` | no | — |
 | `address.unit` | body | `string` | no | — |
-| `customFields[].value` | body | `boolean` | no | — |
+| `customFields[].value` | body | `string` | no | — |
 | `externalData.externalData[]` | body | `array` | no | — |
 | `externalData.externalData[].value` | body | `string` | no | — |
 | `type` | body | `string` | no | Residential or commercial |

@@ -1,6 +1,6 @@
 # ADP: Native API Reference
 
-A consolidated summary of ADP's API configuration and 21 documented operations, with links to official documentation.
+A consolidated summary of ADP's API configuration and 24 documented operations, with links to official documentation.
 
 - **Official docs:** https://developers.adp.com/build/api-explorer
 - **API base URL:** `https://api.adp.com/`
@@ -43,7 +43,7 @@ Shared headers:
 
 Use `$top` in the query string to set the page size (default 25; accepted range 1–50). Use `$skip` in the query string as the record offset.
 
-## Endpoints (21 documented)
+## Endpoints (24 documented)
 
 | Operation | Method & path | Vendor docs |
 | --- | --- | --- |
@@ -54,6 +54,7 @@ Use `$top` in the query string to set the page size (default 25; accepted range 
 | [Get Payroll Metadata](actions/get-payroll-meta-data.md) | `GET events/payroll/v1/pay-data-input.modify/meta` | [docs](https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-payroll-pay-data-input-v1-pay-data-input?operation=GET%2Fevents%2Fpayroll%2Fv1%2Fpay-data-input.modify%2Fmeta#swagger) |
 | [Get Payroll Output](actions/get-payroll-output.md) | `GET payroll/v2/payroll-output/:outputId` | [docs](https://marketplace-cdn.adp.com/dev-portal/pdf/protected/Payroll_Output_API_Guide_for_RUN_Powered_by_ADP) |
 | [Get Worker](actions/get-worker.md) | `GET hr/v2/workers/:aOid` | [docs](https://api-central.adp.com/projects/735093bcc595cb7d5328f9fb6494a4bec696ce0fb6a0f33f) |
+| [Get Worker Reportable Benefits Metadata](actions/get-worker-reportable-benefits-meta.md) | `GET hr/worker-profile/v1/workers/:aoid/work-assignments/:assignmentId/reportable-benefits/meta` | [docs](https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-hr-hr-worker-profiles-v1-hr-worker-profiles?operation=GET%2Fhr%2Fworker-profile%2Fv1%2Fworkers%2F%7Baoid%7D%2Fwork-assignments%2F%7Bassignment-id%7D%2Fadditional-remunerations%2Fmeta#swagger) |
 | [List Workers](actions/get-workers.md) | `GET hr/v2/workers` | [docs](https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-hr-workers-v2-workers?operation=GET%2Fhr%2Fv2%2Fworkers#swagger) |
 | [List Associate Work Locations](actions/list-associate-work-locations.md) | `GET /hcm/v1/validation-tables/associate-work-locations` | [docs](https://api-central.adp.com/projects/735093bcc595cb7d5328f9fb6494a4bec696ce0fb6a0f33f) |
 | [List Business Units](actions/list-business-units.md) | `GET hcm/v1/validation-tables/business-units` | [docs](https://api-central.adp.com/projects/735093bcc595cb7d5328f9fb6494a4bec696ce0fb6a0f33f) |
@@ -63,8 +64,10 @@ Use `$top` in the query string to set the page size (default 25; accepted range 
 | [List Payroll Outputs](actions/list-payroll-outputs.md) | `GET payroll/v2/payroll-output` | [docs](https://marketplace-cdn.adp.com/dev-portal/pdf/protected/Payroll_Output_API_Guide_for_RUN_Powered_by_ADP) |
 | [List Payroll Summary Earnings](actions/list-payroll-summary-earnings.md) | `GET payroll/v2/payroll-output/:outputId/associate-payment-summary/earnings` | [docs](https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-payroll-payroll-outputs-v2-payroll-outputs?operation=GET%2Fpayroll%2Fv2%2Fpayroll-output%2F%7Boutput-id%7D%2Fassociate-payment-summary%2Fearnings#swagger) |
 | [List Time Cards by Associate ID](actions/list-time-cards-by-associate-id.md) | `GET time/v2/workers/:employeeAOID/time-cards` | [docs](https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn.next.gen/hcm-offrg-wfn.next.gen-time-time-cards-v2-time-cards?operation=GET%2Fevents%2Ftime%2Fv2%2Ftime-entries.modify%2F%7Bevent-id%7D#swagger) |
+| [List Worker Additional Remunerations](actions/list-worker-additional-remunerations.md) | `GET hr/worker-profile/v1/workers/:aoid/work-assignments/:assignmentId/additional-remunerations` | [docs](https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-hr-hr-worker-profiles-v1-hr-worker-profiles?operation=GET%2Fhr%2Fworker-profile%2Fv1%2Fworkers%2F%7Baoid%7D%2Fwork-assignments%2F%7Bassignment-id%7D%2Fadditional-remunerations%2Fmeta#swagger) |
 | [List Worker Leaves](actions/list-worker-leaves.md) | `GET hr/v2/workers/:aoid/leaves` | [docs](https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-hr-worker-leaves-v2-worker-leaves?operation=GET%2Fhr%2Fv2%2Fworkers%2F%7Baoid%7D%2Fleaves#swagger) |
 | [Get Worker Pay Statement](actions/list-worker-pay-statement-by-uri.md) | `GET payroll/v1/workers/:aoid/organizational-pay-statements/:payStatementId` | [docs](https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-payroll-pay-statements-v1-pay-statements?operation=GET%2Fpayroll%2Fv1%2Fworkers%2F%7Baoid%7D%2Forganizational-pay-statements%2F%7Bpay-statement-id%7D#swagger) |
 | [List Worker Pay Statements](actions/list-worker-pay-statements.md) | `GET payroll/v1/workers/:aoid/organizational-pay-statements` | [docs](https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-payroll-pay-statements-v1-pay-statements?operation=GET%2Fpayroll%2Fv1%2Fworkers%2F%7Baoid%7D%2Forganizational-pay-statements#swagger) |
+| [List Worker Payroll Instructions](actions/list-worker-payroll-instructions.md) | `GET payroll/v1/workers/:aoid/payroll-instructions` | [docs](https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-payroll-worker-payroll-instructions-v1-worker-payroll-instructions?operation=GET%2Fpayroll%2Fv1%2Fworkers%2F%7Baoid%7D%2Fpayroll-instructions#swagger) |
 | [List Worker Time Off Balances](actions/list-worker-time-off-balances.md) | `GET time/v2/workers/:aoid/time-off-details/time-off-balances` | [docs](https://marketplace-cdn.adp.com/dev-portal/pdf/protected/Time_Off_Balances_API_Guide_for_ADP_Workforce_Now) |
 | [List Worker Time Off Requests](actions/list-worker-time-off-requests.md) | `GET time/v2/workers/:aoid/time-off-details/time-off-requests` | [docs](https://developers.adp.com/apis/api-explorer/hcm-offrg-wfn/hcm-offrg-wfn-time-time-off-requests-v2-time-off-requests?operation=GET%2Ftime%2Fv2%2Fworkers%2F%7Baoid%7D%2Ftime-off-details%2Ftime-off-requests#swagger) |

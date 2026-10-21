@@ -20,4 +20,4 @@ This operation supports [pagination](../README.md#pagination).
 | `workspace_gid` | path | `string` | yes |
 | `opt_pretty` | query | `boolean` | no |
 | `archived` | query | `boolean` | no |
-| `opt_fields` | query | `list<string>` | no |
+| `opt_fields` | query | `string` | no |

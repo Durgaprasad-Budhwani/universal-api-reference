@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Box Universal API",
-    "version": "0.0.17",
+    "version": "0.0.18",
     "description": "Connect Box to search content, inspect the authenticated user, and work with files and folders through the Box API."
   },
   "servers": [
@@ -1045,6 +1045,216 @@
         }
       }
     },
+    "/v1/universal/box/latest/actions/download-file": {
+      "get": {
+        "operationId": "box.download-file",
+        "summary": "Download File",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/box/latest/actions/download-file"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fileId",
+            "in": "query",
+            "required": true,
+            "description": "The Box file ID to download.",
+            "schema": {
+              "type": "string",
+              "description": "The Box file ID to download.",
+              "example": "123456789"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "description": "Optional file version ID to download.",
+            "schema": {
+              "type": "string",
+              "description": "Optional file version ID to download.",
+              "example": "987654321",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "response": {
+                            "type": "string",
+                            "description": "Base64-encoded file content. Pass this value to a file upload argument to reuse the downloaded PDF, spreadsheet, or other binary file."
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/universal/box/latest/actions/get-current-user": {
       "get": {
         "operationId": "box.get-current-user",
@@ -1414,6 +1624,264 @@
                           "type": {
                             "type": "string",
                             "description": "Always folder."
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/box/latest/actions/list-all-webhooks": {
+      "get": {
+        "operationId": "box.list-all-webhooks",
+        "summary": "List all webhooks",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/box/latest/actions/list-all-webhooks"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "avatar_url": {
+                            "type": "string",
+                            "description": "URL of the user's avatar image."
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "When the user object was created."
+                          },
+                          "enterprise": {
+                            "type": "object",
+                            "additionalProperties": true,
+                            "description": "Representation of the user's enterprise."
+                          },
+                          "external_app_user_id": {
+                            "type": "string",
+                            "description": "External identifier for an app user when present."
+                          },
+                          "hostname": {
+                            "type": "string",
+                            "description": "Root hostname for Box links for this user."
+                          },
+                          "id": {
+                            "type": "string",
+                            "description": "The unique identifier for this user."
+                          },
+                          "is_platform_access_only": {
+                            "type": "boolean",
+                            "description": "Whether the user is an App User."
+                          },
+                          "language": {
+                            "type": "string",
+                            "description": "The user's language."
+                          },
+                          "login": {
+                            "type": "string",
+                            "description": "The primary email address of this user."
+                          },
+                          "max_upload_size": {
+                            "type": "number",
+                            "description": "The maximum individual file size in bytes the user can upload."
+                          },
+                          "modified_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "When the user object was last modified."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "The display name of this user."
+                          },
+                          "role": {
+                            "type": "string",
+                            "description": "The user's enterprise role."
+                          },
+                          "space_amount": {
+                            "type": "number",
+                            "description": "The user's total available space in bytes."
+                          },
+                          "space_used": {
+                            "type": "number",
+                            "description": "The amount of space in use by the user."
+                          },
+                          "status": {
+                            "type": "string",
+                            "description": "The user's account status."
+                          },
+                          "timezone": {
+                            "type": "string",
+                            "description": "The user's timezone."
+                          },
+                          "type": {
+                            "type": "string",
+                            "description": "Always user."
                           }
                         },
                         "additionalProperties": false

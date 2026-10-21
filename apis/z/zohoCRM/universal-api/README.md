@@ -4,7 +4,7 @@ Manage leads, contacts, deals, and sales activities
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/zohoCRM/latest
 - **Category:** Sales & CRM / CRM
-- **Actions:** 38
+- **Actions:** 39
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor website:** https://www.zoho.com/crm/
 - **Vendor API docs:** https://www.zoho.com/crm/developer/docs/api/v8/
@@ -22,7 +22,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/zohoCRM/latest/actions/ge
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
-## Actions (38)
+## Actions (39)
 
 ### Account
 
@@ -50,6 +50,12 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/zohoCRM/latest/actions/ge
 | [Search Contacts](actions/search-contacts.md) | GET | Finds contact records in Zoho CRM by search criteria. |
 | [Update Contact](actions/update-contact.md) | PUT | Updates an existing contact in Zoho CRM. |
 | [Upsert Contact](actions/upsert-contact.md) | POST | Finds a contact in Zoho CRM, or creates one if needed. |
+
+### Contacts
+
+| Action | Method | Description |
+| --- | --- | --- |
+| [Create Contacts](actions/new-action1.md) | POST |  |
 
 ### Coql Result
 

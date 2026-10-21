@@ -3,6 +3,7 @@
 Access Microsoft SharePoint Online sites, document libraries, files, folders, lists, and list items through Microsoft Graph for organizational Microsoft 365 tenants.
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/microsoftSharePointOnline/latest
+- **Category:** Content & Files / Storage
 - **Actions:** 17
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor website:** https://www.microsoft.com/microsoft-365/sharepoint/collaboration

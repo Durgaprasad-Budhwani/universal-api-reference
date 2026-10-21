@@ -36,12 +36,73 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
-| `customparams` | string | no |  |
 | `entityName` | string | yes | Default: `Asset`. |
+
+### Advanced
+
+| Key | Type | Required | Description |
+| --- | --- | --- | --- |
+| `customparams` | string | no | Optional provider-specific query string segment appended after the list route. |
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native EHS Insight API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "rowUID": "string",
+      "createdDtm": "string",
+      "updatedDtm": "string",
+      "changeToken": "string",
+      "title": "string",
+      "acquiredDate": "string",
+      "businessEntity": "string",
+      "isEnabled": 1,
+      "assetPhoto": "string",
+      "number": "string",
+      "type": "string",
+      "make": "string",
+      "model": "string",
+      "year": 1,
+      "color": "string",
+      "serial": "string",
+      "state": "string",
+      "plate": "string",
+      "marketValue": 1,
+      "comments": "string",
+      "entityName": "Ava Chen"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `rowUID` | string |  |
+| `createdDtm` | string |  |
+| `updatedDtm` | string |  |
+| `changeToken` | string |  |
+| `title` | string |  |
+| `acquiredDate` | string |  |
+| `businessEntity` | string |  |
+| `isEnabled` | number |  |
+| `assetPhoto` | string |  |
+| `number` | string |  |
+| `type` | string |  |
+| `make` | string |  |
+| `model` | string |  |
+| `year` | number |  |
+| `color` | string |  |
+| `serial` | string |  |
+| `state` | string |  |
+| `plate` | string |  |
+| `marketValue` | number |  |
+| `comments` | string |  |
+| `entityName` | string |  |
 
 ## Native endpoint
 

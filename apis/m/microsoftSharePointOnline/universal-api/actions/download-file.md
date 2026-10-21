@@ -42,7 +42,23 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native Microsoft SharePoint Online API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "response": "string"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `response` | string | Base64-encoded file content. Decode this value to obtain the stored file bytes, or pass it to a file upload argument. |
 
 ## Native endpoint
 

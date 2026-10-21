@@ -42,10 +42,10 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `center_ids[].center` | list | no |  |
-| `invoiceStatuses[].invoiceStatus` | list | no |  |
-| `itemTypes[].itemType` | list | no |  |
-| `paymentTypes[].paymentType` | list | no |  |
-| `saleTypes[].saleType` | list | no |  |
+| `invoiceStatuses[].invoiceStatus` | list | no | One of: `0`, `4`. |
+| `itemTypes[].itemType` | list | no | One of: `DayPromoPackage`, `GiftCard`, `Membership`, `OtherFees`, `Package`, `PrepaidCard`, `Product`, `Service`. |
+| `paymentTypes[].paymentType` | list | no | One of: `0`, `1`, `10`, `16`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`. |
+| `saleTypes[].saleType` | list | no | One of: `0`, `1`, `2`, `3`. |
 | `startDate` | date | yes |  |
 | `endDate` | date | yes |  |
 | `center_ids[]` | array | no |  |

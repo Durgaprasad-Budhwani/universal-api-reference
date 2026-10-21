@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Zenoti Universal API",
-    "version": "0.0.72",
+    "version": "0.0.73",
     "description": "The AI First platform that helps your business grow"
   },
   "servers": [
@@ -649,7 +649,11 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "0",
+                "4"
+              ]
             }
           },
           {
@@ -657,7 +661,17 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "DayPromoPackage",
+                "GiftCard",
+                "Membership",
+                "OtherFees",
+                "Package",
+                "PrepaidCard",
+                "Product",
+                "Service"
+              ]
             }
           },
           {
@@ -665,7 +679,21 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "0",
+                "1",
+                "10",
+                "16",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9"
+              ]
             }
           },
           {
@@ -673,7 +701,13 @@
             "in": "query",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ]
             }
           },
           {

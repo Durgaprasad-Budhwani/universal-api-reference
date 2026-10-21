@@ -1,6 +1,6 @@
 # ServiceTitan: Native API Reference
 
-A consolidated summary of ServiceTitan's API configuration and 120 documented operations, with links to official documentation.
+A consolidated summary of ServiceTitan's API configuration and 121 documented operations, with links to official documentation.
 
 - **Official docs:** https://developer.servicetitan.io/api-details/#api=tenant-crm-v2
 - **API base URL:** `https://{baseUrl}/`
@@ -43,7 +43,7 @@ Shared headers:
 
 Use `pageSize` in the query string to set the page size (default 50; accepted range 1–1000). Use `page` in the query string to choose the page; numbering starts at 1.
 
-## Endpoints (120 documented)
+## Endpoints (121 documented)
 
 | Operation | Method & path | Vendor docs |
 | --- | --- | --- |
@@ -158,12 +158,13 @@ Use `pageSize` in the query string to set the page size (default 50; accepted ra
 | [Update Employee](actions/update-employee.md) | `PATCH settings/v2/tenant/{{credentials.tenant}}/employees/:id` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-settings-v2&operation=Employees_GetList) |
 | [Update Employee Payroll Settings](actions/update-employee-payroll-settings.md) | `PUT payroll/v2/tenant/{{credentials.tenant}}/employees/:employee/payroll-settings` | [docs](https://developer.servicetitan.io/docs/apis/tenant-payroll-v2/endpoints/PayrollSettings_UpdateEmployeePayrollSettings) |
 | [Update GL Account](actions/update-gl-account.md) | `PATCH accounting/v2/tenant/{{credentials.tenant}}/gl-accounts/:id` |  |
+| [Update Invoice](actions/update-invoice.md) | `PATCH accounting/v2/tenant/{{credentials.tenant}}/invoices/:id` | [docs](https://tenant-api-credentials-portal-integration.servicetitan.io/docs/apis/tenant-accounting-v2/endpoints/Invoices_UpdateInvoice) |
 | [Update Invoice Items](actions/update-invoice-items.md) | `PATCH accounting/v2/tenant/{{credentials.tenant}}/invoices/:invoiceId/items` | [docs](https://developer.servicetitan.io/docs/apis/tenant-accounting-v2/endpoints/Invoices_UpdateInvoiceItems) |
 | [Update Job](actions/update-job.md) | `PATCH jpm/v2/tenant/{{credentials.tenant}}/jobs/:jobId` | [docs](https://developer.servicetitan.io/docs/apis/tenant-jpm-v2/endpoints/Jobs_Update) |
 | [Update Location Tags](actions/update-location-tags.md) | `PATCH crm/v2/tenant/{{credentials.tenant}}/locations/:id` |  |
 | [Update Payment](actions/update-payment.md) | `PATCH accounting/v2/tenant/{{credentials.tenant}}/payments/{{paymentId}}` |  |
 | [Update Payment Status](actions/update-payment-status.md) | `POST accounting/v2/tenant/{{credentials.tenant}}/payments/status` |  |
-| [Update Purchase Order](actions/update-purchase-order.md) | `PATCH accounting/v2/tenant/{{credentials.tenant}}/purchase-orders/:id` |  |
+| [Update Purchase Order](actions/update-purchase-order.md) | `PATCH inventory/v2/tenant/{{credentials.tenant}}/purchase-orders/:id` | [docs](https://developer.servicetitan.io/docs/apis/tenant-inventory-v2/endpoints/PurchaseOrders_Update) |
 | [Update Technician Payroll Settings](actions/update-technician-payroll-settings.md) | `PUT payroll/v2/tenant/{{credentials.tenant}}/technicians/:technician/payroll-settings` | [docs](https://developer.servicetitan.io/docs/apis/tenant-payroll-v2/endpoints/PayrollSettings_UpdateTechnicianPayrollSettings) |
 | [Update Vendor](actions/update-vendor.md) | `PATCH inventory/v2/tenant/{{credentials.tenant}}/vendors/:id` |  |
 | [Upload Job Attachment](actions/upload-job-attachment.md) | `POST jpm/v2/tenant/{{credentials.tenant}}/jobs/:id/attachments` | [docs](https://developer.servicetitan.io/docs/apis/tenant-forms-v2/endpoints/Jobs_CreateAttachment) |

@@ -51,7 +51,7 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | `driveId` | string | yes | Microsoft Graph drive ID for the SharePoint document library. Example: `driveId`. |
 | `folderPath` | string | yes | Destination folder path under the drive root. Use an empty value for the root. Example: `Shared Documents`. |
 | `fileName` | string | yes | Name to use for the uploaded file. Example: `report.pdf`. |
-| `content` | file | yes | File content to upload. |
+| `content` | file | yes | Plain base64 file content or a direct HTTPS download URL accessible without additional headers. The file is sent as binary bytes. A URL keeps file bytes out of the JSON request body; a web page or sign-in link is not a direct download URL. |
 
 ## Response
 

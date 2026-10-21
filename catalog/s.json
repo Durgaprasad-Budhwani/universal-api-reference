@@ -230048,7 +230048,7 @@
     "description": "ServiceTitan is a cloud-based software platform for home and commercial service businesses that manages customers, jobs, scheduling, dispatching, invoicing, payments, and other field service operations.",
     "iconUrl": "https://images.mindcloud.co/apps/icons/service-titan_1777386591371.png",
     "nativeDocumentationUrl": "https://developer.servicetitan.io/api-details/#api=tenant-crm-v2",
-    "version": "0.0.390",
+    "version": "0.0.393",
     "authentication": [
       {
         "type": "custom",
@@ -249867,7 +249867,7 @@
             {
               "key": "customFields[].value",
               "name": "Value",
-              "dataType": "boolean",
+              "dataType": "string",
               "location": "body",
               "required": false
             },
@@ -250045,7 +250045,7 @@
           {
             "key": "customFields[].value",
             "name": "Value",
-            "dataType": "boolean",
+            "dataType": "string",
             "required": false
           },
           {
@@ -250947,6 +250947,677 @@
             "name": "id",
             "dataType": "string",
             "required": false
+          }
+        ],
+        "responseSchema": []
+      },
+      {
+        "name": "Update Invoice",
+        "slug": "update-invoice",
+        "operation": "update",
+        "method": "PUT",
+        "model": "invoice",
+        "documentationUrl": "https://tenant-api-credentials-portal-integration.servicetitan.io/docs/apis/tenant-accounting-v2/endpoints/Invoices_UpdateInvoice",
+        "native": {
+          "method": "PATCH",
+          "path": "accounting/v2/tenant/{{credentials.tenant}}/invoices/:id",
+          "baseUrl": "https://{{credentials.baseUrl}}/",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "id",
+              "name": "Invoice ID",
+              "dataType": "number",
+              "location": "param",
+              "required": true
+            },
+            {
+              "key": "number",
+              "name": "Number",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "typeId",
+              "name": "Type ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "invoicedOn",
+              "name": "Invoiced On",
+              "dataType": "date",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "subtotal",
+              "name": "Subtotal",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "tax",
+              "name": "Tax",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "taxZoneId",
+              "name": "Tax Zone ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "summary",
+              "name": "Summary",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "royaltyStatus",
+              "name": "Royalty Status",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "enumValues": [
+                "Failed",
+                "Pending",
+                "Sent"
+              ]
+            },
+            {
+              "key": "royaltyDate",
+              "name": "Royalty Date",
+              "dataType": "date",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "royaltySentOn",
+              "name": "Royalty Sent On",
+              "dataType": "date",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "royaltyMemo",
+              "name": "Royalty Memo",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "exportId",
+              "name": "Export ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "reviewStatus",
+              "name": "Review Status",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "enumValues": [
+                "Invoiced",
+                "NeedsReview",
+                "OnHold",
+                "PendingApproval",
+                "ReadyForBilling",
+                "Rejected",
+                "Reviewed"
+              ]
+            },
+            {
+              "key": "assignedToId",
+              "name": "Assigned to ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "budgetCodeId",
+              "name": "Budget Code ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[]",
+              "name": "Items",
+              "dataType": "array",
+              "itemDataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].skuId",
+              "name": "SKU ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].skuName",
+              "name": "SKU Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].technicianId",
+              "name": "Technician ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].description",
+              "name": "Description",
+              "dataType": "string",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "items[].quantity",
+              "name": "Quantity",
+              "dataType": "number",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "items[].unitPrice",
+              "name": "Unit Price",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].cost",
+              "name": "Cost",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].isAddOn",
+              "name": "Is Add On",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].signature",
+              "name": "Signature",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].technicianAcknowledgementSignature",
+              "name": "Technician Acknowledgement Signature",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].installedOn",
+              "name": "Installed On",
+              "dataType": "date",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].inventoryWarehouseName",
+              "name": "Inventory Warehouse Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].skipUpdatingMembershipPrices",
+              "name": "Skip Updating Membership Prices",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].itemGroupName",
+              "name": "Item Group Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].itemGroupRootId",
+              "name": "Item Group Root ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].inventoryLocationId",
+              "name": "Inventory Location ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].durationBillingId",
+              "name": "Duration Billing ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].budgetCodeId",
+              "name": "Budget Code ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].id",
+              "name": "ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "items[].serviceDate",
+              "name": "Service Date",
+              "dataType": "date",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "dueDate",
+              "name": "Due Date",
+              "dataType": "date",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "payments[]",
+              "name": "Payments",
+              "dataType": "array",
+              "itemDataType": "object",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "payments[].id",
+              "name": "ID",
+              "dataType": "number",
+              "location": "body",
+              "required": true
+            },
+            {
+              "key": "payments[].settlementStatus",
+              "name": "Settlement Status",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "enumValues": [
+                "NotSettled",
+                "Settled"
+              ]
+            },
+            {
+              "key": "payments[].settlementDate",
+              "name": "Settlement Date",
+              "dataType": "date",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "rateSheetId",
+              "name": "Rate Sheet ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Omit to leave the invoice's rate sheet unchanged."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "id",
+            "name": "Invoice ID",
+            "dataType": "number",
+            "required": true
+          },
+          {
+            "key": "number",
+            "name": "Number",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "typeId",
+            "name": "Type ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "invoicedOn",
+            "name": "Invoiced On",
+            "dataType": "date",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "subtotal",
+            "name": "Subtotal",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "tax",
+            "name": "Tax",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "taxZoneId",
+            "name": "Tax Zone ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "summary",
+            "name": "Summary",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "royaltyStatus",
+            "name": "Royalty Status",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "enumValues": [
+              "Failed",
+              "Pending",
+              "Sent"
+            ]
+          },
+          {
+            "key": "royaltyDate",
+            "name": "Royalty Date",
+            "dataType": "date",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "royaltySentOn",
+            "name": "Royalty Sent On",
+            "dataType": "date",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "royaltyMemo",
+            "name": "Royalty Memo",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "exportId",
+            "name": "Export ID",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "reviewStatus",
+            "name": "Review Status",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "enumValues": [
+              "Invoiced",
+              "NeedsReview",
+              "OnHold",
+              "PendingApproval",
+              "ReadyForBilling",
+              "Rejected",
+              "Reviewed"
+            ]
+          },
+          {
+            "key": "assignedToId",
+            "name": "Assigned to ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "budgetCodeId",
+            "name": "Budget Code ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[]",
+            "name": "Items",
+            "dataType": "array",
+            "itemDataType": "object",
+            "required": false
+          },
+          {
+            "key": "items[].skuId",
+            "name": "SKU ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].skuName",
+            "name": "SKU Name",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].technicianId",
+            "name": "Technician ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].description",
+            "name": "Description",
+            "dataType": "string",
+            "required": true
+          },
+          {
+            "key": "items[].quantity",
+            "name": "Quantity",
+            "dataType": "number",
+            "required": true
+          },
+          {
+            "key": "items[].unitPrice",
+            "name": "Unit Price",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].cost",
+            "name": "Cost",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].isAddOn",
+            "name": "Is Add On",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].signature",
+            "name": "Signature",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].technicianAcknowledgementSignature",
+            "name": "Technician Acknowledgement Signature",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].installedOn",
+            "name": "Installed On",
+            "dataType": "date",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].inventoryWarehouseName",
+            "name": "Inventory Warehouse Name",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].skipUpdatingMembershipPrices",
+            "name": "Skip Updating Membership Prices",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].itemGroupName",
+            "name": "Item Group Name",
+            "dataType": "string",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].itemGroupRootId",
+            "name": "Item Group Root ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].inventoryLocationId",
+            "name": "Inventory Location ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].durationBillingId",
+            "name": "Duration Billing ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].budgetCodeId",
+            "name": "Budget Code ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].id",
+            "name": "ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "items[].serviceDate",
+            "name": "Service Date",
+            "dataType": "date",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "dueDate",
+            "name": "Due Date",
+            "dataType": "date",
+            "required": false,
+            "advanced": true,
+            "example": "2026-10-19"
+          },
+          {
+            "key": "payments[]",
+            "name": "Payments",
+            "dataType": "array",
+            "itemDataType": "object",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "payments[].id",
+            "name": "ID",
+            "dataType": "number",
+            "required": true
+          },
+          {
+            "key": "payments[].settlementStatus",
+            "name": "Settlement Status",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "enumValues": [
+              "NotSettled",
+              "Settled"
+            ]
+          },
+          {
+            "key": "payments[].settlementDate",
+            "name": "Settlement Date",
+            "dataType": "date",
+            "required": false,
+            "advanced": true
+          },
+          {
+            "key": "rateSheetId",
+            "name": "Rate Sheet ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true,
+            "description": "Omit to leave the invoice's rate sheet unchanged."
           }
         ],
         "responseSchema": []
@@ -252244,27 +252915,278 @@
         "method": "PUT",
         "model": "purchaseOrder",
         "group": "Purchase Order",
+        "documentationUrl": "https://developer.servicetitan.io/docs/apis/tenant-inventory-v2/endpoints/PurchaseOrders_Update",
         "native": {
           "method": "PATCH",
-          "path": "accounting/v2/tenant/{{credentials.tenant}}/purchase-orders/:id",
+          "path": "inventory/v2/tenant/{{credentials.tenant}}/purchase-orders/:id",
           "baseUrl": "https://{{credentials.baseUrl}}/",
           "apiName": "REST",
           "apiType": "rest",
           "arguments": [
             {
               "key": "id",
-              "name": "Id",
-              "dataType": "string",
+              "name": "Purchase Order ID",
+              "dataType": "number",
               "location": "param",
-              "required": false,
-              "description": "Purchase Order ID"
+              "required": true,
+              "description": "ServiceTitan purchase order ID to update."
             },
             {
-              "key": "customFields[]",
-              "name": "customFields",
-              "dataType": "array",
+              "key": "items[].id",
+              "name": "Item ID",
+              "dataType": "number",
               "location": "body",
-              "required": false
+              "required": true,
+              "description": "ID of the purchase order item to update."
+            },
+            {
+              "key": "shipTo.address.street",
+              "name": "Street",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Street."
+            },
+            {
+              "key": "shipTo.description",
+              "name": "Description",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Description of the shipping address, such as a customer address or technician truck."
+            },
+            {
+              "key": "items[].skuId",
+              "name": "SKU ID",
+              "dataType": "number",
+              "location": "body",
+              "required": true,
+              "description": "ID of the SKU from the pricebook. It can be any active material or equipment."
+            },
+            {
+              "key": "shipTo.address",
+              "name": "Address",
+              "dataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "Actual shipping address."
+            },
+            {
+              "key": "shipTo.address.unit",
+              "name": "Unit",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Unit."
+            },
+            {
+              "key": "vendorId",
+              "name": "Vendor ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Id of the vendor for this purchase order."
+            },
+            {
+              "key": "items[].description",
+              "name": "Description",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Item description."
+            },
+            {
+              "key": "shipTo.address.city",
+              "name": "City",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "City."
+            },
+            {
+              "key": "typeId",
+              "name": "Purchase Order Type ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Id of the purchase order type for this purchase order."
+            },
+            {
+              "key": "businessUnitId",
+              "name": "Business Unit ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Id of the business unit for this purchase order."
+            },
+            {
+              "key": "items[].vendorPartNumber",
+              "name": "Vendor Part Number",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Part number of this item for the current vendor."
+            },
+            {
+              "key": "shipTo.address.state",
+              "name": "State",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "State."
+            },
+            {
+              "key": "inventoryLocationId",
+              "name": "Inventory Location ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Id of the inventory location for this purchase order."
+            },
+            {
+              "key": "items[].quantity",
+              "name": "Quantity",
+              "dataType": "number",
+              "location": "body",
+              "required": true,
+              "description": "Item quantity."
+            },
+            {
+              "key": "shipTo.address.zip",
+              "name": "Zip",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Zip code."
+            },
+            {
+              "key": "items[].cost",
+              "name": "Cost",
+              "dataType": "number",
+              "location": "body",
+              "required": true,
+              "description": "Item cost."
+            },
+            {
+              "key": "jobId",
+              "name": "Job ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Id of the job for this purchase order. Omit for a non-job purchase order."
+            },
+            {
+              "key": "shipTo.address.country",
+              "name": "Country",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Country code."
+            },
+            {
+              "key": "items[].budgetCodeId",
+              "name": "Budget Code ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "ID of the budget code for this purchase order item."
+            },
+            {
+              "key": "technicianId",
+              "name": "Technician ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Id of the technician for this purchase order."
+            },
+            {
+              "key": "projectId",
+              "name": "Project ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Id of the project for this purchase order."
+            },
+            {
+              "key": "budgetCodeId",
+              "name": "Budget Code ID",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Id of the budget code for this purchase order."
+            },
+            {
+              "key": "shipTo",
+              "name": "Ship To",
+              "dataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "Address where the purchase order will be shipped."
+            },
+            {
+              "key": "vendorInvoiceNumber",
+              "name": "Vendor Invoice Number",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Vendor invoice number."
+            },
+            {
+              "key": "impactsTechnicianPayroll",
+              "name": "Impacts Technician Payroll",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false,
+              "description": "Whether this purchase order affects technician payroll."
+            },
+            {
+              "key": "memo",
+              "name": "Memo",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Summary or memo for this purchase order."
+            },
+            {
+              "key": "date",
+              "name": "Purchase Order Date",
+              "dataType": "date",
+              "location": "body",
+              "required": false,
+              "description": "Purchase order date."
+            },
+            {
+              "key": "requiredOn",
+              "name": "Required On",
+              "dataType": "date",
+              "location": "body",
+              "required": false,
+              "description": "Date the purchase order is required."
+            },
+            {
+              "key": "tax",
+              "name": "Tax",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Tax amount."
+            },
+            {
+              "key": "shipping",
+              "name": "Shipping",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Shipping cost."
+            },
+            {
+              "key": "items[]",
+              "name": "Items",
+              "dataType": "array",
+              "itemDataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "New or updated purchase order items. Sending this field replaces the active item set: active items omitted from the list are marked inactive."
             }
           ]
         },
@@ -252276,16 +253198,236 @@
         "arguments": [
           {
             "key": "id",
-            "name": "Id",
-            "dataType": "string",
-            "required": false,
-            "description": "Purchase Order ID"
+            "name": "Purchase Order ID",
+            "dataType": "number",
+            "required": true,
+            "description": "ServiceTitan purchase order ID to update."
           },
           {
-            "key": "customFields[]",
-            "name": "customFields",
+            "key": "items[].id",
+            "name": "Item ID",
+            "dataType": "number",
+            "required": true,
+            "description": "ID of the purchase order item to update."
+          },
+          {
+            "key": "shipTo.address.street",
+            "name": "Street",
+            "dataType": "string",
+            "required": false,
+            "description": "Street."
+          },
+          {
+            "key": "shipTo.description",
+            "name": "Description",
+            "dataType": "string",
+            "required": false,
+            "description": "Description of the shipping address, such as a customer address or technician truck."
+          },
+          {
+            "key": "items[].skuId",
+            "name": "SKU ID",
+            "dataType": "number",
+            "required": true,
+            "description": "ID of the SKU from the pricebook. It can be any active material or equipment."
+          },
+          {
+            "key": "shipTo.address",
+            "name": "Address",
+            "dataType": "object",
+            "required": false,
+            "description": "Actual shipping address."
+          },
+          {
+            "key": "shipTo.address.unit",
+            "name": "Unit",
+            "dataType": "string",
+            "required": false,
+            "description": "Unit."
+          },
+          {
+            "key": "vendorId",
+            "name": "Vendor ID",
+            "dataType": "number",
+            "required": false,
+            "description": "Id of the vendor for this purchase order."
+          },
+          {
+            "key": "items[].description",
+            "name": "Description",
+            "dataType": "string",
+            "required": true,
+            "description": "Item description."
+          },
+          {
+            "key": "shipTo.address.city",
+            "name": "City",
+            "dataType": "string",
+            "required": false,
+            "description": "City."
+          },
+          {
+            "key": "typeId",
+            "name": "Purchase Order Type ID",
+            "dataType": "number",
+            "required": false,
+            "description": "Id of the purchase order type for this purchase order."
+          },
+          {
+            "key": "businessUnitId",
+            "name": "Business Unit ID",
+            "dataType": "number",
+            "required": false,
+            "description": "Id of the business unit for this purchase order."
+          },
+          {
+            "key": "items[].vendorPartNumber",
+            "name": "Vendor Part Number",
+            "dataType": "string",
+            "required": true,
+            "description": "Part number of this item for the current vendor."
+          },
+          {
+            "key": "shipTo.address.state",
+            "name": "State",
+            "dataType": "string",
+            "required": false,
+            "description": "State."
+          },
+          {
+            "key": "inventoryLocationId",
+            "name": "Inventory Location ID",
+            "dataType": "number",
+            "required": false,
+            "description": "Id of the inventory location for this purchase order."
+          },
+          {
+            "key": "items[].quantity",
+            "name": "Quantity",
+            "dataType": "number",
+            "required": true,
+            "description": "Item quantity."
+          },
+          {
+            "key": "shipTo.address.zip",
+            "name": "Zip",
+            "dataType": "string",
+            "required": false,
+            "description": "Zip code."
+          },
+          {
+            "key": "items[].cost",
+            "name": "Cost",
+            "dataType": "number",
+            "required": true,
+            "description": "Item cost."
+          },
+          {
+            "key": "jobId",
+            "name": "Job ID",
+            "dataType": "number",
+            "required": false,
+            "description": "Id of the job for this purchase order. Omit for a non-job purchase order."
+          },
+          {
+            "key": "shipTo.address.country",
+            "name": "Country",
+            "dataType": "string",
+            "required": false,
+            "description": "Country code."
+          },
+          {
+            "key": "items[].budgetCodeId",
+            "name": "Budget Code ID",
+            "dataType": "number",
+            "required": false,
+            "advanced": true,
+            "description": "ID of the budget code for this purchase order item."
+          },
+          {
+            "key": "technicianId",
+            "name": "Technician ID",
+            "dataType": "number",
+            "required": false,
+            "description": "Id of the technician for this purchase order."
+          },
+          {
+            "key": "projectId",
+            "name": "Project ID",
+            "dataType": "number",
+            "required": false,
+            "description": "Id of the project for this purchase order."
+          },
+          {
+            "key": "budgetCodeId",
+            "name": "Budget Code ID",
+            "dataType": "number",
+            "required": false,
+            "description": "Id of the budget code for this purchase order."
+          },
+          {
+            "key": "shipTo",
+            "name": "Ship To",
+            "dataType": "object",
+            "required": false,
+            "description": "Address where the purchase order will be shipped."
+          },
+          {
+            "key": "vendorInvoiceNumber",
+            "name": "Vendor Invoice Number",
+            "dataType": "string",
+            "required": false,
+            "description": "Vendor invoice number."
+          },
+          {
+            "key": "impactsTechnicianPayroll",
+            "name": "Impacts Technician Payroll",
+            "dataType": "boolean",
+            "required": false,
+            "description": "Whether this purchase order affects technician payroll."
+          },
+          {
+            "key": "memo",
+            "name": "Memo",
+            "dataType": "string",
+            "required": false,
+            "description": "Summary or memo for this purchase order."
+          },
+          {
+            "key": "date",
+            "name": "Purchase Order Date",
+            "dataType": "date",
+            "required": false,
+            "description": "Purchase order date."
+          },
+          {
+            "key": "requiredOn",
+            "name": "Required On",
+            "dataType": "date",
+            "required": false,
+            "description": "Date the purchase order is required."
+          },
+          {
+            "key": "tax",
+            "name": "Tax",
+            "dataType": "number",
+            "required": false,
+            "description": "Tax amount."
+          },
+          {
+            "key": "shipping",
+            "name": "Shipping",
+            "dataType": "number",
+            "required": false,
+            "description": "Shipping cost."
+          },
+          {
+            "key": "items[]",
+            "name": "Items",
             "dataType": "array",
-            "required": false
+            "itemDataType": "object",
+            "required": false,
+            "description": "New or updated purchase order items. Sending this field replaces the active item set: active items omitted from the list are marked inactive."
           }
         ],
         "responseSchema": []
@@ -611327,7 +612469,7 @@
     "websiteUrl": "https://www.sosinventory.com",
     "nativeBaseUrl": "https://live.sosinventory.com",
     "nativeDocumentationUrl": "https://developer.sosinventory.com/apidoc/",
-    "version": "0.0.11",
+    "version": "0.0.13",
     "authentication": [
       {
         "type": "oAuth2",
@@ -624005,8 +625147,8 @@
         "method": "GET",
         "model": "shipment",
         "group": "Customer",
-        "description": "Retrieves customers from SOS Inventory.",
-        "documentationUrl": "https://developer.sosinventory.com/apidoc/Customer",
+        "description": "Retrieves shipments from SOS Inventory.",
+        "documentationUrl": "https://developer.sosinventory.com/apidoc/Shipment",
         "native": {
           "method": "GET",
           "path": "/api/v2/shipment",
@@ -624084,119 +625226,99 @@
         ],
         "responseSchema": [
           {
-            "key": "altPhone",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
             "key": "archived",
             "dataType": "boolean",
             "mockType": "boolean"
           },
           {
-            "key": "billing.city",
+            "key": "assignedToUser",
             "dataType": "object",
             "mockType": "object"
           },
           {
-            "key": "billing.country",
-            "dataType": "object",
-            "mockType": "object"
+            "key": "billing.address",
+            "dataType": "string",
+            "mockType": "string"
           },
           {
-            "key": "billing.line1",
-            "dataType": "object",
-            "mockType": "object"
+            "key": "billing.addressName",
+            "dataType": "string",
+            "mockType": "string"
           },
           {
-            "key": "billing.line2",
-            "dataType": "object",
-            "mockType": "object"
+            "key": "billing.addressType",
+            "dataType": "string",
+            "mockType": "string"
           },
           {
-            "key": "billing.line3",
-            "dataType": "object",
-            "mockType": "object"
+            "key": "billing.company",
+            "dataType": "string",
+            "mockType": "string"
           },
           {
-            "key": "billing.line4",
-            "dataType": "object",
-            "mockType": "object"
+            "key": "billing.contact",
+            "dataType": "string",
+            "mockType": "string"
           },
           {
-            "key": "billing.line5",
-            "dataType": "object",
-            "mockType": "object"
+            "key": "billing.email",
+            "dataType": "string",
+            "mockType": "string"
           },
           {
-            "key": "billing.postalCode",
-            "dataType": "object",
-            "mockType": "object"
+            "key": "billing.phone",
+            "dataType": "string",
+            "mockType": "string"
           },
           {
-            "key": "billing.stateProvince",
-            "dataType": "object",
-            "mockType": "object"
+            "key": "channel.id",
+            "dataType": "number",
+            "mockType": "number"
           },
           {
-            "key": "billWithParent",
+            "key": "channel.name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "comment",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "createBillForShippingAmount",
             "dataType": "boolean",
             "mockType": "boolean"
           },
           {
-            "key": "businessLicense",
+            "key": "customer.fullname",
             "dataType": "string",
             "mockType": "string"
           },
           {
-            "key": "companyName",
+            "key": "customer.id",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "customer.name",
             "dataType": "string",
             "mockType": "string"
           },
           {
-            "key": "contact.firstName",
+            "key": "customerMessage",
             "dataType": "object",
             "mockType": "object"
           },
           {
-            "key": "contact.lastName",
+            "key": "customerNotes",
             "dataType": "object",
             "mockType": "object"
           },
           {
-            "key": "contact.middleName",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "contact.suffix",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "contact.title",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "contractorNumber",
+            "key": "customerPO",
             "dataType": "string",
             "mockType": "string"
-          },
-          {
-            "key": "creditHold",
-            "dataType": "boolean",
-            "mockType": "boolean"
-          },
-          {
-            "key": "currency",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "customerType",
-            "dataType": "object",
-            "mockType": "object"
           },
           {
             "key": "customFields",
@@ -624204,42 +625326,22 @@
             "mockType": "object"
           },
           {
-            "key": "email",
+            "key": "date",
             "dataType": "string",
             "mockType": "string"
           },
           {
-            "key": "expMonth",
+            "key": "department",
             "dataType": "object",
             "mockType": "object"
           },
           {
-            "key": "expYear",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "fax",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
-            "key": "foundUsVia",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
-            "key": "fullname",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
-            "key": "hasCardOnFile",
+            "key": "forceToShipStation",
             "dataType": "boolean",
             "mockType": "boolean"
           },
           {
-            "key": "hasChildren",
+            "key": "hasSignature",
             "dataType": "boolean",
             "mockType": "boolean"
           },
@@ -624249,127 +625351,98 @@
             "mockType": "number"
           },
           {
-            "key": "isInQuickBooks",
-            "dataType": "boolean",
-            "mockType": "boolean"
-          },
-          {
             "key": "keys",
             "dataType": "object",
             "mockType": "object"
           },
           {
-            "key": "lastFour",
+            "key": "lines",
+            "dataType": "array",
+            "itemDataType": "object",
+            "mockType": "array"
+          },
+          {
+            "key": "linkedTransaction",
             "dataType": "object",
             "mockType": "object"
           },
           {
-            "key": "lastSync",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
-            "key": "mobile",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
-            "key": "name",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
-            "key": "notes",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
-            "key": "parent",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "paymentMethod",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "phone",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
-            "key": "portalPassword",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
-            "key": "priceTier",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "resaleNumber",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
-            "key": "salesRep",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "shipping.city",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "shipping.country",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "shipping.line1",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "shipping.line2",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "shipping.line3",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "shipping.line4",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "shipping.line5",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "shipping.postalCode",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "shipping.stateProvince",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "starred",
+            "key": "location.id",
             "dataType": "number",
             "mockType": "number"
           },
           {
-            "key": "sublevel",
+            "key": "location.name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "number",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "priority",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "shipBy",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "shipping.address",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "shipping.addressName",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "shipping.addressType",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "shipping.company",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "shipping.contact",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "shipping.email",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "shipping.phone",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "shippingAmount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "shippingMethod.id",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "shippingMethod.name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "starred",
             "dataType": "number",
             "mockType": "number"
           },
@@ -624379,49 +625452,29 @@
             "mockType": "boolean"
           },
           {
-            "key": "syncMessage",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
             "key": "syncToken",
             "dataType": "number",
             "mockType": "number"
           },
           {
-            "key": "tax.taxable",
-            "dataType": "boolean",
-            "mockType": "boolean"
+            "key": "total",
+            "dataType": "number",
+            "mockType": "number"
           },
           {
-            "key": "tax.taxCode",
-            "dataType": "object",
-            "mockType": "object"
+            "key": "trackingLink",
+            "dataType": "string",
+            "mockType": "string"
           },
           {
-            "key": "tax.taxExemptReasonId",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "terms",
-            "dataType": "object",
-            "mockType": "object"
-          },
-          {
-            "key": "tokenType",
-            "dataType": "object",
-            "mockType": "object"
+            "key": "trackingNumber",
+            "dataType": "string",
+            "mockType": "string"
           },
           {
             "key": "values",
             "dataType": "object",
             "mockType": "object"
-          },
-          {
-            "key": "website",
-            "dataType": "string",
-            "mockType": "string"
           }
         ]
       },
@@ -805463,7 +806516,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/stripe-1776710109471_1777995197269.png",
     "websiteUrl": "https://stripe.com",
     "nativeDocumentationUrl": "https://docs.stripe.com/api",
-    "version": "0.0.62",
+    "version": "0.0.63",
     "authentication": [
       {
         "type": "basic",

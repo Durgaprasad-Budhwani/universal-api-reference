@@ -4,7 +4,7 @@ Connect Box to search content, inspect the authenticated user, and work with fil
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/box/latest
 - **Category:** Content & Files / Storage
-- **Actions:** 8
+- **Actions:** 10
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor website:** https://www.box.com/
 - **Vendor API docs:** https://developer.box.com/reference
@@ -22,13 +22,13 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/box/latest/actions/get-cu
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
-## Actions (8)
+## Actions (10)
 
-### Files
+### File
 
 | Action | Method | Description |
 | --- | --- | --- |
-| [Commit Upload Session](actions/commit-upload-session.md) | POST |  |
+| [Download File](actions/download-file.md) | GET |  |
 
 ### Folder
 
@@ -44,21 +44,23 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/box/latest/actions/get-cu
 | --- | --- | --- |
 | [List Root Folder Items](actions/list-root-folder-items.md) | GET |  |
 
+### Session
+
+| Action | Method | Description |
+| --- | --- | --- |
+| [Commit Upload Session](actions/commit-upload-session.md) | POST |  |
+| [Create Upload Session](actions/create-upload-session.md) | POST |  |
+
 ### Upload Part
 
 | Action | Method | Description |
 | --- | --- | --- |
 | [Upload Part](actions/upload-part.md) | PUT |  |
 
-### Upload Session
-
-| Action | Method | Description |
-| --- | --- | --- |
-| [Create Upload Session](actions/create-upload-session.md) | POST |  |
-
 ### User
 
 | Action | Method | Description |
 | --- | --- | --- |
 | [Get Current User](actions/get-current-user.md) | GET |  |
+| [List all webhooks](actions/list-all-webhooks.md) | GET |  |
 

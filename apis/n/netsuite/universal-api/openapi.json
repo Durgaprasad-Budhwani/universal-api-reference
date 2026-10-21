@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "NetSuite - Advanced Universal API",
-    "version": "0.0.279",
+    "version": "0.0.281",
     "description": "Leading integrated cloud business software suite, including business accounting, ERP, CRM and e-commerce software."
   },
   "servers": [
@@ -24231,15 +24231,6 @@
             "schema": {
               "type": "integer",
               "minimum": 0
-            }
-          },
-          {
-            "name": "where",
-            "in": "query",
-            "required": false,
-            "description": "An RSQL expression used to filter the results.",
-            "schema": {
-              "type": "string"
             }
           },
           {

@@ -39,14 +39,14 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
-| `properties[]` | array<string> | no | Company properties to return in the response. |
+| `properties[]` | array<string> | no | Company properties to return in the response. Accepts multiple values in one string, delimited by `,`. |
 
 ### Advanced
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
-| `propertiesWithHistory[]` | array<string> | no | Company properties to return with value history. |
-| `associations[]` | array<string> | no | Company-associated object types to include as associated IDs. |
+| `propertiesWithHistory[]` | array<string> | no | Company properties to return with value history. Accepts multiple values in one string, delimited by `,`. |
+| `associations[]` | array<string> | no | Company-associated object types to include as associated IDs. Accepts multiple values in one string, delimited by `,`. |
 | `archived` | boolean | no | Whether to return only archived company records. |
 
 ## Response

@@ -42,7 +42,123 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native EHS Insight API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "rowUID": "string",
+      "changeToken": "string",
+      "createdDtm": "string",
+      "updatedDtm": "string",
+      "userContactNumber": "string",
+      "userContactType": "string",
+      "inviteSent": 1,
+      "fullName": "Ava Chen",
+      "userContactPhoto": "string",
+      "userContactPhotoAttachmentUID": "string",
+      "userContactPhotoContentType": "string",
+      "userContactPhotoFileSize": "string",
+      "language": "string",
+      "languageOther": "string",
+      "uIMode": "string",
+      "uIModeOther": "string",
+      "isEnabled": 1,
+      "firstName": "Ava",
+      "lastName": "Chen",
+      "gender": "string",
+      "genderOther": "string",
+      "birthDate": "string",
+      "homeAddress": "string",
+      "homeCity": "string",
+      "homeState": "string",
+      "homeZip": "string",
+      "phoneNumber": "string",
+      "businessEntity": "string",
+      "position": "string",
+      "positionOther": "string",
+      "employer": "string",
+      "employerOther": "string",
+      "supervisor": "string",
+      "employeeID": "string",
+      "hireDate": "string",
+      "positionStartDate": "string",
+      "industryStartDate": "string",
+      "authProvider": "string",
+      "authProviderOther": "string",
+      "username": "Ava Chen",
+      "emailAddress": "ava@example.com",
+      "mobilePhoneNumber": "string",
+      "roleAssignmentType": "string",
+      "userContactPhotoPreviousVersions": [
+        {}
+      ],
+      "trainingGroup": [
+        {}
+      ],
+      "securityGroups": [
+        {}
+      ],
+      "userRoles": [
+        {}
+      ]
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `rowUID` | string |  |
+| `changeToken` | string |  |
+| `createdDtm` | string |  |
+| `updatedDtm` | string |  |
+| `userContactNumber` | string |  |
+| `userContactType` | string |  |
+| `inviteSent` | number |  |
+| `fullName` | string |  |
+| `userContactPhoto` | string |  |
+| `userContactPhotoAttachmentUID` | string |  |
+| `userContactPhotoContentType` | string |  |
+| `userContactPhotoFileSize` | string |  |
+| `language` | string |  |
+| `languageOther` | string |  |
+| `uIMode` | string |  |
+| `uIModeOther` | string |  |
+| `isEnabled` | number |  |
+| `firstName` | string |  |
+| `lastName` | string |  |
+| `gender` | string |  |
+| `genderOther` | string |  |
+| `birthDate` | string |  |
+| `homeAddress` | string |  |
+| `homeCity` | string |  |
+| `homeState` | string |  |
+| `homeZip` | string |  |
+| `phoneNumber` | string |  |
+| `businessEntity` | string |  |
+| `position` | string |  |
+| `positionOther` | string |  |
+| `employer` | string |  |
+| `employerOther` | string |  |
+| `supervisor` | string |  |
+| `employeeID` | string |  |
+| `hireDate` | string |  |
+| `positionStartDate` | string |  |
+| `industryStartDate` | string |  |
+| `authProvider` | string |  |
+| `authProviderOther` | string |  |
+| `username` | string |  |
+| `emailAddress` | string |  |
+| `mobilePhoneNumber` | string |  |
+| `roleAssignmentType` | string |  |
+| `userContactPhotoPreviousVersions` | array<object> |  |
+| `trainingGroup` | array<object> |  |
+| `securityGroups` | array<object> |  |
+| `userRoles` | array<object> |  |
 
 ## Native endpoint
 

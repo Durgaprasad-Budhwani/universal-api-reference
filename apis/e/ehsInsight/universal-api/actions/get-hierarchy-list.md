@@ -33,7 +33,35 @@ const { success, data } = await response.json();
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native EHS Insight API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "rowUID": "string",
+      "changeToken": "string",
+      "title": "string",
+      "startDate": "string",
+      "endDate": "string",
+      "comments": "string",
+      "parentHierarchyUID": "string"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `rowUID` | string |  |
+| `changeToken` | string |  |
+| `title` | string |  |
+| `startDate` | string |  |
+| `endDate` | string |  |
+| `comments` | string |  |
+| `parentHierarchyUID` | string |  |
 
 ## Native endpoint
 

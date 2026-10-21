@@ -1,6 +1,6 @@
 # Content & Files apps
 
-73 apps in the Content & Files category, with MindCloud's generated Universal API reference and the vendor's native documentation where available.
+74 apps in the Content & Files category, with MindCloud's generated Universal API reference and the vendor's native documentation where available.
 
 - **Acronis** · [Universal API reference](../../apis/a/acronis/universal-api) · [Native API reference](../../apis/a/acronis/native-api) · [Native API docs](https://developer.acronis.com/doc/outbound/apis/index.html)
 - **Adafruit IO** · [Universal API reference](../../apis/a/adafruitIO/universal-api) · [Native API reference](../../apis/a/adafruitIO/native-api) · [Native API docs](https://io.adafruit.com/api/docs/)
@@ -33,6 +33,7 @@
 - **Jottacloud** · [Universal API reference](../../apis/j/jottacloud/universal-api) · [Native API reference](../../apis/j/jottacloud/native-api) · [Native API docs](https://docs.jottacloud.com/en/collections/178055-our-command-line-tool)
 - **Lark Drive** · [Universal API reference](../../apis/l/larkDrive/universal-api) · [Native API reference](../../apis/l/larkDrive/native-api) · [Native API docs](https://open.larksuite.com/document)
 - **Mendeley** · [Universal API reference](../../apis/m/mendeley/universal-api) · [Native API reference](../../apis/m/mendeley/native-api) · [Native API docs](https://dev.mendeley.com/)
+- **Microsoft SharePoint Online** · [Universal API reference](../../apis/m/microsoftSharePointOnline/universal-api) · [Native API reference](../../apis/m/microsoftSharePointOnline/native-api) · [Native API docs](https://learn.microsoft.com/en-us/graph/api/resources/sharepoint?view=graph-rest-1.0)
 - **MinIO** · [Universal API reference](../../apis/m/minIO/universal-api) · [Native API reference](../../apis/m/minIO/native-api) · [Native API docs](https://docs.min.io/community/minio-object-store/)
 - **mintBlue** · [Universal API reference](../../apis/m/mintBlue/universal-api) · [Native API reference](../../apis/m/mintBlue/native-api) · [Native API docs](https://mintblue.gitlab.io/sdk/)
 - **MS SharePoint** · [Universal API reference](../../apis/m/mSSharePoint/universal-api) · [Native API reference](../../apis/m/mSSharePoint/native-api) · [Native API docs](https://learn.microsoft.com/en-us/graph/api/resources/sharepoint?view=graph-rest-1.0)

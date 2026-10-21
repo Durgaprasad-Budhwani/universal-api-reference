@@ -4,7 +4,7 @@ Experience better HR and payroll
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/adp/latest
 - **Category:** Human Resources / HRIS
-- **Actions:** 21
+- **Actions:** 24
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor website:** https://www.adp.com/
 - **Vendor API docs:** https://developers.adp.com/build/api-explorer
@@ -22,7 +22,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/adp/latest/actions/list-b
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
-## Actions (21)
+## Actions (24)
 
 ### Employees
 
@@ -109,9 +109,27 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/adp/latest/actions/list-b
 | [Create Time Card](actions/create-time-card.md) | POST |  |
 | [List Time Cards by Associate ID](actions/list-time-cards-by-associate-id.md) | GET | Getting all presence time entries for an employee and for a given period. |
 
+### Worker Additional Remuneration
+
+| Action | Method | Description |
+| --- | --- | --- |
+| [List Worker Additional Remunerations](actions/list-worker-additional-remunerations.md) | GET |  |
+
 ### Worker Leave
 
 | Action | Method | Description |
 | --- | --- | --- |
 | [List Worker Leaves](actions/list-worker-leaves.md) | GET |  |
+
+### Worker Payroll Instruction
+
+| Action | Method | Description |
+| --- | --- | --- |
+| [List Worker Payroll Instructions](actions/list-worker-payroll-instructions.md) | GET |  |
+
+### Worker Reportable Benefits Metadata
+
+| Action | Method | Description |
+| --- | --- | --- |
+| [Get Worker Reportable Benefits Metadata](actions/get-worker-reportable-benefits-meta.md) | GET |  |
 

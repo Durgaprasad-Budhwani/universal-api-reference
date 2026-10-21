@@ -31,7 +31,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/sOSInventory/latest/actio
 | [Create Customer](actions/create-customer.md) | POST | Creates a customer in SOS Inventory. |
 | [Get Customer](actions/get-customer.md) | GET | Retrieves a customer from SOS Inventory. |
 | [List Customers](actions/list-customers.md) | GET | Retrieves customers from SOS Inventory. |
-| [List Shipments](actions/list-shipments.md) | GET | Retrieves customers from SOS Inventory. |
+| [List Shipments](actions/list-shipments.md) | GET | Retrieves shipments from SOS Inventory. |
 | [Update Customer](actions/update-customer.md) | PUT | Updates an existing customer in SOS Inventory. |
 
 ### Estimate

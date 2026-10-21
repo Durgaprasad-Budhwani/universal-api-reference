@@ -24822,7 +24822,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/zenoti-icon_1782394814458.png",
     "websiteUrl": "https://www.zenoti.com/",
     "nativeDocumentationUrl": "https://docs.zenoti.com/reference/generate-an-access-token",
-    "version": "0.0.72",
+    "version": "0.0.73",
     "authentication": [
       {
         "type": "custom",
@@ -25262,7 +25262,11 @@
               "name": "Invoice Status",
               "dataType": "list",
               "location": "body",
-              "required": false
+              "required": false,
+              "enumValues": [
+                "0",
+                "4"
+              ]
             },
             {
               "key": "item_types[].itemType",
@@ -25270,7 +25274,17 @@
               "name": "Item Type",
               "dataType": "list",
               "location": "body",
-              "required": false
+              "required": false,
+              "enumValues": [
+                "DayPromoPackage",
+                "GiftCard",
+                "Membership",
+                "OtherFees",
+                "Package",
+                "PrepaidCard",
+                "Product",
+                "Service"
+              ]
             },
             {
               "key": "payment_types[].paymentType",
@@ -25278,7 +25292,21 @@
               "name": "Payment Type",
               "dataType": "list",
               "location": "body",
-              "required": false
+              "required": false,
+              "enumValues": [
+                "0",
+                "1",
+                "10",
+                "16",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9"
+              ]
             },
             {
               "key": "sale_types[].saleType",
@@ -25286,7 +25314,13 @@
               "name": "Sale Type",
               "dataType": "list",
               "location": "body",
-              "required": false
+              "required": false,
+              "enumValues": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ]
             },
             {
               "key": "start_date",
@@ -25369,25 +25403,59 @@
             "key": "invoiceStatuses[].invoiceStatus",
             "name": "Invoice Status",
             "dataType": "list",
-            "required": false
+            "required": false,
+            "enumValues": [
+              "0",
+              "4"
+            ]
           },
           {
             "key": "itemTypes[].itemType",
             "name": "Item Type",
             "dataType": "list",
-            "required": false
+            "required": false,
+            "enumValues": [
+              "DayPromoPackage",
+              "GiftCard",
+              "Membership",
+              "OtherFees",
+              "Package",
+              "PrepaidCard",
+              "Product",
+              "Service"
+            ]
           },
           {
             "key": "paymentTypes[].paymentType",
             "name": "Payment Type",
             "dataType": "list",
-            "required": false
+            "required": false,
+            "enumValues": [
+              "0",
+              "1",
+              "10",
+              "16",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9"
+            ]
           },
           {
             "key": "saleTypes[].saleType",
             "name": "Sale Type",
             "dataType": "list",
-            "required": false
+            "required": false,
+            "enumValues": [
+              "0",
+              "1",
+              "2",
+              "3"
+            ]
           },
           {
             "key": "startDate",
@@ -98929,7 +98997,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/zoho-crm_1782741849165.png",
     "websiteUrl": "https://www.zoho.com/crm/",
     "nativeDocumentationUrl": "https://www.zoho.com/crm/developer/docs/api/v8/",
-    "version": "0.0.27",
+    "version": "0.0.29",
     "authentication": [
       {
         "type": "oAuth2",
@@ -102028,6 +102096,27 @@
             "mockType": "string"
           }
         ]
+      },
+      {
+        "name": "Create Contacts",
+        "slug": "new-action1",
+        "operation": "create",
+        "method": "POST",
+        "model": "contact",
+        "documentationUrl": "https://www.zoho.com/crm/developer/docs/api/v7/insert-records.html",
+        "native": {
+          "method": "POST",
+          "path": "/Contacts",
+          "baseUrl": "{{credentials.accessTokenRequest.api_domain}}/crm/v8",
+          "apiType": "rest"
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [],
+        "responseSchema": []
       },
       {
         "name": "Search Accounts",

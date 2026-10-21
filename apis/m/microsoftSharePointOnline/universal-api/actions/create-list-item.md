@@ -18,7 +18,7 @@ curl -X POST "https://connect.mindcloud.co/v1/universal/microsoftSharePointOnlin
   "connectionId": "$CONNECTION_ID",
   "siteId": "contoso.sharepoint.com,siteCollectionId,siteId",
   "listId": "Documents",
-  "fields": "[object Object]"
+  "fields": {}
 }'
 ```
 
@@ -33,7 +33,7 @@ const response = await fetch('https://connect.mindcloud.co/v1/universal/microsof
     connectionId,
     "siteId": "contoso.sharepoint.com,siteCollectionId,siteId",
     "listId": "Documents",
-    "fields": "[object Object]"
+    "fields": {}
   })
 });
 
@@ -48,7 +48,7 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | --- | --- | --- | --- |
 | `siteId` | string | yes | Microsoft Graph site ID for the SharePoint site. Example: `contoso.sharepoint.com,siteCollectionId,siteId`. |
 | `listId` | string | yes | Microsoft Graph list ID or list name for the SharePoint list. Example: `Documents`. |
-| `fields` | object | yes | Object containing SharePoint list column values for the new item. Example: `[object Object]`. |
+| `fields` | object | yes | Object containing SharePoint list column values for the new item. |
 
 ## Response
 

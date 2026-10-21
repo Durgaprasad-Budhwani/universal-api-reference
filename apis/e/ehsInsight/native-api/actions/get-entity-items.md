@@ -8,7 +8,7 @@
 
 ## Parameters
 
-| Parameter | Location | Type | Required |
-| --- | --- | --- | --- |
-| `customparams` | path | `string` | no |
-| `entityName` | path | `string` | yes |
+| Parameter | Location | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| `entityName` | path | `string` | yes | — |
+| `customparams` | query | `string` | no | Optional provider-specific query string segment appended after the list route. |

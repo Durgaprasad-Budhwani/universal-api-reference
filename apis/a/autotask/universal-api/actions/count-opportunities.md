@@ -40,7 +40,23 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native Autotask API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "queryCount": 1
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `queryCount` | number | Number of opportunities matching the search criteria. |
 
 ## Native endpoint
 

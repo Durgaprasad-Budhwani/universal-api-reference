@@ -30,7 +30,17 @@ Example response:
 ```json
 {
   "success": true,
-  "data": [],
+  "data": [
+    {
+      "rowUID": "string",
+      "changeToken": "string",
+      "title": "string",
+      "startDate": "string",
+      "endDate": "string",
+      "comments": "string",
+      "parentHierarchyUID": "string"
+    }
+  ],
   "meta": {}
 }
 ```

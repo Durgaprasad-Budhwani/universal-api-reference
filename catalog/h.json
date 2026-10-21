@@ -168125,7 +168125,7 @@
     "websiteUrl": "https://www.hubspot.com/",
     "nativeBaseUrl": "https://app.hubspot.com",
     "nativeDocumentationUrl": "https://developers.hubspot.com/docs/api-reference/latest/overview",
-    "version": "0.1.37",
+    "version": "0.1.38",
     "authentication": [
       {
         "type": "oAuth2",
@@ -176079,7 +176079,11 @@
               "itemDataType": "string",
               "location": "query",
               "required": false,
-              "description": "Company properties to return in the response."
+              "description": "Company properties to return in the response.",
+              "multipleValues": {
+                "format": "string",
+                "delimiter": ","
+              }
             },
             {
               "key": "propertiesWithHistory[]",
@@ -176088,7 +176092,11 @@
               "itemDataType": "string",
               "location": "query",
               "required": false,
-              "description": "Company properties to return with value history."
+              "description": "Company properties to return with value history.",
+              "multipleValues": {
+                "format": "string",
+                "delimiter": ","
+              }
             },
             {
               "key": "associations[]",
@@ -176097,7 +176105,11 @@
               "itemDataType": "string",
               "location": "query",
               "required": false,
-              "description": "Company-associated object types to include as associated IDs."
+              "description": "Company-associated object types to include as associated IDs.",
+              "multipleValues": {
+                "format": "string",
+                "delimiter": ","
+              }
             },
             {
               "key": "archived",
@@ -176121,7 +176133,11 @@
             "dataType": "array",
             "itemDataType": "string",
             "required": false,
-            "description": "Company properties to return in the response."
+            "description": "Company properties to return in the response.",
+            "multipleValues": {
+              "format": "string",
+              "delimiter": ","
+            }
           },
           {
             "key": "propertiesWithHistory[]",
@@ -176130,7 +176146,11 @@
             "itemDataType": "string",
             "required": false,
             "advanced": true,
-            "description": "Company properties to return with value history."
+            "description": "Company properties to return with value history.",
+            "multipleValues": {
+              "format": "string",
+              "delimiter": ","
+            }
           },
           {
             "key": "associations[]",
@@ -176139,7 +176159,11 @@
             "itemDataType": "string",
             "required": false,
             "advanced": true,
-            "description": "Company-associated object types to include as associated IDs."
+            "description": "Company-associated object types to include as associated IDs.",
+            "multipleValues": {
+              "format": "string",
+              "delimiter": ","
+            }
           },
           {
             "key": "archived",

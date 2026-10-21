@@ -50,7 +50,7 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | `externalData.externalData[].key` | string | no |  |
 | `name` | string | no |  |
 | `address.unit` | string | no |  |
-| `customFields[].value` | boolean | no |  |
+| `customFields[].value` | string | no |  |
 | `externalData.externalData[]` | array | no |  |
 | `externalData.externalData[].value` | string | no |  |
 | `type` | string | no | Residential or commercial |

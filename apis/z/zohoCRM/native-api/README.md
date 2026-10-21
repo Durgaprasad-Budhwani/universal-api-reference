@@ -1,6 +1,6 @@
 # Zoho CRM: Native API Reference
 
-A consolidated summary of Zoho CRM's API configuration and 38 documented operations, with links to official documentation.
+A consolidated summary of Zoho CRM's API configuration and 39 documented operations, with links to official documentation.
 
 - **Official docs:** https://www.zoho.com/crm/developer/docs/api/v8/
 - **API base URL:** `{api_domain}/crm/v8`
@@ -41,7 +41,7 @@ Use `per_page` in the query string to set the page size (default 200; accepted r
 
 Set the sort field with `sort_by` in the query string. Set the direction separately with `sort_order`. Use `asc` for ascending order and `desc` for descending order. Only one sort field is accepted.
 
-## Endpoints (38 documented)
+## Endpoints (39 documented)
 
 | Operation | Method & path | Vendor docs |
 | --- | --- | --- |
@@ -68,6 +68,7 @@ Set the sort field with `sort_by` in the query string. Set the direction separat
 | [List Contacts](actions/list-contacts.md) | `GET /Contacts` | [docs](https://www.zoho.com/crm/developer/docs/api/v8/get-records.html) |
 | [List Deals](actions/list-deals.md) | `GET /Deals` | [docs](https://www.zoho.com/crm/developer/docs/api/v8/get-records.html) |
 | [List Leads](actions/list-leads.md) | `GET /Leads` | [docs](https://www.zoho.com/crm/developer/docs/api/v8/get-records.html) |
+| [Create Contacts](actions/new-action1.md) | `POST /Contacts` | [docs](https://www.zoho.com/crm/developer/docs/api/v7/insert-records.html) |
 | [Search Accounts](actions/search-accounts.md) | `GET /Accounts/search` | [docs](https://www.zoho.com/crm/developer/docs/api/v8/search-records.html) |
 | [Search Contacts](actions/search-contacts.md) | `GET /Contacts/search` | [docs](https://www.zoho.com/crm/developer/docs/api/v8/search-records.html) |
 | [Search Deals](actions/search-deals.md) | `GET /Deals/search` | [docs](https://www.zoho.com/crm/developer/docs/api/v8/search-records.html) |
