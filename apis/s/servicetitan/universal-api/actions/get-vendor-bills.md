@@ -41,11 +41,18 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | --- | --- | --- | --- |
 | `modifiedOnOrAfter` | string | no |  |
 | `invoicedOnOrAfter` | string | no |  |
+| `statuses` | string | no | Pending, Posted, Exported |
 | `ids` | string | no |  |
+| `number` | string | no | Reference number associated with invoices. |
 | `orderBy` | string | no |  |
 | `orderByDirection` | string | no | Order direction of the retuned list of invoices. Values of "desc" or "descending" will order the list in descending order, otherwise the list will be ordered in ascending order. |
 | `customerId` | string | no |  |
+| `totalGreater` | number | no |  |
 | `totalLess` | number | no |  |
+| `jobNumber` | string | no |  |
+| `jobId` | string | no |  |
+| `batchId` | number | no | Batch ID associated with invoices. |
+| `batchNumber` | number | no | Batch number associated with invoices. |
 
 ## Response
 

@@ -164653,7 +164653,7 @@
     "description": "Manage Amazon listings, inventory, orders, and shipments",
     "iconUrl": "https://images.mindcloud.co/apps/icons/amazon-1_1768252959060.png",
     "nativeDocumentationUrl": "https://developer-docs.amazon.com/sp-api/reference/welcome-to-api-references",
-    "version": "0.0.93",
+    "version": "0.0.95",
     "authentication": [
       {
         "type": "oAuth2",
@@ -174533,6 +174533,13 @@
               "dataType": "list",
               "location": "query",
               "required": false,
+              "enumValues": [
+                "CANCELLED",
+                "DONE",
+                "FATAL",
+                "IN_PROGRESS",
+                "IN_QUEUE"
+              ],
               "multipleValues": {
                 "format": "array"
               }
@@ -174557,6 +174564,11 @@
               "dataType": "list",
               "location": "query",
               "required": false,
+              "enumValues": [
+                "A1AM78C64UM0Y8",
+                "A2EUQ1WTGCTBG2",
+                "ATVPDKIKX0DER"
+              ],
               "multipleValues": {
                 "format": "array"
               }
@@ -174583,6 +174595,13 @@
             "name": "Processing Statuses",
             "dataType": "list",
             "required": false,
+            "enumValues": [
+              "CANCELLED",
+              "DONE",
+              "FATAL",
+              "IN_PROGRESS",
+              "IN_QUEUE"
+            ],
             "multipleValues": {
               "format": "array"
             }
@@ -174604,12 +174623,69 @@
             "name": "Marketplaces",
             "dataType": "list",
             "required": false,
+            "enumValues": [
+              "A1AM78C64UM0Y8",
+              "A2EUQ1WTGCTBG2",
+              "ATVPDKIKX0DER"
+            ],
             "multipleValues": {
               "format": "array"
             }
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "createdTime",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "dataEndTime",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "dataStartTime",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "marketplaceIds",
+            "dataType": "array",
+            "itemDataType": "string",
+            "mockType": "array"
+          },
+          {
+            "key": "processingEndTime",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "processingStartTime",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "processingStatus",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "reportDocumentId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "reportId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "reportType",
+            "dataType": "string",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "List Transactions",

@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Zoho CRM Universal API",
-    "version": "0.0.29",
+    "version": "0.0.30",
     "description": "Manage leads, contacts, deals, and sales activities"
   },
   "servers": [
@@ -649,6 +649,267 @@
         }
       }
     },
+    "/v1/universal/zohoCRM/latest/actions/create-accounts-batch": {
+      "post": {
+        "operationId": "zohoCRM.create-accounts-batch",
+        "summary": "Create Accounts",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/zohoCRM/latest/actions/create-accounts-batch"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "data[]"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "data[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "description": "Zoho CRM records to create. Each array item is sent as one record."
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "code": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result code for the record."
+                                },
+                                "details": {
+                                  "type": "object",
+                                  "properties": {
+                                    "Created_By": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "description": "ID of the Zoho CRM user who created the record."
+                                        },
+                                        "name": {
+                                          "type": "string",
+                                          "description": "Name of the Zoho CRM user who created the record."
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "Created_Time": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "Record creation time returned by Zoho CRM."
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "description": "Zoho CRM record ID created or updated."
+                                    },
+                                    "Modified_By": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "description": "ID of the Zoho CRM user who modified the record."
+                                        },
+                                        "name": {
+                                          "type": "string",
+                                          "description": "Name of the Zoho CRM user who modified the record."
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "Modified_Time": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "Record modification time returned by Zoho CRM."
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "message": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result message for the record."
+                                },
+                                "status": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result status for the record."
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/universal/zohoCRM/latest/actions/create-contact": {
       "post": {
         "operationId": "zohoCRM.create-contact",
@@ -832,6 +1093,266 @@
                           },
                           "status": {
                             "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/zohoCRM/latest/actions/create-contacts-batch": {
+      "post": {
+        "operationId": "zohoCRM.create-contacts-batch",
+        "summary": "Create Contacts",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/zohoCRM/latest/actions/create-contacts-batch"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "data[]"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "data[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "code": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result code for the record."
+                                },
+                                "details": {
+                                  "type": "object",
+                                  "properties": {
+                                    "Created_By": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "description": "ID of the Zoho CRM user who created the record."
+                                        },
+                                        "name": {
+                                          "type": "string",
+                                          "description": "Name of the Zoho CRM user who created the record."
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "Created_Time": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "Record creation time returned by Zoho CRM."
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "description": "Zoho CRM record ID created or updated."
+                                    },
+                                    "Modified_By": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "description": "ID of the Zoho CRM user who modified the record."
+                                        },
+                                        "name": {
+                                          "type": "string",
+                                          "description": "Name of the Zoho CRM user who modified the record."
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "Modified_Time": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "Record modification time returned by Zoho CRM."
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "message": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result message for the record."
+                                },
+                                "status": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result status for the record."
+                                }
+                              },
+                              "additionalProperties": false
+                            }
                           }
                         },
                         "additionalProperties": false
@@ -1851,6 +2372,267 @@
                           "status": {
                             "type": "string",
                             "description": "Zoho CRM create result status."
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/zohoCRM/latest/actions/create-registrations-batch": {
+      "post": {
+        "operationId": "zohoCRM.create-registrations-batch",
+        "summary": "Create Registrations",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/zohoCRM/latest/actions/create-registrations-batch"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "data[]"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "data[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "description": "Zoho CRM records to create. Each array item is sent as one record."
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "code": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result code for the record."
+                                },
+                                "details": {
+                                  "type": "object",
+                                  "properties": {
+                                    "Created_By": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "description": "ID of the Zoho CRM user who created the record."
+                                        },
+                                        "name": {
+                                          "type": "string",
+                                          "description": "Name of the Zoho CRM user who created the record."
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "Created_Time": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "Record creation time returned by Zoho CRM."
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "description": "Zoho CRM record ID created or updated."
+                                    },
+                                    "Modified_By": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "description": "ID of the Zoho CRM user who modified the record."
+                                        },
+                                        "name": {
+                                          "type": "string",
+                                          "description": "Name of the Zoho CRM user who modified the record."
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "Modified_Time": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "Record modification time returned by Zoho CRM."
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "message": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result message for the record."
+                                },
+                                "status": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result status for the record."
+                                }
+                              },
+                              "additionalProperties": false
+                            }
                           }
                         },
                         "additionalProperties": false
@@ -5601,187 +6383,6 @@
         }
       }
     },
-    "/v1/universal/zohoCRM/latest/actions/new-action1": {
-      "post": {
-        "operationId": "zohoCRM.new-action1",
-        "summary": "Create Contacts",
-        "externalDocs": {
-          "url": "https://mindcloud.co/docs/universal/rest/zohoCRM/latest/actions/new-action1"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "required": [
-                  "connectionId"
-                ],
-                "properties": {
-                  "connectionId": {
-                    "type": "string",
-                    "description": "The MindCloud connection ID for this app."
-                  }
-                },
-                "additionalProperties": false
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "success",
-                    "data",
-                    "meta"
-                  ],
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "const": true
-                    },
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
-                    },
-                    "meta": {
-                      "type": "object",
-                      "additionalProperties": true
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "The request is invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "success",
-                    "code",
-                    "message"
-                  ],
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "const": false
-                    },
-                    "code": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "The MindCloud API key is missing or invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "success",
-                    "code",
-                    "message"
-                  ],
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "const": false
-                    },
-                    "code": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "The API key or connection cannot access this action.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "success",
-                    "code",
-                    "message"
-                  ],
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "const": false
-                    },
-                    "code": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "The action failed unexpectedly.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "success",
-                    "code",
-                    "message"
-                  ],
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "const": false
-                    },
-                    "code": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/universal/zohoCRM/latest/actions/search-accounts": {
       "get": {
         "operationId": "zohoCRM.search-accounts",
@@ -7511,6 +8112,267 @@
         }
       }
     },
+    "/v1/universal/zohoCRM/latest/actions/update-accounts-batch": {
+      "put": {
+        "operationId": "zohoCRM.update-accounts-batch",
+        "summary": "Update Accounts",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/zohoCRM/latest/actions/update-accounts-batch"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "data[]"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "data[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "description": "Zoho CRM records to update. Each array item is sent as one record."
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "code": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result code for the record."
+                                },
+                                "details": {
+                                  "type": "object",
+                                  "properties": {
+                                    "Created_By": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "description": "ID of the Zoho CRM user who created the record."
+                                        },
+                                        "name": {
+                                          "type": "string",
+                                          "description": "Name of the Zoho CRM user who created the record."
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "Created_Time": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "Record creation time returned by Zoho CRM."
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "description": "Zoho CRM record ID created or updated."
+                                    },
+                                    "Modified_By": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "description": "ID of the Zoho CRM user who modified the record."
+                                        },
+                                        "name": {
+                                          "type": "string",
+                                          "description": "Name of the Zoho CRM user who modified the record."
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "Modified_Time": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "Record modification time returned by Zoho CRM."
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "message": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result message for the record."
+                                },
+                                "status": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result status for the record."
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/universal/zohoCRM/latest/actions/update-contact": {
       "put": {
         "operationId": "zohoCRM.update-contact",
@@ -7697,6 +8559,267 @@
                           },
                           "status": {
                             "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/zohoCRM/latest/actions/update-contacts-batch": {
+      "put": {
+        "operationId": "zohoCRM.update-contacts-batch",
+        "summary": "Update Contacts",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/zohoCRM/latest/actions/update-contacts-batch"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "data[]"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "data[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "description": "Zoho CRM records to update. Each array item is sent as one record."
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "code": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result code for the record."
+                                },
+                                "details": {
+                                  "type": "object",
+                                  "properties": {
+                                    "Created_By": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "description": "ID of the Zoho CRM user who created the record."
+                                        },
+                                        "name": {
+                                          "type": "string",
+                                          "description": "Name of the Zoho CRM user who created the record."
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "Created_Time": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "Record creation time returned by Zoho CRM."
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "description": "Zoho CRM record ID created or updated."
+                                    },
+                                    "Modified_By": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "description": "ID of the Zoho CRM user who modified the record."
+                                        },
+                                        "name": {
+                                          "type": "string",
+                                          "description": "Name of the Zoho CRM user who modified the record."
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "Modified_Time": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "Record modification time returned by Zoho CRM."
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "message": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result message for the record."
+                                },
+                                "status": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result status for the record."
+                                }
+                              },
+                              "additionalProperties": false
+                            }
                           }
                         },
                         "additionalProperties": false
@@ -8710,6 +9833,267 @@
                           "status": {
                             "type": "string",
                             "description": "Zoho CRM update result status."
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/zohoCRM/latest/actions/update-registrations-batch": {
+      "put": {
+        "operationId": "zohoCRM.update-registrations-batch",
+        "summary": "Update Registrations",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/zohoCRM/latest/actions/update-registrations-batch"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "data[]"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "data[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "description": "Zoho CRM records to update. Each array item is sent as one record."
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "code": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result code for the record."
+                                },
+                                "details": {
+                                  "type": "object",
+                                  "properties": {
+                                    "Created_By": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "description": "ID of the Zoho CRM user who created the record."
+                                        },
+                                        "name": {
+                                          "type": "string",
+                                          "description": "Name of the Zoho CRM user who created the record."
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "Created_Time": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "Record creation time returned by Zoho CRM."
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "description": "Zoho CRM record ID created or updated."
+                                    },
+                                    "Modified_By": {
+                                      "type": "object",
+                                      "properties": {
+                                        "id": {
+                                          "type": "string",
+                                          "description": "ID of the Zoho CRM user who modified the record."
+                                        },
+                                        "name": {
+                                          "type": "string",
+                                          "description": "Name of the Zoho CRM user who modified the record."
+                                        }
+                                      },
+                                      "additionalProperties": false
+                                    },
+                                    "Modified_Time": {
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "description": "Record modification time returned by Zoho CRM."
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "message": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result message for the record."
+                                },
+                                "status": {
+                                  "type": "string",
+                                  "description": "Zoho CRM result status for the record."
+                                }
+                              },
+                              "additionalProperties": false
+                            }
                           }
                         },
                         "additionalProperties": false

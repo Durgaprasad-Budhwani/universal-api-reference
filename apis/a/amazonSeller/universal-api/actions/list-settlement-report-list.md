@@ -40,14 +40,50 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `reportType` | list | no | One of: `GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE_V2`. |
-| `processingStatuses` | list | no | Accepts multiple values as an array. |
+| `processingStatuses` | list | no | One of: `CANCELLED`, `DONE`, `FATAL`, `IN_PROGRESS`, `IN_QUEUE`. Accepts multiple values as an array. |
 | `createdSince` | string | no |  |
 | `createdUntil` | string | no |  |
-| `marketplaces` | list | no | Accepts multiple values as an array. |
+| `marketplaces` | list | no | One of: `A1AM78C64UM0Y8`, `A2EUQ1WTGCTBG2`, `ATVPDKIKX0DER`. Accepts multiple values as an array. |
 
 ## Response
 
-The response envelope is `{ "success": true, "data": [...], "meta": {} }`. The `data` schema for this action is dynamic; it mirrors what the native Amazon Seller API returns.
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "createdTime": "string",
+      "dataEndTime": "string",
+      "dataStartTime": "string",
+      "marketplaceIds": [
+        "string"
+      ],
+      "processingEndTime": "string",
+      "processingStartTime": "string",
+      "processingStatus": "string",
+      "reportDocumentId": "string",
+      "reportId": "string",
+      "reportType": "string"
+    }
+  ],
+  "meta": {}
+}
+```
+
+### Response fields
+
+| Key | Type | Description |
+| --- | --- | --- |
+| `createdTime` | string |  |
+| `dataEndTime` | string |  |
+| `dataStartTime` | string |  |
+| `marketplaceIds` | array<string> |  |
+| `processingEndTime` | string |  |
+| `processingStartTime` | string |  |
+| `processingStatus` | string |  |
+| `reportDocumentId` | string |  |
+| `reportId` | string |  |
+| `reportType` | string |  |
 
 ## Native endpoint
 

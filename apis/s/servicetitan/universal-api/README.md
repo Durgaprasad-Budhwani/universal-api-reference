@@ -4,7 +4,7 @@ ServiceTitan is a cloud-based software platform for home and commercial service 
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/servicetitan/latest
 - **Category:** Support / Field Service
-- **Actions:** 121
+- **Actions:** 126
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor API docs:** https://developer.servicetitan.io/api-details/#api=tenant-crm-v2
 
@@ -21,7 +21,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/servicetitan/latest/actio
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
-## Actions (121)
+## Actions (126)
 
 ### Access Tokens
 
@@ -316,6 +316,16 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/servicetitan/latest/actio
 | Action | Method | Description |
 | --- | --- | --- |
 | [Get Technicians](actions/get-technicians.md) | GET | Retrieves technicians from ServiceTitan. |
+
+### Technician Skill
+
+| Action | Method | Description |
+| --- | --- | --- |
+| [Assign Technician Skills](actions/assign-technician-skills.md) | PUT |  |
+| [Create Technician Skill](actions/create-technician-skill.md) | POST |  |
+| [Delete Technician Skill](actions/delete-technician-skill.md) | DELETE |  |
+| [Get Technician Skill](actions/get-technician-skill.md) | GET |  |
+| [List Technician Skills](actions/list-technician-skills.md) | GET |  |
 
 ### Timesheets
 

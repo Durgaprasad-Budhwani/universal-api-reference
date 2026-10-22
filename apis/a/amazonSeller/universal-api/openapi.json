@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Amazon Seller Universal API",
-    "version": "0.0.93",
+    "version": "0.0.95",
     "description": "Manage Amazon listings, inventory, orders, and shipments"
   },
   "servers": [
@@ -10084,7 +10084,14 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "CANCELLED",
+                  "DONE",
+                  "FATAL",
+                  "IN_PROGRESS",
+                  "IN_QUEUE"
+                ]
               }
             },
             "style": "form",
@@ -10113,7 +10120,12 @@
             "schema": {
               "type": "array",
               "items": {
-                "type": "string"
+                "type": "string",
+                "enum": [
+                  "A1AM78C64UM0Y8",
+                  "A2EUQ1WTGCTBG2",
+                  "ATVPDKIKX0DER"
+                ]
               }
             },
             "style": "form",
@@ -10170,7 +10182,42 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "createdTime": {
+                            "type": "string"
+                          },
+                          "dataEndTime": {
+                            "type": "string"
+                          },
+                          "dataStartTime": {
+                            "type": "string"
+                          },
+                          "marketplaceIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "processingEndTime": {
+                            "type": "string"
+                          },
+                          "processingStartTime": {
+                            "type": "string"
+                          },
+                          "processingStatus": {
+                            "type": "string"
+                          },
+                          "reportDocumentId": {
+                            "type": "string"
+                          },
+                          "reportId": {
+                            "type": "string"
+                          },
+                          "reportType": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {

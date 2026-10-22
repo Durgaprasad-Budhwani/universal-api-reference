@@ -1,6 +1,6 @@
 # ServiceTitan: Native API Reference
 
-A consolidated summary of ServiceTitan's API configuration and 121 documented operations, with links to official documentation.
+A consolidated summary of ServiceTitan's API configuration and 126 documented operations, with links to official documentation.
 
 - **Official docs:** https://developer.servicetitan.io/api-details/#api=tenant-crm-v2
 - **API base URL:** `https://{baseUrl}/`
@@ -43,11 +43,12 @@ Shared headers:
 
 Use `pageSize` in the query string to set the page size (default 50; accepted range 1–1000). Use `page` in the query string to choose the page; numbering starts at 1.
 
-## Endpoints (121 documented)
+## Endpoints (126 documented)
 
 | Operation | Method & path | Vendor docs |
 | --- | --- | --- |
 | [Add Customer Tag](actions/add-customer-tag.md) | `POST crm/v2/tenant/{{credentials.tenant}}/customers/:customerId/tags/:tagTypeId` |  |
+| [Assign Technician Skills](actions/assign-technician-skills.md) | `PATCH dispatch/v2/tenant/{{credentials.tenant}}/technician-skills` | [docs](https://developer.servicetitan.io/docs/apis/tenant-dispatch-v2/endpoints) |
 | [Create Adjustment Invoice](actions/create-adjustment-invoice.md) | `POST accounting/v2/tenant/{{credentials.tenant}}/invoices` | [docs](https://developer.servicetitan.io/docs/apis/tenant-accounting-v2/endpoints/Invoices_CreateAdjustmentInvoice) |
 | [Create Booking](actions/create-booking.md) | `POST crm/v2/tenant/{{credentials.tenant}}/booking-provider/:bookingProviderId/bookings` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-crm-v2&operation=Bookings_Create) |
 | [Create Customer](actions/create-customer.md) | `POST crm/v2/tenant/{{credentials.tenant}}/customers` |  |
@@ -62,6 +63,8 @@ Use `pageSize` in the query string to set the page size (default 50; accepted ra
 | [Create Project Note](actions/create-project-note.md) | `POST jpm/v2/tenant/{{credentials.tenant}}/projects/:id/notes` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-jpm-v2&operation=Projects_CreateNote) |
 | [Create Task](actions/create-task.md) | `POST taskmanagement/v2/tenant/{{credentials.tenant}}/tasks` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-task-management-v2&operation=Tasks_Create) |
 | [Get Task Management Data](actions/create-task-management-data.md) | `GET taskmanagement/v2/tenant/{{credentials.tenant}}/data` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-task-management-v2&operation=Tasks_Create) |
+| [Create Technician Skill](actions/create-technician-skill.md) | `POST dispatch/v2/tenant/{{credentials.tenant}}/technician-skills` | [docs](https://developer.servicetitan.io/docs/apis/tenant-dispatch-v2/endpoints) |
+| [Delete Technician Skill](actions/delete-technician-skill.md) | `DELETE dispatch/v2/tenant/{{credentials.tenant}}/technician-skills/:id` | [docs](https://developer.servicetitan.io/docs/apis/tenant-dispatch-v2/endpoints) |
 | [Export Adjustments](actions/export-adjustments.md) | `GET inventory/v2/tenant/{{credentials.tenant}}/export/adjustments?:from&:includeRecentChanges` |  |
 | [Export Job Notes](actions/export-job-notes.md) | `GET jpm/v2/tenant/{{credentials.tenant}}/export/job-notes` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-jpm-v2&operation=Export_JobNotes) |
 | [Export Project Notes](actions/export-project-notes.md) | `GET jpm/v2/tenant/{{credentials.tenant}}/export/project-notes` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-jpm-v2&operation=Export_JobNotes) |
@@ -119,6 +122,7 @@ Use `pageSize` in the query string to set the page size (default 50; accepted ra
 | [Get Services](actions/get-services.md) | `GET pricebook/v2/tenant/{{credentials.tenant}}/services` |  |
 | [Get Tasks](actions/get-tasks.md) | `GET taskmanagement/v2/tenant/{{credentials.tenant}}/tasks` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-task-management-v2&operation=Tasks_GetTasks) |
 | [Get Technician Payroll Settings](actions/get-technician-payroll-settings.md) | `GET payroll/v2/tenant/{{credentials.tenant}}/technicians/:technician/payroll-settings` | [docs](https://developer.servicetitan.io/docs/apis/tenant-payroll-v2/endpoints/PayrollSettings_GetTechnicianPayrollSettings) |
+| [Get Technician Skill](actions/get-technician-skill.md) | `GET dispatch/v2/tenant/{{credentials.tenant}}/technician-skills/:id` | [docs](https://developer.servicetitan.io/docs/apis/tenant-dispatch-v2/endpoints) |
 | [Get Technicians](actions/get-technicians.md) | `GET settings/v2/tenant/{{credentials.tenant}}/technicians` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-settings-v2&operation=Technicians_GetList) |
 | [Get Vendor AP Credits](actions/get-vendor-ap-credits.md) | `GET accounting/v2/tenant/{{credentials.tenant}}/ap-credits` | [docs](https://developer.servicetitan.io/docs/apis/tenant-accounting-v2/endpoints/ApCredits_GetList) |
 | [Get Vendor Bills](actions/get-vendor-bills.md) | `GET accounting/v2/tenant/{{credentials.tenant}}/inventory-bills` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-accounting-v2&operation=Invoices_GetList) |
@@ -146,6 +150,7 @@ Use `pageSize` in the query string to set the page size (default 50; accepted ra
 | [List Purchase Order Types](actions/list-purchase-order-types.md) | `GET inventory/v2/tenant/{{credentials.tenant}}/purchase-order-types` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-inventory-v2&operation=PurchaseOrderTypes_GetList) |
 | [List Report Categories](actions/list-report-categories.md) | `GET reporting/v2/tenant/{{credentials.tenant}}/report-categories` | [docs](https://developer.servicetitan.io/docs/apis/tenant-reporting-v2/endpoints/ReportCategories_GetCategories) |
 | [List Reports](actions/list-reports.md) | `GET reporting/v2/tenant/{{credentials.tenant}}/report-category/:report_category/reports` | [docs](https://developer.servicetitan.io/docs/apis/tenant-reporting-v2/endpoints/ReportCategoryReports_GetReports) |
+| [List Technician Skills](actions/list-technician-skills.md) | `GET dispatch/v2/tenant/{{credentials.tenant}}/technician-skills` | [docs](https://developer.servicetitan.io/docs/apis/tenant-dispatch-v2/endpoints) |
 | [List Timesheet Codes](actions/list-timesheet-codes.md) | `GET payroll/v2/tenant/{{credentials.tenant}}/timesheet-codes` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-payroll-v2&operation=Payrolls_GetList) |
 | [Mark AP Bills as Exported](actions/mark-ap-bills-as-exported.md) | `POST accounting/v2/tenant/{{credentials.tenant}}/ap-bills/markasexported` | [docs](https://developer.servicetitan.io/docs/apis/tenant-accounting-v2/endpoints/ApBills_MarkAsExported) |
 | [Mark Invoice as Exported](actions/mark-invoice-as-exported.md) | `POST accounting/v2/tenant/{{credentials.tenant}}/invoices/markasexported` | [docs](https://developer.servicetitan.io/api-details/#api=tenant-accounting-v2&operation=Invoices_GetList) |

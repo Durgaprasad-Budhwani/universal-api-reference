@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Viewpoint Vista Universal API",
-    "version": "0.0.89",
+    "version": "0.0.99",
     "description": "Call Viewpoint Vista actions through MindCloud's Universal API."
   },
   "servers": [
@@ -4298,6 +4298,9 @@
                   "__custom_fields": {
                     "type": "object",
                     "additionalProperties": true
+                  },
+                  "TaxCode": {
+                    "type": "string"
                   }
                 },
                 "additionalProperties": false
@@ -16218,11 +16221,14 @@
                   "Name": {
                     "type": "string"
                   },
+                  "CompanyContact.Contact": {
+                    "type": "string"
+                  },
                   "RecType": {
                     "type": "number",
                     "description": "Receivable Type key for the AR company. Optional; Vista uses the company default when omitted."
                   },
-                  "CompanyContact.Contact": {
+                  "CompanyContact.contactExt": {
                     "type": "string"
                   },
                   "MailingAddress": {
@@ -16233,16 +16239,16 @@
                     "type": "object",
                     "additionalProperties": true
                   },
-                  "CompanyContact.contactExt": {
+                  "CompanyContact.EMail": {
                     "type": "string"
                   },
-                  "CompanyContact.EMail": {
+                  "CompanyContact.URL": {
                     "type": "string"
                   },
                   "PayTerms": {
                     "type": "string"
                   },
-                  "CompanyContact.URL": {
+                  "TaxCode": {
                     "type": "string"
                   },
                   "CompanyContact": {

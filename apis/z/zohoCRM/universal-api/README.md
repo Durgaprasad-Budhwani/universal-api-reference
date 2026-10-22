@@ -4,7 +4,7 @@ Manage leads, contacts, deals, and sales activities
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/zohoCRM/latest
 - **Category:** Sales & CRM / CRM
-- **Actions:** 39
+- **Actions:** 44
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor website:** https://www.zoho.com/crm/
 - **Vendor API docs:** https://www.zoho.com/crm/developer/docs/api/v8/
@@ -22,7 +22,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/zohoCRM/latest/actions/ge
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
-## Actions (39)
+## Actions (44)
 
 ### Account
 
@@ -32,6 +32,13 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/zohoCRM/latest/actions/ge
 | [Search Accounts](actions/search-accounts.md) | GET | Finds account records in Zoho CRM by search criteria. |
 | [Update Account](actions/update-account.md) | PUT | Updates an existing account in Zoho CRM. |
 | [Upsert Account](actions/upsert-account.md) | POST | Finds an account in Zoho CRM, or creates one if needed. |
+
+### Accounts
+
+| Action | Method | Description |
+| --- | --- | --- |
+| [Create Accounts](actions/create-accounts-batch.md) | POST |  |
+| [Update Accounts](actions/update-accounts-batch.md) | PUT |  |
 
 ### Companies
 
@@ -55,7 +62,8 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/zohoCRM/latest/actions/ge
 
 | Action | Method | Description |
 | --- | --- | --- |
-| [Create Contacts](actions/new-action1.md) | POST |  |
+| [Create Contacts](actions/create-contacts-batch.md) | POST |  |
+| [Update Contacts](actions/update-contacts-batch.md) | PUT |  |
 
 ### Coql Result
 
@@ -125,6 +133,13 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/zohoCRM/latest/actions/ge
 | Action | Method | Description |
 | --- | --- | --- |
 | [Get Organization Details](actions/get-organization-details.md) | GET | Retrieves organization details from Zoho CRM. |
+
+### Registration
+
+| Action | Method | Description |
+| --- | --- | --- |
+| [Create Registrations](actions/create-registrations-batch.md) | POST |  |
+| [Update Registrations](actions/update-registrations-batch.md) | PUT |  |
 
 ### Related Record
 

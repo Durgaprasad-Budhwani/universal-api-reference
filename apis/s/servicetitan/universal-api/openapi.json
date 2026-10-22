@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "ServiceTitan Universal API",
-    "version": "0.0.393",
+    "version": "0.0.396",
     "description": "ServiceTitan is a cloud-based software platform for home and commercial service businesses that manages customers, jobs, scheduling, dispatching, invoicing, payments, and other field service operations."
   },
   "servers": [
@@ -80,6 +80,256 @@
                       "items": {
                         "type": "object",
                         "additionalProperties": true
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/servicetitan/latest/actions/assign-technician-skills": {
+      "put": {
+        "operationId": "servicetitan.assign-technician-skills",
+        "summary": "Assign Technician Skills",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/servicetitan/latest/actions/assign-technician-skills"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "technicianId",
+                  "skillIds[]",
+                  "replaceExistingSkills"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "technicianId": {
+                    "type": "number",
+                    "description": "The technician to assign existing skills to. Use Get Technicians to find the technician ID."
+                  },
+                  "skillIds[]": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "description": "The numeric IDs of the existing skills to assign to the technician."
+                  },
+                  "replaceExistingSkills": {
+                    "type": "boolean",
+                    "description": "True replaces all of the technician's current skills and removes skills not in this list. False adds these skills while keeping the technician's current skills."
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "technicianSkills": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "active": {
+                                  "type": "boolean",
+                                  "description": "Whether the skill is active."
+                                },
+                                "createdOn": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "Date and time the skill was created, in UTC."
+                                },
+                                "id": {
+                                  "type": "string",
+                                  "description": "Technician skill ID in {TechnicianId}_{SkillId} format."
+                                },
+                                "jobTypeIds": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "number"
+                                    },
+                                    "description": "Job type IDs for this skill. May be null."
+                                  }
+                                },
+                                "modifiedOn": {
+                                  "type": "string",
+                                  "format": "date-time",
+                                  "description": "Date and time the skill was last modified, in UTC."
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "description": "Name of the skill."
+                                },
+                                "technicianId": {
+                                  "type": "number",
+                                  "description": "ID of the technician assigned this skill."
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "updated": {
+                            "type": "boolean",
+                            "description": "Whether the update succeeded."
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -3450,6 +3700,429 @@
                       "items": {
                         "type": "object",
                         "additionalProperties": true
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/servicetitan/latest/actions/create-technician-skill": {
+      "post": {
+        "operationId": "servicetitan.create-technician-skill",
+        "summary": "Create Technician Skill",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/servicetitan/latest/actions/create-technician-skill"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "technicianId",
+                  "name",
+                  "active"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "technicianId": {
+                    "type": "number",
+                    "description": "The technician to assign the new skill to. Use Get Technicians to find the technician ID."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the new skill."
+                  },
+                  "active": {
+                    "type": "boolean",
+                    "description": "Whether the new skill is active."
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "active": {
+                            "type": "boolean",
+                            "description": "Whether the skill is active."
+                          },
+                          "createdOn": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Date and time the skill was created, in UTC."
+                          },
+                          "id": {
+                            "type": "string",
+                            "description": "Technician skill ID in {TechnicianId}_{SkillId} format."
+                          },
+                          "jobTypeIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "array",
+                              "items": {
+                                "type": "number"
+                              },
+                              "description": "Job type IDs for this skill. May be null."
+                            }
+                          },
+                          "modifiedOn": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Date and time the skill was last modified, in UTC."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "Name of the skill."
+                          },
+                          "technicianId": {
+                            "type": "number",
+                            "description": "ID of the technician assigned this skill."
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/servicetitan/latest/actions/delete-technician-skill": {
+      "delete": {
+        "operationId": "servicetitan.delete-technician-skill",
+        "summary": "Delete Technician Skill",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/servicetitan/latest/actions/delete-technician-skill"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "description": "The technician skill ID, formatted {TechnicianId}_{SkillId}, as returned by List Technician Skills.",
+            "schema": {
+              "type": "string",
+              "description": "The technician skill ID, formatted {TechnicianId}_{SkillId}, as returned by List Technician Skills.",
+              "example": "12345_67890"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "ID of the technician skill association removed."
+                          }
+                        },
+                        "additionalProperties": false
                       }
                     },
                     "meta": {
@@ -19347,6 +20020,198 @@
         }
       }
     },
+    "/v1/universal/servicetitan/latest/actions/get-technician-skill": {
+      "get": {
+        "operationId": "servicetitan.get-technician-skill",
+        "summary": "Get Technician Skill",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/servicetitan/latest/actions/get-technician-skill"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "description": "The technician skill ID, formatted {TechnicianId}_{SkillId}, as returned by List Technician Skills.",
+            "schema": {
+              "type": "string",
+              "description": "The technician skill ID, formatted {TechnicianId}_{SkillId}, as returned by List Technician Skills.",
+              "example": "12345_67890"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/universal/servicetitan/latest/actions/get-technicians": {
       "get": {
         "operationId": "servicetitan.get-technicians",
@@ -20429,11 +21294,31 @@
             }
           },
           {
+            "name": "statuses",
+            "in": "query",
+            "required": false,
+            "description": "Pending, Posted, Exported",
+            "schema": {
+              "type": "string",
+              "description": "Pending, Posted, Exported"
+            }
+          },
+          {
             "name": "ids",
             "in": "query",
             "required": false,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "number",
+            "in": "query",
+            "required": false,
+            "description": "Reference number associated with invoices.",
+            "schema": {
+              "type": "string",
+              "description": "Reference number associated with invoices."
             }
           },
           {
@@ -20463,11 +21348,55 @@
             }
           },
           {
+            "name": "totalGreater",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
             "name": "totalLess",
             "in": "query",
             "required": false,
             "schema": {
               "type": "number"
+            }
+          },
+          {
+            "name": "jobNumber",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "jobId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "batchId",
+            "in": "query",
+            "required": false,
+            "description": "Batch ID associated with invoices.",
+            "schema": {
+              "type": "number",
+              "description": "Batch ID associated with invoices."
+            }
+          },
+          {
+            "name": "batchNumber",
+            "in": "query",
+            "required": false,
+            "description": "Batch number associated with invoices.",
+            "schema": {
+              "type": "number",
+              "description": "Batch number associated with invoices."
             }
           },
           {
@@ -28021,6 +28950,308 @@
                           }
                         },
                         "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universal/servicetitan/latest/actions/list-technician-skills": {
+      "get": {
+        "operationId": "servicetitan.list-technician-skills",
+        "summary": "List Technician Skills",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/servicetitan/latest/actions/list-technician-skills"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "connectionId",
+            "in": "query",
+            "required": true,
+            "description": "The MindCloud connection ID for this app.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "technicianId",
+            "in": "query",
+            "required": false,
+            "description": "The technician whose skills to return. Use Get Technicians to find the technician ID.",
+            "schema": {
+              "type": "number",
+              "description": "The technician whose skills to return. Use Get Technicians to find the technician ID."
+            }
+          },
+          {
+            "name": "includeTotal",
+            "in": "query",
+            "required": false,
+            "description": "Include the total number of matching technician skills.",
+            "schema": {
+              "type": "boolean",
+              "description": "Include the total number of matching technician skills.",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "required": false,
+            "description": "Choose active skills, inactive skills, or both. Only active skills are returned when left empty.",
+            "schema": {
+              "type": "string",
+              "description": "Choose active skills, inactive skills, or both. Only active skills are returned when left empty.",
+              "enum": [
+                "Any",
+                "False",
+                "True"
+              ],
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "createdBefore",
+            "in": "query",
+            "required": false,
+            "description": "Return skills created before this date and time in UTC.",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Return skills created before this date and time in UTC.",
+              "example": "2026-01-15T10:30:00Z",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "createdOnOrAfter",
+            "in": "query",
+            "required": false,
+            "description": "Return skills created on or after this date and time in UTC.",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Return skills created on or after this date and time in UTC.",
+              "example": "2026-01-15T10:30:00Z",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "modifiedBefore",
+            "in": "query",
+            "required": false,
+            "description": "Return skills modified before this date and time in UTC.",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Return skills modified before this date and time in UTC.",
+              "example": "2026-01-15T10:30:00Z",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "modifiedOnOrAfter",
+            "in": "query",
+            "required": false,
+            "description": "Return skills modified on or after this date and time in UTC.",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "description": "Return skills modified on or after this date and time in UTC.",
+              "example": "2026-01-15T10:30:00Z",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort by Id, CreatedOn, or ModifiedOn. Use + for ascending order or - for descending order, for example -ModifiedOn.",
+            "schema": {
+              "type": "string",
+              "description": "Sort by Id, CreatedOn, or ModifiedOn. Use + for ascending order or - for descending order, for example -ModifiedOn.",
+              "example": "-ModifiedOn",
+              "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "description": "Comma-separated response fields to include.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": true
                       }
                     },
                     "meta": {

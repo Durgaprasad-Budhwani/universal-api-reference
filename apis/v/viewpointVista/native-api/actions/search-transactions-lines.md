@@ -3,7 +3,7 @@
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v1/direct/subscribers/{subscriberCode}/vista/ar/2/data/transactions_lines/cache/search/cache/search`
+- **Path:** `v1/direct/subscribers/{subscriberCode}/vista/ar/2/data/transaction_lines/cache/search`
 - **Base URL:** `https://api.xchange.trimble.com/connect/`
 - **API:** REST
 - **Official documentation:** [Search Transactions Lines](https://direct-api.xchange.trimble.com/reference/post-directsubscriberssubscriber_codevistaar2datatransactionscachesearchsearch)

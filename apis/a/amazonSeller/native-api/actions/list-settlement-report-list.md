@@ -19,7 +19,7 @@ This operation supports [pagination](../README.md#pagination).
 | Parameter | Location | Type | Required | Description |
 | --- | --- | --- | --- | --- |
 | `reportTypes` | query | `list` | no | Accepted values: `GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE_V2`. |
-| `processingStatuses` | query | `list` | no | Send multiple values as a array. |
+| `processingStatuses` | query | `list` | no | Accepted values: `CANCELLED`, `DONE`, `FATAL`, `IN_PROGRESS`, `IN_QUEUE`. Send multiple values as a array. |
 | `createdSince` | query | `string` | no | — |
 | `createdUntil` | query | `string` | no | — |
-| `marketplaces` | query | `list` | no | Send multiple values as a array. |
+| `marketplaces` | query | `list` | no | Accepted values: `A1AM78C64UM0Y8`, `A2EUQ1WTGCTBG2`, `ATVPDKIKX0DER`. Send multiple values as a array. |

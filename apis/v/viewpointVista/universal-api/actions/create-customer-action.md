@@ -49,6 +49,7 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | `PayTerms` | string | no |  |
 | `CompanyContact` | object | no |  |
 | `__custom_fields` | object | no |  |
+| `TaxCode` | string | no |  |
 
 ## Response
 

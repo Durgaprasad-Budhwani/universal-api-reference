@@ -230048,7 +230048,7 @@
     "description": "ServiceTitan is a cloud-based software platform for home and commercial service businesses that manages customers, jobs, scheduling, dispatching, invoicing, payments, and other field service operations.",
     "iconUrl": "https://images.mindcloud.co/apps/icons/service-titan_1777386591371.png",
     "nativeDocumentationUrl": "https://developer.servicetitan.io/api-details/#api=tenant-crm-v2",
-    "version": "0.0.393",
+    "version": "0.0.396",
     "authentication": [
       {
         "type": "custom",
@@ -230254,6 +230254,135 @@
           }
         ],
         "responseSchema": []
+      },
+      {
+        "name": "Assign Technician Skills",
+        "slug": "assign-technician-skills",
+        "operation": "update",
+        "method": "PUT",
+        "group": "Technician Skill",
+        "documentationUrl": "https://developer.servicetitan.io/docs/apis/tenant-dispatch-v2/endpoints",
+        "native": {
+          "method": "PATCH",
+          "path": "dispatch/v2/tenant/{{credentials.tenant}}/technician-skills",
+          "baseUrl": "https://{{credentials.baseUrl}}/",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "technicianId",
+              "name": "Technician ID",
+              "dataType": "number",
+              "location": "body",
+              "required": true,
+              "description": "The technician to assign existing skills to. Use Get Technicians to find the technician ID."
+            },
+            {
+              "key": "skillIds[]",
+              "name": "Skill IDs",
+              "dataType": "array",
+              "itemDataType": "number",
+              "location": "body",
+              "required": true,
+              "description": "The numeric IDs of the existing skills to assign to the technician."
+            },
+            {
+              "key": "replaceExistingSkills",
+              "name": "Replace Existing Skills",
+              "dataType": "boolean",
+              "location": "body",
+              "required": true,
+              "description": "True replaces all of the technician's current skills and removes skills not in this list. False adds these skills while keeping the technician's current skills."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "technicianId",
+            "name": "Technician ID",
+            "dataType": "number",
+            "required": true,
+            "description": "The technician to assign existing skills to. Use Get Technicians to find the technician ID."
+          },
+          {
+            "key": "skillIds[]",
+            "name": "Skill IDs",
+            "dataType": "array",
+            "itemDataType": "number",
+            "required": true,
+            "description": "The numeric IDs of the existing skills to assign to the technician."
+          },
+          {
+            "key": "replaceExistingSkills",
+            "name": "Replace Existing Skills",
+            "dataType": "boolean",
+            "required": true,
+            "description": "True replaces all of the technician's current skills and removes skills not in this list. False adds these skills while keeping the technician's current skills."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "technicianSkills[]",
+            "dataType": "array",
+            "itemDataType": "object",
+            "description": "All technician skills after the change.",
+            "mockType": "array"
+          },
+          {
+            "key": "technicianSkills[].active",
+            "dataType": "boolean",
+            "description": "Whether the skill is active.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "technicianSkills[].createdOn",
+            "dataType": "date",
+            "description": "Date and time the skill was created, in UTC.",
+            "mockType": "date"
+          },
+          {
+            "key": "technicianSkills[].id",
+            "dataType": "string",
+            "description": "Technician skill ID in {TechnicianId}_{SkillId} format.",
+            "mockType": "string"
+          },
+          {
+            "key": "technicianSkills[].jobTypeIds[]",
+            "dataType": "array",
+            "itemDataType": "number",
+            "description": "Job type IDs for this skill. May be null.",
+            "mockType": "array"
+          },
+          {
+            "key": "technicianSkills[].modifiedOn",
+            "dataType": "date",
+            "description": "Date and time the skill was last modified, in UTC.",
+            "mockType": "date"
+          },
+          {
+            "key": "technicianSkills[].name",
+            "dataType": "string",
+            "description": "Name of the skill.",
+            "mockType": "string"
+          },
+          {
+            "key": "technicianSkills[].technicianId",
+            "dataType": "number",
+            "description": "ID of the technician assigned this skill.",
+            "mockType": "number"
+          },
+          {
+            "key": "updated",
+            "dataType": "boolean",
+            "description": "Whether the update succeeded.",
+            "mockType": "boolean"
+          }
+        ]
       },
       {
         "name": "Create Adjustment Invoice",
@@ -233505,6 +233634,168 @@
         },
         "arguments": [],
         "responseSchema": []
+      },
+      {
+        "name": "Create Technician Skill",
+        "slug": "create-technician-skill",
+        "operation": "create",
+        "method": "POST",
+        "group": "Technician Skill",
+        "documentationUrl": "https://developer.servicetitan.io/docs/apis/tenant-dispatch-v2/endpoints",
+        "native": {
+          "method": "POST",
+          "path": "dispatch/v2/tenant/{{credentials.tenant}}/technician-skills",
+          "baseUrl": "https://{{credentials.baseUrl}}/",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "technicianId",
+              "name": "Technician ID",
+              "dataType": "number",
+              "location": "body",
+              "required": true,
+              "description": "The technician to assign the new skill to. Use Get Technicians to find the technician ID."
+            },
+            {
+              "key": "name",
+              "name": "Name",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "The name of the new skill."
+            },
+            {
+              "key": "active",
+              "name": "Active",
+              "dataType": "boolean",
+              "location": "body",
+              "required": true,
+              "description": "Whether the new skill is active."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "technicianId",
+            "name": "Technician ID",
+            "dataType": "number",
+            "required": true,
+            "description": "The technician to assign the new skill to. Use Get Technicians to find the technician ID."
+          },
+          {
+            "key": "name",
+            "name": "Name",
+            "dataType": "string",
+            "required": true,
+            "description": "The name of the new skill."
+          },
+          {
+            "key": "active",
+            "name": "Active",
+            "dataType": "boolean",
+            "required": true,
+            "description": "Whether the new skill is active."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "active",
+            "dataType": "boolean",
+            "description": "Whether the skill is active.",
+            "mockType": "boolean"
+          },
+          {
+            "key": "createdOn",
+            "dataType": "date",
+            "description": "Date and time the skill was created, in UTC.",
+            "mockType": "date"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "description": "Technician skill ID in {TechnicianId}_{SkillId} format.",
+            "mockType": "string"
+          },
+          {
+            "key": "jobTypeIds[]",
+            "dataType": "array",
+            "itemDataType": "number",
+            "description": "Job type IDs for this skill. May be null.",
+            "mockType": "array"
+          },
+          {
+            "key": "modifiedOn",
+            "dataType": "date",
+            "description": "Date and time the skill was last modified, in UTC.",
+            "mockType": "date"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "description": "Name of the skill.",
+            "mockType": "string"
+          },
+          {
+            "key": "technicianId",
+            "dataType": "number",
+            "description": "ID of the technician assigned this skill.",
+            "mockType": "number"
+          }
+        ]
+      },
+      {
+        "name": "Delete Technician Skill",
+        "slug": "delete-technician-skill",
+        "operation": "delete",
+        "method": "DELETE",
+        "group": "Technician Skill",
+        "documentationUrl": "https://developer.servicetitan.io/docs/apis/tenant-dispatch-v2/endpoints",
+        "native": {
+          "method": "DELETE",
+          "path": "dispatch/v2/tenant/{{credentials.tenant}}/technician-skills/:id",
+          "baseUrl": "https://{{credentials.baseUrl}}/",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "id",
+              "name": "Technician Skill ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "The technician skill ID, formatted {TechnicianId}_{SkillId}, as returned by List Technician Skills."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "id",
+            "name": "Technician Skill ID",
+            "dataType": "string",
+            "required": true,
+            "description": "The technician skill ID, formatted {TechnicianId}_{SkillId}, as returned by List Technician Skills.",
+            "example": "12345_67890"
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "id",
+            "dataType": "string",
+            "description": "ID of the technician skill association removed.",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "Export Adjustments",
@@ -241959,6 +242250,47 @@
         ]
       },
       {
+        "name": "Get Technician Skill",
+        "slug": "get-technician-skill",
+        "operation": "read",
+        "method": "GET",
+        "group": "Technician Skill",
+        "documentationUrl": "https://developer.servicetitan.io/docs/apis/tenant-dispatch-v2/endpoints",
+        "native": {
+          "method": "GET",
+          "path": "dispatch/v2/tenant/{{credentials.tenant}}/technician-skills/:id",
+          "baseUrl": "https://{{credentials.baseUrl}}/",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "id",
+              "name": "Technician Skill ID",
+              "dataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "The technician skill ID, formatted {TechnicianId}_{SkillId}, as returned by List Technician Skills."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "id",
+            "name": "Technician Skill ID",
+            "dataType": "string",
+            "required": true,
+            "description": "The technician skill ID, formatted {TechnicianId}_{SkillId}, as returned by List Technician Skills.",
+            "example": "12345_67890"
+          }
+        ],
+        "responseSchema": []
+      },
+      {
         "name": "Get Technicians",
         "slug": "get-technicians",
         "operation": "read",
@@ -242941,11 +243273,27 @@
               "required": false
             },
             {
+              "key": "statuses",
+              "name": "Statuses",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Pending, Posted, Exported"
+            },
+            {
               "key": "ids",
               "name": "Ids",
               "dataType": "string",
               "location": "query",
               "required": false
+            },
+            {
+              "key": "number",
+              "name": "Number",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Reference number associated with invoices."
             },
             {
               "key": "orderBy",
@@ -242970,11 +243318,48 @@
               "required": false
             },
             {
+              "key": "totalGreater",
+              "name": "Total Greater",
+              "dataType": "number",
+              "location": "query",
+              "required": false
+            },
+            {
               "key": "totalLess",
               "name": "Total Less",
               "dataType": "number",
               "location": "query",
               "required": false
+            },
+            {
+              "key": "jobNumber",
+              "name": "Job Number",
+              "dataType": "string",
+              "location": "query",
+              "required": false
+            },
+            {
+              "key": "jobId",
+              "name": "Job Id",
+              "dataType": "string",
+              "location": "query",
+              "required": false
+            },
+            {
+              "key": "batchId",
+              "name": "batchId",
+              "dataType": "number",
+              "location": "query",
+              "required": false,
+              "description": "Batch ID associated with invoices."
+            },
+            {
+              "key": "batchNumber",
+              "name": "Batch Number",
+              "dataType": "number",
+              "location": "query",
+              "required": false,
+              "description": "Batch number associated with invoices."
             }
           ]
         },
@@ -242997,10 +243382,24 @@
             "required": false
           },
           {
+            "key": "statuses",
+            "name": "Statuses",
+            "dataType": "string",
+            "required": false,
+            "description": "Pending, Posted, Exported"
+          },
+          {
             "key": "ids",
             "name": "Ids",
             "dataType": "string",
             "required": false
+          },
+          {
+            "key": "number",
+            "name": "Number",
+            "dataType": "string",
+            "required": false,
+            "description": "Reference number associated with invoices."
           },
           {
             "key": "orderBy",
@@ -243022,10 +243421,42 @@
             "required": false
           },
           {
+            "key": "totalGreater",
+            "name": "Total Greater",
+            "dataType": "number",
+            "required": false
+          },
+          {
             "key": "totalLess",
             "name": "Total Less",
             "dataType": "number",
             "required": false
+          },
+          {
+            "key": "jobNumber",
+            "name": "Job Number",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "jobId",
+            "name": "Job Id",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "batchId",
+            "name": "batchId",
+            "dataType": "number",
+            "required": false,
+            "description": "Batch ID associated with invoices."
+          },
+          {
+            "key": "batchNumber",
+            "name": "Batch Number",
+            "dataType": "number",
+            "required": false,
+            "description": "Batch number associated with invoices."
           }
         ],
         "responseSchema": [
@@ -247818,6 +248249,175 @@
             "mockType": "string"
           }
         ]
+      },
+      {
+        "name": "List Technician Skills",
+        "slug": "list-technician-skills",
+        "operation": "read",
+        "method": "GET",
+        "group": "Technician Skill",
+        "documentationUrl": "https://developer.servicetitan.io/docs/apis/tenant-dispatch-v2/endpoints",
+        "native": {
+          "method": "GET",
+          "path": "dispatch/v2/tenant/{{credentials.tenant}}/technician-skills",
+          "baseUrl": "https://{{credentials.baseUrl}}/",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "technicianId",
+              "name": "Technician ID",
+              "dataType": "number",
+              "location": "query",
+              "required": false,
+              "description": "The technician whose skills to return. Use Get Technicians to find the technician ID."
+            },
+            {
+              "key": "includeTotal",
+              "name": "Include Total",
+              "dataType": "boolean",
+              "location": "query",
+              "required": false,
+              "description": "Include the total number of matching technician skills."
+            },
+            {
+              "key": "active",
+              "name": "Active",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Choose active skills, inactive skills, or both. Only active skills are returned when left empty.",
+              "enumValues": [
+                "Any",
+                "False",
+                "True"
+              ]
+            },
+            {
+              "key": "createdBefore",
+              "name": "Created Before",
+              "dataType": "date",
+              "location": "query",
+              "required": false,
+              "description": "Return skills created before this date and time in UTC."
+            },
+            {
+              "key": "createdOnOrAfter",
+              "name": "Created on or After",
+              "dataType": "date",
+              "location": "query",
+              "required": false,
+              "description": "Return skills created on or after this date and time in UTC."
+            },
+            {
+              "key": "modifiedBefore",
+              "name": "Modified Before",
+              "dataType": "date",
+              "location": "query",
+              "required": false,
+              "description": "Return skills modified before this date and time in UTC."
+            },
+            {
+              "key": "modifiedOnOrAfter",
+              "name": "Modified on or After",
+              "dataType": "date",
+              "location": "query",
+              "required": false,
+              "description": "Return skills modified on or after this date and time in UTC."
+            },
+            {
+              "key": "sort",
+              "name": "Sort",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Sort by Id, CreatedOn, or ModifiedOn. Use + for ascending order or - for descending order, for example -ModifiedOn."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": true,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "technicianId",
+            "name": "Technician ID",
+            "dataType": "number",
+            "required": false,
+            "description": "The technician whose skills to return. Use Get Technicians to find the technician ID."
+          },
+          {
+            "key": "includeTotal",
+            "name": "Include Total",
+            "dataType": "boolean",
+            "required": false,
+            "advanced": true,
+            "description": "Include the total number of matching technician skills."
+          },
+          {
+            "key": "active",
+            "name": "Active",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Choose active skills, inactive skills, or both. Only active skills are returned when left empty.",
+            "enumValues": [
+              "Any",
+              "False",
+              "True"
+            ]
+          },
+          {
+            "key": "createdBefore",
+            "name": "Created Before",
+            "dataType": "date",
+            "required": false,
+            "advanced": true,
+            "description": "Return skills created before this date and time in UTC.",
+            "example": "2026-01-15T10:30:00Z"
+          },
+          {
+            "key": "createdOnOrAfter",
+            "name": "Created on or After",
+            "dataType": "date",
+            "required": false,
+            "advanced": true,
+            "description": "Return skills created on or after this date and time in UTC.",
+            "example": "2026-01-15T10:30:00Z"
+          },
+          {
+            "key": "modifiedBefore",
+            "name": "Modified Before",
+            "dataType": "date",
+            "required": false,
+            "advanced": true,
+            "description": "Return skills modified before this date and time in UTC.",
+            "example": "2026-01-15T10:30:00Z"
+          },
+          {
+            "key": "modifiedOnOrAfter",
+            "name": "Modified on or After",
+            "dataType": "date",
+            "required": false,
+            "advanced": true,
+            "description": "Return skills modified on or after this date and time in UTC.",
+            "example": "2026-01-15T10:30:00Z"
+          },
+          {
+            "key": "sort",
+            "name": "Sort",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Sort by Id, CreatedOn, or ModifiedOn. Use + for ascending order or - for descending order, for example -ModifiedOn.",
+            "example": "-ModifiedOn"
+          }
+        ],
+        "responseSchema": []
       },
       {
         "name": "List Timesheet Codes",

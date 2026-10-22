@@ -98997,7 +98997,7 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/zoho-crm_1782741849165.png",
     "websiteUrl": "https://www.zoho.com/crm/",
     "nativeDocumentationUrl": "https://www.zoho.com/crm/developer/docs/api/v8/",
-    "version": "0.0.29",
+    "version": "0.0.30",
     "authentication": [
       {
         "type": "oAuth2",
@@ -99743,6 +99743,108 @@
         ]
       },
       {
+        "name": "Create Accounts",
+        "slug": "create-accounts-batch",
+        "operation": "create",
+        "method": "POST",
+        "model": "account",
+        "documentationUrl": "https://www.zoho.com/crm/developer/docs/api/v7/insert-records.html",
+        "native": {
+          "method": "POST",
+          "path": "/Accounts",
+          "baseUrl": "{{credentials.accessTokenRequest.api_domain}}/crm/v8",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "data[]",
+              "name": "Data",
+              "dataType": "array",
+              "itemDataType": "object",
+              "location": "body",
+              "required": true,
+              "description": "Zoho CRM records to create. Each array item is sent as one record."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "data[]",
+            "name": "Data",
+            "dataType": "array",
+            "itemDataType": "object",
+            "required": true,
+            "description": "Zoho CRM records to create. Each array item is sent as one record."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "data[].code",
+            "dataType": "string",
+            "description": "Zoho CRM result code for the record.",
+            "mockType": "string"
+          },
+          {
+            "key": "data[].details.Created_By.id",
+            "dataType": "string",
+            "description": "ID of the Zoho CRM user who created the record.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Created_By.name",
+            "dataType": "string",
+            "description": "Name of the Zoho CRM user who created the record.",
+            "mockType": "fullName"
+          },
+          {
+            "key": "data[].details.Created_Time",
+            "dataType": "date",
+            "description": "Record creation time returned by Zoho CRM.",
+            "mockType": "date"
+          },
+          {
+            "key": "data[].details.id",
+            "dataType": "string",
+            "description": "Zoho CRM record ID created or updated.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Modified_By.id",
+            "dataType": "string",
+            "description": "ID of the Zoho CRM user who modified the record.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Modified_By.name",
+            "dataType": "string",
+            "description": "Name of the Zoho CRM user who modified the record.",
+            "mockType": "fullName"
+          },
+          {
+            "key": "data[].details.Modified_Time",
+            "dataType": "date",
+            "description": "Record modification time returned by Zoho CRM.",
+            "mockType": "date"
+          },
+          {
+            "key": "data[].message",
+            "dataType": "string",
+            "description": "Zoho CRM result message for the record.",
+            "mockType": "string"
+          },
+          {
+            "key": "data[].status",
+            "dataType": "string",
+            "description": "Zoho CRM result status for the record.",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
         "name": "Create Contact",
         "slug": "create-contact",
         "operation": "create",
@@ -100114,6 +100216,106 @@
           {
             "key": "status",
             "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Create Contacts",
+        "slug": "create-contacts-batch",
+        "operation": "create",
+        "method": "POST",
+        "model": "contact",
+        "documentationUrl": "https://www.zoho.com/crm/developer/docs/api/v7/insert-records.html",
+        "native": {
+          "method": "POST",
+          "path": "/Contacts",
+          "baseUrl": "{{credentials.accessTokenRequest.api_domain}}/crm/v8",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "data[]",
+              "name": "Data",
+              "dataType": "array",
+              "itemDataType": "object",
+              "location": "body",
+              "required": true
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "data[]",
+            "name": "Data",
+            "dataType": "array",
+            "itemDataType": "object",
+            "required": true
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "data[].code",
+            "dataType": "string",
+            "description": "Zoho CRM result code for the record.",
+            "mockType": "string"
+          },
+          {
+            "key": "data[].details.Created_By.id",
+            "dataType": "string",
+            "description": "ID of the Zoho CRM user who created the record.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Created_By.name",
+            "dataType": "string",
+            "description": "Name of the Zoho CRM user who created the record.",
+            "mockType": "fullName"
+          },
+          {
+            "key": "data[].details.Created_Time",
+            "dataType": "date",
+            "description": "Record creation time returned by Zoho CRM.",
+            "mockType": "date"
+          },
+          {
+            "key": "data[].details.id",
+            "dataType": "string",
+            "description": "Zoho CRM record ID created or updated.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Modified_By.id",
+            "dataType": "string",
+            "description": "ID of the Zoho CRM user who modified the record.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Modified_By.name",
+            "dataType": "string",
+            "description": "Name of the Zoho CRM user who modified the record.",
+            "mockType": "fullName"
+          },
+          {
+            "key": "data[].details.Modified_Time",
+            "dataType": "date",
+            "description": "Record modification time returned by Zoho CRM.",
+            "mockType": "date"
+          },
+          {
+            "key": "data[].message",
+            "dataType": "string",
+            "description": "Zoho CRM result message for the record.",
+            "mockType": "string"
+          },
+          {
+            "key": "data[].status",
+            "dataType": "string",
+            "description": "Zoho CRM result status for the record.",
             "mockType": "string"
           }
         ]
@@ -100717,6 +100919,109 @@
             "key": "status",
             "dataType": "string",
             "description": "Zoho CRM create result status.",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Create Registrations",
+        "slug": "create-registrations-batch",
+        "operation": "create",
+        "method": "POST",
+        "model": "customObject",
+        "group": "Registration",
+        "documentationUrl": "https://www.zoho.com/crm/developer/docs/api/v7/insert-records.html",
+        "native": {
+          "method": "POST",
+          "path": "/Registrations",
+          "baseUrl": "{{credentials.accessTokenRequest.api_domain}}/crm/v8",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "data[]",
+              "name": "Data",
+              "dataType": "array",
+              "itemDataType": "object",
+              "location": "body",
+              "required": true,
+              "description": "Zoho CRM records to create. Each array item is sent as one record."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "data[]",
+            "name": "Data",
+            "dataType": "array",
+            "itemDataType": "object",
+            "required": true,
+            "description": "Zoho CRM records to create. Each array item is sent as one record."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "data[].code",
+            "dataType": "string",
+            "description": "Zoho CRM result code for the record.",
+            "mockType": "string"
+          },
+          {
+            "key": "data[].details.Created_By.id",
+            "dataType": "string",
+            "description": "ID of the Zoho CRM user who created the record.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Created_By.name",
+            "dataType": "string",
+            "description": "Name of the Zoho CRM user who created the record.",
+            "mockType": "fullName"
+          },
+          {
+            "key": "data[].details.Created_Time",
+            "dataType": "date",
+            "description": "Record creation time returned by Zoho CRM.",
+            "mockType": "date"
+          },
+          {
+            "key": "data[].details.id",
+            "dataType": "string",
+            "description": "Zoho CRM record ID created or updated.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Modified_By.id",
+            "dataType": "string",
+            "description": "ID of the Zoho CRM user who modified the record.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Modified_By.name",
+            "dataType": "string",
+            "description": "Name of the Zoho CRM user who modified the record.",
+            "mockType": "fullName"
+          },
+          {
+            "key": "data[].details.Modified_Time",
+            "dataType": "date",
+            "description": "Record modification time returned by Zoho CRM.",
+            "mockType": "date"
+          },
+          {
+            "key": "data[].message",
+            "dataType": "string",
+            "description": "Zoho CRM result message for the record.",
+            "mockType": "string"
+          },
+          {
+            "key": "data[].status",
+            "dataType": "string",
+            "description": "Zoho CRM result status for the record.",
             "mockType": "string"
           }
         ]
@@ -102098,27 +102403,6 @@
         ]
       },
       {
-        "name": "Create Contacts",
-        "slug": "new-action1",
-        "operation": "create",
-        "method": "POST",
-        "model": "contact",
-        "documentationUrl": "https://www.zoho.com/crm/developer/docs/api/v7/insert-records.html",
-        "native": {
-          "method": "POST",
-          "path": "/Contacts",
-          "baseUrl": "{{credentials.accessTokenRequest.api_domain}}/crm/v8",
-          "apiType": "rest"
-        },
-        "supports": {
-          "pagination": false,
-          "filtering": false,
-          "sorting": false
-        },
-        "arguments": [],
-        "responseSchema": []
-      },
-      {
         "name": "Search Accounts",
         "slug": "search-accounts",
         "operation": "read",
@@ -103280,6 +103564,108 @@
         ]
       },
       {
+        "name": "Update Accounts",
+        "slug": "update-accounts-batch",
+        "operation": "update",
+        "method": "PUT",
+        "model": "account",
+        "documentationUrl": "https://www.zoho.com/crm/developer/docs/api/v7/update-records.html",
+        "native": {
+          "method": "PUT",
+          "path": "/Accounts",
+          "baseUrl": "{{credentials.accessTokenRequest.api_domain}}/crm/v8",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "data[]",
+              "name": "Data",
+              "dataType": "array",
+              "itemDataType": "object",
+              "location": "body",
+              "required": true,
+              "description": "Zoho CRM records to update. Each array item is sent as one record."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "data[]",
+            "name": "Data",
+            "dataType": "array",
+            "itemDataType": "object",
+            "required": true,
+            "description": "Zoho CRM records to update. Each array item is sent as one record."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "data[].code",
+            "dataType": "string",
+            "description": "Zoho CRM result code for the record.",
+            "mockType": "string"
+          },
+          {
+            "key": "data[].details.Created_By.id",
+            "dataType": "string",
+            "description": "ID of the Zoho CRM user who created the record.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Created_By.name",
+            "dataType": "string",
+            "description": "Name of the Zoho CRM user who created the record.",
+            "mockType": "fullName"
+          },
+          {
+            "key": "data[].details.Created_Time",
+            "dataType": "date",
+            "description": "Record creation time returned by Zoho CRM.",
+            "mockType": "date"
+          },
+          {
+            "key": "data[].details.id",
+            "dataType": "string",
+            "description": "Zoho CRM record ID created or updated.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Modified_By.id",
+            "dataType": "string",
+            "description": "ID of the Zoho CRM user who modified the record.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Modified_By.name",
+            "dataType": "string",
+            "description": "Name of the Zoho CRM user who modified the record.",
+            "mockType": "fullName"
+          },
+          {
+            "key": "data[].details.Modified_Time",
+            "dataType": "date",
+            "description": "Record modification time returned by Zoho CRM.",
+            "mockType": "date"
+          },
+          {
+            "key": "data[].message",
+            "dataType": "string",
+            "description": "Zoho CRM result message for the record.",
+            "mockType": "string"
+          },
+          {
+            "key": "data[].status",
+            "dataType": "string",
+            "description": "Zoho CRM result status for the record.",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
         "name": "Update Contact",
         "slug": "update-contact",
         "operation": "update",
@@ -103664,6 +104050,108 @@
           {
             "key": "status",
             "dataType": "string",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Update Contacts",
+        "slug": "update-contacts-batch",
+        "operation": "update",
+        "method": "PUT",
+        "model": "contact",
+        "documentationUrl": "https://www.zoho.com/crm/developer/docs/api/v7/update-records.html",
+        "native": {
+          "method": "PUT",
+          "path": "/Contacts",
+          "baseUrl": "{{credentials.accessTokenRequest.api_domain}}/crm/v8",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "data[]",
+              "name": "Data",
+              "dataType": "array",
+              "itemDataType": "object",
+              "location": "body",
+              "required": true,
+              "description": "Zoho CRM records to update. Each array item is sent as one record."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "data[]",
+            "name": "Data",
+            "dataType": "array",
+            "itemDataType": "object",
+            "required": true,
+            "description": "Zoho CRM records to update. Each array item is sent as one record."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "data[].code",
+            "dataType": "string",
+            "description": "Zoho CRM result code for the record.",
+            "mockType": "string"
+          },
+          {
+            "key": "data[].details.Created_By.id",
+            "dataType": "string",
+            "description": "ID of the Zoho CRM user who created the record.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Created_By.name",
+            "dataType": "string",
+            "description": "Name of the Zoho CRM user who created the record.",
+            "mockType": "fullName"
+          },
+          {
+            "key": "data[].details.Created_Time",
+            "dataType": "date",
+            "description": "Record creation time returned by Zoho CRM.",
+            "mockType": "date"
+          },
+          {
+            "key": "data[].details.id",
+            "dataType": "string",
+            "description": "Zoho CRM record ID created or updated.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Modified_By.id",
+            "dataType": "string",
+            "description": "ID of the Zoho CRM user who modified the record.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Modified_By.name",
+            "dataType": "string",
+            "description": "Name of the Zoho CRM user who modified the record.",
+            "mockType": "fullName"
+          },
+          {
+            "key": "data[].details.Modified_Time",
+            "dataType": "date",
+            "description": "Record modification time returned by Zoho CRM.",
+            "mockType": "date"
+          },
+          {
+            "key": "data[].message",
+            "dataType": "string",
+            "description": "Zoho CRM result message for the record.",
+            "mockType": "string"
+          },
+          {
+            "key": "data[].status",
+            "dataType": "string",
+            "description": "Zoho CRM result status for the record.",
             "mockType": "string"
           }
         ]
@@ -104284,6 +104772,109 @@
             "key": "status",
             "dataType": "string",
             "description": "Zoho CRM update result status.",
+            "mockType": "string"
+          }
+        ]
+      },
+      {
+        "name": "Update Registrations",
+        "slug": "update-registrations-batch",
+        "operation": "update",
+        "method": "PUT",
+        "model": "customObject",
+        "group": "Registration",
+        "documentationUrl": "https://www.zoho.com/crm/developer/docs/api/v7/update-records.html",
+        "native": {
+          "method": "PUT",
+          "path": "/Registrations",
+          "baseUrl": "{{credentials.accessTokenRequest.api_domain}}/crm/v8",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "data[]",
+              "name": "Data",
+              "dataType": "array",
+              "itemDataType": "object",
+              "location": "body",
+              "required": true,
+              "description": "Zoho CRM records to update. Each array item is sent as one record."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "data[]",
+            "name": "Data",
+            "dataType": "array",
+            "itemDataType": "object",
+            "required": true,
+            "description": "Zoho CRM records to update. Each array item is sent as one record."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "data[].code",
+            "dataType": "string",
+            "description": "Zoho CRM result code for the record.",
+            "mockType": "string"
+          },
+          {
+            "key": "data[].details.Created_By.id",
+            "dataType": "string",
+            "description": "ID of the Zoho CRM user who created the record.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Created_By.name",
+            "dataType": "string",
+            "description": "Name of the Zoho CRM user who created the record.",
+            "mockType": "fullName"
+          },
+          {
+            "key": "data[].details.Created_Time",
+            "dataType": "date",
+            "description": "Record creation time returned by Zoho CRM.",
+            "mockType": "date"
+          },
+          {
+            "key": "data[].details.id",
+            "dataType": "string",
+            "description": "Zoho CRM record ID created or updated.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Modified_By.id",
+            "dataType": "string",
+            "description": "ID of the Zoho CRM user who modified the record.",
+            "mockType": "iDAlphanumerical"
+          },
+          {
+            "key": "data[].details.Modified_By.name",
+            "dataType": "string",
+            "description": "Name of the Zoho CRM user who modified the record.",
+            "mockType": "fullName"
+          },
+          {
+            "key": "data[].details.Modified_Time",
+            "dataType": "date",
+            "description": "Record modification time returned by Zoho CRM.",
+            "mockType": "date"
+          },
+          {
+            "key": "data[].message",
+            "dataType": "string",
+            "description": "Zoho CRM result message for the record.",
+            "mockType": "string"
+          },
+          {
+            "key": "data[].status",
+            "dataType": "string",
+            "description": "Zoho CRM result status for the record.",
             "mockType": "string"
           }
         ]
