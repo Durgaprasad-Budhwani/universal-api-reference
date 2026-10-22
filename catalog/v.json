@@ -94609,7 +94609,7 @@
     "slug": "viewpointVista",
     "iconUrl": "https://images.mindcloud.co/apps/icons/vv_1772640224458.png",
     "nativeDocumentationUrl": "https://direct-api.xchange.trimble.com/reference/setup",
-    "version": "0.0.99",
+    "version": "0.0.102",
     "authentication": [
       {
         "type": "custom",
@@ -95561,6 +95561,409 @@
               "description": "Optional details used when adding a new PO line item."
             },
             {
+              "key": "NewLineItem.ItemType",
+              "internalKey": "newLineItem.itemType",
+              "name": "Item Type",
+              "dataType": "list",
+              "itemDataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Required only when adding a new purchase order line. 1: Job; 2: Inventory; 3: Expense; 4: Equipment; 5: EM Work Order; 6: SM Work Order. Leave all New Line Item fields empty for an existing line.",
+              "enumValues": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6"
+              ]
+            },
+            {
+              "key": "NewLineItem.Description",
+              "internalKey": "newLineItem.description",
+              "name": "Description",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Optional.  if omitted, null will be defaulted.",
+              "maxLength": 60
+            },
+            {
+              "key": "NewLineItem.JCCo",
+              "internalKey": "newLineItem.jcCo",
+              "name": "JC Company",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Required when adding a new line with item type 1. Used for item type 1. Key to jc/jobs(JCCo, Job)."
+            },
+            {
+              "key": "NewLineItem.Job",
+              "internalKey": "newLineItem.job",
+              "name": "Job",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Required when adding a new line with item type 1. Used for item type 1. Key to jc/jobs(JCCo, Job).",
+              "maxLength": 10
+            },
+            {
+              "key": "NewLineItem.Phase",
+              "internalKey": "newLineItem.phase",
+              "name": "Phase",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Used for item type 1. Key to jc/job_phases(JCCo, Job, PhaseGroup, Phase)  The PhaseGroup will be selected based on the JCCo value.  Optional.  If omitted, it will be defaulted based on Vista defaulting logic.  If a default cannot be applied, this action may fail or force a Vista user to supply this value before posting.",
+              "maxLength": 20
+            },
+            {
+              "key": "NewLineItem.JCCType",
+              "internalKey": "newLineItem.jccType",
+              "name": "JC Cost Type",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Used for item type 1. Key to CostTypes array in jc/job_phases(JCCo, Job, PhaseGroup, Phase, $.CostTypes.CostType)  Optional.  If omitted, it will be defaulted based on Vista defaulting logic.  If a default cannot be applied, this action may fail or  force a Vista user to supply this value before posting."
+            },
+            {
+              "key": "NewLineItem.GLAcct",
+              "internalKey": "newLineItem.glAcct",
+              "name": "GL Account",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "GL account. Optional; company selection and defaults depend on Item Type and Vista configuration. Some item types disallow account overrides.",
+              "maxLength": 20
+            },
+            {
+              "key": "NewLineItem.Material",
+              "internalKey": "newLineItem.material",
+              "name": "Material",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Material code. Required for Inventory (Item Type 2); optional for other types. Material group is resolved from the applicable company.",
+              "maxLength": 20
+            },
+            {
+              "key": "NewLineItem.VendMatId",
+              "internalKey": "newLineItem.vendMatId",
+              "name": "Vendor Material ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Key to po/vendor_materials(VendorGroup, Vendor, MaterlGroup, Material, UM).  Vendor's Material Number. Optional.  If Omitted, it will be defaulted based Vista defaulting behavior.",
+              "maxLength": 30
+            },
+            {
+              "key": "NewLineItem.RecvYN",
+              "internalKey": "newLineItem.recvYn",
+              "name": "Receive in PO",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Receiving in PO Module.  Optional.  If omitted, N will be defaulted.  Send Y if this item will be received in the PO module.",
+              "enumValues": [
+                "N",
+                "Y"
+              ]
+            },
+            {
+              "key": "NewLineItem.ReqDate",
+              "internalKey": "newLineItem.reqDate",
+              "name": "Required Date",
+              "dataType": "date",
+              "location": "body",
+              "required": false,
+              "description": "Required Date.  Format: YYYY-MM-DD.  Optional.  If not provided it will be defaulted to $.ExpDate."
+            },
+            {
+              "key": "NewLineItem.PayCategory",
+              "internalKey": "newLineItem.payCategory",
+              "name": "Pay Category",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Key to ap/pay_categories(APCo, PayCategory).  APCo will be defaulted based on Vista defaulting logic.  Optional.  If omitted, it will be defaulted based on Vista defaulting behavior.  In some configurations, overrides are not allowed.  Providing this property when overrides are not allowed will result in an error."
+            },
+            {
+              "key": "NewLineItem.PayType",
+              "internalKey": "newLineItem.payType",
+              "name": "Pay Type",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Key to ap/pay_categories(APCo, PayCategory).  APCo will be defaulted based on Vista defaulting logic.  Optional.  If omitted Vista defaulted based on Vista defaulting behavior.  In some configurations, overrides are not allowed.  Providing this property when overrides are not allowed will result in an error.  In all cases if PayCategory is provided or defaulted this value must be in the PayCategory or in no PayCategory"
+            },
+            {
+              "key": "NewLineItem.Amount",
+              "internalKey": "newLineItem.amount",
+              "name": "Amount",
+              "dataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "If omitted, each property will be defaulted as noted on each property."
+            },
+            {
+              "key": "NewLineItem.Amount.UM",
+              "internalKey": "newLineItem.amount.um",
+              "name": "UM",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Key to hq/units_of_measures(UM).  Optional. If omitted, it will be defaulted based on Vista defaulting behavior.",
+              "maxLength": 3
+            },
+            {
+              "key": "NewLineItem.Amount.OrigUnitCost",
+              "internalKey": "newLineItem.amount.origUnitCost",
+              "name": "Original Unit Cost",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Optional. If omitted, it will be defaulted based on Vista defaulting logic.  If UM is LS, this value is ignored and will be set to 0."
+            },
+            {
+              "key": "NewLineItem.Amount.OrigECM",
+              "internalKey": "newLineItem.amount.origEcm",
+              "name": "Original Cost Basis",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Options: E-CostPerEach, C-CostPer100, M-CostPer1000.  Optional. If omitted, it will be defaulted based on Vista defaulting behavior.  If UM is LS, this value is ignored and will be set to null.",
+              "maxLength": 1,
+              "enumValues": [
+                "C",
+                "E",
+                "M",
+                "null"
+              ]
+            },
+            {
+              "key": "NewLineItem.Tax",
+              "internalKey": "newLineItem.tax",
+              "name": "Tax",
+              "dataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "Optional.  If omitted each property will be be defaulted based on Vista defaulting behavior."
+            },
+            {
+              "key": "NewLineItem.Tax.TaxType",
+              "internalKey": "newLineItem.tax.taxType",
+              "name": "Tax Type",
+              "dataType": "list",
+              "itemDataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Options: 1-Sales, 2-Use, 3-VAT.  Optional.  If not provided, it will be defaulted based on Vista defaulting behavior.",
+              "enumValues": [
+                "1",
+                "2",
+                "3"
+              ]
+            },
+            {
+              "key": "NewLineItem.Tax.TaxCode",
+              "internalKey": "newLineItem.tax.taxCode",
+              "name": "Tax Code",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Key to hq/tax_codes(TaxGroup, TaxCode).  TaxGroup will be determined based on JCCo.  Optional.  If not provided, it will be defaulted based on Vista defaulting behavior.",
+              "maxLength": 10
+            },
+            {
+              "key": "NewLineItem.Supplier",
+              "internalKey": "newLineItem.supplier",
+              "name": "Supplier",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Key to ap/vendors(SupplierGroup, Supplier) for supplier for this line.  SupplierGroup is defaulted based on Co.  Optional.  If omitted, null will be defaulted."
+            },
+            {
+              "key": "NewLineItem.Notes",
+              "internalKey": "newLineItem.notes",
+              "name": "Notes",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Optional.  If not provided, null will be defaulted."
+            },
+            {
+              "key": "NewLineItem.__custom_fields",
+              "internalKey": "newLineItem.__custom_fields",
+              "name": "Custom Fields",
+              "dataType": "object",
+              "location": "body",
+              "required": false,
+              "description": "Add a property to this object for each user defined field to be set.  Property name set to the user defined field name."
+            },
+            {
+              "key": "NewLineItem.INCo",
+              "internalKey": "newLineItem.inCo",
+              "name": "IN Company",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Required when adding a new line with item type 2. Used for item type 2. Key to in/locations(INCo, Loc)."
+            },
+            {
+              "key": "NewLineItem.Loc",
+              "internalKey": "newLineItem.loc",
+              "name": "Location",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Required when adding a new line with item type 2. Used for item type 2. Key to in/locations(INCo, Loc).",
+              "maxLength": 10
+            },
+            {
+              "key": "NewLineItem.GLCo",
+              "internalKey": "newLineItem.glCo",
+              "name": "GL Company",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Required when adding a new line with item type 3. Used for item type 3. Key to gl/chart_of_accounts(GLCo, GLAcct)."
+            },
+            {
+              "key": "NewLineItem.EMCo",
+              "internalKey": "newLineItem.emCo",
+              "name": "EM Company",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Equipment company. Required for Equipment (4) and EM Work Order (5)."
+            },
+            {
+              "key": "NewLineItem.Equip",
+              "internalKey": "newLineItem.equip",
+              "name": "Equipment",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Required when adding a new line with item type 4. Used for item type 4. Key to em/equipment(EMCo, Equipment).",
+              "maxLength": 10
+            },
+            {
+              "key": "NewLineItem.CompType",
+              "internalKey": "newLineItem.compType",
+              "name": "Component Type",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Used for item type 4. Optional.  If omitted, null will be defaulted.",
+              "maxLength": 10
+            },
+            {
+              "key": "NewLineItem.Component",
+              "internalKey": "newLineItem.component",
+              "name": "Component",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Used for item type 4. Optional.  If omitted, null will be defaulted.",
+              "maxLength": 10
+            },
+            {
+              "key": "NewLineItem.CostCode",
+              "internalKey": "newLineItem.costCode",
+              "name": "Cost Code",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Equipment cost code. Required for Equipment (4); for EM Work Order (5), may be ignored when specified by the work order item.",
+              "maxLength": 10
+            },
+            {
+              "key": "NewLineItem.EMCType",
+              "internalKey": "newLineItem.emcType",
+              "name": "EM Cost Type",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Required when adding a new line with item type 4, 5. Used for item type 4, 5. key to CostTypes array in em/cost_codes(EMGroup, CostCode, $.CostTypes.CostType)."
+            },
+            {
+              "key": "NewLineItem.WO",
+              "internalKey": "newLineItem.wo",
+              "name": "Work Order",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Required when adding a new line with item type 5. Used for item type 5. Equipment Work Order.",
+              "maxLength": 10
+            },
+            {
+              "key": "NewLineItem.WOItem",
+              "internalKey": "newLineItem.woItem",
+              "name": "Work Order Item",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Required when adding a new line with item type 5. Used for item type 5. Equipment Work Order Item."
+            },
+            {
+              "key": "NewLineItem.SMCo",
+              "internalKey": "newLineItem.smCo",
+              "name": "SM Company",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Required when adding a new line with item type 6. Used for item type 6. SM Company."
+            },
+            {
+              "key": "NewLineItem.SMWorkOrder",
+              "internalKey": "newLineItem.smWorkOrder",
+              "name": "SM Work Order",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Required when adding a new line with item type 6. Used for item type 6. SM Work Order"
+            },
+            {
+              "key": "NewLineItem.SMScope",
+              "internalKey": "newLineItem.smScope",
+              "name": "SM Scope",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Required when adding a new line with item type 6. Used for item type 6. SM Scope"
+            },
+            {
+              "key": "NewLineItem.SMCostType",
+              "internalKey": "newLineItem.smCostType",
+              "name": "SM Cost Type",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Required when adding a new line with item type 6. Used for item type 6. SM Cost Type."
+            },
+            {
+              "key": "NewLineItem.SMPhase",
+              "internalKey": "newLineItem.smPhase",
+              "name": "SM Phase",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Used for item type 6. Key to jc/job_phases(SMPhaseGroup, SMPhase).  SMPhaseGroup will be defaulted based on the JCCo associated to the SM Work Order.  Optional.  This value should only be supplied if the SM Scope does not have a Phase assigned.",
+              "maxLength": 20
+            },
+            {
+              "key": "NewLineItem.SMJCCostType",
+              "internalKey": "newLineItem.smjcCostType",
+              "name": "SM JC Cost Type",
+              "dataType": "number",
+              "location": "body",
+              "required": false,
+              "description": "Used for item type 6. Key to CostTypes array in jc/job_phases(JCCo, Job, PhaseGroup, Phase, $.CostTypes.CostType)  Optional.  This value should only be supplied if the SM Scope does not have a CostType assigned."
+            },
+            {
               "key": "Notes",
               "internalKey": "notes",
               "name": "Notes",
@@ -95689,8 +96092,337 @@
             "name": "New Line Item",
             "dataType": "object",
             "required": false,
-            "advanced": true,
             "description": "Optional details used when adding a new PO line item."
+          },
+          {
+            "key": "newLineItem.itemType",
+            "name": "Item Type",
+            "dataType": "list",
+            "itemDataType": "number",
+            "required": false,
+            "description": "Required only when adding a new purchase order line. 1: Job; 2: Inventory; 3: Expense; 4: Equipment; 5: EM Work Order; 6: SM Work Order. Leave all New Line Item fields empty for an existing line.",
+            "enumValues": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6"
+            ]
+          },
+          {
+            "key": "newLineItem.description",
+            "name": "Description",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Optional.  if omitted, null will be defaulted."
+          },
+          {
+            "key": "newLineItem.jcCo",
+            "name": "JC Company",
+            "dataType": "number",
+            "required": false,
+            "description": "Required when adding a new line with item type 1. Used for item type 1. Key to jc/jobs(JCCo, Job)."
+          },
+          {
+            "key": "newLineItem.job",
+            "name": "Job",
+            "dataType": "string",
+            "required": false,
+            "description": "Required when adding a new line with item type 1. Used for item type 1. Key to jc/jobs(JCCo, Job)."
+          },
+          {
+            "key": "newLineItem.phase",
+            "name": "Phase",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Used for item type 1. Key to jc/job_phases(JCCo, Job, PhaseGroup, Phase)  The PhaseGroup will be selected based on the JCCo value.  Optional.  If omitted, it will be defaulted based on Vista defaulting logic.  If a default cannot be applied, this action may fail or force a Vista user to supply this value before posting."
+          },
+          {
+            "key": "newLineItem.jccType",
+            "name": "JC Cost Type",
+            "dataType": "number",
+            "required": false,
+            "advanced": true,
+            "description": "Used for item type 1. Key to CostTypes array in jc/job_phases(JCCo, Job, PhaseGroup, Phase, $.CostTypes.CostType)  Optional.  If omitted, it will be defaulted based on Vista defaulting logic.  If a default cannot be applied, this action may fail or  force a Vista user to supply this value before posting."
+          },
+          {
+            "key": "newLineItem.glAcct",
+            "name": "GL Account",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "GL account. Optional; company selection and defaults depend on Item Type and Vista configuration. Some item types disallow account overrides."
+          },
+          {
+            "key": "newLineItem.material",
+            "name": "Material",
+            "dataType": "string",
+            "required": false,
+            "description": "Material code. Required for Inventory (Item Type 2); optional for other types. Material group is resolved from the applicable company."
+          },
+          {
+            "key": "newLineItem.vendMatId",
+            "name": "Vendor Material ID",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Key to po/vendor_materials(VendorGroup, Vendor, MaterlGroup, Material, UM).  Vendor's Material Number. Optional.  If Omitted, it will be defaulted based Vista defaulting behavior."
+          },
+          {
+            "key": "newLineItem.recvYn",
+            "name": "Receive in PO",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Receiving in PO Module.  Optional.  If omitted, N will be defaulted.  Send Y if this item will be received in the PO module.",
+            "enumValues": [
+              "N",
+              "Y"
+            ]
+          },
+          {
+            "key": "newLineItem.reqDate",
+            "name": "Required Date",
+            "dataType": "date",
+            "required": false,
+            "advanced": true,
+            "description": "Required Date.  Format: YYYY-MM-DD.  Optional.  If not provided it will be defaulted to $.ExpDate."
+          },
+          {
+            "key": "newLineItem.payCategory",
+            "name": "Pay Category",
+            "dataType": "number",
+            "required": false,
+            "advanced": true,
+            "description": "Key to ap/pay_categories(APCo, PayCategory).  APCo will be defaulted based on Vista defaulting logic.  Optional.  If omitted, it will be defaulted based on Vista defaulting behavior.  In some configurations, overrides are not allowed.  Providing this property when overrides are not allowed will result in an error."
+          },
+          {
+            "key": "newLineItem.payType",
+            "name": "Pay Type",
+            "dataType": "number",
+            "required": false,
+            "advanced": true,
+            "description": "Key to ap/pay_categories(APCo, PayCategory).  APCo will be defaulted based on Vista defaulting logic.  Optional.  If omitted Vista defaulted based on Vista defaulting behavior.  In some configurations, overrides are not allowed.  Providing this property when overrides are not allowed will result in an error.  In all cases if PayCategory is provided or defaulted this value must be in the PayCategory or in no PayCategory"
+          },
+          {
+            "key": "newLineItem.amount",
+            "name": "Amount",
+            "dataType": "object",
+            "required": false,
+            "advanced": true,
+            "description": "If omitted, each property will be defaulted as noted on each property."
+          },
+          {
+            "key": "newLineItem.amount.um",
+            "name": "UM",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Key to hq/units_of_measures(UM).  Optional. If omitted, it will be defaulted based on Vista defaulting behavior."
+          },
+          {
+            "key": "newLineItem.amount.origUnitCost",
+            "name": "Original Unit Cost",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Optional. If omitted, it will be defaulted based on Vista defaulting logic.  If UM is LS, this value is ignored and will be set to 0."
+          },
+          {
+            "key": "newLineItem.amount.origEcm",
+            "name": "Original Cost Basis",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Options: E-CostPerEach, C-CostPer100, M-CostPer1000.  Optional. If omitted, it will be defaulted based on Vista defaulting behavior.  If UM is LS, this value is ignored and will be set to null.",
+            "enumValues": [
+              "C",
+              "E",
+              "M",
+              "null"
+            ]
+          },
+          {
+            "key": "newLineItem.tax",
+            "name": "Tax",
+            "dataType": "object",
+            "required": false,
+            "advanced": true,
+            "description": "Optional.  If omitted each property will be be defaulted based on Vista defaulting behavior."
+          },
+          {
+            "key": "newLineItem.tax.taxType",
+            "name": "Tax Type",
+            "dataType": "list",
+            "itemDataType": "number",
+            "required": false,
+            "advanced": true,
+            "description": "Options: 1-Sales, 2-Use, 3-VAT.  Optional.  If not provided, it will be defaulted based on Vista defaulting behavior.",
+            "enumValues": [
+              "1",
+              "2",
+              "3"
+            ]
+          },
+          {
+            "key": "newLineItem.tax.taxCode",
+            "name": "Tax Code",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Key to hq/tax_codes(TaxGroup, TaxCode).  TaxGroup will be determined based on JCCo.  Optional.  If not provided, it will be defaulted based on Vista defaulting behavior."
+          },
+          {
+            "key": "newLineItem.supplier",
+            "name": "Supplier",
+            "dataType": "number",
+            "required": false,
+            "advanced": true,
+            "description": "Key to ap/vendors(SupplierGroup, Supplier) for supplier for this line.  SupplierGroup is defaulted based on Co.  Optional.  If omitted, null will be defaulted."
+          },
+          {
+            "key": "newLineItem.notes",
+            "name": "Notes",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Optional.  If not provided, null will be defaulted."
+          },
+          {
+            "key": "newLineItem.__custom_fields",
+            "name": "Custom Fields",
+            "dataType": "object",
+            "required": false,
+            "advanced": true,
+            "description": "Add a property to this object for each user defined field to be set.  Property name set to the user defined field name."
+          },
+          {
+            "key": "newLineItem.inCo",
+            "name": "IN Company",
+            "dataType": "number",
+            "required": false,
+            "description": "Required when adding a new line with item type 2. Used for item type 2. Key to in/locations(INCo, Loc)."
+          },
+          {
+            "key": "newLineItem.loc",
+            "name": "Location",
+            "dataType": "string",
+            "required": false,
+            "description": "Required when adding a new line with item type 2. Used for item type 2. Key to in/locations(INCo, Loc)."
+          },
+          {
+            "key": "newLineItem.glCo",
+            "name": "GL Company",
+            "dataType": "number",
+            "required": false,
+            "description": "Required when adding a new line with item type 3. Used for item type 3. Key to gl/chart_of_accounts(GLCo, GLAcct)."
+          },
+          {
+            "key": "newLineItem.emCo",
+            "name": "EM Company",
+            "dataType": "number",
+            "required": false,
+            "description": "Equipment company. Required for Equipment (4) and EM Work Order (5)."
+          },
+          {
+            "key": "newLineItem.equip",
+            "name": "Equipment",
+            "dataType": "string",
+            "required": false,
+            "description": "Required when adding a new line with item type 4. Used for item type 4. Key to em/equipment(EMCo, Equipment)."
+          },
+          {
+            "key": "newLineItem.compType",
+            "name": "Component Type",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Used for item type 4. Optional.  If omitted, null will be defaulted."
+          },
+          {
+            "key": "newLineItem.component",
+            "name": "Component",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Used for item type 4. Optional.  If omitted, null will be defaulted."
+          },
+          {
+            "key": "newLineItem.costCode",
+            "name": "Cost Code",
+            "dataType": "string",
+            "required": false,
+            "description": "Equipment cost code. Required for Equipment (4); for EM Work Order (5), may be ignored when specified by the work order item."
+          },
+          {
+            "key": "newLineItem.emcType",
+            "name": "EM Cost Type",
+            "dataType": "number",
+            "required": false,
+            "description": "Required when adding a new line with item type 4, 5. Used for item type 4, 5. key to CostTypes array in em/cost_codes(EMGroup, CostCode, $.CostTypes.CostType)."
+          },
+          {
+            "key": "newLineItem.wo",
+            "name": "Work Order",
+            "dataType": "string",
+            "required": false,
+            "description": "Required when adding a new line with item type 5. Used for item type 5. Equipment Work Order."
+          },
+          {
+            "key": "newLineItem.woItem",
+            "name": "Work Order Item",
+            "dataType": "number",
+            "required": false,
+            "description": "Required when adding a new line with item type 5. Used for item type 5. Equipment Work Order Item."
+          },
+          {
+            "key": "newLineItem.smCo",
+            "name": "SM Company",
+            "dataType": "number",
+            "required": false,
+            "description": "Required when adding a new line with item type 6. Used for item type 6. SM Company."
+          },
+          {
+            "key": "newLineItem.smWorkOrder",
+            "name": "SM Work Order",
+            "dataType": "number",
+            "required": false,
+            "description": "Required when adding a new line with item type 6. Used for item type 6. SM Work Order"
+          },
+          {
+            "key": "newLineItem.smScope",
+            "name": "SM Scope",
+            "dataType": "number",
+            "required": false,
+            "description": "Required when adding a new line with item type 6. Used for item type 6. SM Scope"
+          },
+          {
+            "key": "newLineItem.smCostType",
+            "name": "SM Cost Type",
+            "dataType": "number",
+            "required": false,
+            "description": "Required when adding a new line with item type 6. Used for item type 6. SM Cost Type."
+          },
+          {
+            "key": "newLineItem.smPhase",
+            "name": "SM Phase",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Used for item type 6. Key to jc/job_phases(SMPhaseGroup, SMPhase).  SMPhaseGroup will be defaulted based on the JCCo associated to the SM Work Order.  Optional.  This value should only be supplied if the SM Scope does not have a Phase assigned."
+          },
+          {
+            "key": "newLineItem.smjcCostType",
+            "name": "SM JC Cost Type",
+            "dataType": "number",
+            "required": false,
+            "advanced": true,
+            "description": "Used for item type 6. Key to CostTypes array in jc/job_phases(JCCo, Job, PhaseGroup, Phase, $.CostTypes.CostType)  Optional.  This value should only be supplied if the SM Scope does not have a CostType assigned."
           },
           {
             "key": "notes",

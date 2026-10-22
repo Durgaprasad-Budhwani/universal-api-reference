@@ -13,5 +13,5 @@ Exports a Google Workspace document from Google Drive.
 
 | Parameter | Location | Type | Required | Description |
 | --- | --- | --- | --- | --- |
-| `fileId` | path | `list` | yes | Select a Google Workspace file to export. With drive.file access, Google only allows files created by or explicitly authorized to the app. |
+| `fileId` | path | `list` | yes | Select one Google Workspace file or pass its single ID string, for example {"fileId":"your-file-id"}. This dropdown selects one value; arrays and batches are not supported. Run a separate export for each file. With drive.file access, the file must be created by or explicitly authorized to this app. |
 | `mimeType` | query | `list` | yes | The export format to request from Google Drive files.export. Accepted values: `application/pdf`, `application/rtf`, `application/vnd.oasis.opendocument.text`, `application/vnd.openxmlformats-officedocument.presentationml.presentation`, `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`, `application/vnd.openxmlformats-officedocument.wordprocessingml.document`, `text/plain`. |

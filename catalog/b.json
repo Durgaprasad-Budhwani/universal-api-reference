@@ -262102,7 +262102,7 @@
     "websiteUrl": "https://www.box.com/",
     "nativeBaseUrl": "https://api.box.com/2.0",
     "nativeDocumentationUrl": "https://developer.box.com/reference",
-    "version": "0.0.18",
+    "version": "0.0.19",
     "authentication": [
       {
         "type": "oAuth2",
@@ -263711,6 +263711,314 @@
             "dataType": "number",
             "description": "The total number of matching folders available.",
             "mockType": "number"
+          }
+        ]
+      },
+      {
+        "name": "Upload File",
+        "slug": "upload-file",
+        "operation": "create",
+        "method": "POST",
+        "model": "file",
+        "group": "File",
+        "documentationUrl": "https://developer.box.com/reference/post-files-content",
+        "native": {
+          "method": "POST",
+          "path": "https://upload.box.com/api/2.0/files/content",
+          "useFullUrl": true,
+          "apiType": "rest",
+          "headers": [
+            {
+              "name": "Content-Type",
+              "value": "multipart/form-data"
+            }
+          ],
+          "arguments": [
+            {
+              "key": "fileName",
+              "name": "File Name",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "The name of the new file to upload into Box."
+            },
+            {
+              "key": "parentFolderId",
+              "name": "Parent Folder ID",
+              "dataType": "string",
+              "location": "body",
+              "required": true,
+              "description": "Parent Box folder ID. Use `0` to upload the file into the root folder."
+            },
+            {
+              "key": "file",
+              "name": "File Content (Base64 or URL)",
+              "dataType": "file",
+              "location": "body",
+              "required": true,
+              "description": "Paste a plain base64 string, a full data URL, or a public HTTPS file URL. Data URLs are stripped to raw base64 automatically before upload."
+            },
+            {
+              "key": "fields",
+              "name": "Fields",
+              "dataType": "string",
+              "location": "query",
+              "required": false,
+              "description": "Optional comma-separated list of file fields to include in the response."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "fileName",
+            "name": "File Name",
+            "dataType": "string",
+            "required": true,
+            "description": "The name of the new file to upload into Box.",
+            "example": "report.pdf"
+          },
+          {
+            "key": "parentFolderId",
+            "name": "Parent Folder ID",
+            "dataType": "string",
+            "required": true,
+            "description": "Parent Box folder ID. Use `0` to upload the file into the root folder.",
+            "example": "0",
+            "defaultValue": "0"
+          },
+          {
+            "key": "file",
+            "name": "File Content (Base64 or URL)",
+            "dataType": "file",
+            "required": true,
+            "description": "Paste a plain base64 string, a full data URL, or a public HTTPS file URL. Data URLs are stripped to raw base64 automatically before upload.",
+            "example": "SG9sYSBCb3ggZGVzZGUgTWluZENsb3VkIQ=="
+          },
+          {
+            "key": "fields",
+            "name": "Fields",
+            "dataType": "string",
+            "required": false,
+            "advanced": true,
+            "description": "Optional comma-separated list of file fields to include in the response.",
+            "example": "id,type,name,size,parent"
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "contentCreatedAt",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "contentModifiedAt",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "createdAt",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "createdBy.id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "createdBy.login",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "createdBy.name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "createdBy.type",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "description",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "etag",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "fileVersion.id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "fileVersion.sha1",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "fileVersion.type",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "itemStatus",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "modifiedAt",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "modifiedBy.id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "modifiedBy.login",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "modifiedBy.name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "modifiedBy.type",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "ownedBy.id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "ownedBy.login",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "ownedBy.name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "ownedBy.type",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "parent.etag",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "parent.id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "parent.name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "parent.sequenceId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "parent.type",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "pathCollection.entries[].etag",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "pathCollection.entries[].id",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "pathCollection.entries[].name",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "pathCollection.entries[].sequenceId",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "pathCollection.entries[].type",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "pathCollection.totalCount",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "purgedAt",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "sequenceId",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "sha1",
+            "dataType": "string",
+            "mockType": "string"
+          },
+          {
+            "key": "sharedLink",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "size",
+            "dataType": "number",
+            "mockType": "number"
+          },
+          {
+            "key": "trashedAt",
+            "dataType": "object",
+            "mockType": "object"
+          },
+          {
+            "key": "type",
+            "dataType": "string",
+            "mockType": "string"
           }
         ]
       },

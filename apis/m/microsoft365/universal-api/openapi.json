@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Microsoft 365 Universal API",
-    "version": "0.0.37",
+    "version": "0.0.38",
     "description": "Access Microsoft 365 and Microsoft Graph data, including the signed-in user's profile and other Microsoft 365 resources, through delegated OAuth 2.0 connections."
   },
   "servers": [
@@ -13576,7 +13576,8 @@
                     "description": "The MindCloud connection ID for this app."
                   },
                   "content": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "File bytes as a base64 string, or a direct HTTPS download URL accessible without additional authentication. The downloaded or decoded bytes are sent as the request body."
                   },
                   "folderPath": {
                     "type": "string",

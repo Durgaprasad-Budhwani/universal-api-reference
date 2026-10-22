@@ -46,7 +46,7 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
-| `content` | file | yes |  |
+| `content` | file | yes | File bytes as a base64 string, or a direct HTTPS download URL accessible without additional authentication. The downloaded or decoded bytes are sent as the request body. |
 | `folderPath` | string | yes | Folder path where the file should be uploaded. |
 | `fileName` | string | yes | Name of the uploaded file, including extension. |
 
@@ -86,5 +86,5 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 
 ## Native endpoint
 
-Through the native Microsoft 365 API, this operation is `PUT /v1.0/me/drive/root\:/:folderPath/:fileName\:/content` (base URL `https://graph.microsoft.com`). The Universal API call above is translated to it by MindCloud, including authentication. See the [native action reference](../../native-api/actions/upload-file.md) for the provider-specific parameters and requirements.
+Through the native Microsoft 365 API, this operation is `PUT /v1.0/me/drive/root:/{{folderPath}}/{{fileName}}:/content` (base URL `https://graph.microsoft.com`). The Universal API call above is translated to it by MindCloud, including authentication. See the [native action reference](../../native-api/actions/upload-file.md) for the provider-specific parameters and requirements.
 

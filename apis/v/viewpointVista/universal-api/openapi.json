@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Viewpoint Vista Universal API",
-    "version": "0.0.99",
+    "version": "0.0.102",
     "description": "Call Viewpoint Vista actions through MindCloud's Universal API."
   },
   "servers": [
@@ -1039,7 +1039,216 @@
                   "newLineItem": {
                     "type": "object",
                     "additionalProperties": true,
-                    "description": "Optional details used when adding a new PO line item.",
+                    "description": "Optional details used when adding a new PO line item."
+                  },
+                  "newLineItem.itemType": {
+                    "type": "string",
+                    "description": "Required only when adding a new purchase order line. 1: Job; 2: Inventory; 3: Expense; 4: Equipment; 5: EM Work Order; 6: SM Work Order. Leave all New Line Item fields empty for an existing line.",
+                    "enum": [
+                      "1",
+                      "2",
+                      "3",
+                      "4",
+                      "5",
+                      "6"
+                    ]
+                  },
+                  "newLineItem.description": {
+                    "type": "string",
+                    "description": "Optional.  if omitted, null will be defaulted.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.jcCo": {
+                    "type": "number",
+                    "description": "Required when adding a new line with item type 1. Used for item type 1. Key to jc/jobs(JCCo, Job)."
+                  },
+                  "newLineItem.job": {
+                    "type": "string",
+                    "description": "Required when adding a new line with item type 1. Used for item type 1. Key to jc/jobs(JCCo, Job)."
+                  },
+                  "newLineItem.phase": {
+                    "type": "string",
+                    "description": "Used for item type 1. Key to jc/job_phases(JCCo, Job, PhaseGroup, Phase)  The PhaseGroup will be selected based on the JCCo value.  Optional.  If omitted, it will be defaulted based on Vista defaulting logic.  If a default cannot be applied, this action may fail or force a Vista user to supply this value before posting.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.jccType": {
+                    "type": "number",
+                    "description": "Used for item type 1. Key to CostTypes array in jc/job_phases(JCCo, Job, PhaseGroup, Phase, $.CostTypes.CostType)  Optional.  If omitted, it will be defaulted based on Vista defaulting logic.  If a default cannot be applied, this action may fail or  force a Vista user to supply this value before posting.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.glAcct": {
+                    "type": "string",
+                    "description": "GL account. Optional; company selection and defaults depend on Item Type and Vista configuration. Some item types disallow account overrides.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.material": {
+                    "type": "string",
+                    "description": "Material code. Required for Inventory (Item Type 2); optional for other types. Material group is resolved from the applicable company."
+                  },
+                  "newLineItem.vendMatId": {
+                    "type": "string",
+                    "description": "Key to po/vendor_materials(VendorGroup, Vendor, MaterlGroup, Material, UM).  Vendor's Material Number. Optional.  If Omitted, it will be defaulted based Vista defaulting behavior.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.recvYn": {
+                    "type": "string",
+                    "description": "Receiving in PO Module.  Optional.  If omitted, N will be defaulted.  Send Y if this item will be received in the PO module.",
+                    "enum": [
+                      "N",
+                      "Y"
+                    ],
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.reqDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Required Date.  Format: YYYY-MM-DD.  Optional.  If not provided it will be defaulted to $.ExpDate.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.payCategory": {
+                    "type": "number",
+                    "description": "Key to ap/pay_categories(APCo, PayCategory).  APCo will be defaulted based on Vista defaulting logic.  Optional.  If omitted, it will be defaulted based on Vista defaulting behavior.  In some configurations, overrides are not allowed.  Providing this property when overrides are not allowed will result in an error.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.payType": {
+                    "type": "number",
+                    "description": "Key to ap/pay_categories(APCo, PayCategory).  APCo will be defaulted based on Vista defaulting logic.  Optional.  If omitted Vista defaulted based on Vista defaulting behavior.  In some configurations, overrides are not allowed.  Providing this property when overrides are not allowed will result in an error.  In all cases if PayCategory is provided or defaulted this value must be in the PayCategory or in no PayCategory",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.amount": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "description": "If omitted, each property will be defaulted as noted on each property.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.amount.um": {
+                    "type": "string",
+                    "description": "Key to hq/units_of_measures(UM).  Optional. If omitted, it will be defaulted based on Vista defaulting behavior.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.amount.origUnitCost": {
+                    "type": "string",
+                    "description": "Optional. If omitted, it will be defaulted based on Vista defaulting logic.  If UM is LS, this value is ignored and will be set to 0.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.amount.origEcm": {
+                    "type": "string",
+                    "description": "Options: E-CostPerEach, C-CostPer100, M-CostPer1000.  Optional. If omitted, it will be defaulted based on Vista defaulting behavior.  If UM is LS, this value is ignored and will be set to null.",
+                    "enum": [
+                      "C",
+                      "E",
+                      "M",
+                      "null"
+                    ],
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.tax": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "description": "Optional.  If omitted each property will be be defaulted based on Vista defaulting behavior.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.tax.taxType": {
+                    "type": "string",
+                    "description": "Options: 1-Sales, 2-Use, 3-VAT.  Optional.  If not provided, it will be defaulted based on Vista defaulting behavior.",
+                    "enum": [
+                      "1",
+                      "2",
+                      "3"
+                    ],
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.tax.taxCode": {
+                    "type": "string",
+                    "description": "Key to hq/tax_codes(TaxGroup, TaxCode).  TaxGroup will be determined based on JCCo.  Optional.  If not provided, it will be defaulted based on Vista defaulting behavior.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.supplier": {
+                    "type": "number",
+                    "description": "Key to ap/vendors(SupplierGroup, Supplier) for supplier for this line.  SupplierGroup is defaulted based on Co.  Optional.  If omitted, null will be defaulted.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.notes": {
+                    "type": "string",
+                    "description": "Optional.  If not provided, null will be defaulted.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.__custom_fields": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "description": "Add a property to this object for each user defined field to be set.  Property name set to the user defined field name.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.inCo": {
+                    "type": "number",
+                    "description": "Required when adding a new line with item type 2. Used for item type 2. Key to in/locations(INCo, Loc)."
+                  },
+                  "newLineItem.loc": {
+                    "type": "string",
+                    "description": "Required when adding a new line with item type 2. Used for item type 2. Key to in/locations(INCo, Loc)."
+                  },
+                  "newLineItem.glCo": {
+                    "type": "number",
+                    "description": "Required when adding a new line with item type 3. Used for item type 3. Key to gl/chart_of_accounts(GLCo, GLAcct)."
+                  },
+                  "newLineItem.emCo": {
+                    "type": "number",
+                    "description": "Equipment company. Required for Equipment (4) and EM Work Order (5)."
+                  },
+                  "newLineItem.equip": {
+                    "type": "string",
+                    "description": "Required when adding a new line with item type 4. Used for item type 4. Key to em/equipment(EMCo, Equipment)."
+                  },
+                  "newLineItem.compType": {
+                    "type": "string",
+                    "description": "Used for item type 4. Optional.  If omitted, null will be defaulted.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.component": {
+                    "type": "string",
+                    "description": "Used for item type 4. Optional.  If omitted, null will be defaulted.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.costCode": {
+                    "type": "string",
+                    "description": "Equipment cost code. Required for Equipment (4); for EM Work Order (5), may be ignored when specified by the work order item."
+                  },
+                  "newLineItem.emcType": {
+                    "type": "number",
+                    "description": "Required when adding a new line with item type 4, 5. Used for item type 4, 5. key to CostTypes array in em/cost_codes(EMGroup, CostCode, $.CostTypes.CostType)."
+                  },
+                  "newLineItem.wo": {
+                    "type": "string",
+                    "description": "Required when adding a new line with item type 5. Used for item type 5. Equipment Work Order."
+                  },
+                  "newLineItem.woItem": {
+                    "type": "number",
+                    "description": "Required when adding a new line with item type 5. Used for item type 5. Equipment Work Order Item."
+                  },
+                  "newLineItem.smCo": {
+                    "type": "number",
+                    "description": "Required when adding a new line with item type 6. Used for item type 6. SM Company."
+                  },
+                  "newLineItem.smWorkOrder": {
+                    "type": "number",
+                    "description": "Required when adding a new line with item type 6. Used for item type 6. SM Work Order"
+                  },
+                  "newLineItem.smScope": {
+                    "type": "number",
+                    "description": "Required when adding a new line with item type 6. Used for item type 6. SM Scope"
+                  },
+                  "newLineItem.smCostType": {
+                    "type": "number",
+                    "description": "Required when adding a new line with item type 6. Used for item type 6. SM Cost Type."
+                  },
+                  "newLineItem.smPhase": {
+                    "type": "string",
+                    "description": "Used for item type 6. Key to jc/job_phases(SMPhaseGroup, SMPhase).  SMPhaseGroup will be defaulted based on the JCCo associated to the SM Work Order.  Optional.  This value should only be supplied if the SM Scope does not have a Phase assigned.",
+                    "x-mindcloud-advanced": true
+                  },
+                  "newLineItem.smjcCostType": {
+                    "type": "number",
+                    "description": "Used for item type 6. Key to CostTypes array in jc/job_phases(JCCo, Job, PhaseGroup, Phase, $.CostTypes.CostType)  Optional.  This value should only be supplied if the SM Scope does not have a CostType assigned.",
                     "x-mindcloud-advanced": true
                   },
                   "notes": {

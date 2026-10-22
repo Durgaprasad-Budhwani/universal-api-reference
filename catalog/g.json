@@ -187528,7 +187528,7 @@
       "format": "openapi",
       "url": "https://github.com/APIs-guru/openapi-directory/blob/main/APIs/googleapis.com/drive/v3/openapi.yaml"
     },
-    "version": "0.0.193",
+    "version": "0.0.198",
     "authentication": [
       {
         "type": "oAuth2",
@@ -188729,7 +188729,7 @@
               "dataType": "list",
               "location": "param",
               "required": true,
-              "description": "Select a Google Workspace file to export. With drive.file access, Google only allows files created by or explicitly authorized to the app."
+              "description": "Select one Google Workspace file or pass its single ID string, for example {\"fileId\":\"your-file-id\"}. This dropdown selects one value; arrays and batches are not supported. Run a separate export for each file. With drive.file access, the file must be created by or explicitly authorized to this app."
             },
             {
               "key": "mimeType",
@@ -188762,7 +188762,7 @@
             "name": "File",
             "dataType": "list",
             "required": true,
-            "description": "Select a Google Workspace file to export. With drive.file access, Google only allows files created by or explicitly authorized to the app."
+            "description": "Select one Google Workspace file or pass its single ID string, for example {\"fileId\":\"your-file-id\"}. This dropdown selects one value; arrays and batches are not supported. Run a separate export for each file. With drive.file access, the file must be created by or explicitly authorized to this app."
           },
           {
             "key": "mimeType",
@@ -190545,6 +190545,14 @@
               "location": "param",
               "required": true,
               "description": "Specify the 'fileId' of a File to move. Select a File in the list or use \"Search Files & Folders\" to get another File in your Drive."
+            },
+            {
+              "key": "name",
+              "name": "File Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false,
+              "description": "Optional new file name, including extension. Renames the file while moving it to the destination folder."
             }
           ]
         },
@@ -190574,6 +190582,13 @@
             "dataType": "string",
             "required": true,
             "description": "Specify the 'fileId' of a File to move. Select a File in the list or use \"Search Files & Folders\" to get another File in your Drive."
+          },
+          {
+            "key": "name",
+            "name": "File Name",
+            "dataType": "string",
+            "required": false,
+            "description": "Optional new file name, including extension. Renames the file while moving it to the destination folder."
           }
         ],
         "responseSchema": [
@@ -190765,6 +190780,80 @@
         ]
       },
       {
+        "name": "Trash File",
+        "slug": "trash-file",
+        "operation": "update",
+        "method": "PUT",
+        "model": "file",
+        "documentationUrl": "https://developers.google.com/workspace/drive/api/reference/rest/v3/files/update",
+        "native": {
+          "method": "PATCH",
+          "path": "/drive/v3/files/:fileId",
+          "baseUrl": "https://www.googleapis.com",
+          "apiName": "REST API",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "fileId",
+              "name": "File",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "param",
+              "required": true,
+              "description": "One file ID string to move to Trash."
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "fileId",
+            "name": "File",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": true,
+            "description": "One file ID string to move to Trash."
+          }
+        ],
+        "responseSchema": [
+          {
+            "key": "id",
+            "dataType": "string",
+            "description": "File ID.",
+            "mockType": "string"
+          },
+          {
+            "key": "mimeType",
+            "dataType": "string",
+            "description": "File MIME type.",
+            "mockType": "string"
+          },
+          {
+            "key": "name",
+            "dataType": "string",
+            "description": "File name.",
+            "mockType": "string"
+          },
+          {
+            "key": "parents",
+            "dataType": "array",
+            "itemDataType": "string",
+            "description": "Parent folder IDs.",
+            "mockType": "array"
+          },
+          {
+            "key": "trashed",
+            "dataType": "boolean",
+            "description": "True after the file is moved to Trash.",
+            "mockType": "boolean"
+          }
+        ]
+      },
+      {
         "name": "Upload File",
         "slug": "upload-file",
         "operation": "create",
@@ -190801,7 +190890,24 @@
               "dataType": "file",
               "location": "body",
               "required": true,
-              "description": "Base64-encoded file content or a direct download URL that works without interactive sign-in. PDF and Excel (.xlsx) are supported. Prefer a URL for larger files. This simple upload supports files up to 5 MB and creates the file without custom name or folder metadata."
+              "description": "Base64-encoded file content or a direct download URL that works without interactive sign-in. PDF and Excel (.xlsx) are supported. This action uploads content only. To set name and folder, call Move File after upload using the returned file ID. The Universal API execution timeout still applies."
+            },
+            {
+              "key": "fileName",
+              "name": "File Name",
+              "dataType": "string",
+              "location": "param",
+              "required": false,
+              "description": "Not accepted by Upload File. After uploading content, use Move File with the returned fileId and the desired name."
+            },
+            {
+              "key": "parentFolderId",
+              "name": "Parent Folder",
+              "dataType": "list",
+              "itemDataType": "string",
+              "location": "param",
+              "required": false,
+              "description": "Not accepted by Upload File. After uploading content, use Move File with the returned fileId and the destination folder ID as addParents."
             }
           ]
         },
@@ -190831,7 +190937,22 @@
             "name": "File",
             "dataType": "file",
             "required": true,
-            "description": "Base64-encoded file content or a direct download URL that works without interactive sign-in. PDF and Excel (.xlsx) are supported. Prefer a URL for larger files. This simple upload supports files up to 5 MB and creates the file without custom name or folder metadata."
+            "description": "Base64-encoded file content or a direct download URL that works without interactive sign-in. PDF and Excel (.xlsx) are supported. This action uploads content only. To set name and folder, call Move File after upload using the returned file ID. The Universal API execution timeout still applies."
+          },
+          {
+            "key": "fileName",
+            "name": "File Name",
+            "dataType": "string",
+            "required": false,
+            "description": "Not accepted by Upload File. After uploading content, use Move File with the returned fileId and the desired name."
+          },
+          {
+            "key": "parentFolderId",
+            "name": "Parent Folder",
+            "dataType": "list",
+            "itemDataType": "string",
+            "required": false,
+            "description": "Not accepted by Upload File. After uploading content, use Move File with the returned fileId and the destination folder ID as addParents."
           }
         ],
         "responseSchema": [

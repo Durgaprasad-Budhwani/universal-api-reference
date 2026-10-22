@@ -47,6 +47,7 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | `addParents` | string | yes | Comma-separated parent folder IDs to add. For single-folder move, pass the destination folder ID. |
 | `removeParents` | string | no | Comma-separated parent folder IDs to remove. Optional when only adding a parent. |
 | `fileId` | string | yes | Specify the 'fileId' of a File to move. Select a File in the list or use "Search Files & Folders" to get another File in your Drive. |
+| `name` | string | no | Optional new file name, including extension. Renames the file while moving it to the destination folder. |
 
 ## Response
 

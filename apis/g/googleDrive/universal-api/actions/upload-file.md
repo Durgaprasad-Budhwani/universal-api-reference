@@ -45,7 +45,9 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `fileType` | list | yes | MIME type of the uploaded file. Choose PDF for .pdf or Excel (.xlsx) for .xlsx files. One of: `application/pdf`, `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`, `application/vnd.openxmlformats-officedocument.wordprocessingml.document`, `image/gif`, `image/jpeg`, `image/png`. |
-| `file` | file | yes | Base64-encoded file content or a direct download URL that works without interactive sign-in. PDF and Excel (.xlsx) are supported. Prefer a URL for larger files. This simple upload supports files up to 5 MB and creates the file without custom name or folder metadata. |
+| `file` | file | yes | Base64-encoded file content or a direct download URL that works without interactive sign-in. PDF and Excel (.xlsx) are supported. This action uploads content only. To set name and folder, call Move File after upload using the returned file ID. The Universal API execution timeout still applies. |
+| `fileName` | string | no | Not accepted by Upload File. After uploading content, use Move File with the returned fileId and the desired name. |
+| `parentFolderId` | list<string> | no | Not accepted by Upload File. After uploading content, use Move File with the returned fileId and the destination folder ID as addParents. |
 
 ## Response
 

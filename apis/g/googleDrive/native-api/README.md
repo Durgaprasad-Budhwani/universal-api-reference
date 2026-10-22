@@ -1,6 +1,6 @@
 # Google Drive: Native API Reference
 
-A consolidated summary of Google Drive's API configuration and 15 documented operations, with links to official documentation.
+A consolidated summary of Google Drive's API configuration and 16 documented operations, with links to official documentation.
 
 - **Official docs:** https://developers.google.com/workspace/drive/api/reference/rest/v3
 - **OpenAPI specification:** https://github.com/APIs-guru/openapi-directory/blob/main/APIs/googleapis.com/drive/v3/openapi.yaml
@@ -40,7 +40,7 @@ Shared headers:
 
 Use `pageSize` in the query string to set the page size (default 50; accepted range 1–100). Use `pageToken` in the query string as the pagination cursor.
 
-## Endpoints (15 documented)
+## Endpoints (16 documented)
 
 | Operation | Method & path | Vendor docs |
 | --- | --- | --- |
@@ -58,4 +58,5 @@ Use `pageSize` in the query string to set the page size (default 50; accepted ra
 | [List Spreadsheets](actions/list-spreadsheets.md) | `GET /drive/v3/files` | [docs](https://developers.google.com/workspace/drive/api/reference/rest/v3/files/list) |
 | [Move File](actions/move-file.md) | `PATCH /drive/v3/files/:fileId` | [docs](https://developers.google.com/workspace/drive/api/reference/rest/v3/files/update) |
 | [Search Files and Folders](actions/search-files-and-folders.md) | `GET /drive/v3/files` | [docs](https://developers.google.com/workspace/drive/api/reference/rest/v3/files/list) |
+| [Trash File](actions/trash-file.md) | `PATCH /drive/v3/files/:fileId` | [docs](https://developers.google.com/workspace/drive/api/reference/rest/v3/files/update) |
 | [Upload File](actions/upload-file.md) | `POST /upload/drive/v3/files` | [docs](https://developers.google.com/workspace/drive/api/reference/rest/v3/files/create) |

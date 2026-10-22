@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Google Drive Universal API",
-    "version": "0.0.193",
+    "version": "0.0.198",
     "description": "Store files, share folders, collaborate on content, and manage access."
   },
   "servers": [
@@ -1442,10 +1442,10 @@
             "name": "fileId",
             "in": "query",
             "required": true,
-            "description": "Select a Google Workspace file to export. With drive.file access, Google only allows files created by or explicitly authorized to the app.",
+            "description": "Select one Google Workspace file or pass its single ID string, for example {\"fileId\":\"your-file-id\"}. This dropdown selects one value; arrays and batches are not supported. Run a separate export for each file. With drive.file access, the file must be created by or explicitly authorized to this app.",
             "schema": {
               "type": "string",
-              "description": "Select a Google Workspace file to export. With drive.file access, Google only allows files created by or explicitly authorized to the app."
+              "description": "Select one Google Workspace file or pass its single ID string, for example {\"fileId\":\"your-file-id\"}. This dropdown selects one value; arrays and batches are not supported. Run a separate export for each file. With drive.file access, the file must be created by or explicitly authorized to this app."
             }
           },
           {
@@ -4445,6 +4445,10 @@
                   "fileId": {
                     "type": "string",
                     "description": "Specify the 'fileId' of a File to move. Select a File in the list or use \"Search Files & Folders\" to get another File in your Drive."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Optional new file name, including extension. Renames the file while moving it to the destination folder."
                   }
                 },
                 "additionalProperties": false
@@ -4874,6 +4878,217 @@
         }
       }
     },
+    "/v1/universal/googleDrive/latest/actions/trash-file": {
+      "put": {
+        "operationId": "googleDrive.trash-file",
+        "summary": "Trash File",
+        "externalDocs": {
+          "url": "https://mindcloud.co/docs/universal/rest/googleDrive/latest/actions/trash-file"
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "connectionId",
+                  "fileId"
+                ],
+                "properties": {
+                  "connectionId": {
+                    "type": "string",
+                    "description": "The MindCloud connection ID for this app."
+                  },
+                  "fileId": {
+                    "type": "string",
+                    "description": "One file ID string to move to Trash."
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data",
+                    "meta"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "File ID."
+                          },
+                          "mimeType": {
+                            "type": "string",
+                            "description": "File MIME type."
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "File name."
+                          },
+                          "parents": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "Parent folder IDs."
+                          },
+                          "trashed": {
+                            "type": "boolean",
+                            "description": "True after the file is moved to Trash."
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "meta": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request is invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "The MindCloud API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key or connection cannot access this action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "The action failed unexpectedly.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "const": false
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/universal/googleDrive/latest/actions/upload-file": {
       "post": {
         "operationId": "googleDrive.upload-file",
@@ -4917,7 +5132,15 @@
                   },
                   "file": {
                     "type": "string",
-                    "description": "Base64-encoded file content or a direct download URL that works without interactive sign-in. PDF and Excel (.xlsx) are supported. Prefer a URL for larger files. This simple upload supports files up to 5 MB and creates the file without custom name or folder metadata."
+                    "description": "Base64-encoded file content or a direct download URL that works without interactive sign-in. PDF and Excel (.xlsx) are supported. This action uploads content only. To set name and folder, call Move File after upload using the returned file ID. The Universal API execution timeout still applies."
+                  },
+                  "fileName": {
+                    "type": "string",
+                    "description": "Not accepted by Upload File. After uploading content, use Move File with the returned fileId and the desired name."
+                  },
+                  "parentFolderId": {
+                    "type": "string",
+                    "description": "Not accepted by Upload File. After uploading content, use Move File with the returned fileId and the destination folder ID as addParents."
                   }
                 },
                 "additionalProperties": false

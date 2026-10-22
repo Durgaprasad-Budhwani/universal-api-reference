@@ -237259,7 +237259,7 @@
     "websiteUrl": "https://www.microsoft.com/microsoft-365",
     "nativeBaseUrl": "https://graph.microsoft.com",
     "nativeDocumentationUrl": "https://learn.microsoft.com/en-us/graph/overview",
-    "version": "0.0.37",
+    "version": "0.0.38",
     "authentication": [
       {
         "type": "oAuth2",
@@ -243556,17 +243556,24 @@
         "documentationUrl": "https://learn.microsoft.com/en-us/graph/api/driveitem-put-content?view=graph-rest-1.0",
         "native": {
           "method": "PUT",
-          "path": "/v1.0/me/drive/root\\:/:folderPath/:fileName\\:/content",
+          "path": "/v1.0/me/drive/root:/{{folderPath}}/{{fileName}}:/content",
           "baseUrl": "https://graph.microsoft.com",
           "apiName": "REST (skip pagination)",
           "apiType": "rest",
+          "headers": [
+            {
+              "name": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
           "arguments": [
             {
               "key": "content",
               "name": "Content",
               "dataType": "file",
               "location": "body",
-              "required": true
+              "required": true,
+              "description": "File bytes as a base64 string, or a direct HTTPS download URL accessible without additional authentication. The downloaded or decoded bytes are sent as the request body."
             },
             {
               "key": "folderPath",
@@ -243596,7 +243603,8 @@
             "key": "content",
             "name": "Content",
             "dataType": "file",
-            "required": true
+            "required": true,
+            "description": "File bytes as a base64 string, or a direct HTTPS download URL accessible without additional authentication. The downloaded or decoded bytes are sent as the request body."
           },
           {
             "key": "folderPath",
@@ -473962,7 +473970,7 @@
     "websiteUrl": "https://www.microsoft.com/microsoft-365/sharepoint/collaboration",
     "nativeBaseUrl": "https://www.microsoft.com/microsoft-365/sharepoint/collaboration",
     "nativeDocumentationUrl": "https://learn.microsoft.com/en-us/graph/api/resources/sharepoint?view=graph-rest-1.0",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "authentication": [
       {
         "type": "oAuth2",
@@ -474589,7 +474597,6 @@
           "filtering": false,
           "sorting": false
         },
-        "schemaDynamic": true,
         "arguments": [
           {
             "key": "driveId",
@@ -474606,7 +474613,14 @@
             "description": "Drive item ID."
           }
         ],
-        "responseSchema": []
+        "responseSchema": [
+          {
+            "key": "response",
+            "dataType": "string",
+            "description": "Base64-encoded file bytes. Decode this value to recover the binary file.",
+            "mockType": "string"
+          }
+        ]
       },
       {
         "name": "Get Drive",
