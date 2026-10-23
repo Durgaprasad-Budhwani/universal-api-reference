@@ -1,6 +1,6 @@
 # Microsoft Dynamics 365 BC: Native API Reference
 
-A consolidated summary of Microsoft Dynamics 365 BC's API configuration and 53 documented operations.
+A consolidated summary of Microsoft Dynamics 365 BC's API configuration and 54 documented operations.
 
 - **REST base URL:** `https://api.businesscentral.dynamics.com/v2.0/{tenantId}/{environment}/api/`
 - **REST (Copy) base URL:** `https://api.businesscentral.dynamics.com/v2.0/{tenantId}/{environment}/api/ssi/aapi/`
@@ -59,7 +59,7 @@ Response data is read from `value`.
 - **REST:** Use `$top` in the query string to set the page size (default 100; accepted range 1–20000). Use `$skip` in the query string to choose the result range.
 - **REST (Copy):** Use `$top` in the query string to set the page size (default 100; accepted range 1–20000). Use `$skip` in the query string as the record offset.
 
-## Endpoints (53 documented)
+## Endpoints (54 documented)
 
 | Operation | API | Method & path | Vendor docs |
 | --- | --- | --- | --- |
@@ -76,6 +76,7 @@ Response data is read from `value`.
 | [Create Project Job Planning Lines ODataV4](actions/create-project-job-planning-lines-o-data-v4.md) | REST | `POST https://api.businesscentral.dynamics.com/v2.0/{{credentials.tenantId}}/{{credentials.environment}}/ODataV4/Company(:company)/Job_Planning_Lines` |  |
 | [Create Project Job Task Lines ODataV4](actions/create-project-job-task-lines-o-data-v4.md) | REST | `POST https://api.businesscentral.dynamics.com/v2.0/{{credentials.tenantId}}/{{credentials.environment}}/ODataV4/Company(:company)/Job_Task_Lines` |  |
 | [Create Sales Invoice Line Item](actions/create-sales-invoice-line-item.md) | REST | `POST v2.0/companies({{companyId}})/salesInvoices(:invoiceId)/salesInvoiceLines` |  |
+| [Create Sales Invoice Using Customer No Only](actions/create-sales-invoice-using-customer-no-only.md) | REST | `POST https://api.businesscentral.dynamics.com/v2.0/{{credentials.tenantId}}/{{credentials.environment}}/ODataV4/Company(:company)/MindcloudSalesInvoice` |  |
 | [Create Sales Invoices](actions/create-sales-invoices.md) | REST | `POST v2.0/companies({{companyId}})/salesInvoices` |  |
 | [Create Sales Order](actions/create-sales-order.md) | REST | `POST companies(:id)/salesOrders` | [docs](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/api-reference/v2.0/api/dynamics_salesorder_create) |
 | [Create Sales Order SSI](actions/create-sales-order-ssi.md) | REST (Copy) | `POST /v2.0/companies(:id)/salesHeadersSSI` | [docs](https://anotepad.com/notes/ccfg4kec) |

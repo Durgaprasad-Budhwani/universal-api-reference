@@ -24,10 +24,11 @@ This operation supports [pagination](../README.md#pagination).
 | `jobId` | query | `number` | no | Job ID filter. |
 | `purchaseOrderId` | query | `number` | no | Purchase order ID filter. |
 | `batchId` | query | `number` | no | Batch ID filter. |
+| `batchNumber` | query | `number` | no | Batch Number filter. |
 | `vendorIds` | query | `string` | no | Vendor ID collection filter. Send multiple values as a string separated by `,`. |
 | `businessUnitIds` | query | `string` | no | Business unit ID collection filter. Send multiple values as a string separated by `,`. |
-| `inventoryLocationIds` | query | `string` | no | Inventory location ID collection filter. Send multiple values as a string separated by `,`. |
 | `customFields.Fields` | query | `object` | no | Custom-field name and value pairs to filter by. |
+| `inventoryLocationIds` | query | `string` | no | Inventory location ID collection filter. Send multiple values as a string separated by `,`. |
 | `customFields.Operator` | query | `list<string>` | no | How custom-field filters are combined: And or Or. Accepted values: `And`, `Or`. |
 | `returnDateOnOrAfter` | query | `string` | no | Returns with a return date on or after this timestamp. |
 | `returnDateBefore` | query | `string` | no | Returns with a return date before this timestamp. |

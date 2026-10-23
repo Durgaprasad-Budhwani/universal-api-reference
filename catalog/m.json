@@ -264371,7 +264371,7 @@
     "slug": "microsoftDynamics365BC",
     "description": "Microsoft Dynamics 365 Business Central",
     "iconUrl": "https://images.mindcloud.co/apps/icons/365_1776859891830.png",
-    "version": "0.0.118",
+    "version": "0.0.120",
     "authentication": [
       {
         "type": "oAuth2",
@@ -264766,6 +264766,13 @@
               "required": false
             },
             {
+              "key": "Copy_Sell_to_Addr_to_Qte_From",
+              "name": "Copy Sell to Addr to Qte From",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
               "key": "Address",
               "name": "Address Line 1",
               "dataType": "string",
@@ -264878,6 +264885,12 @@
             "key": "Tax_Liable",
             "name": "Tax Liable",
             "dataType": "boolean",
+            "required": false
+          },
+          {
+            "key": "Copy_Sell_to_Addr_to_Qte_From",
+            "name": "Copy Sell to Addr to Qte From",
+            "dataType": "string",
             "required": false
           },
           {
@@ -267140,6 +267153,566 @@
           {
             "key": "taxAreaCode",
             "name": "Tax Area Code",
+            "dataType": "string",
+            "required": false
+          }
+        ],
+        "responseSchema": []
+      },
+      {
+        "name": "Create Sales Invoice Using Customer No Only",
+        "slug": "create-sales-invoice-using-customer-no-only",
+        "operation": "create",
+        "method": "POST",
+        "model": "accounting.payment",
+        "description": "Removed param Sell_to_Customer_Name",
+        "native": {
+          "method": "POST",
+          "path": "https://api.businesscentral.dynamics.com/v2.0/{{credentials.tenantId}}/{{credentials.environment}}/ODataV4/Company(:company)/MindcloudSalesInvoice",
+          "baseUrl": "https://api.businesscentral.dynamics.com/v2.0/{{credentials.tenantId}}/{{credentials.environment}}/api/",
+          "apiName": "REST",
+          "apiType": "rest",
+          "arguments": [
+            {
+              "key": "company",
+              "name": "Company Name",
+              "dataType": "list",
+              "location": "param",
+              "required": false
+            },
+            {
+              "key": "No",
+              "name": "Number",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Posting_Date",
+              "name": "Posting Date",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Due_Date",
+              "name": "Due Date",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Bill_to_Name",
+              "name": "Bill To Name",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Ship_to_Address",
+              "name": "Sell To Address",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Ship_to_Address_2",
+              "name": "Sell To Address Line 2",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Sell_to_City",
+              "name": "Sell To City",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Sell_to_Country_Region_Code",
+              "name": "Sell To Country Region Code",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Sell_to_County",
+              "name": "Sell To County",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Sell_to_Post_Code",
+              "name": "Sell To Post Code",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Bill_to_Address",
+              "name": "Bill To Address",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Bill_to_Address_2",
+              "name": "Bill To Address 2",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Bill_to_City",
+              "name": "Bill To City",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Bill_to_Country_Region_Code",
+              "name": "Bill to Country Region Code",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Bill_to_County",
+              "name": "Bill To County",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Bill_to_Post_Code",
+              "name": "Bill To Post Code",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Ship_to_Address",
+              "name": "Ship To Address",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Ship_to_Address_2",
+              "name": "Ship To Address 2",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Ship_to_City",
+              "name": "Ship To City",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Ship_to_Country_Region_Code",
+              "name": "Ship to Country Region Code",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Ship_to_County",
+              "name": "Ship to County",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Ship_to_Post_Code",
+              "name": "Ship To Post Code",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Salesperson_Code",
+              "name": "Salesperson Code",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Sell_to_Customer_No",
+              "name": "Sell to Customer No",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Posting_Description",
+              "name": "Posting Description",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Sell_to_Contact",
+              "name": "Sell to Contact",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Your_Reference",
+              "name": "Your Reference",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Document_Date",
+              "name": "Document Date",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Assigned_User_ID",
+              "name": "Assigned User ID",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Shipment_Date",
+              "name": "Shipment Date",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Prices_Including_VAT",
+              "name": "Prices Including VAT",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "VAT_Country_Region_Code",
+              "name": "VAT Country Region Code",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Payment_Terms_Code",
+              "name": "Payment Terms Code",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Tax_Liable",
+              "name": "Tax Liable",
+              "dataType": "boolean",
+              "location": "body",
+              "required": false,
+              "format": "text"
+            },
+            {
+              "key": "Tax_Area_Code",
+              "name": "Tax Area Code",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Shortcut_Dimension_1_Code",
+              "name": "Shortcut Dimension 1 Code",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "ShippingOptions",
+              "name": "ShippingOptions",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Bill_to_Contact",
+              "name": "Bill to Contact",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "Class_Code",
+              "name": "Class Code",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            },
+            {
+              "key": "External_Document_No",
+              "name": "External Document No",
+              "dataType": "string",
+              "location": "body",
+              "required": false
+            }
+          ]
+        },
+        "supports": {
+          "pagination": false,
+          "filtering": false,
+          "sorting": false
+        },
+        "arguments": [
+          {
+            "key": "company",
+            "name": "Company Name",
+            "dataType": "list",
+            "required": false
+          },
+          {
+            "key": "No",
+            "name": "Number",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Posting_Date",
+            "name": "Posting Date",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Due_Date",
+            "name": "Due Date",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Bill_to_Name",
+            "name": "Bill To Name",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Ship_to_Address",
+            "name": "Sell To Address",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Ship_to_Address_2",
+            "name": "Sell To Address Line 2",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Sell_to_City",
+            "name": "Sell To City",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Sell_to_Country_Region_Code",
+            "name": "Sell To Country Region Code",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Sell_to_County",
+            "name": "Sell To County",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Sell_to_Post_Code",
+            "name": "Sell To Post Code",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Bill_to_Address",
+            "name": "Bill To Address",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Bill_to_Address_2",
+            "name": "Bill To Address 2",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Bill_to_City",
+            "name": "Bill To City",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Bill_to_Country_Region_Code",
+            "name": "Bill to Country Region Code",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Bill_to_County",
+            "name": "Bill To County",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Bill_to_Post_Code",
+            "name": "Bill To Post Code",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Ship_to_Address",
+            "name": "Ship To Address",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Ship_to_Address_2",
+            "name": "Ship To Address 2",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Ship_to_City",
+            "name": "Ship To City",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Ship_to_Country_Region_Code",
+            "name": "Ship to Country Region Code",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Ship_to_County",
+            "name": "Ship to County",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Ship_to_Post_Code",
+            "name": "Ship To Post Code",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Salesperson_Code",
+            "name": "Salesperson Code",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Sell_to_Customer_No",
+            "name": "Sell to Customer No",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Posting_Description",
+            "name": "Posting Description",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Sell_to_Contact",
+            "name": "Sell to Contact",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Your_Reference",
+            "name": "Your Reference",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Document_Date",
+            "name": "Document Date",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Assigned_User_ID",
+            "name": "Assigned User ID",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Shipment_Date",
+            "name": "Shipment Date",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Prices_Including_VAT",
+            "name": "Prices Including VAT",
+            "dataType": "boolean",
+            "required": false
+          },
+          {
+            "key": "VAT_Country_Region_Code",
+            "name": "VAT Country Region Code",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Payment_Terms_Code",
+            "name": "Payment Terms Code",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Tax_Liable",
+            "name": "Tax Liable",
+            "dataType": "boolean",
+            "required": false,
+            "format": "text"
+          },
+          {
+            "key": "Tax_Area_Code",
+            "name": "Tax Area Code",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Shortcut_Dimension_1_Code",
+            "name": "Shortcut Dimension 1 Code",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "ShippingOptions",
+            "name": "ShippingOptions",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Bill_to_Contact",
+            "name": "Bill to Contact",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "Class_Code",
+            "name": "Class Code",
+            "dataType": "string",
+            "required": false
+          },
+          {
+            "key": "External_Document_No",
+            "name": "External Document No",
             "dataType": "string",
             "required": false
           }

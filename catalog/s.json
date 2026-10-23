@@ -230048,7 +230048,7 @@
     "description": "ServiceTitan is a cloud-based software platform for home and commercial service businesses that manages customers, jobs, scheduling, dispatching, invoicing, payments, and other field service operations.",
     "iconUrl": "https://images.mindcloud.co/apps/icons/service-titan_1777386591371.png",
     "nativeDocumentationUrl": "https://developer.servicetitan.io/api-details/#api=tenant-crm-v2",
-    "version": "0.0.396",
+    "version": "0.0.399",
     "authentication": [
       {
         "type": "custom",
@@ -241037,6 +241037,14 @@
               "description": "Batch ID filter."
             },
             {
+              "key": "batchNumber",
+              "name": "Batch Number",
+              "dataType": "number",
+              "location": "query",
+              "required": false,
+              "description": "Batch Number filter."
+            },
+            {
               "key": "vendorIds",
               "name": "Vendor IDs",
               "dataType": "string",
@@ -241061,6 +241069,14 @@
               }
             },
             {
+              "key": "customFields.Fields",
+              "name": "Custom Field Filters",
+              "dataType": "object",
+              "location": "query",
+              "required": false,
+              "description": "Custom-field name and value pairs to filter by."
+            },
+            {
               "key": "inventoryLocationIds",
               "name": "Inventory Location IDs",
               "dataType": "string",
@@ -241071,14 +241087,6 @@
                 "format": "string",
                 "delimiter": ","
               }
-            },
-            {
-              "key": "customFields.Fields",
-              "name": "Custom Field Filters",
-              "dataType": "object",
-              "location": "query",
-              "required": false,
-              "description": "Custom-field name and value pairs to filter by."
             },
             {
               "key": "customFields.Operator",
@@ -241288,6 +241296,13 @@
             "description": "Batch ID filter."
           },
           {
+            "key": "batchNumber",
+            "name": "Batch Number",
+            "dataType": "number",
+            "required": false,
+            "description": "Batch Number filter."
+          },
+          {
             "key": "vendorIds",
             "name": "Vendor IDs",
             "dataType": "string",
@@ -241310,6 +241325,14 @@
             }
           },
           {
+            "key": "customFields.Fields",
+            "name": "Custom Field Filters",
+            "dataType": "object",
+            "required": false,
+            "advanced": true,
+            "description": "Custom-field name and value pairs to filter by."
+          },
+          {
             "key": "inventoryLocationIds",
             "name": "Inventory Location IDs",
             "dataType": "string",
@@ -241319,14 +241342,6 @@
               "format": "string",
               "delimiter": ","
             }
-          },
-          {
-            "key": "customFields.Fields",
-            "name": "Custom Field Filters",
-            "dataType": "object",
-            "required": false,
-            "advanced": true,
-            "description": "Custom-field name and value pairs to filter by."
           },
           {
             "key": "customFields.Operator",

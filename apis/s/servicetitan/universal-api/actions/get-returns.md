@@ -48,6 +48,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | `jobId` | number | no | Job ID filter. |
 | `purchaseOrderId` | number | no | Purchase order ID filter. |
 | `batchId` | number | no | Batch ID filter. |
+| `batchNumber` | number | no | Batch Number filter. |
 | `vendorIds` | string | no | Vendor ID collection filter. Accepts multiple values in one string, delimited by `,`. |
 | `businessUnitIds` | string | no | Business unit ID collection filter. Accepts multiple values in one string, delimited by `,`. |
 | `inventoryLocationIds` | string | no | Inventory location ID collection filter. Accepts multiple values in one string, delimited by `,`. |

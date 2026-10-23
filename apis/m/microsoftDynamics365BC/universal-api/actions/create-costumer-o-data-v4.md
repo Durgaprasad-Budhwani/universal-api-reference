@@ -52,6 +52,7 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 | `No` | string | no |  |
 | `Tax_Area_Code` | string | no |  |
 | `Tax_Liable` | boolean | no |  |
+| `Copy_Sell_to_Addr_to_Qte_From` | string | no |  |
 | `Address` | string | no |  |
 | `companyId` | list | no |  |
 | `E_Mail` | string | no |  |

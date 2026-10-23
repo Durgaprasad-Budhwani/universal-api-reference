@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "ServiceTitan Universal API",
-    "version": "0.0.396",
+    "version": "0.0.399",
     "description": "ServiceTitan is a cloud-based software platform for home and commercial service businesses that manages customers, jobs, scheduling, dispatching, invoicing, payments, and other field service operations."
   },
   "servers": [
@@ -18409,6 +18409,16 @@
             }
           },
           {
+            "name": "batchNumber",
+            "in": "query",
+            "required": false,
+            "description": "Batch Number filter.",
+            "schema": {
+              "type": "number",
+              "description": "Batch Number filter."
+            }
+          },
+          {
             "name": "vendorIds",
             "in": "query",
             "required": false,
@@ -18429,16 +18439,6 @@
             }
           },
           {
-            "name": "inventoryLocationIds",
-            "in": "query",
-            "required": false,
-            "description": "Inventory location ID collection filter.",
-            "schema": {
-              "type": "string",
-              "description": "Inventory location ID collection filter. Pass multiple values separated by `,`."
-            }
-          },
-          {
             "name": "customFields.Fields",
             "in": "query",
             "required": false,
@@ -18448,6 +18448,16 @@
               "additionalProperties": true,
               "description": "Custom-field name and value pairs to filter by.",
               "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "inventoryLocationIds",
+            "in": "query",
+            "required": false,
+            "description": "Inventory location ID collection filter.",
+            "schema": {
+              "type": "string",
+              "description": "Inventory location ID collection filter. Pass multiple values separated by `,`."
             }
           },
           {

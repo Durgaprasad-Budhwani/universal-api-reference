@@ -24,6 +24,7 @@
 | `No` | body | `string` | no |
 | `Tax_Area_Code` | body | `string` | no |
 | `Tax_Liable` | body | `boolean` | no |
+| `Copy_Sell_to_Addr_to_Qte_From` | body | `string` | no |
 | `Address` | body | `string` | no |
 | `companyId` | path | `list` | no |
 | `E_Mail` | body | `string` | no |
