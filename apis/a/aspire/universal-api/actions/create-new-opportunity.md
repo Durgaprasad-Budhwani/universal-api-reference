@@ -1,6 +1,6 @@
 # Aspire: Create Opportunity
 
-Updates an existing pay code in your Aspire account.
+Updates an existing pay code in your Aspire account
 
 ```
 POST https://connect.mindcloud.co/v1/universal/aspire/latest/actions/create-new-opportunity

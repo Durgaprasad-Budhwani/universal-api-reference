@@ -1,6 +1,6 @@
 # NetSuite - Advanced: Native API Reference
 
-A consolidated summary of NetSuite - Advanced's API configuration and 181 documented operations, with links to official documentation.
+A consolidated summary of NetSuite - Advanced's API configuration and 182 documented operations, with links to official documentation.
 
 - **Official docs:** https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/
 - **REST base URL:** `https://{accountId}.suitetalk.api.netsuite.com`
@@ -50,7 +50,7 @@ Shared headers:
 - **REST:** Wait 5000 ms before the first retry. Stop after 5 attempts. Multiply the delay by 2 after each failed attempt.
 - **Internal:** Wait 5000 ms before the first retry. Stop after 5 attempts. Multiply the delay by 3 after each failed attempt.
 
-## Endpoints (181 documented)
+## Endpoints (182 documented)
 
 | Operation | Method & path | Vendor docs |
 | --- | --- | --- |
@@ -90,6 +90,7 @@ Shared headers:
 | [Create Term](actions/create-term.md) | `POST https://{{credentials.accountId}}.restlets.api.netsuite.com/app/site/hosting/restlet.nl` |  |
 | [Create Time Bill](actions/create-time-bill.md) | `POST https://{{credentials.accountId}}.restlets.api.netsuite.com/app/site/hosting/restlet.nl` |  |
 | [Create Vendor](actions/create-vendor.md) | `POST https://{{credentials.accountId}}.restlets.api.netsuite.com/app/site/hosting/restlet.nl` |  |
+| [Create Vendor Bill](actions/create-vendor-bill.md) | `POST https://{{credentials.accountId}}.restlets.api.netsuite.com/app/site/hosting/restlet.nl` |  |
 | [Create Vendor Return Authorization](actions/create-vendor-return-authorization.md) | `POST https://{{credentials.accountId}}.restlets.api.netsuite.com/app/site/hosting/restlet.nl` | [docs](https://www.netsuite.com/help/helpcenter/en_US/srbrowser/Browser2020_1/schema/record/vendorreturnauthorization.html) |
 | [Create Work Order](actions/create-work-order.md) | `POST https://{{credentials.accountId}}.restlets.api.netsuite.com/app/site/hosting/restlet.nl` |  |
 | [Delete Account](actions/delete-account.md) | `POST https://{{credentials.accountId}}.restlets.api.netsuite.com/app/site/hosting/restlet.nl` |  |

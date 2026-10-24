@@ -190011,7 +190011,7 @@
     "description": "Connect to Epicor Prophet 21 to read customers, contacts, addresses, sales orders, quotes, order lines, and product groups.",
     "iconUrl": "https://images.mindcloud.co/apps/icons/epicor-prophet21_1791908894393.png",
     "websiteUrl": "https://www.epicor.com/en-us/industry-productivity-solutions/distribution/prophet-21/",
-    "version": "0.0.2",
+    "version": "0.0.5",
     "authentication": [
       {
         "type": "custom",
@@ -190072,6 +190072,20 @@
       {
         "type": "rest",
         "baseUrl": "{{credentials.apiUrl}}",
+        "pagination": {
+          "limit": {
+            "parameter": "$top",
+            "location": "query",
+            "default": "25",
+            "minimum": "25",
+            "maximum": "5000"
+          },
+          "offset": {
+            "type": "offset",
+            "parameter": "$skip",
+            "location": "query"
+          }
+        },
         "responses": [
           {
             "parser": "auto"
@@ -190080,61 +190094,6 @@
       }
     ],
     "actions": [
-      {
-        "name": "Get Authentication Token",
-        "slug": "get-authentication-token",
-        "operation": "read",
-        "method": "GET",
-        "native": {
-          "method": "POST",
-          "path": "/api/security/token/",
-          "baseUrl": "{{credentials.apiUrl}}",
-          "apiType": "rest"
-        },
-        "supports": {
-          "pagination": false,
-          "filtering": false,
-          "sorting": false
-        },
-        "arguments": [],
-        "responseSchema": [
-          {
-            "key": "accessToken",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
-            "key": "expiresIn",
-            "dataType": "number",
-            "mockType": "number"
-          },
-          {
-            "key": "refreshToken",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
-            "key": "scope",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
-            "key": "sessionId",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
-            "key": "tokenType",
-            "dataType": "string",
-            "mockType": "string"
-          },
-          {
-            "key": "userName",
-            "dataType": "string",
-            "mockType": "string"
-          }
-        ]
-      },
       {
         "name": "List Addresses",
         "slug": "list-addresses",
@@ -190168,7 +190127,7 @@
           ]
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },
@@ -190297,7 +190256,7 @@
           ]
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },
@@ -190394,7 +190353,7 @@
           ]
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },
@@ -191482,7 +191441,7 @@
           ]
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },
@@ -191569,7 +191528,7 @@
           ]
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },
@@ -191672,7 +191631,7 @@
           ]
         },
         "supports": {
-          "pagination": false,
+          "pagination": true,
           "filtering": false,
           "sorting": false
         },

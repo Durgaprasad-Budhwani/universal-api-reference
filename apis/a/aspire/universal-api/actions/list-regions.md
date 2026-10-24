@@ -1,6 +1,6 @@
 # Aspire: List Regions
 
-Retrieves regions from your Aspire account.
+Retrieves regions from your Aspire account
 
 ```
 GET https://connect.mindcloud.co/v1/universal/aspire/latest/actions/list-regions

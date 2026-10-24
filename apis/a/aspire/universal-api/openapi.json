@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Aspire Universal API",
-    "version": "0.1.532",
+    "version": "0.1.534",
     "description": "Field service software to drive growth"
   },
   "servers": [
@@ -2682,7 +2682,7 @@
       "post": {
         "operationId": "aspire.create-new-opportunity",
         "summary": "Create Opportunity",
-        "description": "Updates an existing pay code in your Aspire account.",
+        "description": "Updates an existing pay code in your Aspire account",
         "externalDocs": {
           "url": "https://mindcloud.co/docs/universal/rest/aspire/latest/actions/create-new-opportunity"
         },
@@ -30781,7 +30781,7 @@
       "get": {
         "operationId": "aspire.list-regions",
         "summary": "List Regions",
-        "description": "Retrieves regions from your Aspire account.",
+        "description": "Retrieves regions from your Aspire account",
         "externalDocs": {
           "url": "https://mindcloud.co/docs/universal/rest/aspire/latest/actions/list-regions"
         },

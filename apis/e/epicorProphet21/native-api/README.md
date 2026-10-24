@@ -1,6 +1,6 @@
 # Epicor Prophet 21: Native API Reference
 
-A consolidated summary of Epicor Prophet 21's API configuration and 12 documented operations.
+A consolidated summary of Epicor Prophet 21's API configuration and 11 documented operations.
 
 - **API base URL:** `{apiUrl}`
 
@@ -24,11 +24,14 @@ password: <password>
 username: <username>
 ```
 
-## Endpoints (12 documented)
+## Pagination
+
+Use `$top` in the query string to set the page size (default 25; accepted range 25–5000). Use `$skip` in the query string as the record offset.
+
+## Endpoints (11 documented)
 
 | Operation | Method & path |
 | --- | --- |
-| [Get Authentication Token](actions/get-authentication-token.md) | `POST /api/security/token/` |
 | [List Addresses](actions/list-addresses.md) | `GET /data/erp/views/v1/p21_view_address` |
 | [List Contacts](actions/list-contacts.md) | `GET /data/erp/views/v1/p21_view_contacts` |
 | [List Customers](actions/list-customers.md) | `GET /data/erp/views/v1/p21_view_customer` |

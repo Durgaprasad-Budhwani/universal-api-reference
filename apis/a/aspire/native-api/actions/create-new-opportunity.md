@@ -1,6 +1,6 @@
 # Create Opportunity with Aspire
 
-Updates an existing pay code in your Aspire account.
+Updates an existing pay code in your Aspire account
 
 ## Endpoint
 

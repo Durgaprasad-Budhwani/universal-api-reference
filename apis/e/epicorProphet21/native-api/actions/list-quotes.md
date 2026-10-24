@@ -6,6 +6,10 @@
 - **Path:** `/data/erp/views/v1/p21_view_oe_hdr`
 - **Base URL:** `{apiUrl}`
 
+## Capabilities
+
+This operation supports [pagination](../README.md#pagination).
+
 ## Parameters
 
 | Parameter | Location | Type | Required | Description |

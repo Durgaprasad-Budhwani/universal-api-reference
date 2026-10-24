@@ -4,7 +4,7 @@ Leading integrated cloud business software suite, including business accounting,
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/netsuite/latest
 - **Category:** Marketing
-- **Actions:** 181
+- **Actions:** 182
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor website:** https://www.netsuite.com/portal/home.shtml
 - **Vendor API docs:** https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/
@@ -22,7 +22,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/netsuite/latest/actions/g
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
-## Actions (181)
+## Actions (182)
 
 ### Account
 
@@ -329,6 +329,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/netsuite/latest/actions/g
 
 | Action | Method | Description |
 | --- | --- | --- |
+| [Create Vendor Bill](actions/create-vendor-bill.md) | POST |  |
 | [Delete Vendor Bill](actions/delete-vendor-bill.md) | DELETE |  |
 | [Delete Vendor Credit](actions/delete-vendor-credit.md) | DELETE |  |
 | [List Vendor Bills](actions/list-vendor-bills.md) | GET |  |

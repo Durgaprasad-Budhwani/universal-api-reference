@@ -345284,7 +345284,7 @@
     "websiteUrl": "https://www.youraspire.com/",
     "nativeBaseUrl": "https://cloud.youraspire.com/app/",
     "nativeDocumentationUrl": "https://guide.youraspire.com/apidocs",
-    "version": "0.1.532",
+    "version": "0.1.534",
     "authentication": [
       {
         "type": "custom",
@@ -347439,7 +347439,7 @@
         "operation": "create",
         "method": "POST",
         "model": "crm.opportunity",
-        "description": "Updates an existing pay code in your Aspire account.",
+        "description": "Updates an existing pay code in your Aspire account",
         "documentationUrl": "https://guide.youraspire.com/apidocs/opportunities-9",
         "native": {
           "method": "POST",
@@ -363714,7 +363714,7 @@
         "operation": "read",
         "method": "GET",
         "group": "Region",
-        "description": "Retrieves regions from your Aspire account.",
+        "description": "Retrieves regions from your Aspire account",
         "documentationUrl": "https://cloud-api.youraspire.com/swagger/index.html#/Regions/Regions_Get",
         "native": {
           "method": "GET",

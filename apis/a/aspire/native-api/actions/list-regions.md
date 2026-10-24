@@ -1,6 +1,6 @@
 # List Regions with Aspire
 
-Retrieves regions from your Aspire account.
+Retrieves regions from your Aspire account
 
 ## Endpoint
 

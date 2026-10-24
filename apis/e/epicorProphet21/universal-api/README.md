@@ -4,7 +4,7 @@ Connect to Epicor Prophet 21 to read customers, contacts, addresses, sales order
 
 - **Interactive docs:** https://mindcloud.co/docs/universal/rest/epicorProphet21/latest
 - **Category:** Commerce / ERP
-- **Actions:** 12
+- **Actions:** 11
 - **OpenAPI specification:** [openapi.json](openapi.json)
 - **Vendor website:** https://www.epicor.com/en-us/industry-productivity-solutions/distribution/prophet-21/
 
@@ -21,7 +21,7 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/epicorProphet21/latest/ac
   -H "Authorization: Bearer $MINDCLOUD_API_KEY"
 ```
 
-## Actions (12)
+## Actions (11)
 
 ### Addresses
 
@@ -60,7 +60,6 @@ curl -X GET "https://connect.mindcloud.co/v1/universal/epicorProphet21/latest/ac
 
 | Action | Method | Description |
 | --- | --- | --- |
-| [Get Authentication Token](actions/get-authentication-token.md) | GET |  |
 | [List Product Groups](actions/list-product-groups.md) | GET |  |
 | [Query Data View](actions/query-data-view.md) | GET |  |
 

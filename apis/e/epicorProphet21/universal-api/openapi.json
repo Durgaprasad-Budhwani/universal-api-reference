@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Epicor Prophet 21 Universal API",
-    "version": "0.0.2",
+    "version": "0.0.5",
     "description": "Connect to Epicor Prophet 21 to read customers, contacts, addresses, sales orders, quotes, order lines, and product groups."
   },
   "servers": [
@@ -20,210 +20,6 @@
     }
   ],
   "paths": {
-    "/v1/universal/epicorProphet21/latest/actions/get-authentication-token": {
-      "get": {
-        "operationId": "epicorProphet21.get-authentication-token",
-        "summary": "Get Authentication Token",
-        "externalDocs": {
-          "url": "https://mindcloud.co/docs/universal/rest/epicorProphet21/latest/actions/get-authentication-token"
-        },
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "connectionId",
-            "in": "query",
-            "required": true,
-            "description": "The MindCloud connection ID for this app.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "fields",
-            "in": "query",
-            "required": false,
-            "description": "Comma-separated response fields to include.",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "success",
-                    "data",
-                    "meta"
-                  ],
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "const": true
-                    },
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "accessToken": {
-                            "type": "string"
-                          },
-                          "expiresIn": {
-                            "type": "number"
-                          },
-                          "refreshToken": {
-                            "type": "string"
-                          },
-                          "scope": {
-                            "type": "string"
-                          },
-                          "sessionId": {
-                            "type": "string"
-                          },
-                          "tokenType": {
-                            "type": "string"
-                          },
-                          "userName": {
-                            "type": "string"
-                          }
-                        },
-                        "additionalProperties": false
-                      }
-                    },
-                    "meta": {
-                      "type": "object",
-                      "additionalProperties": true
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "The request is invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "success",
-                    "code",
-                    "message"
-                  ],
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "const": false
-                    },
-                    "code": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "The MindCloud API key is missing or invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "success",
-                    "code",
-                    "message"
-                  ],
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "const": false
-                    },
-                    "code": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "The API key or connection cannot access this action.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "success",
-                    "code",
-                    "message"
-                  ],
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "const": false
-                    },
-                    "code": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "The action failed unexpectedly.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "required": [
-                    "success",
-                    "code",
-                    "message"
-                  ],
-                  "properties": {
-                    "success": {
-                      "type": "boolean",
-                      "const": false
-                    },
-                    "code": {
-                      "type": "string"
-                    },
-                    "message": {
-                      "type": "string"
-                    }
-                  },
-                  "additionalProperties": false
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/universal/epicorProphet21/latest/actions/list-addresses": {
       "get": {
         "operationId": "epicorProphet21.list-addresses",
@@ -267,6 +63,26 @@
               "type": "string",
               "description": "A Prophet 21 filter expression, such as customer_id eq 123.",
               "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
             }
           },
           {
@@ -518,6 +334,26 @@
             }
           },
           {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
             "name": "fields",
             "in": "query",
             "required": false,
@@ -742,6 +578,26 @@
               "type": "string",
               "default": "delete_flag eq 'N'",
               "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
             }
           },
           {
@@ -2419,6 +2275,26 @@
             }
           },
           {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
             "name": "fields",
             "in": "query",
             "required": false,
@@ -2638,6 +2514,26 @@
               "description": "Comma-separated field names. Leave empty to return all available fields.",
               "default": "order_no,ship2_name,customer_id,projected_order,date_created,rma_expiration_date,location_id,approved,completed",
               "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
             }
           },
           {
@@ -2880,6 +2776,26 @@
               "type": "string",
               "description": "A Prophet 21 filter expression, such as customer_id eq 123.",
               "x-mindcloud-advanced": true
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of records to return.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Number of records to skip before returning results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
             }
           },
           {

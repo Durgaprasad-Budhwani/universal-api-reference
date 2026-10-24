@@ -6,6 +6,10 @@
 - **Path:** `/data/erp/views/v1/{{view}}`
 - **Base URL:** `{apiUrl}`
 
+## Capabilities
+
+This operation supports [pagination](../README.md#pagination).
+
 ## Parameters
 
 | Parameter | Location | Type | Required | Description |
