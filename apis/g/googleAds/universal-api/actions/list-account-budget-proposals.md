@@ -38,7 +38,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `customerId` | list | yes | Customer ID that owns the Google Ads resources (without dashes). Example: `1234567890`. |
-| `query` | string | yes | GAQL query to list account budget proposal resources. Default: `SELECT account_budget_proposal.id, account_budget_proposal.name, account_budget_proposal.status, account_budget_proposal.proposed_start_date_time FROM account_budget_proposal ORDER BY account_budget_proposal.id DESC LIMIT 50`. Example: `SELECT account_budget_proposal.id, account_budget_proposal.status FROM account_budget_proposal LIMIT 50`. |
+| `query` | string | yes | GAQL query to list account budget proposal resources. Default: `SELECT account_budget_proposal.id, account_budget_proposal.status, account_budget_proposal.proposed_start_date_time FROM account_budget_proposal ORDER BY account_budget_proposal.id DESC LIMIT 50`. Example: `SELECT account_budget_proposal.id, account_budget_proposal.status FROM account_budget_proposal LIMIT 50`. |
 
 ## Response
 
@@ -68,5 +68,5 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Native endpoint
 
-Through the native Google Ads API, this operation is `POST v22/customers/:customerId/googleAds:search` (base URL `https://googleads.googleapis.com/`). The Universal API call above is translated to it by MindCloud, including authentication. See the [native action reference](../../native-api/actions/list-account-budget-proposals.md) for the provider-specific parameters and requirements.
+Through the native Google Ads API, this operation is `POST v23/customers/:customerId/googleAds:search` (base URL `https://googleads.googleapis.com/`). The Universal API call above is translated to it by MindCloud, including authentication. See the [native action reference](../../native-api/actions/list-account-budget-proposals.md) for the provider-specific parameters and requirements.
 

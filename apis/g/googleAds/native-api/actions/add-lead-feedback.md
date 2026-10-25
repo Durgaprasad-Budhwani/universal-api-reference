@@ -3,7 +3,7 @@
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v21/customers/:customerId/localServicesLeads/:leadId:provideLeadFeedback`
+- **Path:** `v23/customers/:customerId/localServicesLeads/:leadId:provideLeadFeedback`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Add Lead Feedback](https://developers.google.com/google-ads/api/reference/rpc/v21/LocalServicesLeadService/ProvideLeadFeedback)

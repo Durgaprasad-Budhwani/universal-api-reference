@@ -5,7 +5,7 @@ Creates, updates, or removes resources in Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId/googleAds:mutate`
+- **Path:** `v23/customers/:customerId/googleAds:mutate`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Mutate Resources](https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Mutate)

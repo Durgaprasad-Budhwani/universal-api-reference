@@ -3,7 +3,7 @@
   "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "info": {
     "title": "Google Ads Universal API",
-    "version": "0.0.35",
+    "version": "0.0.37",
     "description": "Create campaigns, measure performance, and optimize Google ad spend."
   },
   "servers": [
@@ -10311,8 +10311,7 @@
             "schema": {
               "type": "string",
               "description": "GAQL query to retrieve a specific local services lead.",
-              "example": "SELECT local_services_lead.id FROM local_services_lead WHERE local_services_lead.resource_name = 'customers/1234567890/localServicesLeads/LEAD_ID' LIMIT 1",
-              "default": "SELECT local_services_lead.id, local_services_lead.lead_status, local_services_lead.creation_date_time FROM local_services_lead WHERE local_services_lead.resource_name = 'customers/1234567890/localServicesLeads/LEAD_ID' LIMIT 1"
+              "example": "SELECT local_services_lead.id FROM local_services_lead WHERE local_services_lead.resource_name = 'customers/1234567890/localServicesLeads/LEAD_ID' LIMIT 1"
             }
           },
           {
@@ -10523,8 +10522,7 @@
             "description": "GAQL query used to fetch a single recommendation resource.",
             "schema": {
               "type": "string",
-              "description": "GAQL query used to fetch a single recommendation resource.",
-              "default": "SELECT recommendation.resource_name, recommendation.type, recommendation.campaign, recommendation.dismissed FROM recommendation WHERE recommendation.resource_name = 'customers/1234567890/recommendations/0~0' LIMIT 1"
+              "description": "GAQL query used to fetch a single recommendation resource."
             }
           },
           {
@@ -11166,7 +11164,7 @@
               "type": "string",
               "description": "GAQL query to list account budget proposal resources.",
               "example": "SELECT account_budget_proposal.id, account_budget_proposal.status FROM account_budget_proposal LIMIT 50",
-              "default": "SELECT account_budget_proposal.id, account_budget_proposal.name, account_budget_proposal.status, account_budget_proposal.proposed_start_date_time FROM account_budget_proposal ORDER BY account_budget_proposal.id DESC LIMIT 50"
+              "default": "SELECT account_budget_proposal.id, account_budget_proposal.status, account_budget_proposal.proposed_start_date_time FROM account_budget_proposal ORDER BY account_budget_proposal.id DESC LIMIT 50"
             }
           },
           {

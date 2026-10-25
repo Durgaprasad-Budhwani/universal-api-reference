@@ -5,7 +5,7 @@ Updates an ad group ad to paused status in Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId/adGroupAds:mutate`
+- **Path:** `v23/customers/:customerId/adGroupAds:mutate`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Pause Ad Group Ad](https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupAdService/MutateAdGroupAds)

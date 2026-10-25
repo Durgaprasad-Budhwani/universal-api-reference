@@ -5,7 +5,7 @@ Deletes a campaign criterion from Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId/campaignCriteria:mutate`
+- **Path:** `v23/customers/:customerId/campaignCriteria:mutate`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Remove Campaign Criterion](https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignCriterionService/MutateCampaignCriteria)

@@ -5,7 +5,7 @@ Detaches a label from a campaign in Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId/campaignLabels:mutate`
+- **Path:** `v23/customers/:customerId/campaignLabels:mutate`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Detach Campaign Label](https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignLabelService/MutateCampaignLabels)

@@ -5,7 +5,7 @@ Creates an ad group in Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId/adGroups:mutate`
+- **Path:** `v23/customers/:customerId/adGroups:mutate`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Create Ad Group](https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupService/MutateAdGroups)

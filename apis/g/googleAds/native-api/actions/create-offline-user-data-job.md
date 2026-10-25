@@ -5,7 +5,7 @@ Creates an offline user data job in Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId/offlineUserDataJobs:create`
+- **Path:** `v23/customers/:customerId/offlineUserDataJobs:create`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Create Offline User Data Job](https://developers.google.com/google-ads/api/reference/rpc/v22/OfflineUserDataJobService/CreateOfflineUserDataJob)

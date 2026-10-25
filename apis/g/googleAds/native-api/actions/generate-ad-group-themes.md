@@ -5,7 +5,7 @@ Generates ad group themes in Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId:generateAdGroupThemes`
+- **Path:** `v23/customers/:customerId:generateAdGroupThemes`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Generate Ad Group Themes](https://developers.google.com/google-ads/api/reference/rpc/v22/KeywordPlanIdeaService/GenerateAdGroupThemes)

@@ -5,7 +5,7 @@ Creates a customer client in Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId:createCustomerClient`
+- **Path:** `v23/customers/:customerId:createCustomerClient`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Create Customer Client](https://developers.google.com/google-ads/api/reference/rpc/v22/CustomerService/CreateCustomerClient)

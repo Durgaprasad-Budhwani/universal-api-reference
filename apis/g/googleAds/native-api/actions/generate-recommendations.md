@@ -5,7 +5,7 @@ Generates recommendations for your Google Ads account.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId/recommendations:generate`
+- **Path:** `v23/customers/:customerId/recommendations:generate`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Generate Recommendations](https://developers.google.com/google-ads/api/reference/rpc/v22/RecommendationService/GenerateRecommendations)

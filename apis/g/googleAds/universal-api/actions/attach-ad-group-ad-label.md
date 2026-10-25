@@ -85,5 +85,5 @@ Arguments are sent as JSON body fields ([conventions](../arguments.md)).
 
 ## Native endpoint
 
-Through the native Google Ads API, this operation is `POST v22/customers/:customerId/adGroupAdLabels:mutate` (base URL `https://googleads.googleapis.com/`). The Universal API call above is translated to it by MindCloud, including authentication. See the [native action reference](../../native-api/actions/attach-ad-group-ad-label.md) for the provider-specific parameters and requirements.
+Through the native Google Ads API, this operation is `POST v23/customers/:customerId/adGroupAdLabels:mutate` (base URL `https://googleads.googleapis.com/`). The Universal API call above is translated to it by MindCloud, including authentication. See the [native action reference](../../native-api/actions/attach-ad-group-ad-label.md) for the provider-specific parameters and requirements.
 

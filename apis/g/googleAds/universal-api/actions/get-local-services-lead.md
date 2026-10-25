@@ -38,7 +38,7 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
 | `customerId` | list | yes | Customer ID that owns the Google Ads resources (without dashes). Example: `1234567890`. |
-| `query` | string | yes | GAQL query to retrieve a specific local services lead. Default: `SELECT local_services_lead.id, local_services_lead.lead_status, local_services_lead.creation_date_time FROM local_services_lead WHERE local_services_lead.resource_name = 'customers/1234567890/localServicesLeads/LEAD_ID' LIMIT 1`. Example: `SELECT local_services_lead.id FROM local_services_lead WHERE local_services_lead.resource_name = 'customers/1234567890/localServicesLeads/LEAD_ID' LIMIT 1`. |
+| `query` | string | yes | GAQL query to retrieve a specific local services lead. Example: `SELECT local_services_lead.id FROM local_services_lead WHERE local_services_lead.resource_name = 'customers/1234567890/localServicesLeads/LEAD_ID' LIMIT 1`. |
 
 ### Advanced
 
@@ -70,5 +70,5 @@ Arguments are sent as query string parameters ([conventions](../arguments.md)).
 
 ## Native endpoint
 
-Through the native Google Ads API, this operation is `POST v22/customers/:customerId/googleAds:search` (base URL `https://googleads.googleapis.com/`). The Universal API call above is translated to it by MindCloud, including authentication. See the [native action reference](../../native-api/actions/get-local-services-lead.md) for the provider-specific parameters and requirements.
+Through the native Google Ads API, this operation is `POST v23/customers/:customerId/googleAds:search` (base URL `https://googleads.googleapis.com/`). The Universal API call above is translated to it by MindCloud, including authentication. See the [native action reference](../../native-api/actions/get-local-services-lead.md) for the provider-specific parameters and requirements.
 

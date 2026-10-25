@@ -5,7 +5,7 @@ Uploads call conversions to Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId:uploadCallConversions`
+- **Path:** `v23/customers/:customerId:uploadCallConversions`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Upload Call Conversions](https://developers.google.com/google-ads/api/reference/rpc/v22/ConversionUploadService/UploadCallConversions)

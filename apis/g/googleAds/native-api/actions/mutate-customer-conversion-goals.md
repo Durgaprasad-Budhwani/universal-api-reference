@@ -5,7 +5,7 @@ Creates, updates, or removes customer conversion goals in Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId/customerConversionGoals:mutate`
+- **Path:** `v23/customers/:customerId/customerConversionGoals:mutate`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Mutate Customer Conversion Goals](https://developers.google.com/google-ads/api/reference/rpc/v22/CustomerConversionGoalService/MutateCustomerConversionGoals)

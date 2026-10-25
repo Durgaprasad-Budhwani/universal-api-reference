@@ -5,7 +5,7 @@ Deletes a keyword criterion from Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId/adGroupCriteria:mutate`
+- **Path:** `v23/customers/:customerId/adGroupCriteria:mutate`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Remove Keyword Criterion](https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupCriterionService/MutateAdGroupCriteria)

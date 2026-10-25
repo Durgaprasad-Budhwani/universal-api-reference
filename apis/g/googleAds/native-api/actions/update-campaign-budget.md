@@ -5,7 +5,7 @@ Updates an existing campaign budget in Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId/campaignBudgets:mutate`
+- **Path:** `v23/customers/:customerId/campaignBudgets:mutate`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Update Campaign Budget](https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignBudgetService/MutateCampaignBudgets)

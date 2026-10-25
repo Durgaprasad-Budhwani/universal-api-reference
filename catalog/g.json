@@ -150725,28 +150725,21 @@
     "iconUrl": "https://images.mindcloud.co/apps/icons/google-ads-icon_1782393619275.png",
     "websiteUrl": "https://ads.google.com/",
     "nativeDocumentationUrl": "https://developers.google.com/google-ads/api",
-    "version": "0.0.35",
+    "version": "0.0.37",
     "authentication": [
       {
         "type": "oAuth2",
         "name": "OAuth 2.0",
-        "description": "OAuth 2.0 authentication for Google Ads API access. Requires a Google Ads developer token and optional manager Login Customer ID for manager-account access.",
+        "description": "Sign in with a Google account that can access the target Google Ads account. For access through a manager account (MCC), enter that manager's customer ID in Login Customer ID. Enter the client Customer ID separately in actions. Developer tokens are no longer required by Google.",
         "scopes": "https://www.googleapis.com/auth/adwords https://www.googleapis.com/auth/datamanager",
         "documentationUrl": "https://developers.google.com/google-ads/api/docs/oauth/overview",
         "credentials": [
-          {
-            "key": "googleAdsDeveloperToken",
-            "name": "Developer Token",
-            "dataType": "string",
-            "required": true,
-            "description": "Google Ads developer token from API Center. Required for all Google Ads API requests."
-          },
           {
             "key": "loginCustomerId",
             "name": "Login Customer ID",
             "dataType": "string",
             "required": false,
-            "description": "Optional manager account customer ID used as the login-customer-id header when accessing client accounts."
+            "description": "For manager account (MCC) access, enter the manager's 10-digit customer ID without dashes. Leave blank when your Google sign-in has direct access to the advertising account. Choose the target advertising account separately in each action."
           }
         ],
         "oauth": {
@@ -150754,11 +150747,48 @@
           "accessTokenUrl": "https://oauth2.googleapis.com/token",
           "refreshTokenUrl": "https://oauth2.googleapis.com/token"
         },
+        "setupGuide": {
+          "title": "Connect Google Ads: manager and client accounts",
+          "beforeYouBegin": "Use a Google sign-in with access to the advertising account, either directly or through a linked manager account (MCC). A successful Google sign-in alone does not prove that reporting access works. Keep the manager account ID and the advertising account ID separate.",
+          "docsUrl": "https://developers.google.com/google-ads/api/docs/oauth/overview",
+          "glossary": [
+            {
+              "term": "MCC",
+              "definition": "A Google Ads manager account that provides access to linked advertising accounts."
+            },
+            {
+              "term": "OAuth",
+              "definition": "The Google sign-in and permission approval used by this connection."
+            }
+          ],
+          "steps": [
+            {
+              "title": "Find the manager and client account IDs",
+              "description": "In Google Ads, select the manager account you use to access the client. Note that manager's customer ID, then select the client advertising account and note its customer ID. Remove dashes from both IDs. The manager ID will go in Login Customer ID; the client ID will go in Customer ID when running an action.",
+              "breadcrumb": [
+                "Google Ads"
+              ],
+              "url": "https://ads.google.com/"
+            },
+            {
+              "title": "Enter Login Customer ID for manager access",
+              "description": "For access through a manager account (MCC), enter that manager account's 10-digit ID in Login Customer ID. Do not enter an email address or the client advertising account's ID. Leave this field blank when your Google sign-in has direct access to the advertising account."
+            },
+            {
+              "title": "Connect using the correct Google sign-in",
+              "description": "Start the connection and select the Google account that has access to the manager or client you identified. Check the email shown in Google's permission screen before approving Google Ads access. If the wrong account is selected, switch accounts before completing the sign-in."
+            },
+            {
+              "title": "Verify the client with a read-only action",
+              "description": "Run Get Customer Overview using the new connection and the client advertising account's Customer ID without dashes. List Accessible Customers can return only directly accessible accounts, such as the manager, and ignores Login Customer ID; success there does not verify access to a linked client."
+            },
+            {
+              "title": "If sign-in works but actions fail",
+              "description": "For USER_PERMISSION_DENIED, check the selected Google sign-in, manager ID and active manager-to-client link. For INVALID_CUSTOMER_ID, check both IDs and remove dashes. For CLOUD_PROJECT_NOT_APPROVED_FOR_PRODUCTION, or ACTION_NOT_PERMITTED on older API versions, ask the OAuth application's owner to check Google Ads API production access for its Cloud project. A different developer token will not fix project access. For a generic invalid-argument error, keep the exact error and action inputs for support rather than repeatedly reconnecting."
+            }
+          ]
+        },
         "requestHeaders": [
-          {
-            "name": "Developer-Token",
-            "template": "<googleAdsDeveloperToken>"
-          },
           {
             "name": "login-customer-id",
             "template": "<loginCustomerId>"
@@ -150811,7 +150841,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignCriterionService/MutateCampaignCriteria",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/campaignCriteria:mutate",
+          "path": "v23/customers/:customerId/campaignCriteria:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -151006,7 +151036,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupCriterionService/MutateAdGroupCriteria",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupCriteria:mutate",
+          "path": "v23/customers/:customerId/adGroupCriteria:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -151240,7 +151270,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v21/LocalServicesLeadService/ProvideLeadFeedback",
         "native": {
           "method": "POST",
-          "path": "v21/customers/:customerId/localServicesLeads/:leadId:provideLeadFeedback",
+          "path": "v23/customers/:customerId/localServicesLeads/:leadId:provideLeadFeedback",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -151396,7 +151426,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignCriterionService/MutateCampaignCriteria",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/campaignCriteria:mutate",
+          "path": "v23/customers/:customerId/campaignCriteria:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -151591,7 +151621,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/OfflineUserDataJobService/AddOfflineUserDataJobOperations",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/offlineUserDataJobs/:offlineUserDataJobId:addOperations",
+          "path": "v23/customers/:customerId/offlineUserDataJobs/:offlineUserDataJobId:addOperations",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -151696,7 +151726,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupAdLabelService/MutateAdGroupAdLabels",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupAdLabels:mutate",
+          "path": "v23/customers/:customerId/adGroupAdLabels:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -151830,7 +151860,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupLabelService/MutateAdGroupLabels",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupLabels:mutate",
+          "path": "v23/customers/:customerId/adGroupLabels:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -151964,7 +151994,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignLabelService/MutateCampaignLabels",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/campaignLabels:mutate",
+          "path": "v23/customers/:customerId/campaignLabels:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -152098,7 +152128,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupCriterionLabelService/MutateAdGroupCriterionLabels",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupCriterionLabels:mutate",
+          "path": "v23/customers/:customerId/adGroupCriterionLabels:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -152232,7 +152262,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupService/MutateAdGroups",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroups:mutate",
+          "path": "v23/customers/:customerId/adGroups:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -152405,7 +152435,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignService/MutateCampaigns",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/campaigns:mutate",
+          "path": "v23/customers/:customerId/campaigns:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -152727,7 +152757,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignBudgetService/MutateCampaignBudgets",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/campaignBudgets:mutate",
+          "path": "v23/customers/:customerId/campaignBudgets:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -152882,7 +152912,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CustomerService/CreateCustomerClient",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId:createCustomerClient",
+          "path": "v23/customers/:customerId:createCustomerClient",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -153014,7 +153044,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/OfflineUserDataJobService/CreateOfflineUserDataJob",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/offlineUserDataJobs:create",
+          "path": "v23/customers/:customerId/offlineUserDataJobs:create",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -153094,7 +153124,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupAdService/MutateAdGroupAds",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupAds:mutate",
+          "path": "v23/customers/:customerId/adGroupAds:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -153349,7 +153379,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupAdLabelService/MutateAdGroupAdLabels",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupAdLabels:mutate",
+          "path": "v23/customers/:customerId/adGroupAdLabels:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -153455,7 +153485,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupLabelService/MutateAdGroupLabels",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupLabels:mutate",
+          "path": "v23/customers/:customerId/adGroupLabels:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -153561,7 +153591,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignLabelService/MutateCampaignLabels",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/campaignLabels:mutate",
+          "path": "v23/customers/:customerId/campaignLabels:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -153667,7 +153697,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupCriterionLabelService/MutateAdGroupCriterionLabels",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupCriterionLabels:mutate",
+          "path": "v23/customers/:customerId/adGroupCriterionLabels:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -153773,7 +153803,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupService/MutateAdGroups",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroups:mutate",
+          "path": "v23/customers/:customerId/adGroups:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -153919,7 +153949,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupAdService/MutateAdGroupAds",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupAds:mutate",
+          "path": "v23/customers/:customerId/adGroupAds:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -154065,7 +154095,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignService/MutateCampaigns",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/campaigns:mutate",
+          "path": "v23/customers/:customerId/campaigns:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -154211,7 +154241,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupCriterionService/MutateAdGroupCriteria",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupCriteria:mutate",
+          "path": "v23/customers/:customerId/adGroupCriteria:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -154357,7 +154387,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/KeywordPlanIdeaService/GenerateAdGroupThemes",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId:generateAdGroupThemes",
+          "path": "v23/customers/:customerId:generateAdGroupThemes",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -154444,7 +154474,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/KeywordPlanIdeaService/GenerateKeywordForecastMetrics",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId:generateKeywordForecastMetrics",
+          "path": "v23/customers/:customerId:generateKeywordForecastMetrics",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -154542,7 +154572,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/KeywordPlanIdeaService/GenerateKeywordHistoricalMetrics",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId:generateKeywordHistoricalMetrics",
+          "path": "v23/customers/:customerId:generateKeywordHistoricalMetrics",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -154664,7 +154694,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/KeywordPlanIdeaService/GenerateKeywordIdeas",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId:generateKeywordIdeas",
+          "path": "v23/customers/:customerId:generateKeywordIdeas",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -154786,7 +154816,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/RecommendationService/GenerateRecommendations",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/recommendations:generate",
+          "path": "v23/customers/:customerId/recommendations:generate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -154880,7 +154910,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -155006,7 +155036,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -155155,7 +155185,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -155319,7 +155349,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -155483,7 +155513,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -155627,7 +155657,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -155766,7 +155796,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -155889,7 +155919,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -155957,7 +155987,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -156096,7 +156126,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -156235,7 +156265,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -156378,7 +156408,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -156530,7 +156560,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -156684,7 +156714,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -156744,8 +156774,7 @@
             "dataType": "string",
             "required": true,
             "description": "GAQL query to retrieve a specific local services lead.",
-            "example": "SELECT local_services_lead.id FROM local_services_lead WHERE local_services_lead.resource_name = 'customers/1234567890/localServicesLeads/LEAD_ID' LIMIT 1",
-            "defaultValue": "SELECT local_services_lead.id, local_services_lead.lead_status, local_services_lead.creation_date_time FROM local_services_lead WHERE local_services_lead.resource_name = 'customers/1234567890/localServicesLeads/LEAD_ID' LIMIT 1"
+            "example": "SELECT local_services_lead.id FROM local_services_lead WHERE local_services_lead.resource_name = 'customers/1234567890/localServicesLeads/LEAD_ID' LIMIT 1"
           }
         ],
         "responseSchema": [
@@ -156771,7 +156800,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -156813,8 +156842,7 @@
             "name": "Query",
             "dataType": "string",
             "required": true,
-            "description": "GAQL query used to fetch a single recommendation resource.",
-            "defaultValue": "SELECT recommendation.resource_name, recommendation.type, recommendation.campaign, recommendation.dismissed FROM recommendation WHERE recommendation.resource_name = 'customers/1234567890/recommendations/0~0' LIMIT 1"
+            "description": "GAQL query used to fetch a single recommendation resource."
           }
         ],
         "responseSchema": [
@@ -156840,7 +156868,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -156929,7 +156957,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CustomerService/ListAccessibleCustomers",
         "native": {
           "method": "GET",
-          "path": "v22/customers:listAccessibleCustomers",
+          "path": "v23/customers:listAccessibleCustomers",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest"
@@ -156965,7 +156993,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -157009,7 +157037,7 @@
             "required": true,
             "description": "GAQL query to list account budget proposal resources.",
             "example": "SELECT account_budget_proposal.id, account_budget_proposal.status FROM account_budget_proposal LIMIT 50",
-            "defaultValue": "SELECT account_budget_proposal.id, account_budget_proposal.name, account_budget_proposal.status, account_budget_proposal.proposed_start_date_time FROM account_budget_proposal ORDER BY account_budget_proposal.id DESC LIMIT 50"
+            "defaultValue": "SELECT account_budget_proposal.id, account_budget_proposal.status, account_budget_proposal.proposed_start_date_time FROM account_budget_proposal ORDER BY account_budget_proposal.id DESC LIMIT 50"
           }
         ],
         "responseSchema": [
@@ -157040,7 +157068,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -157110,7 +157138,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -157182,7 +157210,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -157264,7 +157292,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -157346,7 +157374,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -157421,7 +157449,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -157523,7 +157551,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -157595,7 +157623,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -157667,7 +157695,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -157744,7 +157772,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -157831,7 +157859,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -157903,7 +157931,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/InvoiceService/ListInvoices",
         "native": {
           "method": "GET",
-          "path": "v22/customers/:customerId/invoices",
+          "path": "v23/customers/:customerId/invoices",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -158024,7 +158052,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -158104,7 +158132,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -158173,7 +158201,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupAssetService/MutateAdGroupAssets",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupAssets:mutate",
+          "path": "v23/customers/:customerId/adGroupAssets:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -158255,7 +158283,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AssetSetAssetService/MutateAssetSetAssets",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/assetSetAssets:mutate",
+          "path": "v23/customers/:customerId/assetSetAssets:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -158337,7 +158365,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AssetSetService/MutateAssetSets",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/assetSets:mutate",
+          "path": "v23/customers/:customerId/assetSets:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -158419,7 +158447,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AssetService/MutateAssets",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/assets:mutate",
+          "path": "v23/customers/:customerId/assets:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -158501,7 +158529,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignAssetSetService/MutateCampaignAssetSets",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/campaignAssetSets:mutate",
+          "path": "v23/customers/:customerId/campaignAssetSets:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -158583,7 +158611,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignAssetService/MutateCampaignAssets",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/campaignAssets:mutate",
+          "path": "v23/customers/:customerId/campaignAssets:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -158665,7 +158693,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/ConversionActionService/MutateConversionActions",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/conversionActions:mutate",
+          "path": "v23/customers/:customerId/conversionActions:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -158747,7 +158775,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/ConversionCustomVariableService/MutateConversionCustomVariables",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/conversionCustomVariables:mutate",
+          "path": "v23/customers/:customerId/conversionCustomVariables:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -158829,7 +158857,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CustomerAssetService/MutateCustomerAssets",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/customerAssets:mutate",
+          "path": "v23/customers/:customerId/customerAssets:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -158911,7 +158939,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CustomerConversionGoalService/MutateCustomerConversionGoals",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/customerConversionGoals:mutate",
+          "path": "v23/customers/:customerId/customerConversionGoals:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -158993,7 +159021,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Mutate",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:mutate",
+          "path": "v23/customers/:customerId/googleAds:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -159115,7 +159143,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/UserListService/MutateUserLists",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/userLists:mutate",
+          "path": "v23/customers/:customerId/userLists:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -159197,7 +159225,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupService/MutateAdGroups",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroups:mutate",
+          "path": "v23/customers/:customerId/adGroups:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -159343,7 +159371,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupAdService/MutateAdGroupAds",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupAds:mutate",
+          "path": "v23/customers/:customerId/adGroupAds:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -159489,7 +159517,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignService/MutateCampaigns",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/campaigns:mutate",
+          "path": "v23/customers/:customerId/campaigns:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -159635,7 +159663,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupCriterionService/MutateAdGroupCriteria",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupCriteria:mutate",
+          "path": "v23/customers/:customerId/adGroupCriteria:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -159781,7 +159809,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupService/MutateAdGroups",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroups:mutate",
+          "path": "v23/customers/:customerId/adGroups:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -159912,7 +159940,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupAdService/MutateAdGroupAds",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupAds:mutate",
+          "path": "v23/customers/:customerId/adGroupAds:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -160043,7 +160071,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignService/MutateCampaigns",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/campaigns:mutate",
+          "path": "v23/customers/:customerId/campaigns:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -160174,7 +160202,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignCriterionService/MutateCampaignCriteria",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/campaignCriteria:mutate",
+          "path": "v23/customers/:customerId/campaignCriteria:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -160305,7 +160333,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupCriterionService/MutateAdGroupCriteria",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupCriteria:mutate",
+          "path": "v23/customers/:customerId/adGroupCriteria:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -160436,7 +160464,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/OfflineUserDataJobService/RunOfflineUserDataJob",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/offlineUserDataJobs/:offlineUserDataJobId:run",
+          "path": "v23/customers/:customerId/offlineUserDataJobs/:offlineUserDataJobId:run",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -160517,7 +160545,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -160624,7 +160652,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/googleAds:search",
+          "path": "v23/customers/:customerId/googleAds:search",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -160788,7 +160816,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupService/MutateAdGroups",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroups:mutate",
+          "path": "v23/customers/:customerId/adGroups:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -161001,7 +161029,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignService/MutateCampaigns",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/campaigns:mutate",
+          "path": "v23/customers/:customerId/campaigns:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -161201,7 +161229,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignBudgetService/MutateCampaignBudgets",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/campaignBudgets:mutate",
+          "path": "v23/customers/:customerId/campaignBudgets:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -161343,7 +161371,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignCriterionService/MutateCampaignCriteria",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/campaignCriteria:mutate",
+          "path": "v23/customers/:customerId/campaignCriteria:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -161543,7 +161571,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupCriterionService/MutateAdGroupCriteria",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupCriteria:mutate",
+          "path": "v23/customers/:customerId/adGroupCriteria:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -161743,7 +161771,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/AdGroupAdService/MutateAdGroupAds",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId/adGroupAds:mutate",
+          "path": "v23/customers/:customerId/adGroupAds:mutate",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -161930,7 +161958,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/ConversionUploadService/UploadCallConversions",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId:uploadCallConversions",
+          "path": "v23/customers/:customerId:uploadCallConversions",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -162049,7 +162077,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/ConversionUploadService/UploadClickConversions",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId:uploadClickConversions",
+          "path": "v23/customers/:customerId:uploadClickConversions",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",
@@ -162143,7 +162171,7 @@
         "documentationUrl": "https://developers.google.com/google-ads/api/reference/rpc/v22/ConversionAdjustmentUploadService/UploadConversionAdjustments",
         "native": {
           "method": "POST",
-          "path": "v22/customers/:customerId:uploadConversionAdjustments",
+          "path": "v23/customers/:customerId:uploadConversionAdjustments",
           "baseUrl": "https://googleads.googleapis.com/",
           "apiName": "REST",
           "apiType": "rest",

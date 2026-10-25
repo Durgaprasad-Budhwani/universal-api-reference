@@ -55,5 +55,5 @@ const { success, data } = await response.json();
 
 ## Native endpoint
 
-Through the native Google Ads API, this operation is `GET v22/customers:listAccessibleCustomers` (base URL `https://googleads.googleapis.com/`). The Universal API call above is translated to it by MindCloud, including authentication. See the [native action reference](../../native-api/actions/list-accessible-customers.md) for the provider-specific parameters and requirements.
+Through the native Google Ads API, this operation is `GET v23/customers:listAccessibleCustomers` (base URL `https://googleads.googleapis.com/`). The Universal API call above is translated to it by MindCloud, including authentication. See the [native action reference](../../native-api/actions/list-accessible-customers.md) for the provider-specific parameters and requirements.
 

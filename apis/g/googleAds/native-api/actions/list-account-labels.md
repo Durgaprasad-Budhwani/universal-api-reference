@@ -5,7 +5,7 @@ Retrieves account labels from Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId/googleAds:search`
+- **Path:** `v23/customers/:customerId/googleAds:search`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [List Account Labels](https://developers.google.com/google-ads/api/reference/rpc/v22/GoogleAdsService/Search)

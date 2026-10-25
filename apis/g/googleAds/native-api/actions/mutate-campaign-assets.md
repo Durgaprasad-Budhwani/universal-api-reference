@@ -5,7 +5,7 @@ Creates, updates, or removes campaign assets in Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId/campaignAssets:mutate`
+- **Path:** `v23/customers/:customerId/campaignAssets:mutate`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Mutate Campaign Assets](https://developers.google.com/google-ads/api/reference/rpc/v22/CampaignAssetService/MutateCampaignAssets)

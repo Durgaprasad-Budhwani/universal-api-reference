@@ -5,7 +5,7 @@ Creates, updates, or removes asset set assets in Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId/assetSetAssets:mutate`
+- **Path:** `v23/customers/:customerId/assetSetAssets:mutate`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Mutate Asset Set Assets](https://developers.google.com/google-ads/api/reference/rpc/v22/AssetSetAssetService/MutateAssetSetAssets)

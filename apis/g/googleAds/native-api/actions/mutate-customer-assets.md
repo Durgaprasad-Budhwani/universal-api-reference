@@ -5,7 +5,7 @@ Creates, updates, or removes customer assets in Google Ads.
 ## Endpoint
 
 - **Method:** `POST`
-- **Path:** `v22/customers/:customerId/customerAssets:mutate`
+- **Path:** `v23/customers/:customerId/customerAssets:mutate`
 - **Base URL:** `https://googleads.googleapis.com/`
 - **API:** REST
 - **Official documentation:** [Mutate Customer Assets](https://developers.google.com/google-ads/api/reference/rpc/v22/CustomerAssetService/MutateCustomerAssets)
